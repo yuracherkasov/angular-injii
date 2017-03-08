@@ -1,0 +1,60 @@
+.schedule {
+  height: 10px;
+  margin: 15px 0 6px;
+  position: relative;
+  background-color: #26AD08;
+}
+
+.schedule-item {
+  background: #881f05;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.timeline {
+  font-size: 0;
+  position: relative;
+}
+
+.timeline::after {
+  content: '00 am';
+  text-transform: uppercase;
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 0;
+  color: rgba(255, 255, 255, .8);
+}
+
+.timeline-item {
+  display: inline-block;
+  position: relative;
+  width: 8.33333333%;
+  border-right: 1px solid rgba(255, 255, 255, .8);
+  height: 11px;
+}
+
+.timeline-item:first-of-type {
+  border-left: 1px solid rgba(255, 255, 255, .8);
+}
+
+.timeline-item-caption {
+  position: absolute;
+  font-size: 10px;
+  color: rgba(255, 255, 255, .8);
+  text-transform: uppercase;
+  left: 0;
+  transform: translateX(-50%);
+  top: 125%;
+}
+
+@media (max-width: 991px) {
+  .timeline-item:nth-of-type(2n) {
+    display: none;
+  }
+
+  .timeline-item {
+    width: 16.66666%;
+  }
+}

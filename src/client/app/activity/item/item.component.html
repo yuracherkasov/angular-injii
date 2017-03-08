@@ -1,0 +1,17 @@
+<div class="one_message">
+  <div class="thumb_gutter" [style.background-image]="'url('+item.preview+')'" (click)="submitVideoOnMainPlayer(item.id)">
+  </div>
+  <div class="message_content">
+    <div class="time_author">
+      <a href="/artists/{{item.artist.username}}" class="author" (click)="gotoProfile(item.artist.username, '/artists', $event)">{{item.artist.firstname}} {{item.artist.lastname}}</a>
+      <a href="javascript:;" class="time">{{item.date}}</a>
+    </div>
+    <div><a href="javascript:;" (click)="submitVideoOnMainPlayer(item.id)">{{item.title}}</a></div>
+    <div class="viewers"><a href="javascript:;" (click)="gotoSharing(item)">{{item.viewers}}</a></div>
+  </div>
+  <div class="donate_info">
+    <div><a href="javascript:;" (click)="gotoProfile(item.charity.username, '/charity', $event)" >{{item.charity.charityname}}</a></div>
+    <div><a href="javascript:;" (click)="gotoDonate(item)">&#36;{{item.donations}}</a></div>
+  </div>
+  <div class="sponsor"><a href="javascript:;" (click)="gotoSponsor(item.sponsor)">{{item.sponsor.name}}</a></div>
+</div>

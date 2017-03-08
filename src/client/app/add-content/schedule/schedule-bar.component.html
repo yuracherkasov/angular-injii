@@ -1,0 +1,45 @@
+<div class="schedule">
+  <div class="schedule-item"
+       *ngFor="let video of videos"
+       [style.width]="getWidth(video) + '%'"
+       [style.left]="getPosition(video) + '%'">
+  </div>
+</div>
+<div class="timeline">
+  <span class="timeline-item">
+    <span class="timeline-item-caption">00am</span>
+  </span>
+  <span class="timeline-item">
+    <span class="timeline-item-caption">02am</span>
+  </span>
+  <span class="timeline-item">
+    <span class="timeline-item-caption">04am</span>
+  </span>
+  <span class="timeline-item">
+    <span class="timeline-item-caption">06am</span>
+  </span>
+  <span class="timeline-item">
+    <span class="timeline-item-caption">08am</span>
+  </span>
+  <span class="timeline-item">
+    <span class="timeline-item-caption">10am</span>
+  </span>
+  <span class="timeline-item">
+    <span class="timeline-item-caption">12pm</span>
+  </span>
+  <span class="timeline-item">
+    <span class="timeline-item-caption">02pm</span>
+  </span>
+  <span class="timeline-item">
+    <span class="timeline-item-caption">04pm</span>
+  </span>
+  <span class="timeline-item">
+    <span class="timeline-item-caption">06pm</span>
+  </span>
+  <span class="timeline-item">
+    <span class="timeline-item-caption">08pm</span>
+  </span>
+  <span class="timeline-item">
+    <span class="timeline-item-caption">10pm</span>
+  </span>
+</div>

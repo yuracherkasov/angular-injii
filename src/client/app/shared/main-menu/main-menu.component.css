@@ -1,0 +1,67 @@
+#menuframe{
+  position: fixed;
+  top: 88px;
+  height: calc(100% - 176px);
+  width: calc(100% - 320px);
+  z-index: 9999;
+  left: 20px;
+  transition: visibility .1s linear;
+  padding: 30px 15px 15px 15px;
+  background:  rgba(8, 10, 12, 0.85);
+}
+.close{
+  width: 15px;
+  height: 15px;
+  background: url(../assets/svg/icons/cancel.svg) no-repeat center center;
+  background-size: 100%;
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  z-index: 999;
+  opacity: 1;
+}
+.togglescreen{
+  width: 20px;
+  height: 15px;
+  border-width: 2px 1px 3px;
+  border-color: #e2e2e2;
+  border-style: solid;
+  position: absolute;
+  right: 35px;
+  top: 10px;
+  z-index: 10;
+  opacity: 1;
+}
+.full .togglescreen{
+  width: 10px;
+  height: 10px;
+  border-width: 1px;
+  right: 45px;
+  top: 13px;
+}
+.full .togglescreen:after{
+  content: "";
+  width: 9px;
+  height: 9px;
+  border: 1px solid #e2e2e2;
+  top: -5px;
+  right: -5px;
+  position: absolute;
+  display: inline-block;
+}
+#menuframe iframe{
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+  transition: opacity .2s ease-in;
+}
+
+@media (max-width: 991px){
+  #menuframe{
+    width: calc(100% - 320px);
+    left: 10px;
+    top: 60px;
+    height: calc(100% - 70px);
+  }
+}

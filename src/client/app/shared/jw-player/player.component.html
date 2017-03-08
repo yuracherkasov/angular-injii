@@ -1,0 +1,9 @@
+<div class="player-wrap">
+  <div class="control-full-wrap">
+    <div #player id="player"></div>
+    <div class="player-controls" [style.display]="controlStyle">
+      <span (click)="setValue($event)" class="volum-control active"></span>
+      <span (click)="callSharing($event)" class="shared button-injii">Share injii</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+.right-nav{
+  width: 212px;
+  height: 68px;
+  position: relative;
+  float: right;
+}
+#top-nav li span{
+  line-height: 14px;
+  display: inline-block;
+  vertical-align: middle;
+}

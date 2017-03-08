@@ -1,0 +1,44 @@
+.green-msg {
+  color: #1e9e14;
+}
+
+.purple-msg {
+  color: #8a259e;
+}
+
+.pink-msg {
+  color: #ffa8b6;
+}
+
+.red-msg {
+  color: #ac2627;
+}
+
+.invalid-msg {
+  border-color: #e90012;
+}
+
+#chat-window .heading h4{
+  display: inline-block;
+  color: #848484;
+  cursor: pointer;
+}
+
+#chat-window .heading h4.active-tab{
+  color: #e2e2e2;
+}
+
+#chat-window .chat-notification {
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  color: #fff;
+}
+
+.tab-right {
+  float: right;
+}
+.button-injii{
+  font-size: 14px;
+  padding: 10px 15px;
+}

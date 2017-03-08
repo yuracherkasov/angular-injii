@@ -1,0 +1,55 @@
+.message_content{
+  position: relative;
+}
+.viewers{
+  display: inline-block;
+  position: absolute;
+  top: 1px;
+  left: auto;
+  right: 0;
+  padding-left: 15px;
+  background: url("../../assets/svg/icons/eye.svg") no-repeat left center;
+  background-size: auto 13px;
+}
+.message_content a{
+  text-decoration: none;
+}
+.one_message div{
+  font-size: 12px;
+  color: #fff;
+}
+.donate_info{
+  overflow: hidden;
+}
+.donate_info > div:first-child{
+  float: left;
+}
+.donate_info > div:last-child{
+  float: right;
+  margin-right: 15px;
+}
+.sponsor{
+  margin-top: 7px;
+}
+.thumb_gutter{
+  display: inline-block;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  width: 46px;
+  height: 46px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 4px;
+  cursor: pointer;
+}
+.one_message:before {
+  content: '';
+  position: absolute;
+  display: block;
+  bottom: 0;
+  width: 33.333%;
+  right: 15px;
+  background: #707475;
+  height: 1px;
+}

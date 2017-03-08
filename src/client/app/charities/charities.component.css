@@ -1,0 +1,24 @@
+.thumb{
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.short-bio > p:after{
+  content: '...';
+}
+.sorter-block ul li a{
+  text-decoration: none;
+}
+.sorter-block ul li.selected a{
+  text-decoration: underline;
+}
+@media (max-width: 991px){
+  .overlay-desktop .the-list .list-item .thumb-wrap .thumb {
+    width: 100px;
+    height: 100px;
+  }
+  .overlay-desktop .sorter-block ul li a{
+    padding: 5px 10px 10px 0;
+
+  }
+}

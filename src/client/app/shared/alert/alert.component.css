@@ -1,0 +1,35 @@
+#alert{
+  position: fixed;
+  left: 50%;
+  top: 100px;
+  z-index: 999999;
+  text-align: center;
+  width: 30%;
+  margin-left: -15%;
+}
+#alert .alert{
+  padding: 25px;
+}
+#alert span{
+  width: 15px;
+  height: 15px;
+  background: url(../assets/svg/icons/cancel_gray.svg) no-repeat center center;
+  background-size: 100%;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 10;
+  cursor: pointer;
+}
+@media(max-width: 1100px){
+  #alert{
+    width: 40%;
+    margin-left: -20%;
+  }
+}
+@media(max-width: 991px){
+ #alert{
+    width: 52%;
+    margin-left: -26%;
+  }
+}

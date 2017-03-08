@@ -1,0 +1,75 @@
+<div class="overlay-desktop" [class.hidepopup]="hidepopup">
+  <a href="javascript:;" class="overlay-close" (click)="hidePopUp()">
+  </a>
+  <div class="container-fluid" id="full-profile">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="heading">
+          <div class="profile-image" [style.background-image]="charity.avatar ? 'url('+charity.avatar+')' : 'url(assets/thumb-place.jpg)'">
+          </div>
+          <div class="heading-profile" #headerHeight>
+            <h3>{{charity.firstname}} {{charity.lastname}}</h3>
+            <dl class="term-list">
+              <dt>Username:</dt>
+                <dd class="username">{{charity.username}}</dd>
+              <dt>Charity name:</dt>
+                <dd class="username">{{charity.charityname}}<dd>
+              <dt>Social:</dt>
+                <dd *ngFor="let social of charity.social" class="icon" [class.active]="social.link">
+                  <a target="_blank" href="{{social.link}}"></a><img src="{{social.image}}" alt="{{social.type}}" />
+                </dd>
+              <dt>E-mail:</dt>
+                <dd>{{charity.email}}<dd>
+              <dt>Phone:</dt>
+               <dd>{{charity.phone}}<dd>
+              <dt>Adress:</dt>
+                <dd>{{charity.address}}</dd>
+            </dl>
+            <h5 [hidden]="!charity.homeUrl && !charity.EIN && !charity.donation_email">Donation info:</h5>
+            <dl class="term-list">
+              <dt [hidden]="!charity.homeUrl">Home page url:</dt>
+                <dd>{{charity.homeUrl}}<dd>
+              <dt [hidden]="!charity.EIN">Ein number:</dt>
+                <dd>{{charity.EIN}}<dd>
+              <dt [hidden]="!charity.donation_email">Donation Mailing Address:</dt>
+                <dd>{{charity.donation_email}}<dd>
+            </dl>
+          </div>
+          <div class="my-story">
+            <div class="my-story-table" [style.height]="headerHeight.clientHeight +'px'">
+              <div>
+                <h4 class="bio-heading">Story</h4>
+                <p>
+                 {{charity.bio}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="videos-block">
+          <ul>
+            <li class="content_box" *ngFor="let video of charity.videos">
+              <div class="vid_thumb">
+                <a href="#" (click)="submitVideoOnMainPlayer($event, video.id)">
+                  <img [src]="video.preview" alt="preview">
+                </a>
+              </div>
+              <div class="vid_info">
+                <h5 class="vid_title"><a href="#" (click)="submitVideoOnMainPlayer($event, video.id)">{{video.title}}</a></h5>
+                <div>
+                  <a href="javascript:;" class="vid_viewers" (click)="gotoSharing(video)">{{video.viewers}}</a>
+                  <a href="javascript:;" class="vid_donations" (click)="gotoDonation(video)">&#36;{{video.donations}}</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <sd-comments></sd-comments>
+
+  </div>
+</div>

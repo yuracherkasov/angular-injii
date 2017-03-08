@@ -1,0 +1,18 @@
+<div id="content" class="overlay-desktop" [class.hidepopup]="hidepopup">
+  <a href="javascript:;" class="overlay-close" (click)="popupService.hideContentPopup()">
+  </a>
+  <div class="container-fluid">
+    <div class="row">
+      <content-search></content-search>
+      <div class="col-md-8 right-column scrollable-y">
+
+        <upcoming-content></upcoming-content>
+
+        <latest-content></latest-content>
+
+        <featured-content></featured-content>
+
+      </div>
+    </div>
+  </div>
+</div>

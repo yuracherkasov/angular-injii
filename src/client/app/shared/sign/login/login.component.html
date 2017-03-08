@@ -1,0 +1,77 @@
+<div class="not-logged-in">
+  <div id="sign-in-wrap" *ngIf="!uiService.forgotPassword" [@forgotPswAnimation]="uiService.forgotPassword ? '':'active'">
+    <h2 class="heading">Sign In</h2>
+    <h6>with your social media</h6>
+    
+    <sign-social></sign-social>
+    
+    <h6 class="separator"><span>or</span>
+      <div class="line"></div>
+    </h6>
+    <form #logInForm="ngForm" name="form" id="sign-in" (ngSubmit)="logInForm.form.valid && login()" novalidate>
+      <div class="form-group">
+        <input id="username" #userName="ngModel" required type="text" class="form-control" (ngModelChange)="incorrectMessage = false"
+          placeholder="username" name="name" [(ngModel)]="model.username" />
+      </div>
+      <div *ngIf="logInForm.submitted && !userName.valid" class="alert alert-danger">
+        Please enter a name.
+      </div>
+      <div class="form-group">
+        <input id="password" #password="ngModel" type="password" required class="form-control" (ngModelChange)="incorrectMessage = false"
+          placeholder="password" name="password" [(ngModel)]="model.password" />
+      </div>
+      <div *ngIf="logInForm.submitted && !password.valid" class="alert alert-danger">
+        Please enter password.
+      </div>
+      <div class="form-group checkbox-group">
+        <div class="pull-left">
+          <input type="checkbox" id="remember" name="rememberpsw" [(ngModel)]="model.remember" />
+          <label for="remember"><span></span>remember me</label>
+        </div>
+        <div class="pull-right">
+          <a href="Javascript:;" (click)="uiService.toggleForgotPassword($event)">
+                forgot password?
+            </a>
+        </div>
+      </div>
+      <div *ngIf="incorrectMessage" class="alert alert-danger">
+        The username or password you entered is incorrect.
+      </div>
+      <div class="form-group buttons-group">
+        <button type="submit" class="form-button" id="login-btn">Login</button>
+        <div class="load" *ngIf=loading></div>
+      </div>
+    </form>
+
+    <div class="join-injii">
+      <h6 class="separator"><span>still not Injii?</span>
+        <div class="line"></div>
+      </h6>
+      <button class="button-injii" (click)="uiService.selectAs()">Sign Up</button>
+    </div>
+  </div>
+  <!-- FORGOT PASS -->
+  <div id="forgot-pass" *ngIf="uiService.forgotPassword" [@forgotPswAnimation]="uiService.forgotPassword ? 'active':''">
+    <h3 class="heading">Forgot Password?</h3>
+    <h6 class="separator"><span>request new one</span>
+      <div class="line"></div>
+    </h6>
+    <form id="forgot-pass-form" #forgotPasswordForm="ngForm" (ngSubmit)="email.valid && forgotSubmit()" novalidate>
+      <div class="form-group text-left">
+        <label>Enter your email</label>
+        <input type="text" #email="ngModel" class="form-control" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" (ngModelChange)="forgotErrorMessage = ''"
+          name="email" [(ngModel)]="forgotformEmail">
+      </div>
+      <div *ngIf="forgotPasswordForm.dirty && !email.valid" class="alert alert-danger">
+        Please enter correct email.
+      </div>
+      <div *ngIf="forgotErrorMessage" class="alert alert-danger">
+        {{forgotErrorMessage}}
+      </div>
+      <div class="form-group">
+        <button type="submit" class="button-injii">Send</button>
+        <div class="load" *ngIf=fLoading></div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="upcoming-item">
+  <div class="title" (click)="showContest(index)">
+    <div class="contest-date">
+      <span>Start:</span>
+      <span class="time">{{contest.start}}</span>
+      <span>End:</span>
+      <span class="time">{{contest.end}}</span>
+    </div>
+    <h3>{{contest.title}}</h3>
+  </div>
+  <p class="descript">{{contest.description}}</p>
+  <div class="upcoming-carousel">
+    <div class="tab-carousel" #carousel [class.active]="artists.length > 0">
+      <div *ngIf="index === showIndex || screenService.screen > 991">
+        <ul class="contest-list" #list [ngStyle]="{'width': artists.length * carouselItemWidth + 'px',
+                 'transform': 'translate('+carouselService.left+'px, 0)',
+                 'transition-duration': carouselService.cssTransition + 's'}">
+          <li *ngFor="let artist of artists;">
+            <div class="thumb" [ngStyle]="{'background-image': 'url('+artist.avatar+')'}" (click)="gotoProfile(artist.username)"></div>
+            <div class="name">
+              <span><a href="javascript:;" (click)="gotoProfile(artist.username)">{{artist.firstname}}</a></span>
+              <span><a href="javascript:;" (click)="gotoProfile(artist.username)">{{artist.lastname}}</a></span>
+            </div>
+            <span class="vid_thumb" (click)="submitVideoOnPlayer(artist.video.id)">
+        <img [src]="artist.video.thumbnail" alt="thumb">
+      </span>
+            <div class="thumb-title" (click)="submitVideoOnPlayer(artist.video.id)">{{artist.video.title}}</div>
+          </li>
+        </ul>
+
+        <div class="tab-pagination" *ngIf="artists.length > carousel.clientWidth / carouselItemWidth">
+          <div class="pagination">
+            <span *ngFor="let item of carouselService.buttonQuantity; let i = index" [class.active]="i === carouselService.activeItem"
+              (click)="carouselService.gotoItem(i, carousel.clientWidth, artists.length, carouselItemWidth)"></span>
+          </div>
+          <button class="control-btn prev" [disabled]="carouselService.left >= 0" (click)="carouselService.prev(carousel.clientWidth, carouselItemWidth)">&#8249;</button>
+          <button class="control-btn next" [disabled]="carouselService.left <= (carousel.clientWidth - list.clientWidth)  && carouselService.left != 0"
+            (click)="carouselService.next(carousel.clientWidth, carouselItemWidth)">&#8250;</button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

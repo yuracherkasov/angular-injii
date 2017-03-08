@@ -1,0 +1,78 @@
+<div class="one-tab-wrapper">
+  <div class="contest-descr">
+    <div>
+      <h5>{{contest.title}}</h5>
+      <p class="contest-text">{{contest.description | slice : 0 : descriptionLength}}
+        <span class="more" (click)="toggleReadMore()">{{readmore}}</span>
+      </p>
+    </div>
+    <div>
+      <div class="time">
+        <div>
+          <h6>End contest time:</h6>
+          <span>{{contest.end}}</span>
+          <h6 class="prise">Prise amount: <span>&#36;{{contest.prise}}</span></h6>
+        </div>
+      </div>
+
+      <div class="leader-head" *ngIf="leaderArtist.username">
+          <h6>Currently winner</h6>
+          <div class="image" (click)="gotoProfile(leaderArtist.username)" [style.background-image]="leaderArtist.avatar ? 'url('+leaderArtist.avatar+')' : ''"></div>
+          <div class="name2">
+            <div class="icon"><span>{{leaderArtist.votes}}</span>
+              <button class="button-injii" (click)="vote(leaderArtist)" [disabled]="makeDisabled">Vote!</button>
+            </div>
+            <a href="javascript:;" (click)="gotoProfile(leaderArtist.username)">{{leaderArtist.firstname}} {{leaderArtist.lastname}}</a>
+          </div>
+      </div>
+
+      <div class="favorite-head" *ngIf="favoriteArtist.username">
+        <div>
+          <h6>My favorite</h6>
+          <div class="image" (click)="gotoProfile(favoriteArtist.username)" [style.background-image]="favoriteArtist.avatar ? 'url('+favoriteArtist.avatar+')' : ''"></div>
+          <div class="name2">
+            <div class="icon"><span>{{favoriteArtist.votes}}</span>
+              <button class="button-injii" (click)="vote(favoriteArtist)" [disabled]="makeDisabled">Unvote!</button>
+            </div>
+            <a href="javascript:;" (click)="gotoProfile(favoriteArtist.username)">{{favoriteArtist.firstname}} {{favoriteArtist.lastname}}</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="contest-cell">
+    <div class="tab-carousel" #carousel [class.active]="artists.length > 0">
+      <ul class="contest-list" #list [ngStyle]="{'width': artists.length * carouselItemWidth + 'px',
+                 'transform': 'translate('+carouselService.left+'px, 0)',
+                 'transition-duration': carouselService.cssTransition + 's'}">
+        <li *ngFor="let artist of artists;" [ngClass]="{'leader': artist.status === 'leader', 'favorite': artist.status === 'favorite'}">
+          <button class="button-injii" (click)="vote(artist)" [disabled]="makeDisabled">
+        {{appendButtonText(artist.status)}}
+      </button>
+          <div class="thumb" [ngStyle]="{'background-image': 'url('+artist.avatar+')'}" (click)="gotoProfile(artist.username)"></div>
+          <div class="votes">{{artist.votes}}</div>
+          <div class="name">
+            <span><a href="javascript:;" (click)="gotoProfile(artist.username)">{{artist.firstname}}</a></span>
+            <span><a href="javascript:;" (click)="gotoProfile(artist.username)">{{artist.lastname}}</a></span>
+          </div>
+          <span class="vid_thumb" (click)="submitVideoOnPlayer(artist.video.id)">
+        <img [src]="artist.video.thumbnail" alt="thumb">
+      </span>
+          <div class="thumb-title" (click)="submitVideoOnPlayer(artist.video.id)">{{artist.video.title}}</div>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-pagination" *ngIf="artists.length > carousel.clientWidth / carouselItemWidth">
+      <div class="pagination">
+        <span *ngFor="let item of carouselService.buttonQuantity; let i = index" [class.active]="i === carouselService.activeItem"
+          (click)="carouselService.gotoItem(i, carousel.clientWidth, artists.length, carouselItemWidth)"></span>
+      </div>
+      <div class="control">
+        <button [disabled]="carouselService.left >= 0" (click)="carouselService.prev(carousel.clientWidth, carouselItemWidth)">prev</button>
+        <button [disabled]="carouselService.left <= (carousel.clientWidth - list.clientWidth) && carouselService.left != 0" (click)="carouselService.next(carousel.clientWidth, carouselItemWidth)">next</button>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,378 @@
+.contest-heading{
+   position: absolute;
+   width: 100%;
+   top: 18px;
+   left: 0;
+   font-size: 36px;
+   color: #e2e2e2;
+   text-align: center;
+ }
+ .nav-tabs > li > a{
+   font-size: 24px;
+ }
+ .tabs-wrapper{
+   height: calc(100% - 70px); 
+   overflow-y: auto;
+   overflow-x: hidden;
+ }
+ .one-tab-wrapper{
+   position: relative;
+   display: table;
+   vertical-align: middle;
+   width: 100%;
+   height: 100%;
+ }
+ .contest-cell{
+   display: table-cell;
+   vertical-align: top;
+   text-align: center;
+   padding: 30px 0 50px;
+ }
+ .contest-descr{
+  display: table-row;
+}
+.contest-descr h5{
+  font-size: 16px;
+  color: #ccc;
+  padding: 10px 0;
+  text-indent: 10px;
+}
+.contest-descr .prise{
+  padding-top: 10px;
+}
+.prise > span{
+  color: #fff;
+  margin-left: 10px;
+}
+.contest-text > span{
+  cursor: pointer;
+  color: #e9008c;
+  font-size: 13px;
+  margin-left: 10px;
+}
+.contest-descr h6{
+  font-size: 14px;
+  color: #e9008c;
+  padding: 5px 0;
+  position: relative;
+}
+.contest-descr > div{
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+}
+.contest-descr > div:first-child{
+  width: 40%;
+}
+.contest-descr > div:last-child{
+  width: 59%;
+  padding-top: 5px;
+}
+.contest-text{
+  color: #777;
+  text-indent: 10px;
+}
+.time{
+  display: inline-block;
+  float: left;
+  padding-right: 16px;
+}
+.time > div{
+  /*color:#6B8E23;*/
+  color:#e9008c;
+  text-align: left;
+}
+.time > div > span{
+  display: block;
+  color: #e2e2e2;
+}
+.leader-head{
+  display: inline-block;
+  float: right;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 250px;
+}
+.favorite-head{
+  display: block;
+  overflow: hidden;
+  text-align: center;
+}
+.favorite-head > div{
+  display: inline-block;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.leader-head .image,
+.favorite-head .image{
+  display: inline-block;
+  position: relative;
+  width: 46px;
+  height: 46px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(assets/thumb-place.jpg);
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  margin-right: 2px;
+  cursor: pointer;
+}
+.leader-head .icon,
+.favorite-head .icon{
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #e2e2e2;
+}
+.icon > button{
+  font-size: 14px;
+  margin-left: 16px;
+}
+.name2{
+  display: inline-block;
+}
+
+/*carousel*/
+
+.tab-carousel{
+  opacity: 0;
+  display: inline-block;
+  overflow: hidden;
+  width: 1500px;
+ }
+ .tab-carousel.active{
+   opacity: 1;
+   transition: opacity .1s linear .5s;
+ }
+ .contest-list{
+  display: inline-block;  
+  transition-property: all;
+  transition-timing-function: ease;
+  transition-duration: .5s;
+ }
+ .contest-list > li{
+  position: relative;
+  list-style: none;
+  display: inline-block;
+  width: 250px;
+  margin: 0;
+  padding: 10px 27px; 
+  text-align: left;
+ }
+ .contest-list > li button{
+  float: right;
+ }
+ .thumb{
+   position: relative;
+   display: inline-block;
+   width: 65px;
+   height: 65px;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-image: url('assets/thumb-place.jpg');
+   border: 1px solid #e2e2e2;
+   border-radius: 5px;
+   float: left;
+   margin-right: 8px;
+   overflow: hidden;
+   cursor: pointer;
+ }
+ .thumb-title,
+ .name > span{
+   display: block;
+   font-size: 15px;
+   color: #e2e2e2;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+   line-height: 1.2;
+ }
+ .votes{
+   font-size: 18px;
+   color: #fff;
+   background-repeat: no-repeat; 
+   background-position: left top;
+   background-size: contain;
+   display: inline-block;
+   overflow: hidden;
+ }
+ .vid_thumb{
+   display: inline-block;
+   margin-top: 15px;
+   width: 196px;
+   cursor: pointer;
+ }
+ .vid_thumb > img{
+   display: block;  
+   width: 100%;
+   height: auto;
+ }
+ .thumb-title{
+   color: #e9008c;
+   font-size: 16px;
+   cursor: pointer;
+ }
+.control{
+  margin: 10px 0;
+}
+.control > button{
+  display: inline-block;
+  color: #e2e2e2;
+  border: 1px solid #e2e2e2;
+  outline: none;
+  background: none;
+  margin: 0 15px;
+  padding: 2px 15px;
+  border-radius: 8px;
+}
+.pagination{
+  margin: 0;
+  position: relative;
+}
+.pagination > span{
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #e2e2e2;
+  border-radius: 50%;
+  margin: 5px 7px;
+  cursor: pointer;
+}
+.pagination .active{
+  background: #e2e2e2;
+}
+
+ .leader .votes{
+    padding-left: 25px;
+    background-image: url('/assets/svg/icons/award_red.svg');
+ }
+.favorite .thumb:before,
+.leader .thumb:before{
+  content: "wins";
+  display: inline-block;   
+  position: absolute;
+  top: 12px;
+  left: -22px;
+  width: 90px;
+  height: 16px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  background-image: linear-gradient(to right, #e9008c 0%, #7f0078 100%);
+  transform: rotate(-45deg);
+  transform-origin: 50% 50% 0;
+  line-height: 14px;
+}
+.favorite .thumb:before{
+  content: "favorite";
+}
+ @media(max-width: 1650px){
+   .tab-carousel{
+     width: 1250px;
+   }
+ }
+ @media(max-width: 1400px){
+   .tab-carousel{
+     width: 1000px;
+   }
+ }
+ @media(max-width: 1150px){
+   .tab-carousel{
+     width: 750px;
+   }
+ }
+@media(max-width: 991px){
+  .contest-heading{
+    position: relative;
+    top: 0;
+    font-size: 28px;
+    text-align: left;
+  }
+  #contest .nav.nav-tabs{
+    margin-bottom: 10px;
+  }
+  .nav-tabs > li  > a{
+    font-size: 14px;
+  }
+  .one-tab-wrapper,
+  .contest-descr{
+    display: block;
+  }
+  .contest-descr > div:first-child,
+  .contest-descr > div:last-child{
+    width: 100%;
+    padding: 0;
+  }
+  .contest-descr > div:last-child{
+    text-align: center;
+  }
+  .time{
+    float: none;
+    display: block;
+    padding: 15px 0;
+  }
+  .time > div > span{
+    display: inline-block;
+    font-size: 13px;
+    margin-left: 15px;
+  }
+  .time h6{
+    display: inline-block;
+  }
+  .leader-head,
+  .favorite-head{
+    display: inline-block;
+    width: 250px;
+    margin-bottom: 15px;
+    float: none; 
+    max-width: 300px;
+    text-align: left;
+    padding: 0 27px;
+  }
+  .leader-head .image, .favorite-head .image{
+    float: left;
+    margin-right: 10px;
+  }
+  .icon > button{
+    float: right;
+  }
+  .name2{
+    display: block;
+  }
+  .favorite-head  > div{
+    display: block;
+  }
+   .tab-carousel{
+     width: 250px;
+   }
+   .pagination{
+     top: 50px;
+     padding: 10px 20px;
+   }
+   .tab-pagination{
+     padding: 0 0 40px;
+     position: relative;
+   }
+   .pagination > span{
+     margin: 8px;
+   }
+   .control{
+     position: absolute;
+     width: 100%;
+     top: 0;
+     left: 0;
+     padding: 0 20px;
+   }
+   .control > button{
+     margin: 0;
+   }
+   .control > button:first-child{
+     float: left;
+   }
+   .control > button:last-child{
+     float: right;
+   }
+ }

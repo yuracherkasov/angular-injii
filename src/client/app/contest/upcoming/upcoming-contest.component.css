@@ -1,0 +1,228 @@
+#upcoming{
+  padding: 35px 0;
+}
+.upcoming-item{
+  position: relative;
+  margin: 5px 15px 30px 0;
+}
+.title{
+  background: #252525;
+  border-radius: 5px;
+  padding: 10px 25px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+.title h3{
+  color: #e9008c;
+  font-size: 18px;
+  float: left;
+  overflow: hidden;
+  line-height: 18px;
+}
+.contest-date{
+  float: right;
+  display: inline-block; 
+  text-align: right;
+}
+.title span{
+  color: #e9008c;
+  font-size: 18px;
+  display: inline-block;
+  line-height: 18px;
+  margin: 0 15px 0 35px;
+  font-size: 14px;
+}
+.title .time{
+  font-size: 12px;
+}
+.title .time{
+  color: #fff;
+  margin: 0;
+}
+.descript{
+  padding: 0 10px 15px 0;
+  text-indent: 10px;
+  color: #777;
+  font-size: 14px;
+}
+
+.upcoming-carousel{
+  text-align: center; 
+  position: relative;
+}
+.tab-carousel{
+  opacity: 0;
+  display: inline-block;
+  overflow: hidden;
+  width: 1500px;
+ }
+ .tab-carousel.active{
+   opacity: 1;
+   transition: opacity .1s linear .5s;
+ }
+ .contest-list{
+  display: inline-block;  
+  transition-property: all;
+  transition-timing-function: ease;
+  transition-duration: .5s;
+ }
+ .contest-list > li{
+  position: relative;
+  list-style: none;
+  display: inline-block;
+  width: 250px;
+  margin: 0;
+  padding: 10px 27px; 
+  text-align: left;
+ }
+ .thumb{
+   position: relative;
+   display: inline-block;
+   width: 65px;
+   height: 65px;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-image: url('assets/thumb-place.jpg');
+   border: 1px solid #e2e2e2;
+   border-radius: 5px;
+   float: left;
+   margin-right: 8px;
+   overflow: hidden;
+   cursor: pointer;
+ }
+ .thumb-title,
+ .name > span{
+   display: block;
+   font-size: 15px;
+   color: #e2e2e2;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+   line-height: 1.2;
+ }
+ .vid_thumb{
+   display: inline-block;
+   margin-top: 15px;
+   width: 196px;
+   cursor: pointer;
+ }
+ .vid_thumb > img{
+   display: block;  
+   width: 100%;
+   height: auto;
+ }
+ .thumb-title{
+   color: #e9008c;
+   font-size: 16px;
+   cursor: pointer;
+ }
+
+
+ .control-btn{
+  position: absolute;
+  top: 0px;
+  height: 230px;
+  display: inline-block;
+  outline: none;
+  background: none;
+  border: none;
+  padding: 0 16px;
+  font-size: 100px;
+  color: rgb(51, 51, 51); 
+  transition: color .2s linear;
+ }
+ .control-btn:disabled:hover{
+   color: rgb(51, 51, 51);
+ }
+ .control-btn:hover{
+   color: #fff;
+ }
+
+ .control-btn.prev{
+   left: 0;
+ }
+ .control-btn.next{
+   left: auto;
+   right: 0;
+ }
+.pagination{
+  margin: 0;
+  position: relative;
+}
+.pagination > span{
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #e2e2e2;
+  border-radius: 50%;
+  margin: 5px 7px;
+  cursor: pointer;
+}
+.pagination .active{
+  background: #e2e2e2;
+}
+ @media(max-width: 1660px){
+   .tab-carousel{
+     width: 1250px;
+   }
+ }
+ @media(max-width: 1410px){
+   .tab-carousel{
+     width: 1000px;
+   }
+ }
+ @media(max-width: 1160px){
+   .tab-carousel{
+     width: 750px;
+   }
+ }
+@media(max-width: 991px){
+    #upcoming{
+      padding: 0 0 50px;
+    }
+    .upcoming-item{
+      margin-bottom: 0;
+    }
+   .tab-carousel{
+     width: 250px;
+   }
+   .pagination{
+     padding: 10px 30px 20px;
+   }
+   .tab-pagination{
+     min-height: 50px;
+     position: relative;
+   }
+   .pagination > span{
+     margin: 3px;
+     width: 10px;
+     height: 10px;
+   }
+   .title{
+     cursor: pointer;
+     padding: 5px;   
+   }
+   .title span{
+     margin-left: 0;
+   }
+   .title .time{
+     display: block;
+     float: right;
+     width: 60%;
+     text-align: right;
+   }
+   .contest-date{
+     float: none;
+     display: block;
+     text-align: left;
+   }
+   .title  h3{
+     margin-top: 5px;
+   }
+   .control-btn{
+     padding: 0;
+     line-height: 40px;
+     height: auto;
+   }
+ }

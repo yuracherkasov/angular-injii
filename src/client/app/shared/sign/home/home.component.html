@@ -1,0 +1,191 @@
+<div class="logged-in">
+  <div class="profile-actions">
+    <ul>
+      <li>
+        <a href="javascript:;" class="sign-out" (click)="signOut()">
+            Sign Out
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="profile-thumb">
+      <div class="round-thumb" [ngStyle]="{'background-image': userAvatar}">
+      <div class="thumb-edit">
+        <label for="avatar" [class.non-active]="User.auth_via != 'native'"></label>
+        <input type="file" id="avatar" ng2FileSelect [uploader]="uploader" (change)="changeHandler($event)" />
+      </div>
+    </div>
+    <img [class.spinner]=imageLoad src="../../assets/spinner.gif" alt="loading">
+  </div>
+
+  <div *ngIf="uploader.getNotUploadedItems().length" class="upload" (click)="uploader.uploadAll(); loadingImageStart()">
+    <span>Upload image</span>
+    <div>
+      <span role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></span>
+    </div>
+  </div>
+
+  <div class="user-name">
+    <h4>{{User.username}}</h4>
+  </div>
+  <div class="name-surname">
+    <h6>{{User.firstname }} {{User.lastname}}</h6>
+  </div>
+  <ul class="icons-list profile">
+    <li *ngFor="let social of User.social" [class.active]="social.link">
+      <a target="_blank" href="{{social.link}}"></a><img src="{{social.image}}" alt="{{social.type}}" />
+    </li>
+  </ul>
+
+  <ul *ngIf="User.role === 'artist'" class="icons-list profile">
+    <li *ngFor="let portfolio of User.portfolio" [class.active]="portfolio.link">
+      <a target="_blank" href="{{portfolio.link}}"></a><img src="{{portfolio.image}}" alt="{{portfolio.type}}" />
+    </li>
+  </ul>
+
+  <div>
+    <div class="setting">
+      <h5 class="head">Please fill the following information</h5>
+      <form class="settings-form" #updateForm="ngForm" name="update-form" (ngSubmit)="updateForm.valid ? update() : false" novalidate>
+        <div class="form-group text-left" *ngIf="(User.role === 'artist') || (User.role === 'charity')">
+          <label for="bio" class="heading">Bio:</label>
+          <textarea class="form-control" maxlength="500" id="bio" name="bio" [(ngModel)]="User.bio"></textarea>
+        </div>
+
+        <div class="text-left heading" [class.non-active]="User.auth_via != 'native'">
+          Upload image: 
+          <label for="avatar">choose</label>
+        </div>
+
+        <div *ngIf="User.role === 'artist'">
+          <h5 class="heading">Portfolio:</h5>
+          <div *ngFor="let portfolio of User.portfolio">
+            <div class="form-group text-left">
+              <label attr.for="{{portfolio.type}}">{{portfolio.type}}</label>
+              <input type="text" class="form-control" id="{{portfolio.type}}" pattern="{{portfolio.pattern}}.*" placeholder="{{portfolio.pattern}}..."
+                name="{{portfolio.type}}" [(ngModel)]="portfolio.link" />
+              <div [hidden]="!updateForm.dirty" class="alert alert-danger js-hide">
+                {{invalidUrlMassage}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="heading">Connect:</h5>
+          <div *ngFor="let social of User.social">
+            <div class="form-group text-left">
+              <label attr.for="{{social.type}}">{{social.type}}</label>
+              <input type="text" class="form-control" id="{{social.type}}" pattern="{{social.pattern}}.*" placeholder="{{social.pattern}}..."
+                name="{{social.type}}" [(ngModel)]="social.link" />
+              <div [hidden]="!updateForm.dirty" class="alert alert-danger js-hide">
+                {{invalidUrlMassage}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="User.role === 'artist'">
+          <h5 class="heading">Manager info:</h5>
+          <div class="form-group text-left">
+            <label for="manager-name">Name</label>
+            <input type="text" class="form-control" id="manager-name" name="manager-name" [(ngModel)]="User.manager.name" />
+          </div>
+          <div class="form-group text-left">
+            <label for="manager-phone">Phone</label>
+            <input type="text" class="form-control" id="manager-phone" name="manager-phone" [(ngModel)]="User.manager.phone" />
+          </div>
+          <div class="form-group text-left">
+            <label for="manager-email">Email</label>
+            <input type="email" class="form-control" id="manager-email" name="manager-email" [(ngModel)]="User.manager.email" />
+          </div>
+          <h5 class="heading">Booking Agent info:</h5>
+          <div class="form-group text-left">
+            <label for="agent-name">Name</label>
+            <input type="text" class="form-control" id="agent-name" name="agent-name" [(ngModel)]="User.booking_agent.name" />
+          </div>
+          <div class="form-group text-left">
+            <label for="agent-phone">Phone</label>
+            <input type="text" class="form-control" id="agent-phone" name="agent-phone" [(ngModel)]="User.booking_agent.phone" />
+          </div>
+          <div class="form-group text-left">
+            <label for="agent-email">Email</label>
+            <input type="email" class="form-control" id="agent-email" name="agent-email" [(ngModel)]="User.booking_agent.email" />
+          </div>
+        </div>
+
+        <div *ngIf="User.role === 'charity'">
+          <h5 class="heading">Donation info</h5>
+          <div class="form-group text-left">
+            <label for="donation-site">*Home page url</label>
+            <input type="text" class="form-control" id="donation-site" placeholder="https://" pattern="https://.*" #homeurl="ngModel"
+              name="homeurl" [(ngModel)]="User.homeUrl" />
+          </div>
+          <div *ngIf="updateForm.dirty && homeurl.invalid" class="alert alert-danger">
+            {{invalidUrlMassage}}
+          </div>
+
+          <div class="form-group text-left">
+            <label for="donation-ein">*EIN Number</label>
+            <input type="text" class="form-control" id="donation-ein" pattern="^[1-9]\d?-\d{7}$" name="ein" #ein="ngModel" [(ngModel)]="User.EIN"
+            />
+          </div>
+          <div *ngIf="updateForm.dirty && ein.invalid" class="alert alert-danger">
+            Does not match the EIN Number (XX-XXXXXXX)
+          </div>
+
+          <div class="form-group text-left">
+            <label for="donation-email">*Donation Mailing Address</label>
+            <input type="email" class="form-control" id="donation-email" name="donation-email" [(ngModel)]="User.donation_email" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" [disabled]="!(updateForm.valid)" class="button-injii">Add/Update</button>
+          <div class="load" [hidden]="!updateLoad"></div>
+        </div>
+      </form>
+    </div>
+
+    <div id="change-pass" [class.non-active]="User.auth_via != 'native'">
+      <h3 class="heading">Change Password</h3>
+      <h6 class="separator"><span></span>
+        <div class="line"></div>
+      </h6>
+      <form id="forgot-pass-form" #changePassForm="ngForm" name="form" novalidate (ngSubmit)="sendNewPass()">
+        <div class="form-group text-left">
+          <label>Enter old password</label>
+          <input type="password" class="form-control" required minlength="6" #oldpassword="ngModel" [(ngModel)]="newPassForm.oldpassword"
+            name="oldpassword">
+        </div>
+        <div *ngIf="oldpassword.dirty && oldpassword.invalid" class="alert alert-danger">
+          Field is required. Password must be at least 6 characters long.
+        </div>
+        <div class="form-group text-left">
+          <label>Enter new password</label>
+          <input type="password" class="form-control" required minlength="6" #newpassword="ngModel" [(ngModel)]="newPassForm.newpassword"
+            name="newpassword" />
+        </div>
+        <div *ngIf="newpassword.dirty && newpassword.invalid" class="alert alert-danger">
+          Password must be at least 6 characters long.
+        </div>
+        <div class="form-group text-left">
+          <label>Reenter new password</label>
+          <input type="password" class="form-control" required #repeatpsw="ngModel" [(ngModel)]="newPassForm.repeatpsw" name="repeatpsw"
+          />
+        </div>
+        <div *ngIf="(newpassword.dirty || repeatpsw.dirty) && (repeatpsw.value !== newpassword.value)" class="alert alert-danger">
+          Passwords do not match
+        </div>
+        <div class="form-group">
+          <button type="submit" [disabled]="!(changePassForm.form.valid && (repeatpsw.value === newpassword.value))" class="button-injii">Change</button>
+          <div class="load" *ngIf="submitPassLoad">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

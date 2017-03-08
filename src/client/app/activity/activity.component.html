@@ -1,0 +1,33 @@
+<div class="overlay-desktop" id="activity-feed" [class.hidepopup]="hidepopup">
+  <a href="javascript:;" class="overlay-close" (click)="popupService.hideContentPopup()">
+  </a>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 inner">
+        <h4 class="heading">Activity</h4>
+        <div class="activity-filter">
+          <h5>Sort By:</h5>
+          <ul class="tabs">
+            <li [class.selected]="order === 'new'" (click)="categoryChange('new')">New</li>
+            <li [class.selected]="order === 'donation'" (click)="categoryChange('donation')">Donation</li>
+            <li [class.selected]="order === 'views'" (click)="categoryChange('views')">Viewers</li>
+          </ul>
+        </div>
+        <div class="the-feed scrollable-y" #container (scroll)="onScroll($event)">
+          <div #inner>
+            <activity-item *ngFor="let item of activititems; let last = last" 
+                            [item]="item" 
+                            [isLast]="last" 
+                            (onLastDone)="lastItemDone()"
+                            (makeDonate)="showDonate($event)"
+                            (showSponsor)="showSponsor($event)"
+                            (showSharing)="showSharing($event)">
+            </activity-item>
+            <div class="loading" *ngIf="loading">
+              <div class="loader"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

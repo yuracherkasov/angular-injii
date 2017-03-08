@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-10">
+    <form id="artist-review" #review="ngForm" name="review-form" (ngSubmit)="review.valid && submit()" novalidate>
+      <div class="form-group">
+        <label for="review">Review</label>
+        <textarea class="form-control" id="review" required minlength="6" name="message" [(ngModel)]="newComment"></textarea>
+      </div>
+      <div class="alert alert-danger" *ngIf="review.submitted && !constantsService.User">
+        You need login
+      </div>
+      <div class="alert alert-info" *ngIf="responseMessage">
+        {{responseMessage}}
+      </div>
+      <div class="submit-btn">
+        <button type="submit" class="button-injii">Submit</button>
+        <div class="load" *ngIf="loading"></div>
+      </div>
+    </form>
+    <ul id="comments">
+      <li *ngFor="let comment of comments; let i = index">
+        <div [ngClass]="{'border': !comment.confirmed,
+                   'from-artist': comment.from.role === 'artist',
+                   'from-charity': comment.from.role === 'charity',
+                   'from-user': comment.from.role === 'user' && !!comment.from.donating}">
+          <div>
+            <div class="avatar" [style.background-image]="comment.from.avatar ? 'url('+comment.from.avatar+')' : 'url(../../../assets/thumb-place.jpg)'">
+              <a href="#" class="go-to-profile" (click)="gotoProfile($event, comment)"></a>
+            </div>
+            <div class="date">{{comment.date}}</div>
+            <div class="name">
+              <a href="#" class="go-to-profile" (click)="gotoProfile($event, comment)"></a>
+              {{comment.from.firstname}} {{comment.from.lastname}}
+            </div>
+          </div>
+          <p>{{comment.text}}</p>
+          <div *ngIf="!comment.confirmed" class="confirmed">
+            <button class="delete" (click)="delete(comment, i)">Delete</button>
+            <button class="approve" (click)="approve(comment, i)">Approve</button>
+            <div class="load-transparent" *ngIf="loading === i"></div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="see_more" *ngIf="showMoreButton">
+      <button (click)="getMore()">see more comments</button>
+      <div class="load-transparent" *ngIf="loading === 9999"></div>
+    </div>
+  </div>
+</div>

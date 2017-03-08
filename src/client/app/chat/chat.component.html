@@ -1,0 +1,58 @@
+<!-- CHAT WINDOW -->
+<div class="overlay-desktop not-active" id="chat-window" [class.hidepopup]="hidepopup">
+  <a href="javascript:;" class="overlay-close" (click)="popupService.hideContentPopup()">
+  </a>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 inner">
+        <div class="heading">
+          <h4 [ngClass]="{'active-tab': activeChat == 'commentary'}" (click)="changeChat('commentary')">
+            Commentary</h4>
+          <h4 class="tab-right" [ngClass]="{'active-tab': activeChat == 'collaborative'}" (click)="changeChat('collaborative')">
+            Collaborative</h4>
+        </div>
+
+        <div class="chat-inner">
+          <div class="the-feed chat-feed scrollable-y" #messageInput>
+            <div class="msgs_holder">
+              <div class="day_container">
+                <div class="day_msgs">
+                  <div class="one_message" *ngFor="let item of messages">
+                    <div class="thumb_gutter">
+                      <img [src]="item.image" (load)='handleLoad($event)'>
+                    </div>
+                    <div class="message_content">
+                      <div class="time_author">
+                        <a href="#" class="author">{{ item.user }}</a>
+                      </div>
+                      <span [ngClass]="{'green-msg': item.role == 'don',
+                                        'purple-msg': item.role == 'artist',
+                                        'pink-msg': item.role == 'charity',
+                                        'red-msg': item.role == 'admin'}">
+                        {{ item.message }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chat-controls" *ngIf="checkUser()">
+            <form id="message-form" class="form-inline">
+              <input class="form-control" maxlength="80" [ngClass]="{'invalid-msg': !messageIsValid}" [(ngModel)]="message" [ngModelOptions]="{standalone: true}"
+                (ngModelChange)="validateMessage($event)">
+                <button class="send" (click)="sendMessage($event)"></button>
+            </form>
+          </div>
+          <div class="chat-notification" *ngIf="!checkUser() && activeChat == 'commentary'">
+            Live commentary from artists and charities
+          </div>
+          <div class="chat-notification" *ngIf="!checkUser() && activeChat == 'collaborative'">
+            <a href="javascript:;" (click)="uiService.toggleSignMenu($event)" class="button-injii">Sign Up/In</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ///CHAT WINDOW -->

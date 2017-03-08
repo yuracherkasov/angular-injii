@@ -1,0 +1,23 @@
+<div id="sign-menu" class="scrollable-y" [class.sign-menu-open]="uiService.isSignMenuOpen">
+  <ul>
+    <li class="profile" *ngIf="!isLoggedIn" [@loginAnimation]="!isLoggedIn ? 'active':''">
+        <div [ngClass]="{'my-transition':!uiService.joinAsIcon}"> 
+           <login-form></login-form>
+        </div>
+        <div [ngClass]="{'my-transition':uiService.joinAsIcon}">
+          <register-forms></register-forms>
+        </div>   
+    </li>
+
+    <li class="profile" *ngIf="isLoggedIn" [@loginAnimation]="isLoggedIn ? 'active':''">
+      <home></home>
+    </li>
+  </ul> 
+</div>
+
+
+
+
+
+
+

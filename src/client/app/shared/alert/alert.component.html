@@ -1,0 +1,6 @@
+<div *ngIf="message" id="alert" [@alertAnimation]="message ? 'active' : 'inactive'">
+  <div class="alert" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'danger', 'alert-info': message.type === 'info' }">
+    {{message.text}}
+  </div>
+  <span (click)="close()"></span>
+</div>

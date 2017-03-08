@@ -1,0 +1,16 @@
+<div id="sign-social">
+  <ul class="social-icons social-login" [class.active]="uiService.userForm || !uiService.joinAsIcon">
+    <li>
+      <a href="javascript:;" (click)="googleCall()"></a>
+      <img src="assets/svg/icons/google-plus.svg" alt="Google" />
+    </li>
+    <li>
+      <a href="javascript:;" (click)="facebookCall()"></a>
+      <img src="assets/svg/icons/facebook-logo-button.svg" alt="Facebook" />
+    </li>
+    <li>
+      <a href="javascript:;" (click)="twitterCall()"></a>
+      <img src="assets/svg/icons/twitter-logo-button.svg" alt="Twitter" />
+    </li>
+  </ul>
+</div>

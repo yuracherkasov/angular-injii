@@ -1,0 +1,184 @@
+.non-active{
+  display: none !important; 
+}
+.logged-in{
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  overflow: hidden;
+}
+.form-group{
+  position: relative;
+}
+.form-group > button[type="submit"]:disabled{
+  opacity: .4;
+}
+.load{
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(8, 10, 12, .6) url(../../assets/spinner.gif) no-repeat center;
+    background-size: auto 75%;
+    z-index: 1;
+}
+.load > img{
+   display: inline-block;
+   margin-top: 10px;
+}
+.button-injii{
+  padding: 10px;
+}
+.alert.js-hide{
+  text-align: center;
+  margin-top: 15px;
+}
+.form-control.ng-valid ~ .js-hide{
+  display: none;
+}
+.setting{
+  padding: 25px 0;
+}
+.icons-list{
+  padding: 10px 0;
+}
+.icons-list.profile{
+  padding: 15px 0 0 0;
+}
+.icons-list li{
+  position: relative;
+  list-style: none;
+  color: #e2e2e2;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+  width: 30px;
+  height: 30px;
+  margin: 1px 3px;
+  opacity: .2;
+  transition: all .3s linear;
+}
+.icons-list li > img{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.icons-list li a{
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.icons-list .active{
+  opacity: .75;
+}
+.icons-list .active:hover{
+  opacity: 1;
+}
+.icons-list .active a{
+  width: 100%;
+  height: 100%;
+}
+.form-control:-ms-input-placeholder{
+  color: #333333;
+}
+.form-control::-ms-input-placeholder{
+  color: #333333;
+}
+.form-control::-webkit-input-placeholder{
+  color: #333333;
+}
+.form-control:-moz-placeholder{
+  color: #333333;
+}
+.form-control::-moz-placeholder{
+  color: #333333;
+}
+textarea.form-control{
+  height: 84px;
+  max-width: 100% !important;
+  padding: 5px 10px;
+}
+.head{
+  color: #e2e2e2;
+  font-size: 12px;
+  font-weight: light;
+  text-align: left;
+}
+.heading{
+  color: #e2e2e2;
+  font-size: 14px;
+  font-weight: normal;
+  margin-top: 25px;
+  text-align: left;
+}
+.thumb-edit label{
+  cursor: pointer;
+}
+.thumb-edit input{
+  display: none;
+}
+.upload{
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.upload > span{
+   color: #e2e2e2;
+   cursor: pointer;
+   border: 1px solid #e2e2e2;
+   padding: 3px 5px;
+   font-size: 12px;
+   font-weight: bold;
+   border-radius: 4px;
+   transition: all .2s linear;
+}
+.upload > span:hover{
+  border-color: #e9008c;
+}
+.upload div{
+  height: 4px;
+  margin-top: 2px;
+}
+.upload div span{
+  display: block;
+  background: #fff;
+  height: 100%;
+}
+.round-thumb{
+  display: inline-block;
+}
+.round-thumb.file-over{
+  border-color: green !important;
+}
+.profile-thumb{
+  position: relative;
+}
+.profile-thumb img{
+  display: none;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  z-index: 9;
+  left: 50%;
+  top: 50%;
+  margin-left: -20px;
+  margin-top: -24px;
+}
+.profile-thumb .spinner{
+    display: inline-block;
+}
+.heading > label[for="avatar"]{
+  color: #e2e2e2;
+  font-size: 14px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: color .3s linear;
+}
+.heading > label[for="avatar"]:hover{
+  color: #e9008c;
+}
+

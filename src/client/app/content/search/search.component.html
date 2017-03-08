@@ -1,0 +1,40 @@
+<div class="col-md-4 search-column">
+  <div class="search-row">
+    <h4 class="heading">Search</h4>
+    <form id="search-form" class="search-form">
+      <div class="form-group">
+        <input type="text" #searchBox class="form-control" placeholder="Find Content..." (keyup)="filterChange(searchBox.value)"
+          (keydown.enter)=false />
+      </div>
+      <ul class="tabs search-criteria">
+        <li [class.selected]="order === 'genre'"><a href="#" (click)="categoryChange($event, 'genre', searchBox.value)">Genre</a></li>
+        <li [class.selected]="order === 'rating'"><a href="#" (click)="categoryChange($event, 'rating', searchBox.value)">Rating</a></li>
+        <li [class.selected]="order === 'views'"><a href="#" (click)="categoryChange($event, 'views', searchBox.value)">Views</a></li>
+        <li [class.selected]="order === 'abc'"><a href="#" (click)="categoryChange($event, 'abc', searchBox.value)">abc</a></li>
+      </ul>
+    </form>
+    <div id="pagination">
+      <ul *ngIf="pages.length">
+        <li (click)="paginationChange(1, searchBox.value)">&#171;</li>
+        <li *ngFor="let page of pages" (click)="paginationChange(page, searchBox.value)" [ngClass]="{active:currentPage === page}">{{page}}</li>
+        <li (click)="paginationChange(totalPages, searchBox.value)">&#187;</li>
+      </ul>
+    </div>
+
+    <div class="search-results scrollable-y">
+      <div class="content_box" *ngFor="let video of videos | async">
+        <div class="vid_thumb">
+          <a href="javascript:;" (click)="submitVideoOnMainPlayer(video.id)">
+            <img src="{{video.preview}}" />
+          </a>
+        </div>
+        <div class="vid_info">
+          <a href="javascript:;">
+            <h5 class="vid_title">{{video.title}}</h5>
+            <h6 class="vid_author">{{video.artist.firstname}} {{video.artist.lastname}}</h6>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

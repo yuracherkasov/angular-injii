@@ -1,0 +1,16 @@
+<div id="main-menu" class="scrollable-y" [class.main-menu-open]="uiService.isMainMenuOpen">
+  <ul>
+    <li><a href="http://www.injii.com/" (click)="menuService.gotoPage($event)">Mission</a></li>
+    <li><a href="http://example.com/" (click)="menuService.gotoPage($event)">Change</a></li>
+    <li><a href="http://example.com/" (click)="menuService.gotoPage($event)">Syndicate</a></li>
+    <li><a href="http://example.com/" (click)="menuService.gotoPage($event)">Brands</a></li>
+    <li><a href="http://example.com/" (click)="menuService.gotoPage($event)">Backers</a></li>
+    <li><a href="http://example.com/" (click)="menuService.gotoPage($event)">Calling</a></li>
+    <li><a href="http://example.com/" (click)="menuService.gotoPage($event)">Terms</a></li>
+    <li><a href="http://example.com/" (click)="menuService.gotoPage($event)">Privacy</a></li>
+    <li><a href="http://example.com/" (click)="menuService.gotoPage($event)">Contact</a></li>
+  </ul>
+</div>
+
+<menu-iframe *ngIf="menuService.showIframeCompnt" [src]="src" (onClosed)="closeFrame()">
+</menu-iframe>

@@ -1,0 +1,26 @@
+<div class="overlay-desktop" id="contest" [class.hidepopup]="hidepopup">
+  <a href="javascript:;" class="overlay-close" (click)="popupService.hideContentPopup()">
+  </a>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 inner">
+        <h2 class="contest-heading">Contest</h2>
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link" href="javascriptP:;" (click)="toggleContests = true" [ngClass]="{'active': toggleContests}">Current</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:;" (click)="toggleContests = false" [ngClass]="{'active': !toggleContests}">Upcoming</a>
+          </li>
+        </ul>
+        <div class="tabs-wrapper">
+
+          <current-contest *ngIf="toggleContests"></current-contest>
+
+          <upcoming-contest *ngIf="!toggleContests"></upcoming-contest>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

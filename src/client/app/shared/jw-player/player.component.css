@@ -1,0 +1,80 @@
+.player-wrap{
+    width: 100%;
+    height: 100%;
+    padding-bottom: 140px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.control-full-wrap{
+    position: relative;
+    width: 100%;
+    height: 100%; 
+}
+.player-controls{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s linear, visibility .1s linear .35s;
+}
+.shared{
+  position: absolute;
+  left: auto;
+  right: 20px;
+  top: 20px;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0px 10px;
+}
+.volum-control{
+  position: absolute;
+  top: auto;
+  bottom: 33px;
+  left: auto;
+  right: 33px;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  float: right;
+  cursor: pointer;
+  background: url('assets/video/speaker.png')
+}
+.player-controls  .button-injii{
+  float: right;
+  font-size: 18px;
+  margin: 3px 5px;
+}
+.player-controls  .button-injii:first-of-type{
+  margin-right: 20px;
+}
+.volum-control.active{
+    background: url('assets/video/sound_hover.png');
+}
+.control-full-wrap:hover > .player-controls{
+    transition: opacity .3s linear, visibility step-end;
+    visibility: visible;
+    opacity: 1;
+}
+.viewers{
+  display: inline-block;
+  line-height: 32px;
+  color: #fff;
+  font-size: 20px;
+  margin-left: 30px;
+}
+@media (max-width: 991px){
+  .player-wrap{
+      position: relative;
+      padding-top: 0;
+      padding-bottom: 0;
+  }
+}

@@ -1,0 +1,73 @@
+<div id="artists-list" class="overlay-desktop" [class.hidepopup]="hidepopup">
+  <a href="javascript:;" class="overlay-close" (click)="popupService.hideContentPopup()">
+  </a>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="heading">
+          <h2>Artists</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cat-list">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="search-block">
+            <form id="search-form">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search..." #searchField class="form-control" [value]="searchService.filter"
+                  (keyup)="filterChange(searchField.value)" (keydown.enter)=false />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="row sorter-row">
+        <div class="col-md-12">
+          <div class="sorter-block">
+            <h5>Sort By:</h5>
+            <ul>
+              <li [class.selected]="searchService.order === 'stars'"><a href="javascript:;" (click)="categoryChange('stars')">Stars</a></li>
+              <li [class.selected]="searchService.order === 'genre'"><a href="javascript:;" (click)="categoryChange('genre')">Genre</a></li>
+              <li [class.selected]="searchService.order === 'name'"><a href="javascript:;" (click)="categoryChange('name')">Name</a></li>
+              <li [class.selected]="searchService.order === 'city'"><a href="javascript:;" (click)="categoryChange('city')">City</a></li>
+              <li [class.selected]="searchService.order === 'state'"><a href="javascript:;" (click)="categoryChange('state')">State</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row list-row">
+        <div class="col-md-12 scrollable-y">
+          <div class="the-list">
+
+            <div class="list-item" *ngFor="let artist of artists | async">
+              <a href="/artists/{{artist.username}}" (click)="onSelect($event, artist)">
+                <div class="genre">
+                  <p>Genre: <span> {{artist.genre}}</span></p>
+                </div>
+                <div class="thumb-wrap">
+                
+                  <div class="thumb" [style.background-image]="artist.avatar ? 'url('+artist.avatar+')' : 'url(../../../assets/thumb-place.jpg)'">
+                  </div>
+                </div>
+                <div class="name-city">
+                  <h3>{{artist.firstname}} {{artist.lastname}}</h3>
+                  <p class="city">{{artist.city}}, {{artist.state}}</p>
+                </div>
+                <div class="short-bio">
+                  <p>{{artist.bio | slice : 0 : 100}}</p>
+                </div>
+                <div class="stars">
+                  <img src="assets/svg/icons/star.svg" alt="star" />
+                  <span>{{artist.stars}}</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

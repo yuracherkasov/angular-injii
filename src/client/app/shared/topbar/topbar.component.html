@@ -1,0 +1,40 @@
+<div id="top-nav" [ngClass]="{'top-menu-open': isTopMenuOpen }">
+    <div class="logo">
+        <a [routerLink]="['']">
+            <img src="assets/symbol_logo_original1.svg" />
+        </a>
+    </div>
+    <div class="right-nav">
+       <a href="javascript:;" (click)="uiService.toggleMainMenu()" class="main-menu-toggle" >
+        <span class="line bot"></span>
+        <span class="line bot"></span>
+        <span class="line bot"></span>
+    </a>
+    <a href="javascript:;"  class="search-toggler">
+        <img src="assets/svg/icons/magnifier.svg" />
+    </a>
+    <a href="javascript:;" (click)="uiService.toggleSignMenu($event)" class="button button-injii sign-up">
+        Sign Up/In
+    </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a [routerLink]="['/content']" [routerLinkActive]="['is-active']" (click)="isTopMenuOpen ? toggleTopMenu($event): null; popupService.toggleContentPopup()">content</a></li>
+            <li><a [routerLink]="['/artists']" [routerLinkActive]="['is-active']" (click)="isTopMenuOpen ? toggleTopMenu($event): null; popupService.toggleContentPopup()">artists</a></li>
+            <li><a [routerLink]="['/charities']" [routerLinkActive]="['is-active']" (click)="isTopMenuOpen ? toggleTopMenu($event): null; popupService.toggleContentPopup()">charity</a></li>
+            <li><a [routerLink]="['/activity']" [routerLinkActive]="['is-active']" (click)="isTopMenuOpen ? toggleTopMenu($event): null; popupService.toggleContentPopup()">activity</a></li>
+            <li><a [routerLink]="['/chat']" [routerLinkActive]="['is-active']" (click)="isTopMenuOpen ? toggleTopMenu($event): null; popupService.toggleContentPopup()">chat</a></li>
+            <li><a [routerLink]="['/apprise']" [routerLinkActive]="['is-active']" (click)="isTopMenuOpen ? toggleTopMenu($event): null; popupService.toggleContentPopup()">apprise</a></li>
+            <li><a [routerLink]="['/contest']" [routerLinkActive]="['is-active']" (click)="isTopMenuOpen ? toggleTopMenu($event): null; popupService.toggleContentPopup()">contest</a></li>
+            <li *ngIf="AddContentShow">
+              <a [routerLink]="['/profile']" [routerLinkActive]="['is-active']" (click)="isTopMenuOpen ? toggleTopMenu($event): null; popupService.toggleContentPopup()"><span>add content</span></a>
+            </li>
+        </ul>
+    </nav>
+    <a href="#" class="top-nav-toggle visible-xs visible-sm" (click)="toggleTopMenu($event)">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </a>
+</div>
+

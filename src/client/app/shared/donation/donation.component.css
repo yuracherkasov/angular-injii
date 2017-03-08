@@ -1,0 +1,104 @@
+.wrapper{
+  position: fixed;
+  top: 50%;
+  margin-top: -200px;
+  left: 50%;
+  margin-left: -320px;
+  padding: 20px 20px 15px 20px;
+  width: 640px;
+  z-index: 9999; 
+  height: 140px;
+  display: block;
+  z-index: 99999;
+  transition: all 0.3s ease-out;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.wrapper.active{
+  height: 445px;
+  margin-top: -250px;
+}
+
+.donation-close{
+  width: 15px;
+  height: 15px;
+  background: url(../assets/svg/icons/cancel_gray.svg) no-repeat center center;
+  background-size: 100%;
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  z-index: 10;
+}
+.title{
+  font-size: 16px;
+  color: #606266;
+  padding-bottom: 20px;
+}
+.title a{
+  color: #e9008c;
+  font-size: 20px;
+  margin-left: 6px;
+  transition: all .1s linear;
+  border-bottom: 1px solid transparent;
+}
+.title a:hover{
+  border-bottom: 1px solid #e9008c;
+}
+.amount-block{
+  padding-bottom: 20px;
+}
+.amount-list,
+.input-append{
+  display: inline-block;
+  vertical-align: top;
+}
+.amount-list button{
+  margin-right: 15px;
+  font-size: 20px;
+  width: 108px;
+  height: 40px;
+}
+
+.input-append > input{
+  box-shadow: none;
+  background-color: #f2f4f7;
+  border: 1px solid #e2e2e2;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  outline: none;
+  color: #fff;
+  padding: 0 10px;
+  width: 160px;
+  height: 40px;
+  font-size: 22px;
+  color: #606266;
+}
+.input-append .button-injii{
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-left: -46px;
+  vertical-align: top;
+  width: 100px;
+  height: 40px;
+  font-size: 20px;
+}
+.loader{
+  position: absolute;
+  visibility: hidden;
+  width: 44px;
+  height: 44px;
+  left: 50%;
+  bottom: 35%;
+  margin-left: -22px;
+  opacity: 0;
+  transition: visibility 0s step-end 2s, opacity .3s linear 1s;
+}
+.active.loader{
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 0s step-end .3s, opacity .3s linear .3s;
+}
+
+

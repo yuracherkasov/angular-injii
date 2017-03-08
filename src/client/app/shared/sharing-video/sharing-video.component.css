@@ -1,0 +1,87 @@
+.wrapper{
+  position: fixed;
+  bottom: 68px;
+  width: 20%;
+  background: rgba(8, 10, 12, 0.85);
+  display: block;
+  z-index: 99999;
+  transition: all 0.3s ease-out;
+  left: -20%;
+  opacity: 0;
+  visibility: hidden;
+  left: -20%;
+  opacity: 0;
+  visibility: hidden;
+}
+.wrapper.active{
+  left: 0;
+  opacity: 1;
+  visibility: visible;
+}
+.content-wrapper{
+  position: relative;
+  height: calc(100vh - 136px);
+  overflow-y: scroll;
+  padding: 20px;
+  text-align: center;
+}
+.content-wrapper .preview{
+  display: inline-block;
+  width: 100%;
+  margin: 20px 0 5px;
+}
+.preview img{
+  display: block;
+  width: 100%;
+  height: auto; 
+}
+.content-wrapper .title{
+  color: #e9008c;
+  font-size: 16px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.content-wrapper h6{
+  color: #fff;
+  padding: 15px 0;
+}
+.content-wrapper .shared-social{
+  list-style: none;
+  color: #fff;
+}
+.shared-social li{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0 3px;
+  cursor: pointer;
+}
+.shared-social li img{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.cancel{
+  width: 15px;
+  height: 15px;
+  background: url(../assets/svg/icons/cancel.svg) no-repeat center center;
+  background-size: 100%;
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+@media (max-width: 991px){
+  .wrapper{
+    width: 50%;
+    max-width: 300px;
+    left: -50%;
+    bottom: 0;
+  }
+  .content-wrapper{
+    height: 100vh;
+    padding-top: 60px;
+  }
+}

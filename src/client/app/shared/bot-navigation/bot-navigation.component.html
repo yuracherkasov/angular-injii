@@ -1,0 +1,246 @@
+<div id="bottom-nav">
+  <div class="active-marker no-active">
+  </div>
+  <ul>
+    <li class="artist-info" [ngClass]="{'active-panel': popupControlService.isWhichTabOpen == 'artist-info'}">
+      <span class="mobile-title visible-xs visible-sm">Artist Name</span>
+      <a href="javascript:;" class="user-online" (click)="toggleArtistsInfo()">
+        <div class="user-status-box away">
+        </div>
+        <h3>{{artistData.firstname}} {{artistData.lastname}}</h3>
+        <h4>{{artistData.bio | slice : 0 : 20}} ...</h4>
+      </a>
+
+      <div class="small-bottom-panel">
+        <a href="javascript:;" (click)="closePanel()" class="overlay-close">
+        </a>
+        <div class="container-fluid">
+          <div class="row scrollable-y">
+            <div class="col-md-12 main-info">
+              <div class="top-info">
+                <div class="artist-thumb" [style.background-image]="artistData.avatar ? 'url('+artistData.avatar+')' : 'url(../../../assets/thumb-place.jpg)'">
+                  <a [routerLink]="['/artists', artistData.username]" (click)="gotoRoute()"></a>
+                </div>
+                <div class="name">
+                  <h2 class="heading">
+                    <a [routerLink]="['/artists', artistData.username]" (click)="gotoRoute()">{{artistData.firstname}} {{artistData.lastname}}</a>
+                  </h2>
+                </div>
+              </div>
+              <div class="contact-info">
+                <p (click)="gotoRoute()">
+                  <a [routerLink]="['/artists']" (click)="gotoRoute(); this.AsearchService.changeOrderProperty('city')">{{artistData.city}},</a>
+                  <a [routerLink]="['/artists']" (click)="gotoRoute(); this.AsearchService.changeOrderProperty('state')">{{artistData.state}}</a>
+                </p>
+              </div>
+              <div class="actions-wrap">
+                <ul class="social-icons social-login">
+                  <li *ngFor="let social of artistData.social" [style.display]="social.link ? 'inline-block' : 'none'">
+                    <a target="_blank" href="{{social.link}}">
+                      <img src="{{social.image}}" alt="{{social.type}}" />
+                    </a>
+                  </li>
+                </ul>
+
+                <ul class="social-icons social-login">
+                  <li *ngFor="let portfolio of artistData.portfolio" [style.display]="portfolio.link ? 'inline-block' : 'none'">
+                    <a target="_blank" href="{{portfolio.link}}">
+                      <img src="{{portfolio.image}}" alt="{{portfolio.type}}" />
+                    </a>
+                  </li>
+                </ul>
+                <p>Rate artist</p>
+                <div class="actions">
+
+                  <span [ngClass]="{'active': artistData.rating >= 1}" (click)="submitVote(1)" ngbTooltip="1" placement="top">&#9733;</span>
+                  <span [ngClass]="{'active': artistData.rating >= 2}" (click)="submitVote(2)" ngbTooltip="2" placement="top">&#9733;</span>
+                  <span [ngClass]="{'active': artistData.rating >= 3}" (click)="submitVote(3)" ngbTooltip="3" placement="top">&#9733;</span>
+                  <span [ngClass]="{'active': artistData.rating >= 4}" (click)="submitVote(4)" ngbTooltip="4" placement="top">&#9733;</span>
+                  <span [ngClass]="{'active': artistData.rating >= 5}" (click)="submitVote(5)" ngbTooltip="5" placement="top">&#9733;</span>
+                  <span [ngClass]="{'active': artistData.rating >= 6}" (click)="submitVote(6)" ngbTooltip="6" placement="top">&#9733;</span>
+                  <span [ngClass]="{'active': artistData.rating >= 7}" (click)="submitVote(7)" ngbTooltip="7" placement="top">&#9733;</span>
+                  <span [ngClass]="{'active': artistData.rating >= 8}" (click)="submitVote(8)" ngbTooltip="8" placement="top">&#9733;</span>
+                  <span [ngClass]="{'active': artistData.rating >= 9}" (click)="submitVote(9)" ngbTooltip="9" placement="top">&#9733;</span>
+                  <span [ngClass]="{'active': artistData.rating === 10}" (click)="submitVote(10)" ngbTooltip="10" placement="top">&#9733;</span>
+                </div>
+              </div>
+              <div class="view-profile">
+                <a [routerLink]="['/artists', artistData.username]" (click)="gotoRoute()">View Profile</a>
+              </div>
+            </div>
+            <div class="col-md-12 bio">
+
+              <p>{{artistData.bio}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="artist-info" [ngClass]="{'active-panel': popupControlService.isWhichTabOpen == 'charity-info'}">
+      <span class="mobile-title visible-xs visible-sm">Charity Name</span>
+      <a href="javascript:;" class="user-away" (click)="toggleCharityInfo()">
+        <div class="user-status-box online">
+        </div>
+        <h3>{{charityData.firstname}} {{charityData.lastname}}</h3>
+        <h4>{{charityData.city}} {{charityData.state}}</h4>
+      </a>
+
+      <div class="small-bottom-panel">
+        <a href="javascript:;" class="overlay-close" (click)="closePanel()">
+        </a>
+        <div class="container-fluid">
+          <div class="row scrollable-y">
+            <div class="col-md-12 main-info">
+              <div class="top-info">
+                <div class="artist-thumb" [style.background-image]="charityData.avatar ? 'url('+charityData.avatar+')' : 'url(../../../assets/thumb-place.jpg)'">
+                  <a [routerLink]="['/charity', charityData.username]" (click)="gotoRoute()"></a>
+                </div>
+                <div class="name">
+                  <h2 class="heading">
+                    <a [routerLink]="['/charity', charityData.username]" (click)="gotoRoute()">{{charityData.firstname}} {{charityData.lastname}}</a>
+                  </h2>
+                </div>
+              </div>
+              <div class="contact-info">
+                <p (click)="gotoRoute()">
+                  <a [routerLink]="['/charities']" (click)="gotoRoute(); this.CsearchService.changeOrderProperty('city')">{{charityData.city}},</a>
+                  <a [routerLink]="['/charities']" (click)="gotoRoute(); this.CsearchService.changeOrderProperty('state')">{{charityData.state}}</a>
+                </p>
+              </div>
+              <div class="actions-wrap">
+                <ul class="social-icons social-login">
+                  <li *ngFor="let social of charityData.social" [style.display]="social.link ? 'inline-block' : 'none'">
+                    <a target="_blank" href="{{social.link}}">
+                      <img src="{{social.image}}" alt="{{social.type}}" />
+                    </a>
+                  </li>
+                </ul>
+                <div class="actions">
+                  <a href="javascript:;" class="donate" (click)="toggleDonate()">Donate</a>
+                </div>
+              </div>
+              <div class="view-profile">
+                <a [routerLink]="['/charity', charityData.username]" (click)="gotoRoute()">View Profile</a>
+              </div>
+            </div>
+            <div class="col-md-12 bio">
+              <p>{{charityData.bio}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </li>
+    <li class="donate" [ngClass]="{'active-panel': uiDonationService.showPopup }">
+      <span class="mobile-title visible-xs visible-sm">
+          <b>Donate</b>
+      </span>
+      <a href="javascript:;" (click)="toggleDonate()" class="donate-btn">
+        <img src="assets/svg/icons/plain-heart.svg"> DONATE
+      </a>
+
+    </li>
+
+    <li class="live-stats" [ngClass]="{'active-panel': popupControlService.isWhichTabOpen == 'stats' }">
+      <span class="mobile-title visible-xs visible-sm">
+                    Stats
+                </span>
+      <a href="javascript:;" (click)="toggleStats()">
+        <div class="small-stats">
+          <p>Live Viewers: <span>{{liveViewers}}</span></p>
+          <p>Donations: <span>&#36;{{Data.donations}}</span></p>
+        </div>
+      </a>
+      <div class="small-bottom-panel">
+        <a href="javascript:;" class="overlay-close" (click)="closePanel()">
+        </a>
+        <div class="container-fluid">
+          <div class="row scrollable-y">
+            <div class="col-md-12">
+
+              <div class="live_stats_inner">
+                <h5 class="heading">Stats</h5>
+                <hr />
+                <ul>
+                  <li>
+                    <p>Live Viewers: <span>{{liveViewers}}</span></p>
+                  </li>
+                  <li>
+                    <p>Donations to {{charityData.charityname}}: <span>&#36;{{Data.donations}}</span></p>
+                  </li>
+                  <li>
+                    <p>Total Donations on <b class="injii">injii</b>: <span>&#36;{{Data.injii_donations}}</span></p>
+                  </li>
+                  <li></li>
+                </ul>
+                <div class="top-supporters">
+                  <h5><img src="assets/svg/icons/award.svg">Top Supporters</h5>
+                  <hr />
+                  <ul>
+                    <li *ngFor="let support of Data.top_supporters">
+
+                      <div class="artist_in_list">
+                        <div class="support-thumb" [style.background-image]="support.avatar ? 'url('+support.avatar+')' : ''">
+                        </div>
+
+                        <div class="name">
+                          {{support.firstname}} {{support.lastname}}
+                          <div class="stars">
+                            <img src="assets/svg/icons/star.svg"> {{support.stars}}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="donated">
+                        Donated: <span class="ammount">&#36;{{support.donated}}</span>
+                      </div>
+                    </li>
+                  </ul>
+
+                  <h5>Top Supporters to {{charityData.charityname}}</h5>
+                  <hr />
+                  <ul>
+                    <li *ngFor="let support of charityData.top_supporters">
+                      <div class="artist_in_list">
+                        <div class="support-thumb" [style.background-image]="support.avatar ? 'url('+support.avatar+')' : ''">
+                        </div>
+                        <div class="name">
+                          {{support.firstname}} {{support.lastname}}
+                          <div class="stars">
+                            <img src="assets/svg/icons/star.svg"> {{support.stars}}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="donated">
+                        Donated: <span class="ammount">&#36;{{support.donated}}</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="ad-li" [ngClass]="{'active-panel': popupControlService.isWhichTabOpen == 'ad' }">
+      <span class="mobile-title visible-xs visible-sm">Ad</span>
+      <a href="javascript:;" (click)="toggleAd()">
+        <img src="assets/ad-logo.png" alt="Coca Colla" />
+      </a>
+      <div class="small-bottom-panel">
+        <a href="javascript:;" class="overlay-close" (click)="closePanel()">
+        </a>
+        <div class="container-fluid">
+          <div class="row scrollable-y">
+            <div class="col-md-12">
+              Here Goes Ad Content
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,166 @@
+#apprise2,
+#apprise{
+  transition: all .3s ease-out;
+}
+#apprise2.inactive,
+#apprise.inactive{
+  right: -300px;
+} 
+.bottom-heading{
+  color: #e2e2e2;
+  padding: 15px 0;
+  border-bottom: none;
+  position: relative;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.bottom-heading:before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 80%;
+  height: 1px;
+  background-image: linear-gradient(to right, #e9008c 0%, #7F0078 100%);
+  background-repeat: repeat-x;
+}
+.bottom-heading span {
+  width: 38px;
+  height: 38px;
+  display: inline-block;
+  background: url('assets/symbol/symbol_white_black_bg.png') no-repeat center;
+  background-size: cover;
+  float: right;
+  margin-top: -4px;
+}
+.bottom-heading .edit{
+  width: 28px;
+  height: 28px;
+  background: url('assets/svg/icons/pencil.svg') no-repeat center;
+  background-size: cover;
+}
+#apprise2 form{
+  height: 100%;
+  padding: 15px 0 0;
+}
+#apprise2 form textarea{
+  outline: none;
+  background: none;
+  height: calc(100% - 60px);
+  resize: none;
+  margin-bottom: 15px;
+  font-style: italic;
+  padding: 10px;
+}
+.button{
+  display: inline-block;
+  float: right;
+  width: 85px;
+  position: relative;
+}
+.button .load{
+  background: rgba(8, 10, 12, .6) url(../../assets/spinner.gif) no-repeat center right;
+  background-size: auto 75%;
+}
+#apprise2 form button{
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  border-bottom: 1px solid #e2e2e2;
+  font-size: 16px;
+  color: #e2e2e2;
+  font-style: italic;
+}
+.loading{
+  width: 100%;
+  position: relative;
+  text-align: center;
+  margin: 50px 0;
+
+}
+#myframe{
+  position: fixed;
+  top: 88px;
+  height: calc(100% - 176px);
+  width: calc(100% - 360px);
+  z-index: 9999;
+  left: 20px;
+  visibility: hidden;
+  transition: visibility .1s linear;
+  padding: 30px 15px 15px 15px;
+  background:  rgba(8, 10, 12, 0.85);
+}
+#myframe.full{
+  width: calc(100% - 40px);
+}
+.close{
+  width: 15px;
+  height: 15px;
+  background: url(../assets/svg/icons/cancel.svg) no-repeat center center;
+  background-size: 100%;
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  z-index: 10;
+  opacity: 1;
+}
+.togglescreen{
+  width: 20px;
+  height: 15px;
+  border-width: 2px 1px 3px;
+  border-color: #e2e2e2;
+  border-style: solid;
+  position: absolute;
+  right: 35px;
+  top: 10px;
+  z-index: 10;
+  opacity: 1;
+}
+.full .togglescreen{
+  width: 10px;
+  height: 10px;
+  border-width: 1px;
+  right: 45px;
+  top: 13px;
+}
+.full .togglescreen:after{
+  content: "";
+  width: 9px;
+  height: 9px;
+  border: 1px solid #e2e2e2;
+  top: -5px;
+  right: -5px;
+  position: absolute;
+  display: inline-block;
+}
+#myframe iframe{
+  width: 100%;
+  height: 100%;
+  border: none;
+  opacity: 0;
+  background: #fff;
+  transition: opacity .2s ease-in;
+}
+#myframe.active{
+  visibility: visible;
+  transition: visibility .1s linear 0s;
+}
+#myframe.active iframe{
+  opacity: 1;
+}
+.errormsg{
+  color: #e9008c;
+}
+.resolveMessage{
+  color: #fff;
+}
+@media (max-width: 991px){
+  #myframe{
+    width: calc(100% - 320px);
+    left: 10px;
+    top: 60px;
+    height: calc(100% - 70px);
+  }
+}
+

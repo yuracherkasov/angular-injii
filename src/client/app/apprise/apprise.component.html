@@ -1,0 +1,64 @@
+<div class="overlay-desktop" id="apprise" [class.hidepopup]="hidepopup" [class.inactive]="tooglePopupValue">
+  <a href="javascript:;" class="overlay-close" (click)="popupService.hideContentPopup()"></a>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 inner">
+        <h4 class="heading">Apprise</h4>
+        <div class="articles_holder scrollable-y" (scroll)="onScroll($event)">
+          <div class="one_article" *ngFor="let article of articles">
+            <div class="featured_thumb">
+              <a href="javascript:;" (click)="onloadArticle(article.url)">
+                <img src={{article.thumbnail}} alt="thumbnail" />
+              </a>
+            </div>
+            <a href="javascript:;" (click)="onloadArticle(article.url)">
+              <h4 class="article_title">{{article.title}}</h4>
+            </a>
+            <div class="article_author">
+              Author: <a href="javascript:;" (click)="onloadArticle(article.url)">{{article.autor}}</a>
+            </div>
+            <span class="article_date">{{article.date}}</span>
+            <p>{{article.description}} <a href="javascript:;" class="more-in-text" (click)="onloadArticle(article.url)">more...</a></p>
+            <div class="article_share_social text-center">
+            </div>
+          </div>
+          <div class="loading" *ngIf="loading">
+            <div class="loader"></div>
+          </div>
+        </div>
+        <h4 class="bottom-heading" (click)="tooglePopup()">Submit your story to injii <span class="edit"></span></h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="overlay-desktop" id="apprise2" [class.hidepopup]="hidepopup" [class.inactive]="!tooglePopupValue">
+  <a href="javascript:;" class="overlay-close" (click)="popupService.hideContentPopup()"></a>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 inner">
+        <h4 class="heading">Submit your story to injii</h4>
+        <div class="articles_holder scrollable-y">
+          <form #forgo="ngForm"  name="update-form" (ngSubmit)="forgo.valid && submit()" novalidate>
+            <textarea class="form-control" required minlength="6" placeholder="Enter your URL or article text" name="message" [(ngModel)]="articleMessage"></textarea>
+            <span *ngIf="!constantsService.User" class="errormsg">*You need log in</span>
+            <span *ngIf="resolveMessage" class="resolve">{{resolveMessage}}</span>
+            <div class="button">
+              <button type="submit" [disabled]="!constantsService.User">Submit</button>
+              <div class="load" *ngIf="messageLoading"></div>
+            </div>
+          </form>
+        </div>
+        <h4 class="bottom-heading" (click)="tooglePopup()">Apprise <span></span></h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="myframe" [class.active]="showIframe" [class.full]="fullScreenIframe">
+  <a href="javascript:;" class="close" (click)="closeFrame()"></a>
+  <a href="javascript:;" class="togglescreen" (click)="toggleWidthFrame()"></a>
+  <iframe #myFrame></iframe>
+</div>

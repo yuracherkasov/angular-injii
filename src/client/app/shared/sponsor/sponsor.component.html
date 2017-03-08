@@ -1,0 +1,10 @@
+<div class="wrapper" [ngClass]="{'active':popupControlService.isWhichTabOpen === 'sponsor'}">
+  <span class="cancel" (click)="closePopUp()"></span>
+  <div class="content-wrapper">
+    <h5 class="title">Sponsor content</h5>
+    <ul class="properties">
+      <li>sponsor.id: {{popupControlService.Sponsor.id}}</li>
+      <li>sponsor.name: {{popupControlService.Sponsor.name}}</li>
+    </ul>
+  </div>
+</div>

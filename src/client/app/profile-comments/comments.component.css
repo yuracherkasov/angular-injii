@@ -1,0 +1,201 @@
+#artist-review{
+  margin-bottom: 40px;
+}
+#artist-review button{
+  font-size: 20px;
+  font-weight: normal;
+  padding: 0 12px;
+}
+#artist-review label{
+  display: block;
+  color: #e2e2e2;
+  border-bottom: none;
+  position: relative;
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-align: left;
+  font-weight: normal;
+}
+#artist-review textarea{
+  max-width: 100%;
+  color: #e2e2e2;
+  padding: 10px;
+  font-size: 14px;
+  height: 80px;
+}
+#artist-review form-group{
+  margin-top: 10px;
+}
+.submit-btn{
+  display: inline-block;
+  position: relative;
+}
+#comments li{
+  list-style: none;
+}
+#comments li > div{
+  padding: 10px;
+  margin: 15px 0;
+  position: relative;
+}
+#comments p{
+  color: #e2e2e2;
+  font-size: 13px; 
+  opacity: .8;
+}
+.avatar{
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  background-image: url(../assets/thumb-place.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  float: left;
+  margin-right: 10px;
+}
+.date{
+  font-size: 10px;
+  color: #969696;
+  margin-bottom: 10px;
+}
+.name{
+  display: inline-block;
+  position: relative;
+  font-size: 14px;
+  color: #fff;
+}
+.go-to-profile{
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+}
+.from-artist .go-to-profile,
+.from-charity .go-to-profile{
+  display: block;
+}
+.from-artist .name{
+  color: #e9008c;
+}
+.from-charity .name{
+  color: #FFC0CB;
+}
+.from-user .name{
+  color: #008000;
+}
+.delete,
+.approve{
+  display: inline-block;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  padding: 1px 10px;
+  margin-top: 10px;
+}
+.approve{
+  background: #6B8E23;
+  margin-left: 20px;
+}
+.delete{
+  background: #FF4500;
+  margin-left: 10px;
+  
+}
+.border{
+  border-width: 1px;
+  border-style: solid;
+  border-color: #fff;
+  border-radius: 5px;
+}
+.border:after{
+  content: "Check";
+  position: absolute;
+  display: inline-block;
+  width: 65px;
+  top: 8px;
+  right: 8px;
+  color: #fff;
+  background-image: url(../assets/svg/icons/checked.svg);
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: 17px auto;
+}
+.border.from-artist{
+   border-color: #e9008c;
+}
+.border.from-artist:after{
+  color: #e9008c;
+  background-image: url(../assets/svg/icons/checked_purple.svg);
+}
+.border.from-charity{
+  border-color: #FFC0CB;
+}
+.border.from-charity:after{
+  color: #FFC0CB;
+  background-image: url(../assets/svg/icons/checked_pink.svg);
+}
+.border.from-user{
+   border-color: #008000;
+}
+.border.from-user:after{
+  color: #008000;
+  background-image: url(../assets/svg/icons/checked_green.svg);
+}
+.confirmed{
+  position: relative;
+}
+.confirmed .load-transparent{
+  width: 220px;
+  background-position: 100% 8px;
+}
+.see_more{
+  text-align: center;
+  margin: 25px 0;
+  position: relative;
+}
+.see_more > button{
+  border-radius: 6px;
+}
+.load-transparent{
+  -webkit-background-size: auto 75%;
+  background-size: auto 75%;
+}
+@media(max-width: 991px){
+  #comments{
+    text-align: left;
+  }
+  #comments li > div{
+    padding: 15px 10px;
+  }
+  #comments p{
+    margin-top: 5px;
+  }
+  .border:after{
+    content: "";
+    height: 20px;
+  }
+  .confirmed{
+    overflow: hidden;
+  }
+  .confirmed > button{
+    margin-left: 0;
+  }
+  .delete{
+    float: left;
+  }
+  .approve{
+    float: right;
+  }
+  .confirmed .load-transparent{
+    width: 100%;
+    background-position: 46% bottom;
+  }
+}
+

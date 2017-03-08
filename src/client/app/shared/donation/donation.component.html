@@ -1,0 +1,18 @@
+<div class="wrapper" [ngClass]="{'active': fullPopup}" [@DonateAnimationTrigger]="uiDonationService.showPopup ? 'active' : 'inactive'">
+  <a href="javascript:;" class="donation-close" (click)="uiDonationService.donationHide()"></a>
+  <h5 class="title">Charity: <a [routerLink]="['/charity', uiDonationService.charityObj.username]">{{uiDonationService.charityObj.firstname}} {{uiDonationService.charityObj.lastname}}</a></h5>
+
+  <div class="amount-block">
+    <div class="amount-list">
+      <button class="button button-injii" href="javascript:;" (click)="donate(1)">&#36;1</button>
+      <button class="button button-injii" href="javascript:;" (click)="donate(2)">&#36;2</button>
+      <button class="button button-injii" href="javascript:;" (click)="donate(3)">&#36;3</button>
+    </div>
+    <div class="input-append">
+      <input type="number" placeholder="&#36;" #amount>
+      <button class="button-injii" type="button" (click)="donate(amount.value)">Submit</button>
+    </div>
+  </div>
+  <div class="loader" [ngClass]="{'active': loading}"></div>
+  <div id="wepay_checkout" #wepayCheckout></div>
+</div>

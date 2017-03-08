@@ -1,0 +1,34 @@
+ .contest-heading{
+   position: absolute;
+   width: 100%;
+   top: 18px;
+   left: 0;
+   font-size: 36px;
+   color: #e2e2e2;
+   text-align: center;
+ }
+ .nav-tabs > li > a{
+   font-size: 24px;
+ }
+ .tabs-wrapper{
+   height: calc(100% - 70px); 
+   overflow-y: auto;
+   overflow-x: hidden;
+ }
+@media(max-width: 991px){
+  #contest{
+    height: calc(100% - 55px);
+  }
+  .contest-heading{
+    position: relative;
+    top: 0;
+    font-size: 28px;
+    text-align: left;
+  }
+  #contest .nav.nav-tabs{
+    margin: 15px 15px 10px 0;
+  }
+  .nav-tabs > li  > a{
+    font-size: 14px;
+  }
+}

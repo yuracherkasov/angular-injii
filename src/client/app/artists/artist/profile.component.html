@@ -1,0 +1,133 @@
+<div class="overlay-desktop" [class.hidepopup]="hidepopup">
+  <a href="javascript:;" class="overlay-close" (click)="hidePopUp()">
+  </a>
+  <div class="container-fluid" id="full-profile" [ngClass]="{'contest': artist.contest}">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="heading">
+          <div class="main-info-wrap" #headerHeight>
+            <div class="profile-image" [style.background-image]="artist.avatar ? 'url('+artist.avatar+')' : ''">
+            </div>
+            <div class="heading-profile">
+              <h3>{{artist.firstname}} {{artist.lastname}}</h3>
+              <dl class="term-list">
+                <dt>Age:</dt>
+                <dd>{{artist.age}}</dd>
+                <dt>Username:</dt>
+                <dd class="username">{{artist.username}}</dd>
+                <dt>Band/Group/Artist name</dt>
+                <dd class="username">{{artist.band}}
+                  <dt>Genre</dt>
+                  <dd class="username">{{artist.genre}}
+                    <dd>
+              </dl>
+            </div>
+            <div class="profile-details">
+              <dl class="term-list">
+                <dt>Portfolio:</dt>
+                <dd *ngFor="let portfolio of artist.portfolio" class="icon" [class.active]="portfolio.link">
+                  <a target="_blank" href="{{portfolio.link}}"></a><img src="{{portfolio.image}}" alt="{{portfolio.type}}" />
+                </dd>
+                <dt>Social:</dt>
+                <dd *ngFor="let social of artist.social" class="icon" [class.active]="social.link">
+                  <a target="_blank" href="{{social.link}}"></a><img src="{{social.image}}" alt="{{social.type}}" />
+                </dd>
+                <dt>E-mail:</dt>
+                <dd>{{artist.email}}
+                  <dd>
+                    <dt>Phone:</dt>
+                    <dd>{{artist.phone}}
+                      <dd>
+                        <dt>City:</dt>
+                        <dd>{{artist.city}}</dd>
+                        <dt>State:</dt>
+                        <dd>{{artist.state}}</dd>
+              </dl>
+              <h5 [hidden]="!artistManager.name && !artistManager.phone && !artistManager.email">Manager info:</h5>
+              <dl class="term-list">
+                <dt [hidden]="!artistManager.name">Name:</dt>
+                <dd>{{artistManager.name}}
+                  <dd>
+
+                    <dt [hidden]="!artistManager.phone">Phone:</dt>
+                    <dd>{{artistManager.phone}}
+                      <dd>
+                        <dt [hidden]="!artistManager.email">Email:</dt>
+                        <dd>{{artistManager.email}}
+                          <dd>
+              </dl>
+              <h5 [hidden]="!artistAgent.name && !artistAgent.phone && !artistAgent.email">Booking agent info:</h5>
+              <dl class="term-list">
+                <dt [hidden]="!artistAgent.name">Name:</dt>
+                <dd>{{artistAgent.name}}
+                  <dd>
+                    <dt [hidden]="!artistAgent.phone">Phone:</dt>
+                    <dd>{{artistAgent.phone}}
+                      <dd>
+                        <dt [hidden]="!artistAgent.email">Email:</dt>
+                        <dd>{{artistAgent.email}}
+                          <dd>
+              </dl>
+            </div>
+          </div>
+          <div class="my-story" [style.height]="headerHeight.clientHeight +'px'">
+            <div class="table-cell">
+              <div>
+                <button class="button-injii"><img src="assets/svg/icons/plain-heart.svg"></button>
+              </div>
+            </div>
+            <div class="table-cell story">
+              <div>
+                <h4 class="bio-heading">Story</h4>
+                <p>
+                  {{artist.bio}}
+                </p>
+              </div>
+            </div>
+            <div class="table-cell rating">
+              <div>
+                <p>Rate artist</p>
+                <ul class="stars">
+                  <li [ngClass]="{'active': artist.rating >= 1}" (click)="submitVote(1)" ngbTooltip="1" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 2}" (click)="submitVote(2)" ngbTooltip="2" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 3}" (click)="submitVote(3)" ngbTooltip="3" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 4}" (click)="submitVote(4)" ngbTooltip="4" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 5}" (click)="submitVote(5)" ngbTooltip="5" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 6}" (click)="submitVote(6)" ngbTooltip="6" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 7}" (click)="submitVote(7)" ngbTooltip="7" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 8}" (click)="submitVote(8)" ngbTooltip="8" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 9}" (click)="submitVote(9)" ngbTooltip="9" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating === 10}" (click)="submitVote(10)" ngbTooltip="10" placement="top">&#9733;</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="videos-block">
+          <h4></h4>
+          <ul>
+            <li class="content_box" *ngFor="let video of artist.videos">
+              <div class="vid_thumb">
+                <a href="#" (click)="submitVideoOnMainPlayer($event, video.id)">
+                  <img [src]="video.preview" alt="video preview">
+                </a>
+              </div>
+              <div class="vid_info">
+                <h5 class="vid_title"><a href="#" (click)="submitVideoOnMainPlayer($event, video.id)">{{video.title}}</a></h5>
+                <div>
+                  <a href="javascript:;" class="vid_viewers" (click)="gotoSharing(video)">{{video.viewers}}</a>
+                  <a href="javascript:;" class="vid_donations" (click)="gotoDonation(video)">&#36;{{video.donations}}</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <sd-comments></sd-comments>
+
+  </div>
+</div>
