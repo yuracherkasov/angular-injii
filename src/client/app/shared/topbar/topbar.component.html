@@ -27,7 +27,7 @@
             <li><a [routerLink]="['/apprise']" [routerLinkActive]="['is-active']" (click)="isTopMenuOpen ? toggleTopMenu($event): null; popupService.toggleContentPopup()">apprise</a></li>
             <li><a [routerLink]="['/contest']" [routerLinkActive]="['is-active']" (click)="isTopMenuOpen ? toggleTopMenu($event): null; popupService.toggleContentPopup()">contest</a></li>
             <li *ngIf="AddContentShow">
-              <a [routerLink]="['/profile']" [routerLinkActive]="['is-active']" (click)="isTopMenuOpen ? toggleTopMenu($event): null; popupService.toggleContentPopup()"><span>add content</span></a>
+              <a [routerLink]="['/add_content']" [routerLinkActive]="['is-active']" (click)="isTopMenuOpen ? toggleTopMenu($event): null; popupService.toggleContentPopup()"><span>add content</span></a>
             </li>
         </ul>
     </nav>

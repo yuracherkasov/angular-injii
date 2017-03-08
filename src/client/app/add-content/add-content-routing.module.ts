@@ -6,7 +6,7 @@ import { AddContentComponent } from './add-content.component';
   imports: [
     RouterModule.forChild([
       {
-        path: 'profile',
+        path: 'add_content',
         component: AddContentComponent
       }
     ])
