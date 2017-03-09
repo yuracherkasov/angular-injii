@@ -10,7 +10,7 @@
         <span class="line bot"></span>
         <span class="line bot"></span>
     </a>
-    <a href="javascript:;"  class="search-toggler">
+    <a [routerLink]="['/search']" class="search-toggler" (click)="popupService.toggleContentPopup()">
         <img src="assets/svg/icons/magnifier.svg" />
     </a>
     <a href="javascript:;" (click)="uiService.toggleSignMenu($event)" class="button button-injii sign-up">

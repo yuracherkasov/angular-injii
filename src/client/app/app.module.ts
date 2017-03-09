@@ -14,6 +14,8 @@ import { AppriseModule } from './apprise/apprise.module';
 import { ChatModule } from './chat/chat.module';
 import { ArtistsModule } from './artists/artists.module';
 import { CharitiesModule } from './charities/charities.module';
+import { SearchModule } from './search/search.module';
+import { AddContentModule } from './add-content/add-content.module';
 
 import { UiService } from './shared/services/ui-service.service';
 import { PopupService } from './shared/services/ui-popup.service';
@@ -26,7 +28,7 @@ import { ScreenService } from './services/screen.service';
 import { UiDonationService } from './shared/donation/ui-donation.service';
 import { ASearchService } from './artists/search.service';
 import { CSearchService } from './charities/search.service';
-import { AddContentModule } from './add-content/add-content.module';
+import { SearchService } from './search/search.service';
 
 //used to create fake backend, remove when production
 import { fakeBackendProvider } from './_helpers/fake-backend';
@@ -48,6 +50,7 @@ import { BaseRequestOptions } from '@angular/http';
     ArtistsModule,
     CharitiesModule,
     AddContentModule,
+    SearchModule,
     SharedModule.forRoot()
   ],
   declarations: [AppComponent],
@@ -66,6 +69,7 @@ import { BaseRequestOptions } from '@angular/http';
     UiDonationService,
     ASearchService,
     CSearchService,
+    SearchService,
 
    //providers used to create fake backend, remove when production
     fakeBackendProvider,
