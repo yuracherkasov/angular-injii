@@ -10,7 +10,7 @@ import { Charity } from './charity.model';
 export class CSearchService {
 
   filter: string = '';
-  order: string = 'donation';
+  order: string = 'donations';
 
   private searchCharitiesSource = new Subject<string>();
 

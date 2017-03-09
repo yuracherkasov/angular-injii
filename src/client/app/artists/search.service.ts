@@ -12,7 +12,7 @@ import { Artist } from './search.model';
 export class ASearchService {
 
   filter: string = '';
-  order: string = 'stars';
+  order: string = 'rating';
   private searchArtistsSource = new Subject<string>();
 
   searchEmitter = this.searchArtistsSource.asObservable();

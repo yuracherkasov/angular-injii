@@ -1,4 +1,5 @@
 import { Component, NgZone } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { PlayerService } from "../jw-player/player.service";
 import { PopupControlService } from './../../services/popup-control.service';
@@ -38,6 +39,7 @@ export class BotNavigationComponent {
     private CsearchService: CSearchService,
     private artistRatingService: ArtistRatingService,
     private alertService: AlertService,
+    private router: Router,
     private constantsService: ConstantsService
     ) {
 
@@ -119,6 +121,19 @@ export class BotNavigationComponent {
     } else {
       this.alertService.danger("You need login")
     }
+  }
+
+   gotoASearch(e: Event, order: string, filter: string) {
+    e.preventDefault();
+    this.AsearchService.changeOrderProperty(order); 
+    this.AsearchService.filter = filter;
+    this.router.navigate(['/artists']);
+  }
+  gotoCSearch(e: Event, order: string, filter: string) {
+    e.preventDefault();
+    this.CsearchService.changeOrderProperty(order); 
+    this.CsearchService.filter = filter;
+    this.router.navigate(['/charities']);
   }
 
 }

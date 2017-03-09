@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { UserService } from "../services/user.service";
 import { UiService } from "../../services/ui-service.service";
 import { IsLoggedInService } from './../services/islogged.service';
@@ -27,7 +27,7 @@ interface IUser {
   styleUrls: ['sign-social.component.css']
 })
 
-export class SignSocialComponent implements OnInit {
+export class SignSocialComponent {
 
   private googleAuth: any;
   private User: IUser;
@@ -37,26 +37,27 @@ export class SignSocialComponent implements OnInit {
     private uiService: UiService,
     private constantsService: ConstantsService,
     private isLoggedInService: IsLoggedInService) {
+      this.initSocial()
   }
 
-  ngOnInit(): void {
-    //google init
-    gapi.load('auth2', () => {
-      this.googleAuth = gapi.auth2.init({
-        client_id: this.constantsService.gClient_id
+  initSocial(): void {
+    if (typeof FB === 'object' && typeof gapi === 'object') {
+      gapi.load('auth2', () => {
+        this.googleAuth = gapi.auth2.init({
+          client_id: this.constantsService.gClient_id
+        });
       });
-    });
 
-    //facebook init
-    let fbParams: any = {
-      appId: this.constantsService.fbAppId,
-      xfbml: true,
-      version: 'v2.8'
-    };
-    FB.init(fbParams);
+      let fbParams: any = {
+        appId: this.constantsService.fbAppId,
+        xfbml: true,
+        version: 'v2.8'
+      };
+      FB.init(fbParams);
+    } else setTimeout(() => this.initSocial(), 1000)
   }
 
-  twitterCall(){
+  twitterCall() {
     var newWindow = window.open('http://www.injii.com/users/tlogin', 'name', 'height=585, width=770');
   }
 

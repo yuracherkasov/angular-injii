@@ -86,8 +86,7 @@
   width: calc(100% - 360px);
   z-index: 9999;
   left: 20px;
-  visibility: hidden;
-  transition: visibility .1s linear;
+  display: none;
   padding: 30px 15px 15px 15px;
   background:  rgba(8, 10, 12, 0.85);
 }
@@ -104,6 +103,7 @@
   top: 10px;
   z-index: 10;
   opacity: 1;
+  transition: none;
 }
 .togglescreen{
   width: 20px;
@@ -116,6 +116,7 @@
   top: 10px;
   z-index: 10;
   opacity: 1;
+  transition: none;
 }
 .full .togglescreen{
   width: 10px;
@@ -140,13 +141,12 @@
   border: none;
   opacity: 0;
   background: #fff;
-  transition: opacity .2s ease-in;
 }
 #myframe.active{
-  visibility: visible;
-  transition: visibility .1s linear 0s;
+  display: block;
 }
 #myframe.active iframe{
+  transition: opacity .3s ease-in;
   opacity: 1;
 }
 .errormsg{

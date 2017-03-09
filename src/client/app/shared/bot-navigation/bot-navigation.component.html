@@ -29,8 +29,8 @@
               </div>
               <div class="contact-info">
                 <p (click)="gotoRoute()">
-                  <a [routerLink]="['/artists']" (click)="gotoRoute(); this.AsearchService.changeOrderProperty('city')">{{artistData.city}},</a>
-                  <a [routerLink]="['/artists']" (click)="gotoRoute(); this.AsearchService.changeOrderProperty('state')">{{artistData.state}}</a>
+                  <a href="/artists" (click)="gotoASearch($event, 'city', artistData.city)">{{artistData.city}},</a>
+                  <a href="/artists" (click)="gotoASearch($event, 'state', artistData.state)">{{artistData.state}}</a>
                 </p>
               </div>
               <div class="actions-wrap">
@@ -104,8 +104,8 @@
               </div>
               <div class="contact-info">
                 <p (click)="gotoRoute()">
-                  <a [routerLink]="['/charities']" (click)="gotoRoute(); this.CsearchService.changeOrderProperty('city')">{{charityData.city}},</a>
-                  <a [routerLink]="['/charities']" (click)="gotoRoute(); this.CsearchService.changeOrderProperty('state')">{{charityData.state}}</a>
+                  <a href="/charities" (click)="gotoCSearch($event, 'city', charityData.city)">{{charityData.city}},</a>
+                  <a href="/charities" (click)="gotoCSearch($event, 'state', charityData.state)">{{charityData.state}}</a>
                 </p>
               </div>
               <div class="actions-wrap">

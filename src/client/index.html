@@ -46,7 +46,6 @@
   <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js" async></script>
   <script src="https://apis.google.com/js/platform.js" async></script>
   <script type="text/javascript" src="https://www.wepay.com/min/js/iframe.wepay.js" async></script>
-
   <!-- endinject -->
 
   <% if (BUILD_TYPE === 'dev') { %>
@@ -57,7 +56,7 @@
       <!-- endinject -->
 
       <!-- inject:js -->
-      <!-- remove scripts when production -->
+      <!-- remove when production -->
       <script src="/src/client/jwplayer/jwplayer.js"></script>
       <script>
         jwplayer.key = "HBID7mOt6+FwhqIWVt9cedp+pxl/SM45Q0mWmzzN7w7FDO5X";

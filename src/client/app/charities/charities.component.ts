@@ -54,7 +54,7 @@ export class CharitiesComponent implements OnInit, AfterViewInit {
 
   categoryChange(order: string) {
     this.searchService.order = order;
-    this.search('')
+    this.search(this.searchService.filter)
   }
 
   search(filter: string): void {

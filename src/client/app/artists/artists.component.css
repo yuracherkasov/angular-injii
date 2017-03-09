@@ -22,6 +22,10 @@
 .sorter-block ul li.selected a{
   text-decoration: underline;
 }
+#artists-list .rating{
+  margin-right: 10px;
+  vertical-align: baseline;
+}
 @media (max-width: 991px){
   .overlay-desktop .the-list .list-item .thumb-wrap .thumb {
     width: 100px;

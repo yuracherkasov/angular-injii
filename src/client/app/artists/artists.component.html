@@ -29,11 +29,12 @@
           <div class="sorter-block">
             <h5>Sort By:</h5>
             <ul>
-              <li [class.selected]="searchService.order === 'stars'"><a href="javascript:;" (click)="categoryChange('stars')">Stars</a></li>
+              <li [class.selected]="searchService.order === 'rating'"><a href="javascript:;" (click)="categoryChange('rating')">Rating</a></li>
               <li [class.selected]="searchService.order === 'genre'"><a href="javascript:;" (click)="categoryChange('genre')">Genre</a></li>
               <li [class.selected]="searchService.order === 'name'"><a href="javascript:;" (click)="categoryChange('name')">Name</a></li>
               <li [class.selected]="searchService.order === 'city'"><a href="javascript:;" (click)="categoryChange('city')">City</a></li>
               <li [class.selected]="searchService.order === 'state'"><a href="javascript:;" (click)="categoryChange('state')">State</a></li>
+              <li [class.selected]="searchService.order === 'joined'"><a href="javascript:;" (click)="categoryChange('joined')">Joined</a></li>
             </ul>
           </div>
         </div>
@@ -48,7 +49,7 @@
                   <p>Genre: <span> {{artist.genre}}</span></p>
                 </div>
                 <div class="thumb-wrap">
-                
+
                   <div class="thumb" [style.background-image]="artist.avatar ? 'url('+artist.avatar+')' : 'url(../../../assets/thumb-place.jpg)'">
                   </div>
                 </div>
@@ -60,7 +61,7 @@
                   <p>{{artist.bio | slice : 0 : 100}}</p>
                 </div>
                 <div class="stars">
-                  <img src="assets/svg/icons/star.svg" alt="star" />
+                  <span class="rating">Rating</span>
                   <span>{{artist.stars}}</span>
                 </div>
               </a>
