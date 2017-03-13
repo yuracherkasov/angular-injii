@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { PopupService } from './../shared/services/ui-popup.service';
 import { SearchService } from './search.service';
+import { ISitem } from './model';
 
 @Component({
   moduleId: module.id,
@@ -14,7 +15,7 @@ export class SearchComponent implements OnInit {
 
   private hidepopup: boolean = false;
   
-  items: Observable<any[]>;
+  items: Observable<ISitem[]>;
   private searchTerm = new Subject<string>();
   private term: string = "";
 
@@ -59,10 +60,10 @@ export class SearchComponent implements OnInit {
       .distinctUntilChanged()
       .switchMap(term => term
         ? this.searchService.search(term)
-        : Observable.of<any[]>([]))
+        : Observable.of<ISitem[]>([]))
       .catch(error => {
         console.log(error);
-        return Observable.of<any[]>([]);
+        return Observable.of<ISitem[]>([]);
       });
   }
 

@@ -1,4 +1,4 @@
-<div id="artists-list" class="overlay-desktop" [class.hidepopup]="hidepopup">
+<div class="overlay-desktop" id="search-list" [class.hidepopup]="hidepopup">
   <a href="javascript:;" class="overlay-close" (click)="popupService.hideContentPopup()">
   </a>
   <div class="container-fluid">
@@ -28,30 +28,8 @@
         <div class="col-md-12 scrollable-y">
           <div class="the-list">
 
-            <div class="list-item" *ngFor="let item of items | async">
-              <h1>thzfdghre</h1>
-              <!--<a href="/artists/{{artist.username}}" (click)="onSelect($event, artist)" >
-                <div class="genre">
-                  <p>Genre: <span> {{artist.genre}}</span></p>
-                </div>
-                <div class="thumb-wrap">
+            <sd-list [Items]="items | async"></sd-list>
 
-                  <div class="thumb" [style.background-image]="artist.avatar ? 'url('+artist.avatar+')' : 'url(../../../assets/thumb-place.jpg)'">
-                  </div>
-                </div>
-                <div class="name-city">
-                  <h3>{{artist.firstname}} {{artist.lastname}}</h3>
-                  <p class="city">{{artist.city}}, {{artist.state}}</p>
-                </div>
-                <div class="short-bio">
-                  <p>{{artist.bio | slice : 0 : 100}}</p>
-                </div>
-                <div class="stars">
-                  <span class="rating">Rating</span>
-                  <span>{{artist.stars}}</span>
-                </div>
-              </a>-->
-            </div>
           </div>
         </div>
       </div>

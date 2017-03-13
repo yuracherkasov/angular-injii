@@ -81,7 +81,7 @@
   display: block;
 }
 .from-artist .name{
-  color: #e9008c;
+  color: #8a259e;
 }
 .from-charity .name{
   color: #FFC0CB;
@@ -128,10 +128,10 @@
   background-size: 17px auto;
 }
 .border.from-artist{
-   border-color: #e9008c;
+   border-color: #8a259e;
 }
 .border.from-artist:after{
-  color: #e9008c;
+  color: #8a259e;
   background-image: url(../assets/svg/icons/checked_purple.svg);
 }
 .border.from-charity{

@@ -24,11 +24,11 @@
                    'from-user': comment.from.role === 'user' && !!comment.from.donating}">
           <div>
             <div class="avatar" [style.background-image]="comment.from.avatar ? 'url('+comment.from.avatar+')' : 'url(../../../assets/thumb-place.jpg)'">
-              <a href="#" class="go-to-profile" (click)="gotoProfile($event, comment)"></a>
+              <a href="/{{comment.from.role}}/{{comment.from.username}}" class="go-to-profile" (click)="gotoProfile($event, comment)"></a>
             </div>
             <div class="date">{{comment.date}}</div>
             <div class="name">
-              <a href="#" class="go-to-profile" (click)="gotoProfile($event, comment)"></a>
+              <a href="/{{comment.from.role}}/{{comment.from.username}}" class="go-to-profile" (click)="gotoProfile($event, comment)"></a>
               {{comment.from.firstname}} {{comment.from.lastname}}
             </div>
           </div>

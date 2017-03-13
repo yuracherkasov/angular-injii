@@ -101,6 +101,9 @@
    white-space: nowrap;
    line-height: 1.2;
  }
+ .name a{
+  color: #8a259e;
+ }
  .vid_thumb{
    display: inline-block;
    margin-top: 15px;

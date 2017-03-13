@@ -1,0 +1,24 @@
+<virtual-scroll id="virtual" [items]="filteredList" (update)="scrollItems = $event"  [childHeight]="itemHeight">
+  <div *ngFor="let item of scrollItems">
+    <div class="list-item" [ngClass]="{'artist-item': item.role === 'artist', 'charity-item': item.role === 'charity', 'video-item': item.role === null}">
+      <a href="/{{item.role}}/{{item.username}}" (click)="onSelect($event, item)">
+        <div class="genre">
+          <p>Genre: <span> {{item.genre}}</span></p>
+        </div>
+        <div class="name-city">
+          <h3>{{item.firstname}} {{item.lastname}}</h3>
+          <p class="city">{{item.city}}, {{item.state}}</p>
+        </div>
+
+        <div class="short-bio">
+          <p class="bio">{{item.bio | slice : 0 : 100}}...</p>
+          <h3 class="title">{{item.title}}</h3>
+        </div>
+
+        <div class="register">
+          <p>{{item.registered}}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</virtual-scroll>

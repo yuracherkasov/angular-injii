@@ -132,6 +132,10 @@
 .name2{
   display: inline-block;
 }
+.name a,
+.name2 a{
+  color: #8a259e;
+}
 
 /*carousel*/
 

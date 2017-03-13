@@ -1,0 +1,14 @@
+ #search-list .list-row{
+   height: calc(100% - 48px);
+ }
+ .the-list{
+   height: 100%;
+ }
+ #search-list .scrollable-y{
+   padding-right: 0;
+ }
+ @media(max-width: 991px){
+   #search-list .scrollable-y{
+     padding: 0;
+   }
+ }

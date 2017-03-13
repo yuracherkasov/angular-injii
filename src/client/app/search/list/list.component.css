@@ -1,0 +1,72 @@
+virtual-scroll {
+  overflow: hidden;
+  overflow-y: auto;
+  height: 100%;
+  display: block;
+}
+#virtual .list-item{
+  margin-bottom: 5px;
+  height: 70px;
+}
+.list-item a{
+  height: 100%;
+}
+.list-item > a > div{
+  display: table-cell;
+  vertical-align: middle;
+}
+.register p {
+  text-align: right;
+  font-size: 12px;
+  padding-right: 20px;
+}
+.list-item .short-bio{
+  padding-left: 2%;
+}
+.video-item .bio,
+.video-item .name-city > p,
+.video-item .name-city > h3,
+.charity-item .genre > p,
+.charity-item .title,
+.artist-item .title{
+  display: none!important;
+}
+.title{
+  font-size: 16px;
+  color: #e9008c;
+}
+.artist-item .name-city h3{
+  color: #8a259e;
+}
+.charity-item .name-city h3{
+  color: #ffc0cb;
+}
+:host >>> virtual-scroll .scrollable-content{
+  width: 99%;
+}
+@media(max-width: 991px){
+  #virtual .list-item{
+    height: 200px;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+  .list-item > a{
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+  }
+  .list-item > a > div{
+    display: block; 
+    padding-bottom: 10px;
+  }
+  .register p{
+    padding-right: 0;
+    text-align: center;
+  }
+
+  :host >>> virtual-scroll .scrollable-content{
+    width: 98%;
+  }
+}
