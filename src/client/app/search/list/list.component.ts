@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ScreenService } from './../../services/screen.service';
 import { ISitem } from './../model';
 
@@ -8,16 +8,23 @@ import { ISitem } from './../model';
   templateUrl: 'list.component.html',
   styleUrls: ['list.component.css']
 })
-export class ListComponent implements OnInit {
-
-  constructor(private screenService: ScreenService) { }
+export class ListComponent {
 
   @Input() Items: ISitem[];
   filteredList: ISitem[];
   itemHeight: number;
 
-  ngOnInit(): void {
-    this.screenService.screen > 991 ? this.itemHeight = 70 : this.itemHeight = 200;
+  constructor(private screenService: ScreenService) {
+
+    this.setItemHeight(this.screenService.screen);
+
+    this.screenService.screenObservable.subscribe((val) => {
+      this.setItemHeight(val)
+    })
+  }
+
+  setItemHeight(val: number): void{
+    val > 991 ? this.itemHeight = 70 : this.itemHeight = 200;
   }
 
   ngOnChanges(): void {

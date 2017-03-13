@@ -1,6 +1,8 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Headers, Http } from '@angular/http';
+import { ScreenService } from './../services/screen.service';
 import { RequestOptionsService } from "./../services/request-options.service";
+import { Subject } from "rxjs/Subject"
 
 import 'rxjs/add/operator/toPromise';
 
@@ -8,19 +10,43 @@ import 'rxjs/add/operator/toPromise';
 
 export class ContentService {
 
+  limit: number;
+
+  private subjLimitSource = new Subject();
+  limitObservable = this.subjLimitSource.asObservable();
+
   constructor(
     private http: Http,
-    private requestOptionsService: RequestOptionsService
+    private requestOptionsService: RequestOptionsService,
+    private screenService: ScreenService
   ) {
-    this.limitInstall();
+    this.setLimit(this.screenService.screen);
+
+    this.screenService.screenObservable.subscribe((val) => {
+      this.setLimit(val)
+    })
   }
 
-  limitInstall(){
-    let windowWidth = document.documentElement.clientWidth;
-    if (windowWidth > 1800) return 6
-    if (windowWidth <= 1800 && windowWidth >= 1560) return 5
-    else if ( (windowWidth < 1560 && windowWidth > 1320) || (windowWidth <= 991) ) return 4
-    else return 3
+  setLimit(val: number) {
+    let lim: number;
+    switch (true) {
+      case (val > 1800):
+        lim = 6;
+        break;
+      case (val <= 1800 && val >= 1560):
+        lim = 5;
+        break;
+      case ((val < 1560 && val > 1320) || (val <= 991)):
+        lim = 4;
+        break;
+      default:
+        lim = 3;
+        break;
+    }
+    if (lim != this.limit) {
+      this.limit = lim;
+      this.subjLimitSource.next()
+    }
   }
 
   getContent(term: string): Promise<any> {
