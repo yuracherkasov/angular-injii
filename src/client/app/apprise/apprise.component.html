@@ -7,18 +7,18 @@
         <div class="articles_holder scrollable-y" (scroll)="onScroll($event)">
           <div class="one_article" *ngFor="let article of articles">
             <div class="featured_thumb">
-              <a href="javascript:;" (click)="onloadArticle(article.url)">
+              <a href="/{{article.url}}" (click)="onloadArticle($event, article.url)">
                 <img src={{article.thumbnail}} alt="thumbnail" />
               </a>
             </div>
-            <a href="javascript:;" (click)="onloadArticle(article.url)">
+            <a href="/{{article.url}}" (click)="onloadArticle($event, article.url)">
               <h4 class="article_title">{{article.title}}</h4>
             </a>
             <div class="article_author">
-              Author: <a href="javascript:;" (click)="onloadArticle(article.url)">{{article.autor}}</a>
+              Author: <a href="/{{article.url}}" (click)="onloadArticle($event, article.url)">{{article.autor}}</a>
             </div>
             <span class="article_date">{{article.date}}</span>
-            <p>{{article.description}} <a href="javascript:;" class="more-in-text" (click)="onloadArticle(article.url)">more...</a></p>
+            <p>{{article.description}} <a href="/{{article.url}}" class="more-in-text" (click)="onloadArticle($event, article.url)">more...</a></p>
             <div class="article_share_social text-center">
             </div>
           </div>

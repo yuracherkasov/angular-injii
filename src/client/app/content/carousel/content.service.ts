@@ -1,7 +1,10 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { ScreenService } from './../services/screen.service';
-import { RequestOptionsService } from "./../services/request-options.service";
+
+import { ScreenService } from './../../services/screen.service';
+import { PlayerService } from './../../shared/jw-player/player.service';
+import { PopupService } from './../../shared/services/ui-popup.service';
+import { RequestOptionsService } from "./../../services/request-options.service";
 import { Subject } from "rxjs/Subject"
 
 import 'rxjs/add/operator/toPromise';
@@ -18,7 +21,9 @@ export class ContentService {
   constructor(
     private http: Http,
     private requestOptionsService: RequestOptionsService,
-    private screenService: ScreenService
+    private screenService: ScreenService,
+    private playerService: PlayerService,
+    private popupService: PopupService
   ) {
     this.setLimit(this.screenService.screen);
 
@@ -55,6 +60,13 @@ export class ContentService {
       .toPromise()
       .then(response => response.json().videos)
       .catch(this.requestOptionsService.handleError);
+  }
+
+
+  submitVideoOnMainPlayer(e: Event, id: string): void {
+    e.preventDefault();
+    this.playerService.changeVideo(id);
+    this.popupService.hideContentPopup();
   }
 
 }

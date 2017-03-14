@@ -30,7 +30,8 @@ export class ActivityItemComponent implements OnInit {
       this.onLastDone.emit(true);
   }
 
-  submitVideoOnMainPlayer(id: string): void {
+  submitVideoOnMainPlayer(e: Event, id: string): void {
+    e.preventDefault();
     this.playerService.changeVideo(id);
   }
 

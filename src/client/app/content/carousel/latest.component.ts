@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 
 import { PlayerService } from './../../shared/jw-player/player.service';
-import { ContentService } from './../content.service';
+import { ContentService } from './content.service';
 import { PopupService } from './../../shared/services/ui-popup.service';
 
 import * as _ from 'underscore';
@@ -17,7 +17,6 @@ export class LatestContentComponent implements OnInit {
 
   private load: boolean = false;
   private Content: Array<Object> = [];
-  private header: string = "Latest Content";
   private rangeContent: Array<number> = [];
   private offsetContent: number = 0;
 
@@ -71,10 +70,5 @@ export class LatestContentComponent implements OnInit {
           this.offsetContent += this.contentService.limit
         }
       })
-  }
-
-  submitVideoOnMainPlayer(src: string): void {
-    this.playerService.changeVideo(src);
-    this.popupService.hideContentPopup();
   }
 }

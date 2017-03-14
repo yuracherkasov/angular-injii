@@ -16,15 +16,19 @@
                  'transform': 'translate('+carouselService.left+'px, 0)',
                  'transition-duration': carouselService.cssTransition + 's'}">
           <li *ngFor="let artist of artists;">
-            <div class="thumb" [ngStyle]="{'background-image': 'url('+artist.avatar+')'}" (click)="gotoProfile(artist.username)"></div>
+            <a [routerLink]="['/artists', artist.username]">
+              <div class="thumb" [ngStyle]="{'background-image': 'url('+artist.avatar+')'}"></div>
+            </a>
             <div class="name">
-              <span><a href="javascript:;" (click)="gotoProfile(artist.username)">{{artist.firstname}}</a></span>
-              <span><a href="javascript:;" (click)="gotoProfile(artist.username)">{{artist.lastname}}</a></span>
+              <span><a [routerLink]="['/artists', artist.username]">{{artist.firstname}}</a></span>
+              <span><a [routerLink]="['/artists', artist.username]">{{artist.lastname}}</a></span>
             </div>
-            <span class="vid_thumb" (click)="submitVideoOnPlayer(artist.video.id)">
-        <img [src]="artist.video.thumbnail" alt="thumb">
-      </span>
-            <div class="thumb-title" (click)="submitVideoOnPlayer(artist.video.id)">{{artist.video.title}}</div>
+            <a href="{{artist.video.title}}" class="vid_thumb" (click)="contestService.submitVideoOnPlayer($event, artist.video.id)">
+              <img [src]="artist.video.thumbnail" alt="thumb">
+            </a>
+            <a href="{{artist.video.title}}" (click)="contestService.submitVideoOnPlayer($event, artist.video.id)">
+              <div class="thumb-title">{{artist.video.title}}</div>
+            </a>
           </li>
         </ul>
 

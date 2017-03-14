@@ -6,4 +6,4 @@ export * from './carousel/latest.component';
 export * from './carousel/upcoming.component';
 export * from './search/search.component';
 export * from './content.component';
-export * from './content.service';
+export * from './carousel/content.service';

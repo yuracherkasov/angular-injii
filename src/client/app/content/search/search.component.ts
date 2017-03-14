@@ -88,8 +88,9 @@ export class SearchComponent implements OnInit {
       
   }
 
-  submitVideoOnMainPlayer(src: string): void{
-    this.playerService.changeVideo(src);
+  submitVideoOnMainPlayer(e: Event, id: string): void{
+    e.preventDefault();
+    this.playerService.changeVideo(id);
     this.popupService.hideContentPopup();
   }
 }

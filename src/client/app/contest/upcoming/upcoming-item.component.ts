@@ -1,6 +1,6 @@
 import { Component, OnChanges, ViewChild, ElementRef, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
+import { ContestService } from './../contest.service';
 import { ScreenService } from "./../../services/screen.service";
 import { CarouselService } from "./../carousel.service"
 
@@ -25,8 +25,8 @@ export class UpcomingItemComponent implements OnChanges{
   constructor
     (
     private carouselService: CarouselService,
-    private router: Router,
-    private screenService: ScreenService
+    private screenService: ScreenService,
+    private contestService: ContestService
     ) {}
 
   ngOnChanges(){
@@ -36,13 +36,9 @@ export class UpcomingItemComponent implements OnChanges{
     }
   }
 
-  private gotoProfile(username: string) {
-    this.router.navigate(['/artists', username]);
-  }
-
-  showContest(i: number){
-     
+  showContest(i: number){  
      (this.showIndex === i) ? this.showIndex = 999 : this.showIndex = i;
      console.log(this.screenService.screen)
   }
+
 }

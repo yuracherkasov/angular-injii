@@ -52,12 +52,12 @@
           <ul>
             <li class="content_box" *ngFor="let video of charity.videos">
               <div class="vid_thumb">
-                <a href="#" (click)="submitVideoOnMainPlayer($event, video.id)">
+                <a href="{{video.title}}" (click)="submitVideoOnMainPlayer($event, video.id)">
                   <img [src]="video.preview" alt="preview">
                 </a>
               </div>
               <div class="vid_info">
-                <h5 class="vid_title"><a href="#" (click)="submitVideoOnMainPlayer($event, video.id)">{{video.title}}</a></h5>
+                <h5 class="vid_title"><a href="{{video.title}}" (click)="submitVideoOnMainPlayer($event, video.id)">{{video.title}}</a></h5>
                 <div>
                   <a href="javascript:;" class="vid_viewers" (click)="gotoSharing(video)">{{video.viewers}}</a>
                   <a href="javascript:;" class="vid_donations" (click)="gotoDonation(video)">&#36;{{video.donations}}</a>

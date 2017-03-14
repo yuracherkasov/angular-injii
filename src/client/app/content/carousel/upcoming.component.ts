@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 
 import { PlayerService } from './../../shared/jw-player/player.service';
-import { ContentService } from './../content.service';
+import { ContentService } from './content.service';
 import { PopupService } from './../../shared/services/ui-popup.service';
 
 import * as _ from 'underscore';
@@ -16,7 +16,6 @@ import * as _ from 'underscore';
 export class UpcomingContentComponent implements OnInit {
 
   private load: boolean = false;
-  private header: string = "Upcoming";
   private Content: Array<Object> = [];
   private rangeContent: Array<number> = [];
   private offsetContent: number = 0;
@@ -72,9 +71,5 @@ export class UpcomingContentComponent implements OnInit {
         }
       })
   }
-
-  submitVideoOnMainPlayer(id: string): void {
-    this.playerService.changeVideo(id);
-    this.popupService.hideContentPopup();
-  }
+  
 }

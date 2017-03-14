@@ -1,9 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
-
-import { PlayerService } from "./../../shared/jw-player/player.service";
-import { PopupService } from './../../shared/services/ui-popup.service';
 import { ContestService } from "./../contest.service";
 import { CarouselService } from "./../carousel.service";
 import { ConstantsService } from './../../services/constants.service';
@@ -35,11 +32,9 @@ export class CurrentContestComponent implements OnInit {
   constructor
     (
     private router: Router,
-    private popupService: PopupService,
     private contestService: ContestService,
     private constantsService: ConstantsService,
     private alertService: AlertService,
-    private playerService: PlayerService,
     private carouselService: CarouselService
     ) {
 
@@ -94,10 +89,6 @@ export class CurrentContestComponent implements OnInit {
     }
   }
 
-  private gotoProfile(username: string) {
-    this.router.navigate(['/artists', username]);
-  }
-
   toggleReadMore() {
     if (this.count % 2 === 0) {
       this.descriptionLength = 100;
@@ -108,10 +99,4 @@ export class CurrentContestComponent implements OnInit {
     }
     this.count++;
   }
-
-  submitVideoOnPlayer(id: string) {
-    this.playerService.changeVideo(id);
-    this.popupService.hideContentPopup();
-  }
-
 }

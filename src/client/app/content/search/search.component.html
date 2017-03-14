@@ -24,13 +24,15 @@
     <div class="search-results scrollable-y">
       <div class="content_box" *ngFor="let video of videos | async">
         <div class="vid_thumb">
-          <a href="javascript:;" (click)="submitVideoOnMainPlayer(video.id)">
+          <a href="/{{video.title}}" (click)="submitVideoOnMainPlayer($event, video.id)">
             <img src="{{video.preview}}" />
           </a>
         </div>
         <div class="vid_info">
-          <a href="javascript:;">
+          <a href="/{{video.title}}" (click)="submitVideoOnMainPlayer($event, video.id)">
             <h5 class="vid_title">{{video.title}}</h5>
+          </a>
+          <a [routerLink]="['/artists', video.artist.username]">
             <h6 class="vid_author">{{video.artist.firstname}} {{video.artist.lastname}}</h6>
           </a>
         </div>

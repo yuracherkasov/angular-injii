@@ -130,6 +130,7 @@
 }
 .table-cell.rating p{
   font-size: 24px;
+  font-style: normal;
 }
 .table-cell:first-of-type > div{
   vertical-align: top;
@@ -146,6 +147,7 @@
   font-size: 13px;
   display: inline-block;
   width: 70%;
+  font-style: italic;
 }
 .table-cell .button-injii{
   font-size: 22px;

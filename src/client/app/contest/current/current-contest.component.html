@@ -16,25 +16,29 @@
       </div>
 
       <div class="leader-head" *ngIf="leaderArtist.username">
-          <h6>Currently winner</h6>
-          <div class="image" (click)="gotoProfile(leaderArtist.username)" [style.background-image]="leaderArtist.avatar ? 'url('+leaderArtist.avatar+')' : ''"></div>
-          <div class="name2">
-            <div class="icon"><span>{{leaderArtist.votes}}</span>
-              <button class="button-injii" (click)="vote(leaderArtist)" [disabled]="makeDisabled">Vote!</button>
-            </div>
-            <a href="javascript:;" (click)="gotoProfile(leaderArtist.username)">{{leaderArtist.firstname}} {{leaderArtist.lastname}}</a>
+        <h6>Currently winner</h6>
+        <a [routerLink]="['/artists', leaderArtist.username]">
+          <div class="image" [style.background-image]="leaderArtist.avatar ? 'url('+leaderArtist.avatar+')' : ''"></div>
+        </a>
+        <div class="name2">
+          <div class="icon"><span>{{leaderArtist.votes}}</span>
+            <button class="button-injii" (click)="vote(leaderArtist)" [disabled]="makeDisabled">Vote!</button>
           </div>
+          <a [routerLink]="['/artists', leaderArtist.username]">{{leaderArtist.firstname}} {{leaderArtist.lastname}}</a>
+        </div>
       </div>
 
       <div class="favorite-head" *ngIf="favoriteArtist.username">
         <div>
           <h6>My favorite</h6>
-          <div class="image" (click)="gotoProfile(favoriteArtist.username)" [style.background-image]="favoriteArtist.avatar ? 'url('+favoriteArtist.avatar+')' : ''"></div>
+          <a [routerLink]="['/artists', favoriteArtist.username]">
+            <div class="image" [style.background-image]="favoriteArtist.avatar ? 'url('+favoriteArtist.avatar+')' : ''"></div>
+          </a>
           <div class="name2">
             <div class="icon"><span>{{favoriteArtist.votes}}</span>
               <button class="button-injii" (click)="vote(favoriteArtist)" [disabled]="makeDisabled">Unvote!</button>
             </div>
-            <a href="javascript:;" (click)="gotoProfile(favoriteArtist.username)">{{favoriteArtist.firstname}} {{favoriteArtist.lastname}}</a>
+            <a [routerLink]="['/artists', favoriteArtist.username]">{{favoriteArtist.firstname}} {{favoriteArtist.lastname}}</a>
           </div>
         </div>
       </div>
@@ -47,19 +51,21 @@
                  'transform': 'translate('+carouselService.left+'px, 0)',
                  'transition-duration': carouselService.cssTransition + 's'}">
         <li *ngFor="let artist of artists;" [ngClass]="{'leader': artist.status === 'leader', 'favorite': artist.status === 'favorite'}">
-          <button class="button-injii" (click)="vote(artist)" [disabled]="makeDisabled">
-        {{appendButtonText(artist.status)}}
-      </button>
-          <div class="thumb" [ngStyle]="{'background-image': 'url('+artist.avatar+')'}" (click)="gotoProfile(artist.username)"></div>
+          <button class="button-injii" (click)="vote(artist)" [disabled]="makeDisabled">{{appendButtonText(artist.status)}}</button>
+          <a [routerLink]="['/artists', artist.username]">
+            <div class="thumb" [ngStyle]="{'background-image': 'url('+artist.avatar+')'}"></div>
+          </a>
           <div class="votes">{{artist.votes}}</div>
           <div class="name">
-            <span><a href="javascript:;" (click)="gotoProfile(artist.username)">{{artist.firstname}}</a></span>
-            <span><a href="javascript:;" (click)="gotoProfile(artist.username)">{{artist.lastname}}</a></span>
+            <span><a [routerLink]="['/artists', artist.username]">{{artist.firstname}}</a></span>
+            <span><a [routerLink]="['/artists', artist.username]">{{artist.lastname}}</a></span>
           </div>
-          <span class="vid_thumb" (click)="submitVideoOnPlayer(artist.video.id)">
-        <img [src]="artist.video.thumbnail" alt="thumb">
-      </span>
-          <div class="thumb-title" (click)="submitVideoOnPlayer(artist.video.id)">{{artist.video.title}}</div>
+          <a href="{{artist.video.title}}" class="vid_thumb" (click)="contestService.submitVideoOnPlayer($event, artist.video.id)">
+            <img [src]="artist.video.thumbnail" alt="thumb">
+          </a>
+          <a href="{{artist.video.title}}" (click)="contestService.submitVideoOnPlayer($event, artist.video.id)">
+            <div class="thumb-title">{{artist.video.title}}</div>
+          </a>
         </li>
       </ul>
     </div>

@@ -1,5 +1,5 @@
 export interface ISitem {
-  id?: number;
+  id?: string;
   role?: string,
   bio?: string; 
   genre?: string;

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { RequestOptionsService } from "./../services/request-options.service";
+import { PlayerService } from "./../shared/jw-player/player.service";
+import { PopupService } from './../shared/services/ui-popup.service';
 
 
 @Injectable()
@@ -10,7 +12,9 @@ export class ContestService {
   constructor
     (
     private http: Http,
-    private requestOptionsService: RequestOptionsService
+    private requestOptionsService: RequestOptionsService,
+    private playerService: PlayerService,
+    private popupService: PopupService
     ) {}
 
 
@@ -26,5 +30,11 @@ export class ContestService {
       .toPromise()
       .then(response => response.json())
       .catch(this.requestOptionsService.handleError);
+  }
+
+  submitVideoOnPlayer(e: Event, id: string) {
+    e.preventDefault();
+    this.playerService.changeVideo(id);
+    this.popupService.hideContentPopup();
   }
 }

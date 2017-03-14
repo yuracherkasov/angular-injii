@@ -87,7 +87,8 @@ export class AppriseComponent implements OnInit {
     }
   }
 
-  onloadArticle(url: string): void {
+  onloadArticle(e: Event, url: string): void {
+    e.preventDefault();
     this.showIframe = true;
     this.myFrame.nativeElement.src = url;
   }
