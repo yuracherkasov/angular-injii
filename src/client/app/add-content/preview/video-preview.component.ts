@@ -52,7 +52,7 @@ export class VideoPreviewComponent {
       });
 
 
-      jwplayer(video).play();
+      jwplayer(video).play(true);
 
       jwplayer(video).on("play", () => {
         let duration = jwplayer(video).getDuration();
@@ -61,7 +61,6 @@ export class VideoPreviewComponent {
           jwplayer(video).pause();
           this.durationTime = duration;
         }
-
 
       })
 

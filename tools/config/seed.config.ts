@@ -457,7 +457,7 @@ export class SeedConfig {
       },
       '@angular/forms': {
         main: 'index.js',
-        defaultExtension: 'js'
+        defaultExtension: 'js' 
       },
       '@angular/http': {
         main: 'index.js',

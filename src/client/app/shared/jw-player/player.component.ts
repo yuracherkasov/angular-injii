@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, NgZone } from '@angular/core';
 import { PlayerService } from './player.service';
 import { PopupService } from './../services/ui-popup.service';
 
@@ -16,12 +16,14 @@ export class PlayerComponent implements AfterViewInit {
 
   @ViewChild('player') playerEl: ElementRef;
   playlist: any;
-  sharingPlugin: any
+  sharingPlugin: any;
   controlStyle: string = 'block';
+  showPlayingButton: boolean = true;
 
   constructor(private elementRef: ElementRef,
     private playerService: PlayerService,
-    private popupService: PopupService
+    private popupService: PopupService,
+    private zone: NgZone
   ) {
 
     this.playerService.videoDetailObservable
@@ -38,8 +40,8 @@ export class PlayerComponent implements AfterViewInit {
         let player = this.playerEl.nativeElement.id;
 
         jwplayer(player).setup({
-          'autostart': 'true',
-          'controls': 'false',
+          'autostart': true,
+          'controls': false,
           'repeat': false,
           'playlist': playlist,
           'width': '100%',
@@ -53,8 +55,13 @@ export class PlayerComponent implements AfterViewInit {
         });
 
         jwplayer().on('ready', (event: Event) => {
-          this.makePlaying();
           this.sharingPlugin = jwplayer().getPlugin('sharing');
+        });
+
+        jwplayer(player).on('play', () => {
+          this.zone.run(() => {
+            this.showPlayingButton = false;
+          })
         });
 
         jwplayer().on('playlistComplete', () => {
@@ -63,26 +70,25 @@ export class PlayerComponent implements AfterViewInit {
             if (resolve.result === 'OK') {
               let newPlaylist = resolve.video.playlist;
               jwplayer().load(newPlaylist);
-              this.makePlaying();
+              jwplayer().play(true)
             }
           });
         })
 
       }
     });
-
   }
 
   changeVideo(playlist: string): void {
     if (jwplayer().load && typeof jwplayer().load === "function") {
       jwplayer().load(playlist);
-      this.makePlaying();
+      jwplayer().play(true)
     }
   }
 
   callSharing(event: Event) {
     this.sharingPlugin.open();
-    this.makePlaying();
+    jwplayer().play(true)
     this.controlStyle = "none";
     this.sharingPlugin.on('close', () => {
       this.controlStyle = "block";
@@ -99,15 +105,9 @@ export class PlayerComponent implements AfterViewInit {
     }
   };
 
-  //forced start on mobile devices:
-  makePlaying() {
-    jwplayer().play();
-    setTimeout(() => {
-      let state = jwplayer().getState();
-      if (state !== "playing") {
-        this.makePlaying()
-      }
-    }, 500)
+  startPlay() {
+    jwplayer().play(true);
+    this.showPlayingButton = false;
   }
 
 }
