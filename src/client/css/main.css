@@ -6152,15 +6152,25 @@ input[type="checkbox"]:checked + label span {
       vertical-align: middle; }
   #top-nav .search-toggler {
     position: absolute;
-    right: 175px;
+    right: 172px;
     top: 50%;
     color: #e2e2e2;
+    height: 100%;
+    width: 40px;
+    text-align: center;
+    background-color: #101418;
     -webkit-transform: translate(0, -50%);
     -ms-transform: translate(0, -50%);
     -o-transform: translate(0, -50%);
     transform: translate(0, -50%); }
+  #top-nav .search-toggler.is-active,
+  #top-nav .search-toggler:hover{
+    /*background: #1b2228; */
+    background-color: #840079;
+    }
     #top-nav .search-toggler img {
-      max-width: 20px; }
+      max-width: 20px;
+      height: 100%; }
 
 .search-form .form-group {
   position: relative; }

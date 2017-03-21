@@ -13,7 +13,8 @@ import { DonationComponent } from "./donation/donation.component";
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { MenuIframeComponent } from './main-menu/menu-iframe.component';
 import { MenuIframeService } from './main-menu/menu-iframe.service';
-import { SharingVideoComponent } from "./sharing-video/sharing-video.component";
+import { SharingVideoComponent } from "./sharing/sharing-video.component";
+import { SharingInjiiComponent } from "./sharing/sharing-injii.component";
 import { SponsorComponent } from "./sponsor/sponsor.component";
 import { HomeComponent, LoginComponent,  RegisterComponent, SignComponent, SignSocialComponent } from "./sign/index";
 import { AuthService } from './sign/services/auth.service';
@@ -51,6 +52,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DonationComponent,
     SponsorComponent,
     SharingVideoComponent,
+    SharingInjiiComponent,
     CeiboShare,
     FileSelectDirective
   ],
@@ -72,6 +74,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DonationComponent,
     SponsorComponent,
     SharingVideoComponent,
+    SharingInjiiComponent,
     FileSelectDirective
   ]
 })

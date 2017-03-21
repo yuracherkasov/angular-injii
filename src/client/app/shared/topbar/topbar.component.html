@@ -1,8 +1,7 @@
 <div id="top-nav" [ngClass]="{'top-menu-open': isTopMenuOpen }">
     <div class="logo">
-        <a [routerLink]="['']">
-            <img src="assets/symbol_logo_original1.svg" />
-        </a>
+        <a [routerLink]="['']"></a>
+        <img src="assets/symbol_logo_original1.svg" />     
     </div>
     <div class="right-nav">
        <a href="javascript:;" (click)="uiService.toggleMainMenu()" class="main-menu-toggle" >
@@ -10,7 +9,7 @@
         <span class="line bot"></span>
         <span class="line bot"></span>
     </a>
-    <a [routerLink]="['/search']" class="search-toggler" (click)="popupService.toggleContentPopup()">
+    <a [routerLink]="['/search']" [routerLinkActive]="['is-active']" class="search-toggler" (click)="popupService.toggleContentPopup()">
         <img src="assets/svg/icons/magnifier.svg" />
     </a>
     <a href="javascript:;" (click)="uiService.toggleSignMenu($event)" class="button button-injii sign-up">

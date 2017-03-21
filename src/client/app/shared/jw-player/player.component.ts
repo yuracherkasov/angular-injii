@@ -56,6 +56,7 @@ export class PlayerComponent implements AfterViewInit {
 
         jwplayer().on('ready', (event: Event) => {
           this.sharingPlugin = jwplayer().getPlugin('sharing');
+          jwplayer(player).play(true)
         });
 
         jwplayer(player).on('play', () => {
@@ -70,7 +71,7 @@ export class PlayerComponent implements AfterViewInit {
             if (resolve.result === 'OK') {
               let newPlaylist = resolve.video.playlist;
               jwplayer().load(newPlaylist);
-              jwplayer().play(true)
+              jwplayer(player).play(true)
             }
           });
         })
@@ -86,7 +87,7 @@ export class PlayerComponent implements AfterViewInit {
     }
   }
 
-  callSharing(event: Event) {
+  callSharing() {
     this.sharingPlugin.open();
     jwplayer().play(true)
     this.controlStyle = "none";
