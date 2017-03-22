@@ -100,7 +100,7 @@ export class ProfileCommentsComponent implements OnInit {
 
   submit(): void {
     if (this.constantsService.User) {
-      this.loading = true;
+      this.loading = 999;
       this.commentsService.add(this.username, this.newComment)
         .then(response => {
           if (response.result === "OK" && response.message) {
