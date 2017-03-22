@@ -25,7 +25,7 @@ export class ConstantsService {
       this.fbAppId = "208503652949540";
       this.gClient_id = '498761886009-02hqd66sdcbh9ipmug1734d6ibbk6rc4.apps.googleusercontent.com';
     } else {
-      this.fbAppId = "282063345331584";
+      this.fbAppId = "789807871099676";
       this.gClient_id = '813287755154-gfkf2urck7i10mujgenaim0a29q0couf.apps.googleusercontent.com';
     }
   }
