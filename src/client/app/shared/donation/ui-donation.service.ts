@@ -9,7 +9,7 @@ export class UiDonationService {
   artistObj: any;
   showPopup: boolean = false;
 
-  private subjDonationSource = new Subject();
+  subjDonationSource = new Subject();
 
   constructor() {}
 

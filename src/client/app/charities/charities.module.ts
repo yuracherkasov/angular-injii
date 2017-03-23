@@ -12,4 +12,4 @@ import { CharitiesRoutingModule } from './charity-routing.module';
     providers: []
 })
 
-export class CharitiesModule { }
+export class CharitiesModule { };
