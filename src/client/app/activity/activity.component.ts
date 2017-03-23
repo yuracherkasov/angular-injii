@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { PopupControlService } from './../services/popup-control.service'
+import { PopupControlService } from './../services/popup-control.service';
 import { PopupService } from './../shared/services/ui-popup.service';
 import { ActivityService } from './activity.service';
 import { UiDonationService } from './../shared/donation/ui-donation.service';
@@ -10,7 +10,7 @@ import { ISponsor } from './activity.model';
 
 
 interface MyEventTarget extends EventTarget {
-  scrollTop: number
+  scrollTop: number;
 }
 
 interface MyEvent extends Event {
@@ -30,38 +30,35 @@ export class ActivityComponent implements OnInit {
   @ViewChild('container') container: ElementRef;
   @ViewChild('inner') inner: ElementRef;
 
-  private term: string = "";
-  private order: string = "";
+  private term: string = '';
+  public order: string = '';
+  public loading: boolean = false;
   private offset: number = 0;
   private limit: number = 12;
   private total: number;
   private activititems: IVideo[] = [];
-
-
-  hidepopup: boolean = false;
-
+  private hidepopup: boolean = false;
   private heightContainer: number;
   private heightInner: number;
-  private uploadFlag: boolean = false;
-  private loading: boolean = false;
+  private uploadFlag: boolean = false; 
   private videoObj: any = {};
 
   constructor
     (
-    private popupService: PopupService,
+    public popupService: PopupService,
+    public uiDonationService: UiDonationService,
     private activityService: ActivityService,
     private popupControlService: PopupControlService,
-    private uiDonationService: UiDonationService
     ) {
 
     popupService.contentObservable.subscribe(data => {
       if (data) {
-        this.showPopUp()
+        this.showPopUp();
       } else {
-        this.hidePopUp()
+        this.hidePopUp();
       }
     })
-  }
+  };
 
   showPopUp() {
     this.hidepopup = false;
@@ -81,7 +78,7 @@ export class ActivityComponent implements OnInit {
       this.order = order;
       this.offset = 0;
     } else {
-      this.offset += this.limit
+      this.offset += this.limit;
     }
     this.term = '/?offset=' + this.offset + '&limit=' + this.limit + '&order=' + this.order;
 
@@ -95,26 +92,26 @@ export class ActivityComponent implements OnInit {
           this.uploadFlag = true;
         }
       }, (reject) => {
-        console.log("reject: ", reject);
+        console.log('reject: ', reject);
       });
   }
 
   lastItemDone() {
     this.heightContainer = this.container.nativeElement.clientHeight;
-    this.heightInner = this.inner.nativeElement.clientHeight
+    this.heightInner = this.inner.nativeElement.clientHeight;
   }
 
   onScroll(event: MyEvent): void {
     if ((event.target.scrollTop + this.heightContainer) >= this.heightInner && this.uploadFlag) {
       this.uploadFlag = false;
-      this.categoryChange("");
+      this.categoryChange('');
     }
   }
 
   showDonate(item: any): void {
     this.videoObj.id = item.id;
     this.videoObj.title = item.title;
-    this.uiDonationService.donationShow(item.charity, this.videoObj, item.artist)
+    this.uiDonationService.donationShow(item.charity, this.videoObj, item.artist);
   }
 
   showSponsor(sponsor: ISponsor) {

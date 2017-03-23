@@ -16,35 +16,35 @@ import { IArticle, IApprise } from './apprise.model';
 export class AppriseComponent implements OnInit {
 
   @ViewChild('myFrame') myFrame: ElementRef;
+  public hidepopup: boolean = false;
+  public loading: boolean = false;
+  public messageLoading: boolean = false;
+  public tooglePopupValue: boolean = false;
+  public resolveMessage: string = '';
+  public fullScreenIframe: boolean = false;
+  public articleMessage: string;
+  private articleUrl: string = '';
   private offset: number = 0;
   private limit: number = 12;
-  private term: string = "";
+  private term: string = '';
   private articles: IArticle[] = [];
-  private hidepopup: boolean = false;
-  private loading: boolean = false;
-  private messageLoading: boolean = false;
   private makeQuery: boolean = false;
-
   private showIframe: boolean = false;
-  private fullScreenIframe: boolean = false;
-  private tooglePopupValue: boolean = false;
-  private articleUrl: string = "";
 
-  private articleMessage: string;
-  private resolveMessage: string = "";
-
-
-  constructor(private popupService: PopupService,
-    private appriseService: AppriseService,
-    private constantsService: ConstantsService) {
+  constructor
+  (
+    public popupService: PopupService,
+    public constantsService: ConstantsService,
+    private appriseService: AppriseService
+  ) {
 
     popupService.contentObservable.subscribe(data => {
       if (data) {
-        this.showPopUp()
+        this.showPopUp();
       } else {
-        this.hidePopUp()
+        this.hidePopUp();
       }
-    })
+    });
   }
 
   showPopUp() {
@@ -55,7 +55,7 @@ export class AppriseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getArticles(false)
+    this.getArticles(false);
   }
 
   getArticles(val: boolean) {
@@ -76,13 +76,13 @@ export class AppriseComponent implements OnInit {
           this.makeQuery = true;
         }
       }, (reject) => {
-        console.log("reject: ", reject);
+        console.log('reject: ', reject);
       });
   }
 
   onScroll(event: any) {
     if ((event.target.scrollTop + event.target.clientHeight) >= event.target.scrollHeight && this.makeQuery) {
-      this.getArticles(true)
+      this.getArticles(true);
       this.makeQuery = false;
     }
   }
@@ -95,7 +95,7 @@ export class AppriseComponent implements OnInit {
 
   closeFrame(): void {
     this.showIframe = false;
-    this.myFrame.nativeElement.src = "";
+    this.myFrame.nativeElement.src = '';
     this.hidepopup = false;
   }
 
@@ -110,14 +110,14 @@ export class AppriseComponent implements OnInit {
 
   submit(): void {
     this.messageLoading = true;
-    console.log(this.articleMessage)
+    console.log(this.articleMessage);
     this.appriseService.sendArticle(this.articleMessage)
       .then(response => {
         if(response.message){
-          this.resolveMessage = response.message
+          this.resolveMessage = response.message;
         }
         this.messageLoading = false;
-      })
+      });
   }
 
 }

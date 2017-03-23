@@ -11,4 +11,4 @@ export class Charity {
   city: string;
   state: string;
   donation: number;
-}
+};

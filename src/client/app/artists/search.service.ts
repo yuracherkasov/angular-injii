@@ -13,7 +13,7 @@ export class ASearchService {
 
   filter: string = '';
   order: string = 'rating';
-  private searchArtistsSource = new Subject<string>();
+  searchArtistsSource = new Subject<string>();
 
   searchEmitter = this.searchArtistsSource.asObservable();
 
@@ -26,7 +26,7 @@ export class ASearchService {
   }
 
   search(term: string): Observable<Artist[]> {
-    console.log('Request: /api/artistsFake' + term + " replace on: /api/artists" + term);
+    console.log('Request: /api/artistsFake' + term + ' replace on: /api/artists' + term);
     //replase on: return this.http.get('/api/artists' + term)
     return this.http.get('/api/artistsFake' + term)
       .map((r: Response) => {

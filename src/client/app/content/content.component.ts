@@ -9,7 +9,7 @@ import { PopupService } from './../shared/services/ui-popup.service';
 })
 
 export class ContentComponent {
-  private hidepopup: boolean = false;
+  hidepopup: boolean = false;
 
   constructor(
     public popupService: PopupService,
@@ -17,17 +17,17 @@ export class ContentComponent {
 
     popupService.contentObservable.subscribe(data => {
       if (data) {
-        this.showPopUp()
+        this.showPopUp();
       } else {
-        this.hidePopUp()
+        this.hidePopUp();
       }
-    })
+    });
   }
 
   showPopUp() {
     this.zone.run(() => {
       this.hidepopup = false;
-    })
+    });
   }
 
   hidePopUp() {

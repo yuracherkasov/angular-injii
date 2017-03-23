@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
 
@@ -7,16 +7,15 @@ import { Subject } from 'rxjs/Subject';
 export class ScreenService {
 
   screen: number;
-
-  private subjUserSource = new Subject<number>();
+  subjUserSource = new Subject<number>();
   screenObservable = this.subjUserSource.asObservable();
 
   constructor() {
     this.screen = window.innerWidth;
     window.onresize = (e) => {
       this.screen = window.innerWidth;
-      this.subjUserSource.next(this.screen)
-    }
+      this.subjUserSource.next(this.screen);
+    };
   }
 
 }

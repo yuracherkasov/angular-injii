@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { Headers, RequestOptions } from "@angular/http";
+import { Injectable } from '@angular/core';
+import { Headers, RequestOptions } from '@angular/http';
 
-import { ConstantsService } from "./constants.service";
+import { ConstantsService } from './constants.service';
 
 @Injectable()
 

@@ -36,15 +36,15 @@ export class ActivityItemComponent implements OnInit {
   }
 
   gotoDonate(item: any): void{
-    this.makeDonate.emit(item)    
+    this.makeDonate.emit(item);
   }
 
   gotoSponsor(sponsor: ISponsor): void{
-    this.showSponsor.emit(sponsor)
+    this.showSponsor.emit(sponsor);
   }
 
   gotoSharing(video: IVideo): void{
-    this.showSharing.emit(video)
+    this.showSharing.emit(video);
   }
 
    gotoProfile(param: any, state: string, e: Event): void {

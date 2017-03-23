@@ -9,7 +9,7 @@ export interface IArticle {
 
 export interface IApprise {
  result: string;
- total: number; 
- offset: number; 
+ total: number;
+ offset: number;
  articles: IArticle[];
 }

@@ -13,19 +13,21 @@ import { ConstantsService } from './../services/constants.service';
 })
 export class ProfileCommentsComponent implements OnInit {
 
+  
+  loading: any = false;
+  newComment: string = '';
+  showMoreButton: boolean;
+  responseMessage: string;
   private comments: any;
-  private loading: any = false;
-  private newComment: string = "";
   private username: string;
   private limit: number = 10;
   private offset: number;
-  private showMoreButton: boolean;
-  private responseMessage: string;
 
-  constructor(
+  constructor
+  (
+    public constantsService: ConstantsService,
     private route: ActivatedRoute,
-    private router: Router,
-    private constantsService: ConstantsService,
+    private router: Router, 
     private commentsService: CommentsService) {
   }
 
@@ -35,11 +37,11 @@ export class ProfileCommentsComponent implements OnInit {
       .switchMap((params: Params) => {
         this.comments = [];
         this.offset = 0;
-        this.responseMessage = "";
+        this.responseMessage = '';
         this.showMoreButton = false;
         let term = '/?offset=' + this.offset + '&limit=' + this.limit;
         this.username = params['username'];
-        return this.commentsService.getAll(this.username, term)
+        return this.commentsService.getAll(this.username, term);
       })
       .subscribe((response: any) => {
         if (response.comments) {
@@ -63,9 +65,9 @@ export class ProfileCommentsComponent implements OnInit {
           this.showMoreButton = false;
         }
       }, (reject) => {
-        console.log(reject)
-        this.loading = false
-      })
+        console.log(reject);
+        this.loading = false;
+      });
   }
 
   approve(comment: any, n: number): void {
@@ -75,13 +77,13 @@ export class ProfileCommentsComponent implements OnInit {
     this.commentsService.update(copyComment)
       .then(response => {
         this.loading = false;
-        if (response.result && response.result === "OK") {
+        if (response.result && response.result === 'OK') {
           comment.confirmed = true;
         }
       }, (reject) => {
-        console.log(reject)
-        this.loading = false
-      })
+        console.log(reject);
+        this.loading = false;
+      });
   }
 
   delete(comment: any, n: number): void {
@@ -89,13 +91,13 @@ export class ProfileCommentsComponent implements OnInit {
     this.commentsService.delete(comment.id)
       .then(response => {
         this.loading = false;
-        if (response.result === "OK") {
+        if (response.result === 'OK') {
           this.comments.splice(n, 1);
         }
       }, (reject) => {
-        console.log(reject)
-        this.loading = false
-      })
+        console.log(reject);
+        this.loading = false;
+      });
   }
 
   submit(): void {
@@ -103,24 +105,24 @@ export class ProfileCommentsComponent implements OnInit {
       this.loading = 999;
       this.commentsService.add(this.username, this.newComment)
         .then(response => {
-          if (response.result === "OK" && response.message) {
+          if (response.result === 'OK' && response.message) {
             this.responseMessage = response.message;
-            this.newComment = "";
+            this.newComment = '';
             this.loading = false;
           }
         }, (reject) => {
-          console.log(reject)
-          this.loading = false
-        })
+          console.log(reject);
+          this.loading = false;
+        });
     }
 
   }
 
   gotoProfile(event: Event, comment: any): void {
     event.preventDefault();
-    if (comment.from.role === "artist") {
+    if (comment.from.role === 'artist') {
       this.router.navigate(['/artists', comment.from.username]);
-    } else if (comment.from.role === "charity") {
+    } else if (comment.from.role === 'charity') {
       this.router.navigate(['/charity', comment.from.username]);
     }
   }

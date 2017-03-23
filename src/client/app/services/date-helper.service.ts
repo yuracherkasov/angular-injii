@@ -10,6 +10,6 @@ export class DateHelperService {
    * @returns {string}
    */
   formatDateItem(dateItem: number): string {
-    return ("0" + dateItem).slice(-2);
+    return ('0' + dateItem).slice(-2);
   }
 }

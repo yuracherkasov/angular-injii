@@ -18,7 +18,7 @@ export interface ISponsor {
   id: string;
   name: string;
 }
-  
+
 export interface IVideo {
   id: string;
   title: string;

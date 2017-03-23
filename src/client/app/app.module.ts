@@ -36,15 +36,15 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 
 @NgModule({
-  imports: 
+  imports:
   [
-    BrowserModule, 
-    HttpModule, 
-    AppRoutingModule, 
+    BrowserModule,
+    HttpModule,
+    AppRoutingModule,
     HomeModule,
     ContentModule,
     ContestModule,
-    ActivityModule, 
+    ActivityModule,
     AppriseModule,
     ChatModule,
     ArtistsModule,
@@ -65,7 +65,7 @@ import { BaseRequestOptions } from '@angular/http';
     RequestOptionsService,
     ConstantsService,
     PopupControlService,
-    ScreenService, 
+    ScreenService,
     UiDonationService,
     ASearchService,
     CSearchService,

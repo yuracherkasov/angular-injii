@@ -20,27 +20,27 @@ export class ArtistsComponent implements OnInit, AfterViewInit {
   artists: Observable<Artist[]>;
   private searchTerm = new Subject<string>();
 
-  private term: string = "";
+  private term: string = '';
   private hidepopup: boolean = false;
 
   constructor
     (
-    private searchService: ASearchService,
+    public searchService: ASearchService,
     private router: Router,
     private popupService: PopupService
     ) {
 
     searchService.searchEmitter.subscribe(order => {
       this.categoryChange(order);
-    })
+    });
 
     popupService.contentObservable.subscribe(data => {
       if (data) {
-        this.showPopUp()
+        this.showPopUp();
       } else {
-        this.hidePopUp()
+        this.hidePopUp();
       }
-    })
+    });
   }
 
   showPopUp() {
@@ -72,7 +72,7 @@ export class ArtistsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.searchAsObservable()
+    this.searchAsObservable();
   }
 
   searchAsObservable(): void {
@@ -91,4 +91,5 @@ export class ArtistsComponent implements OnInit, AfterViewInit {
     e.preventDefault();
     this.router.navigate(['/artists', artist.username]);
   }
+
 }

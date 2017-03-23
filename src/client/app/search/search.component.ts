@@ -13,25 +13,24 @@ import { ISitem } from './model';
 })
 export class SearchComponent implements OnInit {
 
-  private hidepopup: boolean = false;
-  
+  hidepopup: boolean = false;
   items: Observable<ISitem[]>;
   private searchTerm = new Subject<string>();
-  private term: string = "";
+  private term: string = '';
 
   constructor
     (
-      private popupService: PopupService,
-      private searchService: SearchService 
+      public popupService: PopupService,
+      public searchService: SearchService
     ) {
 
     popupService.contentObservable.subscribe(data => {
       if (data) {
-        this.showPopUp()
+        this.showPopUp();
       } else {
-        this.hidePopUp()
+        this.hidePopUp();
       }
-    })
+    });
 
   }
 
@@ -46,7 +45,7 @@ export class SearchComponent implements OnInit {
     this.searchAsObservable();
     if (this.searchService.filter !== ''){
       setTimeout(() => {this.searchTerm.next(this.searchService.filter)}, 0)
-    }
+    };
   }
 
   search(term: string): void {

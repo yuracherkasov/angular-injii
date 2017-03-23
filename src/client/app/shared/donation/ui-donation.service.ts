@@ -7,7 +7,7 @@ export class UiDonationService {
   charityObj: any;
   videoObj: any;
   artistObj: any;
-  public showPopup: boolean = false;
+  showPopup: boolean = false;
 
   private subjDonationSource = new Subject();
 

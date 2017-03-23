@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RequestOptionsService } from "../services/request-options.service";
+import { RequestOptionsService } from '../services/request-options.service';
 import { Http, Response } from '@angular/http';
 
 import { IApprise } from './apprise.model';
@@ -13,17 +13,17 @@ export class AppriseService {
   }
 
   get(term: string): Promise<IApprise> {
-    console.log("term: " + term)
+    console.log('term: ' + term);
     return this.http.get('/api/apprise' + term)
       .toPromise()
-      .then((response: Response) => { return response.json() as IApprise })
+      .then((response: Response) => { return response.json() as IApprise; })
       .catch(this.handleError);
   }
 
   sendArticle(mess: string): Promise<any> {
     return this.http.post('/api/apprise', mess, this.requestOptionsService.jwt())
       .toPromise()
-      .then((response: Response) => { return response.json() })
+      .then((response: Response) => { return response.json(); })
       .catch(this.handleError);
   }
 

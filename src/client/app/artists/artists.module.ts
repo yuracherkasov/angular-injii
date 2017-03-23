@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileCommentsModule } from './../profile-comments/profile-comments.module';
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { ArtistsComponent} from './artists.component';
 import { ProfileComponent } from './artist/profile.component';
 import { ArtistRoutingModule } from './artist-routing.module';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -15,4 +14,4 @@ import { ArtistRoutingModule } from './artist-routing.module';
   providers: []
 })
 
-export class ArtistsModule { }
+export class ArtistsModule {}

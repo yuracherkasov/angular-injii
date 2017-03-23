@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { PopupControlService } from './../../services/popup-control.service'
+import { PopupControlService } from './../../services/popup-control.service';
 import { ProfileService } from './profile.service';
 import { PlayerService } from './../../shared/jw-player/player.service';
 import { PopupService } from './../../shared/services/ui-popup.service';
@@ -20,11 +20,10 @@ import { ArtistRatingService } from './../../services/artist-rating.service';
 })
 export class ProfileComponent implements OnInit {
 
-  private artist: any = {};
-  private artistManager: any = {};
-  private artistAgent: any = {};
-
-  private hidepopup: boolean = false;
+  artist: any = {};
+  artistManager: any = {};
+  artistAgent: any = {};
+  hidepopup: boolean = false;
 
   constructor
   (
@@ -42,11 +41,11 @@ export class ProfileComponent implements OnInit {
 
     popupService.contentObservable.subscribe(data => {
       if (data) {
-        this.showPopUp()
+        this.showPopUp();
       } else {
-        this.hidePopUp()
+        this.hidePopUp();
       }
-    })
+    });
   }
 
   showPopUp() {
@@ -82,9 +81,9 @@ export class ProfileComponent implements OnInit {
             this.alertService.info(response.message)
           }
         },
-        (reject => { console.log(reject) }))
+        (reject => { console.log(reject) }));
     } else {
-      this.alertService.danger("You need login")
+      this.alertService.danger('You need login');
     }
   }
 
@@ -99,7 +98,7 @@ export class ProfileComponent implements OnInit {
       lastname: this.artist.lastname,
       username: this.artist.username,
       avatar: this.artist.avatar
-    }
-    this.uiDonationService.donationShow(this.artist.charity, video, artist)
+    };
+    this.uiDonationService.donationShow(this.artist.charity, video, artist);
   }
 }

@@ -1,29 +1,29 @@
-import { Injectable} from "@angular/core";
+import { Injectable } from '@angular/core';
 import { PopupService } from '../shared/services/ui-popup.service';
 
 @Injectable()
 
 export class PopupControlService {
 
-  isWhichTabOpen = "";
-  charityID: string = "";
-  videoID: string = "";
-  videoTitle: string = "";
-  donateParam: string = "";
+  isWhichTabOpen = '';
+  charityID: string = '';
+  videoID: string = '';
+  videoTitle: string = '';
+  donateParam: string = '';
 
   Sponsor: any = {};
-  sponsorID: string = "";
+  sponsorID: string = '';
 
   sharingVideo: any = {};
-  sharingVideoID: string = "";
+  sharingVideoID: string = '';
 
 
   constructor(private popupService: PopupService) {}
 
   toggleDonation(charityId: string, videoId: string, title: string): void {
-    if (this.donateParam === videoId && this.isWhichTabOpen === "donate") {
+    if (this.donateParam === videoId && this.isWhichTabOpen === 'donate') {
       this.donationHide();
-      this.donateParam = "";
+      this.donateParam = '';
     } else {
       this.donationShow(charityId, videoId, title);
       this.donateParam = videoId;
@@ -34,17 +34,17 @@ export class PopupControlService {
     this.charityID = charityId;
     this.videoID = videoId;
     this.videoTitle = title;
-    this.isWhichTabOpen = "donate";
+    this.isWhichTabOpen = 'donate';
   }
 
   donationHide(): void {
-    this.isWhichTabOpen = "";
+    this.isWhichTabOpen = '';
   }
 
   toggleSponsor(sponsor: any) {
-    if (this.sponsorID === sponsor.id && this.isWhichTabOpen === "sponsor") {
+    if (this.sponsorID === sponsor.id && this.isWhichTabOpen === 'sponsor') {
       this.sponsorHide();
-      this.sponsorID = "";
+      this.sponsorID = '';
     } else {
       this.sponsorShow(sponsor);
       this.sponsorID = sponsor.id;
@@ -53,18 +53,18 @@ export class PopupControlService {
 
   sponsorShow(sponsor: any): void {
     this.Sponsor = sponsor;
-    this.isWhichTabOpen = "sponsor";
+    this.isWhichTabOpen = 'sponsor';
   }
 
   sponsorHide(): void {
-    this.isWhichTabOpen = "";
-    this.Sponsor = {};   
+    this.isWhichTabOpen = '';
+    this.Sponsor = {};
   }
 
   toggleSharing(video: any) {
-    if (this.sharingVideoID === video.id && this.isWhichTabOpen === "sharing") {
+    if (this.sharingVideoID === video.id && this.isWhichTabOpen === 'sharing') {
       this.sharingHide();
-      this.sharingVideoID = "";
+      this.sharingVideoID = '';
     } else {
       this.sharingShow(video);
       this.sharingVideoID = video.id;
@@ -73,11 +73,11 @@ export class PopupControlService {
 
   sharingShow(video: any): void {
     this.sharingVideo = video;
-    this.isWhichTabOpen = "sharing";
+    this.isWhichTabOpen = 'sharing';
   }
 
   sharingHide(): void {
-    this.isWhichTabOpen = "";
+    this.isWhichTabOpen = '';
     this.sharingVideo = {};
   }
 

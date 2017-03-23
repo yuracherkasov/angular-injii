@@ -11,9 +11,7 @@ export class CSearchService {
 
   filter: string = '';
   order: string = 'donations';
-
-  private searchCharitiesSource = new Subject<string>();
-
+  searchCharitiesSource = new Subject<string>();
   searchEmitter = this.searchCharitiesSource.asObservable();
 
   changeOrderProperty(order: string) {
@@ -30,7 +28,7 @@ export class CSearchService {
       .get(`/api/artistsFake${term}`)
       .map((r: Response) => {
         //return r.json().charities as Charity[]
-        return r.json().artists as Charity[]
+        return r.json().artists as Charity[];
       }
       );
 

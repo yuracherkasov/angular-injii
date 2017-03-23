@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivityComponent } from './activity.component';
 import { ActivityItemComponent } from './item/item.component';
-import { ActivityRoutingModule } from './activity-routing.module'
+import { ActivityRoutingModule } from './activity-routing.module';
 
 
 @NgModule({

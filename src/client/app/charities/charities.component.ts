@@ -17,28 +17,31 @@ import { Charity } from './charity.model';
 })
 
 export class CharitiesComponent implements OnInit, AfterViewInit {
+
+  hidepopup: boolean = false;
   charities: Observable<Charity[]>;
   private searchTerm = new Subject<string>();
 
-  private hidepopup: boolean = false;
+  term: string = '';
 
-  term: string = "";
-
-  constructor(private searchService: CSearchService,
-    private popupService: PopupService,
-    private router: Router) {
+  constructor
+    (
+    public searchService: CSearchService,
+    public popupService: PopupService,
+    private router: Router
+    ) {
 
     searchService.searchEmitter.subscribe(order => {
       this.categoryChange(order);
-    })
+    });
 
     popupService.contentObservable.subscribe(data => {
       if (data) {
-        this.showPopUp()
+        this.showPopUp();
       } else {
-        this.hidePopUp()
+        this.hidePopUp();
       }
-    })
+    });
   }
 
   showPopUp() {
@@ -54,7 +57,7 @@ export class CharitiesComponent implements OnInit, AfterViewInit {
 
   categoryChange(order: string) {
     this.searchService.order = order;
-    this.search(this.searchService.filter)
+    this.search(this.searchService.filter);
   }
 
   search(filter: string): void {
@@ -69,7 +72,7 @@ export class CharitiesComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.searchAsObservable()
+    this.searchAsObservable();
   }
 
   searchAsObservable(): void {
