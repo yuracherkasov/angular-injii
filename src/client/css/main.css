@@ -6948,6 +6948,7 @@ input[type="checkbox"]:checked + label span {
       width: 100%; }
     .overlay-desktop.small-panel .bio {
       width: 100%; }
+  .close-right-panel,
   .overlay-desktop .overlay-close {
     width: 15px;
     height: 15px;
@@ -6957,6 +6958,10 @@ input[type="checkbox"]:checked + label span {
     right: 12px;
     top: 10px;
     z-index: 10; }
+    .close-right-panel{
+      right: auto;
+      left: 12px;
+    }
     @media (max-width: 991px) {
       .overlay-desktop .overlay-close {
         right: 5px;
@@ -8342,6 +8347,7 @@ body {
   background: url(../../assets/spinner.gif) no-repeat center;
 }
 
+.site-loader,
 .loader {
   display: inline-block;
   border-radius: 50%;
@@ -8358,6 +8364,13 @@ body {
   transform: translateZ(0);
   -webkit-animation: load .6s infinite linear;
   animation: load .6s infinite linear;
+}
+.site-loader{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -22px;
+  margin-top: -22px;
 }
 @-webkit-keyframes load {
   0% {

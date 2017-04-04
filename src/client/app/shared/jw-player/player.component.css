@@ -82,11 +82,55 @@
   margin-top: -35px;
   z-index: 99;
   padding: 0;
-  background: url('assets/svg/icons/play-button.svg') no-repeat center;
+  background-position: center;
+  background-repeat: no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
   border: none;
+  background-color: transparent;
 }
+.button-start.playing{
+  background-image: url('assets/svg/icons/play-button.svg');
+}
+.button-start.loading{
+  cursor: default;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  margin-left: -25px;
+  margin-top: -25px;
+  border-radius: 50%;
+  border-top: 8px solid rgba(132, 0, 121, 0.2);
+  border-right: 8px solid rgba(132, 0, 121, 0.2);
+  border-bottom: 8px solid rgba(132, 0, 121, 0.2);
+  border-left: 8px solid #840079;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load .6s infinite linear;
+  animation: load .6s infinite linear;
+}
+@-webkit-keyframes load {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 991px){
   .player-wrap{
       position: relative;

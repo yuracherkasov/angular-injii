@@ -1,4 +1,5 @@
 <div id="sign-menu" class="scrollable-y" [class.sign-menu-open]="uiService.isSignMenuOpen">
+  <a href="javascript: close();" class="close-right-panel" (click)="uiService.toggleSignMenu($event)"></a>
   <ul>
     <li class="profile" *ngIf="!isLoggedIn" [@loginAnimation]="!isLoggedIn ? 'active':''">
         <div [ngClass]="{'my-transition':!uiService.joinAsIcon}"> 

@@ -36,15 +36,17 @@ export class SharingInjiiComponent implements OnInit {
 
   constructor(private constantsService: ConstantsService) {
 
-    this.textInjii =
-      `Here you can place any text. This can contain a referral code that the user can enter at registration.`;
     this.urlInjii = this.constantsService.homeUrl;
     this.imageInjii = this.constantsService.homeUrl + "/assets/symbol_with_logo/symbol_logo_original.jpg";
     this.headerInjii = "Join the injii";
 
+    constantsService.userObservable.subscribe(() => {
+        this.setSharingText();
+    });
   }
 
   ngOnInit(): void {
+    this.setSharingText();
     this.goptions = {
       contenturl: this.constantsService.homeUrl,
       clientid: this.constantsService.gClient_id,
@@ -52,20 +54,33 @@ export class SharingInjiiComponent implements OnInit {
       prefilltext: this.textInjii,
       calltoactionlabel: 'SIGN_IN',
       calltoactionurl: this.constantsService.homeUrl
-    }
+    };
     gapi.interactivepost.render(this.grender.nativeElement, this.goptions);
   }
 
+  setSharingText(): void{
+    if (this.constantsService.User){
+      this.textInjii = 'Refferal code: ' + this.constantsService.User.id;
+    } else{
+      this.textInjii = '';
+    }
+  }
+
   shareFb(): void {
+    let fbParams: any = {
+        appId: this.constantsService.fbAppId,
+        xfbml: true,
+        version: 'v2.8'
+      };
+      FB.init(fbParams);
+
     FB.ui({
       app_id: this.constantsService.fbAppId,
-      method: 'share',
+      method: 'feed',
       mobile_iframe: true,
-      //display: 'dialog',
-      href: this.urlInjii,
-      caption: this.headerInjii,
-      description: this.textInjii,
-      picture: this.imageInjii
+      caption: this.textInjii,
+      //description: this.textInjii,
+      link: this.urlInjii
     }, function (response: any) { console.log(response) });
   }
 

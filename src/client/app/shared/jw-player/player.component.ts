@@ -18,7 +18,7 @@ export class PlayerComponent implements AfterViewInit {
   playlist: any;
   sharingPlugin: any;
   controlStyle: string = 'block';
-  showPlayingButton: boolean = true;
+  showPlayingButton: string = '';
 
   constructor(private elementRef: ElementRef,
     private playerService: PlayerService,
@@ -28,13 +28,13 @@ export class PlayerComponent implements AfterViewInit {
 
     this.playerService.videoDetailObservable
       .subscribe((data: any) => {
-        if (data && data.result === "OK")
+        if (data && data.result === 'OK')
           this.changeVideo(data.video.playlist)
       })
   }
 
   ngAfterViewInit() {
-    this.playerService.getVideo("current").then((resolve: any) => {
+    this.playerService.getVideo('current').then((resolve: any) => {
       if (resolve.result === 'OK') {
         let playlist = resolve.video.playlist;
         let player = this.playerEl.nativeElement.id;
@@ -55,14 +55,19 @@ export class PlayerComponent implements AfterViewInit {
         });
 
         jwplayer().on('ready', (event: Event) => {
+           this.zone.run(() => {
+            this.showPlayingButton = 'playing';
+          })
           this.sharingPlugin = jwplayer().getPlugin('sharing');
-          jwplayer(player).play(true)
+          jwplayer(player).play(true);
         });
 
         jwplayer(player).on('play', () => {
-          this.zone.run(() => {
-            this.showPlayingButton = false;
-          })
+          this.makeLoading();
+        });
+
+        jwplayer().on('buffer', () => {
+          this.makeLoading();
         });
 
         jwplayer().on('playlistComplete', () => {
@@ -80,35 +85,48 @@ export class PlayerComponent implements AfterViewInit {
     });
   }
 
+  makeLoading(){
+    let state = jwplayer().getState();
+    if(state === 'playing'){
+      this.zone.run(() => {
+        this.showPlayingButton = '';
+      });
+    } else {
+      this.zone.run(() => {
+        this.showPlayingButton = 'loading';
+      });
+    };   
+  };
+
   changeVideo(playlist: string): void {
     if (jwplayer().load && typeof jwplayer().load === "function") {
       jwplayer().load(playlist);
-      jwplayer().play(true)
-    }
-  }
+      jwplayer().play(true);
+    };
+  };
 
   callSharing() {
     this.sharingPlugin.open();
-    jwplayer().play(true)
+    jwplayer().play(true);
     this.controlStyle = "none";
     this.sharingPlugin.on('close', () => {
       this.controlStyle = "block";
-    })
-  }
+    });
+  };
 
   setValue(e: any) {
     if (e.target.classList.contains('active')) {
       jwplayer().setMute(true);
-      e.target.classList.toggle('active')
+      e.target.classList.toggle('active');
     } else {
       jwplayer().setMute(false);
-      e.target.classList.toggle('active')
-    }
+      e.target.classList.toggle('active');
+    };
   };
 
   startPlay() {
+    this.showPlayingButton = 'loading';
     jwplayer().play(true);
-    this.showPlayingButton = false;
   }
 
 }
