@@ -21,7 +21,7 @@ import { AuthService } from './sign/services/auth.service';
 import { UserService } from './sign/services/user.service';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { CeiboShare } from 'ng2-social-share';
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -33,8 +33,8 @@ import { CeiboShare } from 'ng2-social-share';
     CommonModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
-    //NgbModule.forRoot()
+    ReactiveFormsModule,
+    TooltipModule.forRoot()
   ],
   declarations: 
   [

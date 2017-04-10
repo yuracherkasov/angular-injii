@@ -396,7 +396,6 @@ export class SeedConfig {
       '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
       'ng2-file-upload': 'node_modules/ng2-file-upload/ng2-file-upload',
       'ng2-social-share': 'node_modules/ng2-social-share/ng2-social-share',
-      //'@ng-bootstrap/ng-bootstrap': 'node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js',
     
       'mydatepicker': 'node_modules/mydatepicker/dist/my-date-picker.module',
       'underscore': 'node_modules/underscore/underscore.js',
@@ -496,10 +495,6 @@ export class SeedConfig {
         main: 'underscore.js',
         defaultExtension: 'js'
       },
-      // '@ng-bootstrap/ng-bootstrap': {
-      //   main: 'bundles/ng-bootstrap.js',
-      //   defaultExtension: 'js'
-      // },
       'angular2-virtual-scroll': {
         main: 'dist/virtual-scroll.js',
         defaultExtension: 'js'

@@ -88,16 +88,16 @@
               <div>
                 <p>Rate artist</p>
                 <ul class="stars">
-                  <li [ngClass]="{'active': artist.rating >= 1}" (click)="submitVote(1)" ngbTooltip="1" placement="top">&#9733;</li>
-                  <li [ngClass]="{'active': artist.rating >= 2}" (click)="submitVote(2)" ngbTooltip="2" placement="top">&#9733;</li>
-                  <li [ngClass]="{'active': artist.rating >= 3}" (click)="submitVote(3)" ngbTooltip="3" placement="top">&#9733;</li>
-                  <li [ngClass]="{'active': artist.rating >= 4}" (click)="submitVote(4)" ngbTooltip="4" placement="top">&#9733;</li>
-                  <li [ngClass]="{'active': artist.rating >= 5}" (click)="submitVote(5)" ngbTooltip="5" placement="top">&#9733;</li>
-                  <li [ngClass]="{'active': artist.rating >= 6}" (click)="submitVote(6)" ngbTooltip="6" placement="top">&#9733;</li>
-                  <li [ngClass]="{'active': artist.rating >= 7}" (click)="submitVote(7)" ngbTooltip="7" placement="top">&#9733;</li>
-                  <li [ngClass]="{'active': artist.rating >= 8}" (click)="submitVote(8)" ngbTooltip="8" placement="top">&#9733;</li>
-                  <li [ngClass]="{'active': artist.rating >= 9}" (click)="submitVote(9)" ngbTooltip="9" placement="top">&#9733;</li>
-                  <li [ngClass]="{'active': artist.rating === 10}" (click)="submitVote(10)" ngbTooltip="10" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 1}" (click)="submitVote(1)" tooltip="1" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 2}" (click)="submitVote(2)" tooltip="2" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 3}" (click)="submitVote(3)" tooltip="3" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 4}" (click)="submitVote(4)" tooltip="4" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 5}" (click)="submitVote(5)" tooltip="5" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 6}" (click)="submitVote(6)" tooltip="6" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 7}" (click)="submitVote(7)" tooltip="7" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 8}" (click)="submitVote(8)" tooltip="8" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating >= 9}" (click)="submitVote(9)" tooltip="9" placement="top">&#9733;</li>
+                  <li [ngClass]="{'active': artist.rating === 10}" (click)="submitVote(10)" tooltip="10" placement="top">&#9733;</li>
                 </ul>
               </div>
             </div>

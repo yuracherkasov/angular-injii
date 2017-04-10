@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
   }
 
   signOut() {
-    this.isLoggedInService.isLogin(false)
+    this.isLoggedInService.isLogin(false);
     this.constantsService.setUser(null);
   }
 

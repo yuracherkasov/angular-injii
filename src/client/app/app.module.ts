@@ -54,11 +54,13 @@ import { BaseRequestOptions } from '@angular/http';
     SharedModule.forRoot()
   ],
   declarations: [AppComponent],
-  providers: [{
+  providers: 
+  [
+    {
     provide: APP_BASE_HREF,
     useValue: '<%= APP_BASE %>'
-  },
-   UiService,
+    },
+    UiService,
     PopupService,
     PlayerService,
     AlertService,

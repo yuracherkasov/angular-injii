@@ -4,11 +4,11 @@ import { ProfileCommentsModule } from './../profile-comments/profile-comments.mo
 import { ArtistsComponent} from './artists.component';
 import { ProfileComponent } from './artist/profile.component';
 import { ArtistRoutingModule } from './artist-routing.module';
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
 @NgModule({
-  imports: [CommonModule, ProfileCommentsModule, ArtistRoutingModule],
+  imports: [CommonModule, ProfileCommentsModule, ArtistRoutingModule, TooltipModule.forRoot()],
   declarations: [ArtistsComponent, ProfileComponent],
   exports: [ArtistsComponent, ProfileComponent],
   providers: []
