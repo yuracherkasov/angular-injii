@@ -33,6 +33,7 @@ import { SearchService } from './search/search.service';
 //used to create fake backend, remove when production
 import { fakeBackendProvider } from './_helpers/fake-backend';
 import { MockBackend, MockConnection } from '@angular/http/testing';
+//import { MockBackend } from '@angular/http/testing/mock_backend';
 import { BaseRequestOptions } from '@angular/http';
 
 @NgModule({

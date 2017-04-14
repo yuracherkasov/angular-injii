@@ -2,9 +2,9 @@
 #apprise{
   transition: all .3s ease-out;
 }
-#apprise2.inactive,
-#apprise.inactive{
-  right: -300px;
+#apprise2.active,
+#apprise.active{
+  right: 20px;
 } 
 .bottom-heading{
   color: #e2e2e2;
@@ -161,6 +161,10 @@
     left: 10px;
     top: 60px;
     height: calc(100% - 70px);
+  }
+  #apprise2.active, 
+  #apprise.active{
+    right: 0;
   }
 }
 

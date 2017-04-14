@@ -6010,6 +6010,7 @@ input[type="checkbox"]:checked + label span {
       max-width: 90px; }
       @media (min-width: 992px) {
         #top-nav .logo img {
+          width: 120px;
           max-width: 120px; } }
   #top-nav.top-menu-open nav {
     opacity: 1;
@@ -6087,6 +6088,9 @@ input[type="checkbox"]:checked + label span {
              color: #e9008c;*/
             background-color: #840079;}
           @media (max-width: 991px) {
+            body{
+              overflow: auto!important;
+            }
             #top-nav nav ul li a {
               width: 100%;
               height: auto; } }
@@ -6367,6 +6371,7 @@ input[type="checkbox"]:checked + label span {
   width: 290px;
   background: #080a0c;
   z-index: 9998;
+  padding-top: 35px;
   -webkit-transition: 0.3s all;
   -o-transition: 0.3s all;
   transition: 0.3s all; }
@@ -6921,10 +6926,14 @@ input[type="checkbox"]:checked + label span {
   -o-transition: 0.3s all;
   transition: 0.3s all; }
   @media (max-width: 991px) {
+    .overlay-desktop,
+    #main-menu,
+    #sign-menu{
+       top: 60px;
+    }
     .overlay-desktop {
       width: 100%;
       height: 100%;
-      top: 55px;
       max-width: 300px;
       background: #080a0c;
       padding: 15px 7.5px 15px 15px;
@@ -7557,7 +7566,7 @@ input[type="checkbox"]:checked + label span {
   #apprise2,
   #apprise {
     left: auto;
-    right: 20px;
+    right: -300px;
     max-width: 300px; } }
 #apprise2 .container-fluid,
 #apprise .container-fluid {
@@ -7575,6 +7584,10 @@ input[type="checkbox"]:checked + label span {
   position: relative;
   padding-right: 15px; }
   @media (max-width: 991px) {
+    #apprise2,
+    #apprise{
+      right: -300px;
+    }
     #apprise2 .articles_holder,
     #apprise .articles_holder {
       overflow-y: scroll;
@@ -7849,7 +7862,7 @@ input[type="checkbox"]:checked + label span {
   @media (min-width: 992px) {
     #bottom-nav {
       height: 68px;
-      position: fixed;
+      position: absolute;
       bottom: 0;
       left: 0;
       right: 0; } }
@@ -8268,6 +8281,7 @@ html {
 body {
   background-color: #1b2228;
   background-size: cover;
+  overflow: hidden;
   position: relative; }
   @media (max-width: 991px) {
     body {

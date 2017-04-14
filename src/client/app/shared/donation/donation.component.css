@@ -1,7 +1,9 @@
+:host >>> #wepay_checkout_iframe { 
+  width: 600px;
+}
 .wrapper{
-  position: absolute;
-  top: 50%;
-  margin-top: -200px;
+  position: fixed;
+  top: 30%;
   left: 50%;
   margin-left: -320px;
   padding: 20px 20px 15px 20px;
@@ -16,7 +18,7 @@
 }
 .wrapper.active{
   height: 445px;
-  margin-top: -250px;
+  top: 20%;
 }
 
 .donation-close{
@@ -99,6 +101,51 @@
   opacity: 1;
   visibility: visible;
   transition: visibility 0s step-end .3s, opacity .3s linear .3s;
+}
+#wepay_checkout::shadow iframe{
+    width: 500px!important;
+  }
+:host #wepay_checkout_iframe::shadow{
+    width: 400px!important;
+  }
+
+@media (max-width: 767px){
+  :host >>> #wepay_checkout_iframe { 
+    width: 300px;
+    height: 600px;
+  }
+  .wrapper{
+    width: 330px;
+    margin-left: -165px;
+    padding: 15px;
+    height: 170px;
+  }
+  .title{
+    padding-bottom: 15px;
+  }
+  .amount-list button{
+    width: 85px;
+    margin: 0;
+  }
+  .amount-list{
+    display: block;
+    text-align: justify;
+  }
+  .amount-list:after{
+    content: "";
+    display: inline-block;
+    width: 100%;
+  }
+  .input-append > input{
+    width: 240px;
+  }
+  .wrapper.active{
+    height: 785px;
+    top: 1%;
+  }
+  .loader{
+    bottom: 40%;
+  }
 }
 
 

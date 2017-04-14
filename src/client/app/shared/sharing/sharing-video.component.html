@@ -1,29 +1,31 @@
 <div class="wrapper" [ngClass]="{'active':popupControlService.isWhichTabOpen === 'sharing'}">
   <span class="cancel" (click)="closePopUp()"></span>
   <div class="content-wrapper">
-    <div class="preview">
-      <img src={{popupControlService.sharingVideo.preview}} alt="preview">
+    <div class="wrapper__container">
+      <div class="preview">
+        <img src={{popupControlService.sharingVideo.preview}} alt="preview">
+      </div>
+      <h5 class="title">{{popupControlService.sharingVideo.title}}</h5>
+      <h6>Shared on:</h6>
+      <ul class="shared-social">
+        <li ceiboShare [facebook]="{u: popupControlService.sharingVideo.src}"><img src="assets/svg/icons/facebook-logo-button.svg" alt="facebook"></li>
+        <li ceiboShare [twitter]="{url: popupControlService.sharingVideo.src, text: popupControlService.sharingVideo.title, hashtags:'injii'}"><img src="assets/svg/icons/twitter-logo-button.svg" alt="twitter"></li>
+        <li ceiboShare [googlePlus]="{url: popupControlService.sharingVideo.src}"><img src="assets/svg/icons/google-plus.svg" alt="instagram"></li>
+      </ul>
     </div>
-    <h5 class="title">{{popupControlService.sharingVideo.title}}</h5>
-    <h6>Shared on:</h6>
-    <ul class="shared-social">
-      <li ceiboShare [facebook]="{u: popupControlService.sharingVideo.src}"><img src="assets/svg/icons/facebook-logo-button.svg" alt="facebook"></li>
-      <li ceiboShare [twitter]="{url: popupControlService.sharingVideo.src, text: popupControlService.sharingVideo.title, hashtags:'injii'}"><img src="assets/svg/icons/twitter-logo-button.svg" alt="twitter"></li>
-      <li ceiboShare [googlePlus]="{url: popupControlService.sharingVideo.src}"><img src="assets/svg/icons/google-plus.svg" alt="instagram"></li>
-    </ul>
   </div>
 </div>
 
 <div class="wrapper" [ngClass]="{'active':popupControlService.isWhichTabOpen === 'sharing-injii'}">
   <span class="cancel" (click)="closePopUp()"></span>
   <div class="content-wrapper">
-    <div class="preview">
-      <img src="assets/logo_white.png" alt="preview">
+    <div class="wrapper__container">
+      <div class="preview">
+        <img src="assets/logo_white.png" alt="preview">
+      </div>
+      <sharing-injii *ngIf="popupControlService.isWhichTabOpen === 'sharing-injii'"></sharing-injii>
     </div>
-
-    <sharing-injii *ngIf="popupControlService.isWhichTabOpen === 'sharing-injii'"></sharing-injii>
-    
   </div>
 </div>
 
-<button id="sharing" class="button-injii" (click)="popupControlService.isWhichTabOpen = 'sharing-injii'">Share injii and refferal code</button>
+<button id="sharing" class="button-injii" (click)="popupControlService.isWhichTabOpen = 'sharing-injii'">refferal code</button>

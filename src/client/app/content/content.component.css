@@ -43,13 +43,13 @@
 }
 .angle-next span{
   padding-right: 18px;
-  background: url(../assets/svg/icons/right-arrow.svg) no-repeat right center;
-  background-size: auto 80%;
+  background: url(../assets/svg/icons/right-arrow.svg) no-repeat right 4px;
+  background-size: auto 18px;
 }
 .angle-prev span{
   padding-left: 18px;
-  background: url(../assets/svg/icons/left-arrow.svg) no-repeat left center;
-  background-size: auto 80%;
+  background: url(../assets/svg/icons/left-arrow.svg) no-repeat left 4px;
+  background-size: auto 18px;
 }
 .angle-prev:disabled:hover,
 .angle-next:disabled:hover,

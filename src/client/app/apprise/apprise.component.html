@@ -1,4 +1,4 @@
-<div class="overlay-desktop" id="apprise" [class.hidepopup]="hidepopup" [class.inactive]="tooglePopupValue">
+<div class="overlay-desktop" id="apprise" [class.hidepopup]="hidepopup" [class.active]="!tooglePopupValue">
   <a href="javascript:;" class="overlay-close" (click)="popupService.hideContentPopup()"></a>
   <div class="container-fluid">
     <div class="row">
@@ -33,7 +33,7 @@
 </div>
 
 
-<div class="overlay-desktop" id="apprise2" [class.hidepopup]="hidepopup" [class.inactive]="!tooglePopupValue">
+<div class="overlay-desktop" id="apprise2" [class.hidepopup]="hidepopup" [class.active]="tooglePopupValue">
   <a href="javascript:;" class="overlay-close" (click)="popupService.hideContentPopup()"></a>
   <div class="container-fluid">
     <div class="row">
