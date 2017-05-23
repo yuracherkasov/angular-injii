@@ -218,11 +218,12 @@ export class RegisterComponent implements OnInit {
   };
 
   register(valueform: any) {
+    console.log(valueform);
     this.loading = true;
     let password = valueform.password
     delete valueform.password;
     delete valueform.repeatpsw;
-    this.userService.signup(valueform, password)
+    this.userService.signup(valueform)
       .then((response: any) => {
         if (response.message && response.user) {
           this.alertService.info(response.message);

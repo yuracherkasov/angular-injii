@@ -2,13 +2,14 @@ import { Injectable } from "@angular/core";
 import { Http, Response } from "@angular/http";
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/toPromise';
+import { ApiService } from '../../services/api.service';
 
 @Injectable()
 export class PlayerService {
 
   private subjDetailSource = new Subject<string>();
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private apiService: ApiService) { }
 
   videoDetailObservable = this.subjDetailSource.asObservable();
   videoDetailChange(data: any) {
@@ -22,9 +23,9 @@ export class PlayerService {
   }
 
   getVideo(str: string): Promise<Object> {
-    return this.http.get('/api/videos/'+str)
+    return this.apiService.get('/api/videos/'+str)
       .toPromise()
-      .then(response => {   
+      .then(response => {
         let videoData = response.json()
         this.videoDetailChange(videoData)
         return videoData

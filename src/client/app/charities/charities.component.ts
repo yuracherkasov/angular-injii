@@ -86,6 +86,7 @@ export class CharitiesComponent implements OnInit, AfterViewInit {
         console.log(error);
         return Observable.of<Charity[]>([]);
       });
+
   }
 
   onSelect(e: Event, charity: any) {

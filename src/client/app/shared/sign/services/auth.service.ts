@@ -1,13 +1,14 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import { ConstantsService } from '../../../services/constants.service';
+import { ApiService } from '../../../services/api.service';
 
 @Injectable()
 export class AuthService {
-  constructor(private http: Http, private constantsService: ConstantsService) { }
+  constructor(private http: Http, private constantsService: ConstantsService, private apiService: ApiService) { }
 
   login(username: string, password: string, remember: boolean): Promise<Object> {
-    return this.http.post('/api/auth/signin', JSON.stringify({username, password, remember}))
+    return this.apiService.post('/api/login', JSON.stringify({username, password, remember}))
       .toPromise()
       .then((response) => {
         let result = response.json();
@@ -26,7 +27,7 @@ export class AuthService {
   }
 
   requestPasswordRestore(email: string): Promise<Object> {
-    return this.http.post('/api/auth/restore', JSON.stringify({email}))
+    return this.apiService.post('/api/auth/restore_password', JSON.stringify({email}))
       .toPromise()
       .catch(this.handleError);
   }

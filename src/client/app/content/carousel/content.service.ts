@@ -6,6 +6,7 @@ import { PlayerService } from './../../shared/jw-player/player.service';
 import { PopupService } from './../../shared/services/ui-popup.service';
 import { RequestOptionsService } from "./../../services/request-options.service";
 import { Subject } from "rxjs/Subject"
+import { ApiService } from '../../services/api.service';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -23,7 +24,8 @@ export class ContentService {
     private requestOptionsService: RequestOptionsService,
     private screenService: ScreenService,
     private playerService: PlayerService,
-    private popupService: PopupService
+    private popupService: PopupService,
+    private apiService: ApiService
   ) {
     this.setLimit(this.screenService.screen);
 
@@ -56,7 +58,7 @@ export class ContentService {
 
   getContent(term: string): Promise<any> {
     console.log(`/api/videos${term}`)
-    return this.http.get('/api/videos' + term)
+    return this.apiService.get('/api/videos' + term)
       .toPromise()
       .then(response => response.json().videos)
       .catch(this.requestOptionsService.handleError);

@@ -63,7 +63,7 @@ export class AppriseComponent implements OnInit {
     if (val) {
       this.offset += this.limit;
     }
-    this.term = '/?offset=' + this.offset + '&limit=' + this.limit;
+    this.term = '/?page=' + this.offset + '&rec_per_page=' + this.limit;
 
     this.appriseService.get(this.term)
       .then((response: IApprise) => {
