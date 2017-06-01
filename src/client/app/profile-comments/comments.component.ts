@@ -13,7 +13,7 @@ import { ConstantsService } from './../services/constants.service';
 })
 export class ProfileCommentsComponent implements OnInit {
 
-  
+
   loading: any = false;
   newComment: string = '';
   showMoreButton: boolean;
@@ -27,7 +27,7 @@ export class ProfileCommentsComponent implements OnInit {
   (
     public constantsService: ConstantsService,
     private route: ActivatedRoute,
-    private router: Router, 
+    private router: Router,
     private commentsService: CommentsService) {
   }
 
@@ -86,7 +86,7 @@ export class ProfileCommentsComponent implements OnInit {
       });
   }
 
-  delete(comment: any, n: number): void {
+  del(comment: any, n: number): void {
     this.loading = n;
     this.commentsService.delete(comment.id)
       .then(response => {

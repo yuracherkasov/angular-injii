@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { ApiService } from '../services/api.service';
 
 import { Charity } from './charity.model';
 
@@ -19,16 +20,15 @@ export class CSearchService {
     this.searchCharitiesSource.next(order);
   }
 
-  constructor(private http: Http) {}
+  constructor(private http: Http, private apiService: ApiService) {}
 
   search(term: string): Observable<Charity[]> {
-    console.log(`/api/charitiesFake${term}`);
-    return this.http
-      //.get(`/api/charities${term}`) 
-      .get(`/api/artistsFake${term}`)
+     return this.apiService
+      .get(`/api/charities`)
+      // .get(`/api/charities${term}`)
       .map((r: Response) => {
         //return r.json().charities as Charity[]
-        return r.json().artists as Charity[];
+        return r.json().charities as Charity[];
       }
       );
 

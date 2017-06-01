@@ -29,12 +29,13 @@ import { UiDonationService } from './shared/donation/ui-donation.service';
 import { ASearchService } from './artists/search.service';
 import { CSearchService } from './charities/search.service';
 import { SearchService } from './search/search.service';
+import { ApiService } from './services/api.service';
 
 //used to create fake backend, remove when production
-import { fakeBackendProvider } from './_helpers/fake-backend';
-import { MockBackend, MockConnection } from '@angular/http/testing';
+// import { fakeBackendProvider } from './_helpers/fake-backend';
+// import { MockBackend, MockConnection } from '@angular/http/testing';
 //import { MockBackend } from '@angular/http/testing/mock_backend';
-import { BaseRequestOptions } from '@angular/http';
+// import { BaseRequestOptions } from '@angular/http';
 
 @NgModule({
   imports:
@@ -55,7 +56,7 @@ import { BaseRequestOptions } from '@angular/http';
     SharedModule.forRoot()
   ],
   declarations: [AppComponent],
-  providers: 
+  providers:
   [
     {
     provide: APP_BASE_HREF,
@@ -73,11 +74,11 @@ import { BaseRequestOptions } from '@angular/http';
     ASearchService,
     CSearchService,
     SearchService,
-
+    ApiService,
    //providers used to create fake backend, remove when production
-    fakeBackendProvider,
-    MockBackend,
-    BaseRequestOptions
+   //  fakeBackendProvider,
+   //  MockBackend,
+   //  BaseRequestOptions
   ],
   bootstrap: [AppComponent]
 

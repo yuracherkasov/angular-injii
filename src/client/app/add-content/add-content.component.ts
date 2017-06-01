@@ -104,7 +104,7 @@ export class AddContentComponent implements OnInit {
       form.append('datetime', this.convertPeriodDate());
     };
   }
-  
+
 
   defineDuration(event: number): void {
     console.log("duration video = " + event)
@@ -141,7 +141,7 @@ export class AddContentComponent implements OnInit {
    */
   private getCharities(): void {
     this.artistProfileService.getCharities()
-      .then(res => this.charities = res);
+      .then(res => { console.log(res); this.charities = res;});
   }
 
   private setCurrentDate(date: Date): void {

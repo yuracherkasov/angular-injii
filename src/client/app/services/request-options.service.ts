@@ -7,7 +7,7 @@ import { ConstantsService } from './constants.service';
 
 export class RequestOptionsService {
 
-  constructor(private constantsService: ConstantsService) { }
+  constructor(private constantsService: ConstantsService) {}
 
   jwt(): any {
     let user = this.constantsService.User;
@@ -19,8 +19,11 @@ export class RequestOptionsService {
     }
   }
 
+
   handleError(error: any): Promise<any> {
     return Promise.reject(error.message || error);
   }
+
+
 
 }
