@@ -11,21 +11,21 @@ export class ArtistProfileService {
   constructor(private http: Http, private apiService: ApiService) { }
 
   getVideosByArtist(id: number): Promise<Video[]> {
-    return this.ApiService.get(`/api/artist/${id}/videos`)
+    return this.apiService.get(`/api/artist/${id}/videos`)
       .toPromise()
       .then(response => response.json().videos as Video[])
       .catch(this.handleError);
   }
 
   getCharities(): Promise<any> {
-    return this.ApiService.get(`/api/charities`)
+    return this.apiService.get(`/api/charities`)
       .toPromise()
       .then(response => response.json().data)
       .catch(this.handleError);
   }
 
   getMaxVideoDuration(): Promise<number> {
-    return this.ApiService.get('/api/max-video-duration')
+    return this.apiService.get('/api/max-video-duration')
       .toPromise()
       .then(response => response.json().data.duration)
       .catch(this.handleError);

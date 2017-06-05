@@ -39,11 +39,12 @@ export class ProfileCommentsComponent implements OnInit {
         this.offset = 0;
         this.responseMessage = '';
         this.showMoreButton = false;
-        let term = '/?offset=' + this.offset + '&limit=' + this.limit;
+        let term = '?offset=' + this.offset + '&limit=' + this.limit;
         this.username = params['username'];
         return this.commentsService.getAll(this.username, term);
       })
       .subscribe((response: any) => {
+        console.log("Get Comments response: ", response);
         if (response.comments) {
           this.comments = response.comments;
         }
@@ -56,7 +57,7 @@ export class ProfileCommentsComponent implements OnInit {
   getMore() {
     this.loading = 9999;
     this.offset += this.limit;
-    let term = '/?offset=' + this.offset + '&limit=' + this.limit;
+    let term = '?offset=' + this.offset + '&limit=' + this.limit;
     this.commentsService.getAll(this.username, term)
       .then((response: any) => {
         this.comments.push(...response.comments);
@@ -88,7 +89,7 @@ export class ProfileCommentsComponent implements OnInit {
 
   del(comment: any, n: number): void {
     this.loading = n;
-    this.commentsService.delete(comment.id)
+    this.commentsService.del(comment.id)
       .then(response => {
         this.loading = false;
         if (response.result === 'OK') {

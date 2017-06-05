@@ -1,37 +1,34 @@
 import { Injectable } from '@angular/core';
-import { Headers, RequestOptions, RequestOptionsArgs } from '@angular/http';
+//import { Headers, RequestOptions, RequestOptionsArgs } from '@angular/http';
+import { RequestOptionsService } from './request-options.service'
 import { Http, Response } from '@angular/http';
-import Promise = webdriver.promise.Promise;
 
 @Injectable()
 
 export class ApiService {
 
-  constructor(private http: Http) {}
+  url: string = 'http://54.157.10.121:80/laravel-admin/public';
 
-  get(address: string, options:any): Promise<any> {
-     return this.http.get('http://54.157.10.121:80/laravel-admin/public' + address, new RequestOptions({
-      headers: new Headers({
-        'Origin': 'http://localhost:5556',
-        'Access-Control-Allow-Origin': '*'
-      })
-    }));
-  }
+  constructor(private http: Http, private requestOptionsService: RequestOptionsService) {}
 
-  post(address: string, mess:any, requestOptionsService:any): Promise<any> {
-    return this.http.post('http://54.157.10.121:80/laravel-admin/public' + address, mess,  requestOptionsService);
-  }
+  get(address: string) {
+     return this.http.get(this.url + address, this.requestOptionsService.jwt());
+  };
 
-  put(address: string, data:any, requestOptionsService:any): Promise<any>{
-    return this.http.put('http://54.157.10.121:80/laravel-admin/public' + address, data,  requestOptionsService);
-  }
+  post(address: string, mess:any) {
+    return this.http.post(this.url + address, mess,  this.requestOptionsService.jwt());
+  };
 
-  patch(address: string, data:any, requestOptionsService:any): Promise<any>{
-    return this.http.patch('http://54.157.10.121:80/laravel-admin/public' + address, data,  requestOptionsService);
-  }
+  put(address: string, data:any){
+    return this.http.put(this.url + address, data,  this.requestOptionsService.jwt());
+  };
 
-  del(address: string, requestOptionsService:any): Promise<any>{
-    return this.http.delete('http://54.157.10.121:80/laravel-admin/public' + address, requestOptionsService);
-  }
+  patch(address: string, data:any){
+    return this.http.patch(this.url + address, data,  this.requestOptionsService.jwt());
+  };
+
+  del(address: string){
+    return this.http.delete(this.url + address, this.requestOptionsService.jwt());
+  };
 
 }

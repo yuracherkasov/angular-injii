@@ -59,6 +59,7 @@ export class ProfileComponent implements OnInit {
     this.route.params
       .switchMap((params: Params) => this.profileService.getProfile(params['username']))
       .subscribe((artist: any) => {
+        console.log("Artist response: ", artist)
         this.artist = artist;
         this.artistManager = artist.manager;
         this.artistAgent = artist.booking_agent;

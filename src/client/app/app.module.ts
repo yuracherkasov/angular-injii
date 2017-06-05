@@ -32,10 +32,10 @@ import { SearchService } from './search/search.service';
 import { ApiService } from './services/api.service';
 
 //used to create fake backend, remove when production
-// import { fakeBackendProvider } from './_helpers/fake-backend';
-// import { MockBackend, MockConnection } from '@angular/http/testing';
+ //import { fakeBackendProvider } from './_helpers/fake-backend';
+//import { MockBackend, MockConnection } from '@angular/http/testing';
 //import { MockBackend } from '@angular/http/testing/mock_backend';
-// import { BaseRequestOptions } from '@angular/http';
+ //import { BaseRequestOptions } from '@angular/http';
 
 @NgModule({
   imports:
@@ -76,9 +76,9 @@ import { ApiService } from './services/api.service';
     SearchService,
     ApiService,
    //providers used to create fake backend, remove when production
-   //  fakeBackendProvider,
-   //  MockBackend,
-   //  BaseRequestOptions
+    //fakeBackendProvider,
+    //MockBackend,
+   // BaseRequestOptions
   ],
   bootstrap: [AppComponent]
 

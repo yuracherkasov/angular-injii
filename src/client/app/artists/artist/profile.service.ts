@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { RequestOptionsService } from "../../services/request-options.service";
 import { ApiService } from '../../services/api.service';
 
@@ -7,8 +6,9 @@ import { ApiService } from '../../services/api.service';
 @Injectable()
 
 export class ProfileService {
-  constructor(private http: Http,
-    private requestOptionsService: RequestOptionsService, private apiService: ApiService) { }
+  constructor(
+    private requestOptionsService: RequestOptionsService,
+    private apiService: ApiService) { }
 
   getProfile(username: string): Promise<any> {
     console.log( '/api/artist/' + username )

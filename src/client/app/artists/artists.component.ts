@@ -60,13 +60,13 @@ export class ArtistsComponent implements OnInit, AfterViewInit {
   }
 
   search(filter: string): void {
-    this.term = '/?&order=' + this.searchService.order + '&filter=' + filter;
+    this.term = '?&order=' + this.searchService.order + '&filter=' + filter;
     this.searchService.filter = filter;
     this.searchTerm.next(this.term);
   }
 
   ngAfterViewInit(): void {
-    this.term = '/?&order=' + this.searchService.order + '&filter=' + this.searchService.filter;
+    this.term = '?&order=' + this.searchService.order + '&filter=' + this.searchService.filter;
     this.searchTerm.next(this.term);
 
   }
@@ -83,7 +83,7 @@ export class ArtistsComponent implements OnInit, AfterViewInit {
         ? this.searchService.search(this.term)
         : Observable.of<Artist[]>([]))
       .catch(error => {
-        console.log(error);
+        console.warn("Artists reject: ", error);
         return Observable.of<Artist[]>([]);
       });
   }

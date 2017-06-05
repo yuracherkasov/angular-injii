@@ -51,8 +51,8 @@ export class BotNavigationComponent {
       .subscribe((data: any) => {
         this.zone.run(() => {
           this.Data = data.video;
-          this.artistData = data.video.artist;
-          this.charityData = data.video.charity;
+          this.artistData = data.artist;
+          this.charityData = data.charity;
         })
       })
 

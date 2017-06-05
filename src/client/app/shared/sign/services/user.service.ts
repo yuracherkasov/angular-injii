@@ -10,26 +10,27 @@ export class UserService {
   }
 
   signup(user: any): Promise<Object> {
-    return this.apiService.post('/api/register', user, this.requestOptionsService.jwt())
+    console.log("User register request url: /api/register,  User register request body: " + user)
+    return this.apiService.post('/api/register', user)
       .toPromise()
       .then(response => response.json())
-      .catch(this.requestOptionsService.handleError);
+      .catch((e) => this.requestOptionsService.handleError(e, "User register catch"));
   }
 
   update(user: Object): Promise<any> {
-    return this.apiService.put('/api/auth/update_profile', {user}, this.requestOptionsService.jwt())
+    return this.apiService.put('/api/auth/update_profile', {user})
       .toPromise()
       .then(response => response.json())
-      .catch(this.requestOptionsService.handleError);
+      .catch((e) => this.requestOptionsService.handleError(e, "User update catch"));
   }
 
   updatePassword(old_password: any, new_password: any): Promise<any> {
-    return this.apiService.post('/api/auth/updatepass', { 'old_password':old_password, 'new_password': new_password }, this.requestOptionsService.jwt())
+    return this.apiService.post('/api/auth/updatepass', { 'old_password':old_password, 'new_password': new_password })
       .toPromise()
   }
 
   updateUser(user: any): Promise<any> {
-    return this.apiService.post('/api/auth/update_profile', user, this.requestOptionsService.jwt())
+    return this.apiService.post('/api/auth/update_profile', user)
       .toPromise()
   }
 

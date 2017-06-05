@@ -27,8 +27,8 @@ export class ASearchService {
   }
 
   search(term: string): Observable<Artist[]> {
-    // return this.apiService.get('/api/artists' + term)
-    return this.apiService.get('/api/artists')
+    console.log("Artists request: " + '/api/artists' + term);
+    return this.apiService.get('/api/artists' + term)
       .map((r: Response) => {
         return r.json().artists as Artist[];
       }

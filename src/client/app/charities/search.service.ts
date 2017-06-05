@@ -23,15 +23,11 @@ export class CSearchService {
   constructor(private http: Http, private apiService: ApiService) {}
 
   search(term: string): Observable<Charity[]> {
-     return this.apiService
-      .get(`/api/charities`)
-      // .get(`/api/charities${term}`)
+    console.log("Charities request: " + '/api/charities' + term)
+    return this.apiService.get('/api/charities' + term)
       .map((r: Response) => {
-        //return r.json().charities as Charity[]
         return r.json().charities as Charity[];
-      }
-      );
-
+      });
   }
 
 }

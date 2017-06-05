@@ -52,33 +52,41 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.userform = this._formBuilder.group({
-      'role': ['user'],
+      'user_type': ['user'],
+      //'role': ['user'],
       'auth_via': ['native'],
+      'band': [null],
       'username': [null, [Validators.required, Validators.minLength(5), Validators.pattern('[A-Za-z0-9]*')]],
       'firstname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
-      'lastname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
+      'last_name': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
+      //'lastname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
       'email': [null, [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
       'password': [null, [Validators.required, Validators.minLength(6)]],
       'repeatpsw': [null, [Validators.required]],
-      'birth': [null, [Validators.required]],
-      'tel': [null],
+      'dob': [null, [Validators.required]],
+      //'birth': [null, [Validators.required]],
+      'phone': [null],
+      //'tel': [null],
       'city': [null],
       'state': [null],
       'zip': [null],
       'refer': [null]
     }, { validator: matchingPasswords('password', 'repeatpsw') });
     this.artistform = this._formBuilder.group({
-      'role': ['artist'],
+      'user_type': ['artist'],
+       //'role': ['artist'],
       'auth_via': ['native'],
-      'bandname': [null, [Validators.required]],
+      'band': [null, [Validators.required]],
       'username': [null, [Validators.required, Validators.minLength(5), Validators.pattern('[A-Za-z0-9]*')]],
       'firstname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
-      'lastname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
+      'last_name': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
+      //'lastname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
       'email': [null, [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
       'password': [null, [Validators.required, Validators.minLength(6)]],
       'repeatpsw': [null, [Validators.required]],
-      'birth': [null, [Validators.required]],
-      'tel': [null, [Validators.required]],
+      'dob': [null, [Validators.required]],
+      'phone': [null, [Validators.required]],
+      //'tel': [null, [Validators.required]],
       'city': [null, [Validators.required]],
       'state': [null, [Validators.required]],
       'zip': [null, [Validators.required]],
@@ -86,17 +94,21 @@ export class RegisterComponent implements OnInit {
     }, { validator: matchingPasswords('password', 'repeatpsw') });
 
     this.charityform = this._formBuilder.group({
-      'role': ['charity'],
+      'user_type': ['charity'],
+      //'role': ['charity'],
       'auth_via': ['native'],
+      'band': [null],
       'charityname': [null, [Validators.required]],
       'username': [null, [Validators.required, Validators.minLength(5), Validators.pattern('[A-Za-z0-9]*')]],
       'firstname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
-      'lastname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
+      'last_name': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
+      //'lastname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
       'email': [null, [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
       'password': [null, [Validators.required, Validators.minLength(6)]],
       'repeatpsw': [null, [Validators.required]],
       'address': [null, [Validators.required]],
-      'tel': [null, [Validators.required]],
+      'phone': [null, [Validators.required]],
+      //'tel': [null, [Validators.required]],
       'city': [null, [Validators.required]],
       'state': [null, [Validators.required]],
       'zip': [null, [Validators.required]],
@@ -146,15 +158,15 @@ export class RegisterComponent implements OnInit {
 
   formErrors: any = {
     'charityname': '',
-    'bandname': '',
+    'band': '',
     'username': '',
-    'lastname': '',
+    'last_name': '',
     'firstname': '',
     'email': '',
     'password': '',
     'repeatpsw': '',
-    'birth': '',
-    'tel': '',
+    'dob': '',
+    'phone': '',
     'city': '',
     'state': '',
     'zip': '',
@@ -167,7 +179,7 @@ export class RegisterComponent implements OnInit {
       'minlength': 'Username must be at least 5 characters long.',
       'pattern': 'The username must contain only letters and numbers.'
     },
-    'bandname': {
+    'band': {
       'required': 'Username is required.',
       'minlength': 'Username must be at least 5 characters long.',
       'pattern': 'The username must contain only letters and numbers.'
@@ -177,7 +189,7 @@ export class RegisterComponent implements OnInit {
       'minlength': 'Username must be at least 5 characters long.',
       'pattern': 'The username must contain only letters and numbers.'
     },
-    'lastname': {
+    'last_name': {
       'required': 'Field is required.',
       'pattern': 'Enter your real name with no spaces or special characters.',
       'maxlength': 'Name cannot be more than 24 characters long.'
@@ -197,10 +209,10 @@ export class RegisterComponent implements OnInit {
     'repeatpsw': {
       'required': 'Field is required.',
     },
-    'birth': {
+    'dob': {
       'required': 'Field is required.'
     },
-    'tel': {
+    'phone': {
       'required': 'Field is required.'
     },
     'city': {
@@ -221,8 +233,8 @@ export class RegisterComponent implements OnInit {
     console.log(valueform);
     this.loading = true;
     let password = valueform.password
-    delete valueform.password;
-    delete valueform.repeatpsw;
+    // delete valueform.password;
+    // delete valueform.repeatpsw;
     this.userService.signup(valueform)
       .then((response: any) => {
         if (response.message && response.user) {

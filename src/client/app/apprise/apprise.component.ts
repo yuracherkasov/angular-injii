@@ -63,10 +63,12 @@ export class AppriseComponent implements OnInit {
     if (val) {
       this.offset += this.limit;
     }
-    this.term = '/?page=' + this.offset + '&rec_per_page=' + this.limit;
+    //this.term = '/?page=' + this.offset + '&rec_per_page=' + this.limit;
+     this.term = '/?offset=' + this.offset + '&limit=' + this.limit;
 
     this.appriseService.get(this.term)
       .then((response: IApprise) => {
+        console.log('Apprise resolve: ', response);
         if (response.total <= this.offset + this.limit) {
           this.loading = false;
         }
@@ -76,7 +78,7 @@ export class AppriseComponent implements OnInit {
           this.makeQuery = true;
         }
       }, (reject) => {
-        console.log('reject: ', reject);
+        console.warn('Apprise reject: ', reject);
       });
   }
 

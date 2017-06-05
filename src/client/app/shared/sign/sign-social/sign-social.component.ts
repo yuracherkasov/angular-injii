@@ -128,7 +128,7 @@ export class SignSocialComponent {
   }
 
   sign() {
-    this.userService.signup(this.User, null)
+    this.userService.signup(this.User)
       .then((response: any) => {
         if (response.result === "OK" && response.user) {
           this.constantsService.setUser(response.user);

@@ -34,7 +34,9 @@ export class PlayerComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.playerService.getVideo('current').then((resolve: any) => {
+    //this.playerService.getVideo('current').then((resolve: any) => {
+    this.playerService.getVideo('4').then((resolve: any) => {
+        console.log("Video Object ", resolve)
       if (resolve.result === 'OK') {
         let playlist = resolve.video.playlist;
         let player = this.playerEl.nativeElement.id;
