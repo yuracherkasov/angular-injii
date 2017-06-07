@@ -34,13 +34,14 @@ export class LoginComponent {
   fLoading = false;
   incorrectMessage = false;
   forgotformEmail: string;
-  forgotErrorMessage: string = "";
+  forgotErrorMessage: string = '';
+  wrongPassError: string = 'The username or password you entered is incorrect.';
 
   constructor(private authenticationService: AuthService,
     public uiService: UiService,
     private isLoggedInService: IsLoggedInService,
     private alertService: AlertService) {
-    
+
     this.model.remember = false;
   }
 
@@ -48,13 +49,16 @@ export class LoginComponent {
     this.loading = true;
     this.authenticationService.login(this.model.username, this.model.password, this.model.remember)
       .then((response: any) => {
-        if (response && response.user.token) {
+        if (response && response.result === 'OK') {
           this.isLoggedInService.isLogin(true)
         }
         this.loading = false;
         this.alertService.clear()
       }, (reject) => {
-        console.log(reject)
+        let rejectJson = reject.json();
+        if (rejectJson.result === 'FAIL') {
+          this.wrongPassError = rejectJson.message;
+        }
         this.loading = false;
         this.incorrectMessage = true;
       })

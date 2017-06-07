@@ -52,10 +52,10 @@
         </div>
         <div class="form-group">
           <label for="userform-lastname">Last Name*</label>
-          <input type="text" class="form-control" id="userform-lastname" formControlName="last_name" />
+          <input type="text" class="form-control" id="userform-lastname" formControlName="lastname" />
         </div>
-        <div *ngIf="formErrors.last_name && uniqueValue === userform.value" class="alert alert-danger">
-          {{ formErrors.last_name }}
+        <div *ngIf="formErrors.lastname && uniqueValue === userform.value" class="alert alert-danger">
+          {{ formErrors.lastname }}
         </div>
         <div class="form-group">
           <label for="userform-email">E-mail*</label>
@@ -80,14 +80,17 @@
         </div>
         <div class="form-group">
           <label for="userform-birth">Year of birth*</label>
-          <input type="text" class="form-control" id="userform-birth" formControlName="dob" />
+          <input type="text" class="form-control" id="userform-birth" formControlName="birth" />
         </div>
-        <div *ngIf="formErrors.dob && uniqueValue === userform.value" class="alert alert-danger">
-          {{ formErrors.dob }}
+        <div *ngIf="formErrors.birth && uniqueValue === userform.value" class="alert alert-danger">
+          {{ formErrors.birth }}
         </div>
         <div class="form-group">
           <label for="userform-tel">Phone</label>
-          <input type="tel" class="form-control" id="userform-tel" formControlName="phone" />
+          <input type="tel" class="form-control" id="userform-tel" formControlName="tel" />
+        </div>
+         <div *ngIf="formErrors.tel && uniqueValue === userform.value" class="alert alert-danger">
+          {{ formErrors.tel }}
         </div>
         <div class="form-group">
           <label for="userform-city">City</label>
@@ -100,6 +103,9 @@
         <div class="form-group">
           <label for="userform-zip">Zip</label>
           <input type="text" class="form-control" id="userform-zip" formControlName="zip" />
+        </div>
+        <div *ngIf="formErrors.zip && uniqueValue === userform.value" class="alert alert-danger">
+          {{ formErrors.zip }}
         </div>
         <div class="form-group">
           <label for="userform-refer">Referral code</label>
@@ -123,10 +129,10 @@
           [@registerAnimation]="uiService.artistForm ? 'active':''" (ngSubmit)="register(artistform.value)">
           <div class="form-group">
             <label for="artistform-artistname">Band/Group/Artists Name*</label>
-            <input type="text" class="form-control" id="artistform-artistname" formControlName="bandname" />
+            <input type="text" class="form-control" id="artistform-artistname" formControlName="band" />
           </div>
-          <div *ngIf="formErrors.bandname && uniqueValue === artistform.value" class="alert alert-danger">
-            {{ formErrors.bandname }}
+          <div *ngIf="formErrors.band && uniqueValue === artistform.value" class="alert alert-danger">
+            {{ formErrors.band }}
           </div>
           <div class="form-group">
             <label for="artistform-username">Username*</label>
@@ -144,10 +150,10 @@
           </div>
           <div class="form-group">
             <label for="artistform-lastname">Last Name*</label>
-            <input type="text" class="form-control" id="artistform-lastname" formControlName="last_name" />
+            <input type="text" class="form-control" id="artistform-lastname" formControlName="lastname" />
           </div>
-          <div *ngIf="formErrors.last_name && uniqueValue === artistform.value" class="alert alert-danger">
-            {{ formErrors.last_name }}
+          <div *ngIf="formErrors.lastname && uniqueValue === artistform.value" class="alert alert-danger">
+            {{ formErrors.lastname }}
           </div>
           <div class="form-group">
             <label for="artistform-email">E-mail*</label>
@@ -172,17 +178,17 @@
           </div>
           <div class="form-group">
             <label for="artistform-birth">Year of birth*</label>
-            <input type="text" class="form-control" id="artistform-birth" formControlName="dob" />
+            <input type="text" class="form-control" id="artistform-birth" formControlName="birth" />
           </div>
-          <div *ngIf="formErrors.dob && uniqueValue === artistform.value" class="alert alert-danger">
-            {{ formErrors.dob }}
+          <div *ngIf="formErrors.birth && uniqueValue === artistform.value" class="alert alert-danger">
+            {{ formErrors.birth }}
           </div>
           <div class="form-group">
             <label for="artistform-phone">Phone*</label>
-            <input type="tel" class="form-control" id="artistform-phone" formControlName="phone" />
+            <input type="tel" class="form-control" id="artistform-phone" formControlName="tel" />
           </div>
-          <div *ngIf="formErrors.phone && uniqueValue === artistform.value" class="alert alert-danger">
-            {{ formErrors.phone }}
+          <div *ngIf="formErrors.tel && uniqueValue === artistform.value" class="alert alert-danger">
+            {{ formErrors.tel }}
           </div>
           <div class="form-group">
             <label for="artistform-city">City*</label>
@@ -201,6 +207,9 @@
           <div class="form-group">
             <label for="artistform-zip">Zip*</label>
             <input type="text" class="form-control" id="artistform-zip" formControlName="zip" />
+          </div>
+          <div *ngIf="formErrors.zip && uniqueValue === artistform.value" class="alert alert-danger">
+            {{ formErrors.zip }}
           </div>
           <div *ngIf="formErrors.zip && uniqueValue === artistform.value" class="alert alert-danger">
             {{ formErrors.zip }}
@@ -246,10 +255,10 @@
             </div>
             <div class="form-group">
               <label for="charityform-lastname">Last Name*</label>
-              <input type="text" class="form-control" id="charityform-lastname" formControlName="last_name" />
+              <input type="text" class="form-control" id="charityform-lastname" formControlName="lastname" />
             </div>
-            <div *ngIf="formErrors.last_name && uniqueValue === charityform.value" class="alert alert-danger">
-              {{ formErrors.last_name }}
+            <div *ngIf="formErrors.lastname && uniqueValue === charityform.value" class="alert alert-danger">
+              {{ formErrors.lastname }}
             </div>
             <div class="form-group">
               <label for="charityform-email">E-mail*</label>
@@ -274,10 +283,10 @@
             </div>
             <div class="form-group">
               <label for="charityform-phone">Phone*</label>
-              <input type="tel" class="form-control" id="charityform-phone" formControlName="phone" />
+              <input type="tel" class="form-control" id="charityform-phone" formControlName="tel" />
             </div>
-            <div *ngIf="formErrors.phone && uniqueValue === charityform.value" class="alert alert-danger">
-              {{ formErrors.phone }}
+            <div *ngIf="formErrors.tel && uniqueValue === charityform.value" class="alert alert-danger">
+              {{ formErrors.tel }}
             </div>
             <div class="form-group">
               <label for="charityform-address">Address*</label>

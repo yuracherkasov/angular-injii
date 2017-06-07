@@ -10,8 +10,9 @@ export class UserService {
   }
 
   signup(user: any): Promise<Object> {
-    console.log("User register request url: /api/register,  User register request body: " + user)
-    return this.apiService.post('/api/register', user)
+    let jsonUser = JSON.stringify({user});
+    console.log("User register request url: /api/auth/signup,  User register request body: " + jsonUser)
+    return this.apiService.post('/api/auth/signup', jsonUser)
       .toPromise()
       .then(response => response.json())
       .catch((e) => this.requestOptionsService.handleError(e, "User register catch"));

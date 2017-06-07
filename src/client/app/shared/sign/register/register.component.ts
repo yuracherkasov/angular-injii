@@ -52,66 +52,61 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.userform = this._formBuilder.group({
-      'user_type': ['user'],
-      //'role': ['user'],
+      'role': ['user'],
       'auth_via': ['native'],
+      "charityname": [null],
       'band': [null],
       'username': [null, [Validators.required, Validators.minLength(5), Validators.pattern('[A-Za-z0-9]*')]],
       'firstname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
-      'last_name': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
-      //'lastname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
+      'lastname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
       'email': [null, [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
       'password': [null, [Validators.required, Validators.minLength(6)]],
       'repeatpsw': [null, [Validators.required]],
-      'dob': [null, [Validators.required]],
-      //'birth': [null, [Validators.required]],
-      'phone': [null],
-      //'tel': [null],
+      'address': [null],
+      'birth': [null, [Validators.required, Validators.pattern('[12][0-9]{3}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])')]],
+      'tel': [null, [Validators.pattern('[+][0-9]{11}')]],
       'city': [null],
       'state': [null],
-      'zip': [null],
+      'zip': [null, [Validators.pattern('[0-9]+')]],
       'refer': [null]
     }, { validator: matchingPasswords('password', 'repeatpsw') });
     this.artistform = this._formBuilder.group({
-      'user_type': ['artist'],
-       //'role': ['artist'],
+      'role': ['artist'],
+      "charityname": [null],
       'auth_via': ['native'],
       'band': [null, [Validators.required]],
       'username': [null, [Validators.required, Validators.minLength(5), Validators.pattern('[A-Za-z0-9]*')]],
       'firstname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
-      'last_name': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
-      //'lastname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
+      'lastname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
       'email': [null, [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
       'password': [null, [Validators.required, Validators.minLength(6)]],
       'repeatpsw': [null, [Validators.required]],
-      'dob': [null, [Validators.required]],
-      'phone': [null, [Validators.required]],
-      //'tel': [null, [Validators.required]],
+      'address': [null],
+      'birth': [null, [Validators.required, Validators.pattern('[12][0-9]{3}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])')]],
+      'tel': [null, [Validators.required, Validators.pattern('[+][0-9]{11}')]],
       'city': [null, [Validators.required]],
       'state': [null, [Validators.required]],
-      'zip': [null, [Validators.required]],
+      'zip': [null, [Validators.required, Validators.pattern('[0-9]+')]],
       'refer': [null]
     }, { validator: matchingPasswords('password', 'repeatpsw') });
 
     this.charityform = this._formBuilder.group({
-      'user_type': ['charity'],
-      //'role': ['charity'],
+      'role': ['charity'],
       'auth_via': ['native'],
       'band': [null],
       'charityname': [null, [Validators.required]],
       'username': [null, [Validators.required, Validators.minLength(5), Validators.pattern('[A-Za-z0-9]*')]],
       'firstname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
-      'last_name': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
-      //'lastname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
+      'lastname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
       'email': [null, [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
       'password': [null, [Validators.required, Validators.minLength(6)]],
       'repeatpsw': [null, [Validators.required]],
       'address': [null, [Validators.required]],
-      'phone': [null, [Validators.required]],
-      //'tel': [null, [Validators.required]],
+      'birth': [null],
+      'tel': [null, [Validators.required, Validators.pattern('[+][0-9]{11}')]],
       'city': [null, [Validators.required]],
       'state': [null, [Validators.required]],
-      'zip': [null, [Validators.required]],
+      'zip': [null, [Validators.required, Validators.pattern('[0-9]+')]],
       'refer': []
     }, { validator: matchingPasswords('password', 'repeatpsw') });
 
@@ -160,13 +155,13 @@ export class RegisterComponent implements OnInit {
     'charityname': '',
     'band': '',
     'username': '',
-    'last_name': '',
+    'lastname': '',
     'firstname': '',
     'email': '',
     'password': '',
     'repeatpsw': '',
-    'dob': '',
-    'phone': '',
+    'birth': '',
+    'tel': '',
     'city': '',
     'state': '',
     'zip': '',
@@ -189,14 +184,14 @@ export class RegisterComponent implements OnInit {
       'minlength': 'Username must be at least 5 characters long.',
       'pattern': 'The username must contain only letters and numbers.'
     },
-    'last_name': {
+    'lastname': {
       'required': 'Field is required.',
-      'pattern': 'Enter your real name with no spaces or special characters.',
+      'pattern': 'Enter your real name with no spaces, numbers or special characters.',
       'maxlength': 'Name cannot be more than 24 characters long.'
     },
     'firstname': {
       'required': 'Field is required.',
-      'pattern': 'Enter your real name with no spaces or special characters.'
+      'pattern': 'Enter your real name with no spaces, numbers or special characters.'
     },
     'email': {
       'required': 'Field is required.',
@@ -209,11 +204,13 @@ export class RegisterComponent implements OnInit {
     'repeatpsw': {
       'required': 'Field is required.',
     },
-    'dob': {
-      'required': 'Field is required.'
+    'birth': {
+      'required': 'Field is required.',
+      'pattern': 'Format: yyyy-mm-dd.'
     },
-    'phone': {
-      'required': 'Field is required.'
+    'tel': {
+      'required': 'Field is required.',
+      'pattern': 'Format +xxxxxxxxxxx.'
     },
     'city': {
       'required': 'Field is required.'
@@ -222,7 +219,8 @@ export class RegisterComponent implements OnInit {
       'required': 'Field is required.'
     },
     'zip': {
-      'required': 'Field is required.'
+      'required': 'Field is required.',
+      'pattern': 'The zip code must contain only numbers'
     },
     'address': {
       'required': 'Field is required.'
@@ -232,11 +230,12 @@ export class RegisterComponent implements OnInit {
   register(valueform: any) {
     console.log(valueform);
     this.loading = true;
-    let password = valueform.password
+    let password = valueform.password;
     // delete valueform.password;
-    // delete valueform.repeatpsw;
+    delete valueform.repeatpsw;
     this.userService.signup(valueform)
       .then((response: any) => {
+        console.log("response sign-up: ", response);
         if (response.message && response.user) {
           this.alertService.info(response.message);
           //console.log("register response email: "+response.email);

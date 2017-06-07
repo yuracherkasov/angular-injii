@@ -35,7 +35,7 @@
         </div>
       </div>
       <div *ngIf="incorrectMessage" class="alert alert-danger">
-        The username or password you entered is incorrect.
+        {{wrongPassError}}
       </div>
       <div class="form-group buttons-group">
         <button type="submit" class="form-button" id="login-btn">Login</button>

@@ -8,7 +8,9 @@ export class AuthService {
   constructor(private http: Http, private constantsService: ConstantsService, private apiService: ApiService) { }
 
   login(username: string, password: string, remember: boolean): Promise<Object> {
-    return this.apiService.post('/api/login', JSON.stringify({username, password, remember}))
+    let param = JSON.stringify({username: username, password: password})
+    console.log("param: ", param)
+    return this.apiService.post('/api/auth/signin', param)
       .toPromise()
       .then((response) => {
         let result = response.json();
@@ -16,8 +18,8 @@ export class AuthService {
           localStorage.setItem('currentUser', JSON.stringify(result.user));
         }
         this.constantsService.setUser(result.user);
-        console.log("loginservice ", result)
-        return result
+        console.log("loginservice ", result);
+        return result;
       })
       .catch(this.handleError);
   }
