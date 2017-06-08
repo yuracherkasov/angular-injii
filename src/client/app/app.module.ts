@@ -74,7 +74,7 @@ import { ApiService } from './services/api.service';
     ASearchService,
     CSearchService,
     SearchService,
-    ApiService,
+    ApiService
    //providers used to create fake backend, remove when production
     //fakeBackendProvider,
     //MockBackend,

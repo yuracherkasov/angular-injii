@@ -236,7 +236,7 @@ export class RegisterComponent implements OnInit {
     this.userService.signup(valueform)
       .then((response: any) => {
         console.log("response sign-up: ", response);
-        if (response.message && response.user) {
+        if (response.result === "OK") {
           this.alertService.info(response.message);
           //console.log("register response email: "+response.email);
           this.authenticationService.login(response.user.username, password, false)
@@ -247,6 +247,9 @@ export class RegisterComponent implements OnInit {
                 this.isLoggedInService.isLogin(true)
               }
             })
+        } else if (response.result === "FAIL"){
+          this.alertService.danger(response.message);
+          this.loading = false;
         }
       }, (reject) => {
         console.log("reject: ", reject); this.loading = false;

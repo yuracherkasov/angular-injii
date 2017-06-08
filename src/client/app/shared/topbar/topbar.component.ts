@@ -15,7 +15,7 @@ declare var localStorage: any;
 export class TopbarComponent implements OnInit {
 
   private AddContentShow: boolean = false;
-  private localStorageUser: any = {};
+  private localStorageUser: any;
 
   constructor
     (
@@ -23,8 +23,6 @@ export class TopbarComponent implements OnInit {
     private popupService: PopupService,
     private constantsService: ConstantsService
     ) {
-      
-    this.localStorageUser = JSON.parse(localStorage.getItem('currentUser'));
 
     this.constantsService.userObservable
       .subscribe((data: any) => {
@@ -37,6 +35,7 @@ export class TopbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.localStorageUser = localStorage.getItem('currentUser');
     if (this.localStorageUser && (this.localStorageUser.role === 'artist' || this.localStorageUser.role === 'admin')) {
       this.AddContentShow = true;
     }

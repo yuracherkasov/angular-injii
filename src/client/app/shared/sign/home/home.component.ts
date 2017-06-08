@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   submitPassLoad: boolean = false;
   updateLoad: boolean = false;
   imageLoad: boolean = false;
-  localStorageUser: Object;
+  localStorageUser: any = null;
   User: any = {};
   invalidUrlMassage: string = "Does not match the URL format."
   AuthToken: string = '';
@@ -45,25 +45,29 @@ export class HomeComponent implements OnInit {
     private isLoggedInService: IsLoggedInService,
     private alertService: AlertService) {
 
-    this.localStorageUser = JSON.parse(localStorage.getItem('currentUser'));
-
   }
 
   ngOnInit() {
+
+    this.localStorageUser = JSON.parse(localStorage.getItem('currentUser'));
     if (this.localStorageUser || this.constantsService.User) {
       if(!this.constantsService.User){
         this.constantsService.setUser(this.localStorageUser);
       }
-      this.User = this.constantsService.User;
+      this.User = Object.assign({}, this.constantsService.User);
+      this.AuthToken = this.constantsService.User.token;
+      delete this.User.token;
+      
+      console.log("this.constantsService.User: ", this.constantsService.User);
       this.userAvatar = this.User.avatar ? 'url('+this.User.avatar+')' : 'url(../../../assets/thumb-place.jpg)';
-      //let userToken = this.User.token;
+    }
+     //let userToken = this.User.token;
       //this.uploader = new FileUploader({authToken: userToken, url: URL});
       this.uploader = new FileUploader({ url: URL });
       this.uploader.options.removeAfterUpload = true;
       this.uploader.onSuccessItem = () => {
        this.imageLoad = false;
       }
-    }
   }
 
   loadingImageStart(){
@@ -76,8 +80,8 @@ export class HomeComponent implements OnInit {
   }
 
   readThis(inputValue: any): void {
-    var file: File = inputValue.files[0];
-    var myReader: FileReader = new FileReader();
+    let file: File = inputValue.files[0];
+    let myReader: FileReader = new FileReader();
     myReader.onloadend = (e) => {
       this.userAvatar = 'url('+myReader.result+')';
     }
@@ -93,10 +97,10 @@ export class HomeComponent implements OnInit {
     this.submitPassLoad = true;
     this.userService.updatePassword(this.newPassForm.oldpassword, this.newPassForm.newpassword)
       .then(response => {
-        if (response.status === 200) {
-          this.alertService.info(response.json());
-        } else if (response.status === 401) {
-          this.alertService.danger(response.json())
+        if (response.result === "OK") {
+          this.alertService.info(response.message);
+        } else if (response.result === "FAIL") {
+          this.alertService.danger(response.message)
         }
         this.submitPassLoad = false;
       }, (reject: any) => {
@@ -107,12 +111,17 @@ export class HomeComponent implements OnInit {
 
   update() {
     this.updateLoad = true;
-    console.log(this.User);
     this.userService.update(this.User)
       .then((response: any) => {
-        if(localStorage.currentUser){
-          localStorage.setItem('currentUser', JSON.stringify(response.user));
-        }
+        if(response.result === "OK"){
+           if(localStorage.currentUser){
+            const updatedUser = response.user;
+            updatedUser.token = this.AuthToken;
+            localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+          }
+          this.alertService.info(response.message);
+        }      
+        console.log("updating user: ", response)
         this.updateLoad = false;
       }, (reject: any) => {
         console.log(reject);

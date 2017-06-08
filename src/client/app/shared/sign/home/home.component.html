@@ -13,7 +13,7 @@
   <div class="profile-thumb">
       <div class="round-thumb" [ngStyle]="{'background-image': userAvatar}">
       <div class="thumb-edit">
-        <label for="avatar" [class.non-active]="User.auth_via != 'native'"></label>
+        <label for="avatar" [class.non-active]="!!User.auth_via"></label>
         <input type="file" id="avatar" ng2FileSelect [uploader]="uploader" (change)="changeHandler($event)" />
       </div>
     </div>
@@ -34,7 +34,7 @@
     <h6>{{User.firstname }} {{User.lastname}}</h6>
   </div>
   <ul class="icons-list profile">
-    <li *ngFor="let social of User.social" [class.active]="social.link">
+    <li *ngFor="let social of User.socials" [class.active]="social.link">
       <a target="_blank" href="{{social.link}}"></a><img src="{{social.image}}" alt="{{social.type}}" />
     </li>
   </ul>
@@ -54,7 +54,7 @@
           <textarea class="form-control" maxlength="500" id="bio" name="bio" [(ngModel)]="User.bio"></textarea>
         </div>
 
-        <div class="text-left heading" [class.non-active]="User.auth_via != 'native'">
+        <div class="text-left heading" [class.non-active]="!!User.auth_via">
           Upload image: 
           <label for="avatar">choose</label>
         </div>
@@ -75,7 +75,7 @@
 
         <div>
           <h5 class="heading">Connect:</h5>
-          <div *ngFor="let social of User.social">
+          <div *ngFor="let social of User.socials">
             <div class="form-group text-left">
               <label attr.for="{{social.type}}">{{social.type}}</label>
               <input type="text" class="form-control" id="{{social.type}}" pattern="{{social.pattern}}.*" placeholder="{{social.pattern}}..."
@@ -149,7 +149,7 @@
       </form>
     </div>
 
-    <div id="change-pass" [class.non-active]="User.auth_via != 'native'">
+    <div id="change-pass" [class.non-active]="!!User.auth_via">
       <h3 class="heading">Change Password</h3>
       <h6 class="separator"><span></span>
         <div class="line"></div>

@@ -176,7 +176,8 @@ textarea.form-control{
   font-size: 14px;
   margin-left: 10px;
   cursor: pointer;
-  transition: color .3s linear;
+  transition: color .15s linear;
+  text-decoration: underline;
 }
 .heading > label[for="avatar"]:hover{
   color: #e9008c;

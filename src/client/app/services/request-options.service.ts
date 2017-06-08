@@ -13,8 +13,8 @@ export class RequestOptionsService {
     let user = this.constantsService.User;
     if (user && user.token) {
       let headers = new Headers({
-         'Authorization': 'Bearer ' + user.token,
-         'Content-Type': 'application/json'
+         'Content-Type': 'application/json',
+         'Authorization': 'Bearer ' + user.token
          });
       return new RequestOptions({ headers: headers });
     } else {
