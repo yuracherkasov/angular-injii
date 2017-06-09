@@ -33,7 +33,6 @@ import { IsLoggedInService } from './services/islogged.service';
 export class SignComponent implements OnInit {
 
   private isLoggedIn: boolean = true;
-  localStorageUser: any;
 
   constructor(private uiService: UiService,
     private authenticationService: AuthService,
@@ -57,9 +56,8 @@ export class SignComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.localStorageUser = localStorage.getItem('currentUser');
-    //if(this.currentUser && !this.currentUser.remember) 
-    if (!this.localStorageUser) {
+    const localStorageUser = localStorage.getItem('currentUser');
+    if (!localStorageUser) {
       this.authenticationService.logout();
       this.isLoggedIn = false;
     }

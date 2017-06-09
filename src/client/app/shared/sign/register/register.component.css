@@ -9,6 +9,9 @@
     background-size: auto 75%;
     z-index: 1;
 }
+.login-wrapper{
+  margin-bottom: 35px;
+}
 .load > img{
    display: inline-block;
    margin-top: 10px;

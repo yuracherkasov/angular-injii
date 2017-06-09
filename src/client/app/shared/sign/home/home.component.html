@@ -48,6 +48,7 @@
   <div>
     <div class="setting">
       <h5 class="head">Please fill the following information</h5>
+
       <form class="settings-form" #updateForm="ngForm" name="update-form" (ngSubmit)="updateForm.valid ? update() : false" novalidate>
         <div class="form-group text-left" *ngIf="(User.role === 'artist') || (User.role === 'charity')">
           <label for="bio" class="heading">Bio:</label>
@@ -142,8 +143,12 @@
           </div>
         </div>
 
+        <div *ngIf="updateLoadError" class="alert alert-danger">
+          {{updateLoadError}}
+        </div>
+
         <div class="form-group">
-          <button type="submit" [disabled]="!(updateForm.valid)" class="button-injii">Add/Update</button>
+          <button type="submit" [disabled]="!(updateForm.valid && updateForm.dirty)" class="button-injii">Add/Update</button>
           <div class="load" [hidden]="!updateLoad"></div>
         </div>
       </form>

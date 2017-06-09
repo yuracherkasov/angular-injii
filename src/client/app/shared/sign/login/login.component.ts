@@ -35,7 +35,7 @@ export class LoginComponent {
   incorrectMessage = false;
   forgotformEmail: string;
   forgotErrorMessage: string = '';
-  wrongPassError: string = 'The username or password you entered is incorrect.';
+  wrongPassError: string = 'Server error';
 
   constructor(private authenticationService: AuthService,
     public uiService: UiService,
@@ -54,7 +54,7 @@ export class LoginComponent {
         }
         this.loading = false;
         this.alertService.clear()
-      }, (reject) => {
+      }, reject => {
         let rejectJson = reject.json();
         if (rejectJson.result === 'FAIL') {
           this.wrongPassError = rejectJson.message;
@@ -67,15 +67,17 @@ export class LoginComponent {
   forgotSubmit() {
     this.fLoading = true;
     this.authenticationService.requestPasswordRestore(this.forgotformEmail)
-      .then((response: Response) => {
+      .then((response: any) => {
         this.fLoading = false;
-        if (response.status == 200) {
-          this.alertService.info(response.json());
+        console.log("restore pass: ", response)
+        if (response.result === 'OK') {
+          this.alertService.info(response.message);
           this.uiService.forgotPassword = false;
-        } if (response.status == 401)
-          this.forgotErrorMessage = response.json()
+        } else if (response.result === 'FAIL')
+          this.forgotErrorMessage = response.message;
       }, reject => {
         this.fLoading = false;
+        this.forgotErrorMessage = "Server error";
         console.log(reject)
       })
   }

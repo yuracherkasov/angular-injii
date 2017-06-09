@@ -29,8 +29,9 @@ export class AuthService {
   }
 
   requestPasswordRestore(email: string): Promise<Object> {
-    return this.apiService.post('/api/auth/restore_password', JSON.stringify({email}))
+    return this.apiService.post('/api/auth/restore', JSON.stringify({email}))
       .toPromise()
+      .then(response => response.json())
       .catch(this.handleError);
   }
 

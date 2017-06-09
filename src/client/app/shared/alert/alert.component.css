@@ -11,13 +11,13 @@
   padding: 25px;
 }
 #alert span{
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   background: url(../assets/svg/icons/cancel_gray.svg) no-repeat center center;
   background-size: 100%;
   position: absolute;
-  right: 5px;
-  top: 5px;
+  right: 9px;
+  top: 7px;
   z-index: 10;
   cursor: pointer;
 }

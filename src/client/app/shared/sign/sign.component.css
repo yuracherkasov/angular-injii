@@ -1,6 +1,7 @@
 #sign-menu{
   padding-bottom: 0 !important;
   overflow-y: auto;
+  padding-top: 10px
 }
 .sign-menu-open{
   right: -15px;

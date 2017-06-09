@@ -231,20 +231,18 @@ export class RegisterComponent implements OnInit {
     console.log(valueform);
     this.loading = true;
     let password = valueform.password;
-    // delete valueform.password;
     delete valueform.repeatpsw;
     this.userService.signup(valueform)
       .then((response: any) => {
         console.log("response sign-up: ", response);
         if (response.result === "OK") {
           this.alertService.info(response.message);
-          //console.log("register response email: "+response.email);
           this.authenticationService.login(response.user.username, password, false)
             .then((response: any) => {
               if (response && response.user.token) {
                 this.loading = false;
                 this.alertService.clear();
-                this.isLoggedInService.isLogin(true)
+                this.isLoggedInService.isLogin(true);
               }
             })
         } else if (response.result === "FAIL"){

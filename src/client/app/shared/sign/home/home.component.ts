@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
   User: any = {};
   invalidUrlMassage: string = "Does not match the URL format."
   AuthToken: string = '';
+  updateLoadError: string = '';
   userAvatar: string;
 
 
@@ -48,7 +49,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.localStorageUser = JSON.parse(localStorage.getItem('currentUser'));
     if (this.localStorageUser || this.constantsService.User) {
       if(!this.constantsService.User){
@@ -91,6 +91,7 @@ export class HomeComponent implements OnInit {
   signOut() {
     this.isLoggedInService.isLogin(false);
     this.constantsService.setUser(null);
+    this.uiService.joinAsIcon = false;
   }
 
   sendNewPass() {
@@ -99,18 +100,21 @@ export class HomeComponent implements OnInit {
       .then(response => {
         if (response.result === "OK") {
           this.alertService.info(response.message);
+          this.signOut();
         } else if (response.result === "FAIL") {
           this.alertService.danger(response.message)
         }
         this.submitPassLoad = false;
       }, (reject: any) => {
         console.log(reject);
+        this.alertService.danger('Server error');
         this.submitPassLoad = false;
       })
   }
 
   update() {
     this.updateLoad = true;
+    this.updateLoadError='';
     this.userService.update(this.User)
       .then((response: any) => {
         if(response.result === "OK"){
@@ -120,11 +124,13 @@ export class HomeComponent implements OnInit {
             localStorage.setItem('currentUser', JSON.stringify(updatedUser));
           }
           this.alertService.info(response.message);
-        }      
-        console.log("updating user: ", response)
+        } else if(response.result === "FAIL") {
+          this.updateLoadError = response.message;
+        }   
+        console.log("updating user: ", response);
         this.updateLoad = false;
       }, (reject: any) => {
-        console.log(reject);
+        this.updateLoadError = 'Server error';
         this.updateLoad = false;
       })
   }
