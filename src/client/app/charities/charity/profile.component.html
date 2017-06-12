@@ -15,7 +15,7 @@
               <dt>Charity name:</dt>
                 <dd class="username">{{charity.charityname}}<dd>
               <dt>Social:</dt>
-                <dd *ngFor="let social of charity.social" class="icon" [class.active]="social.link">
+                <dd *ngFor="let social of charity.socials" class="icon" [class.active]="social.link">
                   <a target="_blank" href="{{social.link}}"></a><img src="{{social.image}}" alt="{{social.type}}" />
                 </dd>
               <dt>E-mail:</dt>
@@ -38,7 +38,7 @@
           <div class="my-story">
             <div class="my-story-table" [style.height]="headerHeight.clientHeight +'px'">
               <div>
-                <h4 class="bio-heading">Story</h4>
+                <h4 class="bio-heading" [hidden]="!charity.bio">Story</h4>
                 <p>
                  {{charity.bio}}
                 </p>
@@ -50,7 +50,7 @@
       <div class="col-md-12">
         <div class="videos-block">
           <ul>
-            <li class="content_box" *ngFor="let video of charity.videos">
+            <!--<li class="content_box" *ngFor="let video of charity.videos">
               <div class="vid_thumb">
                 <a href="{{video.title}}" (click)="submitVideoOnMainPlayer($event, video.id)">
                   <img [src]="video.preview" alt="preview">
@@ -63,7 +63,7 @@
                   <a href="javascript:;" class="vid_donations" (click)="gotoDonation(video)">&#36;{{video.donations}}</a>
                 </div>
               </div>
-            </li>
+            </li>-->
           </ul>
         </div>
       </div>

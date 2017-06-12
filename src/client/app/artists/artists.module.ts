@@ -6,10 +6,13 @@ import { ProfileComponent } from './artist/profile.component';
 import { ArtistRoutingModule } from './artist-routing.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
+import { VirtualScrollModule } from 'angular2-virtual-scroll';
+import { ListComponent } from './list/list.component';
+
 
 @NgModule({
-  imports: [CommonModule, ProfileCommentsModule, ArtistRoutingModule, TooltipModule.forRoot()],
-  declarations: [ArtistsComponent, ProfileComponent],
+  imports: [CommonModule, ProfileCommentsModule, ArtistRoutingModule, TooltipModule.forRoot(), VirtualScrollModule],
+  declarations: [ArtistsComponent, ProfileComponent, ListComponent],
   exports: [ArtistsComponent, ProfileComponent],
   providers: []
 })

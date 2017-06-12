@@ -14,7 +14,7 @@ export class ProfileService {
     console.log( '/api/artist/' + username )
     return this.apiService.get('/api/artist/' + username)
       .toPromise()
-      .then(response => response.json().artist)
+      .then(response => response.json())
       .catch(this.requestOptionsService.handleError);
   }
 

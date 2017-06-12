@@ -15,10 +15,15 @@ export class ArtistRatingService {
     ) { }
 
   submitVote(n: number, id: string): Promise<any> {
-    return this.apiService.put('/api/artist/' + id + '/vote', { 'stars': n })
+    let param = JSON.stringify({ "stars":n });
+    console.log('/api/artist/' + id + '/vote',  param, this.requestOptionsService.jwt());
+    return this.apiService.put('/api/artist/' + 117 + '/vote',  param)
       .toPromise()
       .then(response => response.json())
-      .catch(this.requestOptionsService.handleError);
+      .catch(this.handleError);
+  }
+  handleError(e: any){
+    console.log(e)
   }
 }
 

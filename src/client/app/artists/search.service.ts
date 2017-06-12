@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { ApiService } from '../services/api.service';
 
-
 import { Artist } from './search.model';
 
 
@@ -29,11 +28,13 @@ export class ASearchService {
   search(term: string): Observable<Artist[]> {
     console.log("Artists request: " + '/api/artists' + term);
     return this.apiService.get('/api/artists' + term)
-      .map((r: Response) => {
-        return r.json().artists as Artist[];
-      }
-      );
+      .map(r => r.json().artists as Artist[])
+      .catch(this.handleError);
+  }
 
+  handleError(error: any): Observable<Artist[]> {
+    console.warn("Artists reject: ", error);
+    return Observable.of<Artist[]>([]);
   }
 
 }

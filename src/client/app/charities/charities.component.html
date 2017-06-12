@@ -41,7 +41,7 @@
       </div>
       <div class="row list-row">
         <div class="col-md-12 scrollable-y">
-          <div class="the-list">
+          <!--<div class="the-list">
 
             <div class="list-item" *ngFor="let charity of charities | async">
                  <a href="/charity/{{charity.username}}" (click)="onSelect($event, charity)">
@@ -65,7 +65,9 @@
                 </div>
               </a>
             </div>
-          </div>
+          </div>-->
+
+          <sd-list [Items]="charities | async"></sd-list>
         </div>
       </div>
     </div>

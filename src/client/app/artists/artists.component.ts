@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { Router, Params } from '@angular/router';
 
 import { PopupService } from './../shared/services/ui-popup.service';
 import { Artist } from './search.model';
@@ -26,7 +25,6 @@ export class ArtistsComponent implements OnInit, AfterViewInit {
   constructor
     (
     public searchService: ASearchService,
-    private router: Router,
     private popupService: PopupService
     ) {
 
@@ -82,14 +80,6 @@ export class ArtistsComponent implements OnInit, AfterViewInit {
       .switchMap(term => term
         ? this.searchService.search(this.term)
         : Observable.of<Artist[]>([]))
-      .catch(error => {
-        console.warn("Artists reject: ", error);
-        return Observable.of<Artist[]>([]);
-      });
-  }
-  onSelect(e: Event, artist: any) {
-    e.preventDefault();
-    this.router.navigate(['/artists', artist.username]);
   }
 
 }

@@ -1,0 +1,51 @@
+virtual-scroll {
+  overflow: hidden;
+  overflow-y: auto;
+  height: 100%;
+  display: block;
+}
+#virtual-charities .list-item{
+  margin-bottom: 5px;
+  height: 70px;
+}
+:host >>> virtual-scroll .scrollable-content{
+  width: 99%;
+}
+.thumb{
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.short-bio > p:after{
+  content: '...';
+}
+.short-bio > p:empty:after{
+  content: '';
+}
+.list-item .rating{
+  margin-right: 10px;
+  vertical-align: baseline;
+}
+@media(max-width: 991px){
+  #virtual-charities .list-item{
+    height: 306px;
+  }
+  .list-item .genre > p{
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .the-list .list-item .short-bio p{
+    height: 68px;
+    overflow: hidden;
+  }
+ .list-item .thumb-wrap .thumb {
+    width: 100px;
+    height: 100px;
+  }
+  :host >>> virtual-scroll .scrollable-content{
+    width: 98%;
+  }
+}

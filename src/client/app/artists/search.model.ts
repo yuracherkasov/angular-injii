@@ -11,4 +11,5 @@ export class Artist {
   city: string;
   state: string;
   stars: number;
+  birth: string;
 };

@@ -82,16 +82,6 @@ export class CharitiesComponent implements OnInit, AfterViewInit {
       .switchMap(term => term
         ? this.searchService.search(this.term)
         : Observable.of<Charity[]>([]))
-      .catch(error => {
-        console.warn("Charities reject: ", error);
-        return Observable.of<Charity[]>([]);
-      });
-
-  }
-
-  onSelect(e: Event, charity: any) {
-    e.preventDefault();
-    this.router.navigate(['/charity', charity.username]);
   }
 
 }

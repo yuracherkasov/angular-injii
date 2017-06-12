@@ -47,8 +47,13 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.route.params
       .switchMap((params: Params) => this.profileService.getProfile(params['username']))
-      .subscribe((charity: any) => {
-        this.charity = charity;
+      .subscribe((response: any) => {
+        if(response.result === 'OK'){
+          this.charity = response.charity;
+        } else if (response.result === 'FAIL'){
+          this.alertService.danger(response.message);
+        }         
+        console.log("this.charity: ", this.charity);
       });
   }
 

@@ -17,44 +17,40 @@
                 <dd class="username">{{artist.username}}</dd>
                 <dt>Band/Group/Artist name</dt>
                 <dd class="username">{{artist.band}}
-                  <dt>Genre</dt>
-                  <dd class="username">{{artist.genre}}
-                    <dd>
+                <dt>Genre</dt>
+                <dd class="username">{{artist.genre}}<dd>
               </dl>
             </div>
             <div class="profile-details">
               <dl class="term-list">
                 <dt>Portfolio:</dt>
+                <dt></dt>
                 <dd *ngFor="let portfolio of artist.portfolio" class="icon" [class.active]="portfolio.link">
                   <a target="_blank" href="{{portfolio.link}}"></a><img src="{{portfolio.image}}" alt="{{portfolio.type}}" />
                 </dd>
+                <dt></dt>
                 <dt>Social:</dt>
-                <dd *ngFor="let social of artist.social" class="icon" [class.active]="social.link">
+                <dd *ngFor="let social of artist.socials" class="icon" [class.active]="social.link">
                   <a target="_blank" href="{{social.link}}"></a><img src="{{social.image}}" alt="{{social.type}}" />
                 </dd>
                 <dt>E-mail:</dt>
-                <dd>{{artist.email}}
-                  <dd>
-                    <dt>Phone:</dt>
-                    <dd>{{artist.phone}}
-                      <dd>
-                        <dt>City:</dt>
-                        <dd>{{artist.city}}</dd>
-                        <dt>State:</dt>
-                        <dd>{{artist.state}}</dd>
+                <dd>{{artist.email}}<dd>
+                <dt>Phone:</dt>
+                <dd>{{artist.phone}}<dd>
+                <dt>City:</dt>
+                <dd>{{artist.city}}</dd>
+                <dt>State:</dt>
+                <dd>{{artist.state}}</dd>
               </dl>
               <h5 [hidden]="!artistManager.name && !artistManager.phone && !artistManager.email">Manager info:</h5>
               <dl class="term-list">
                 <dt [hidden]="!artistManager.name">Name:</dt>
-                <dd>{{artistManager.name}}
-                  <dd>
+                <dd>{{artistManager.name}}<dd>
 
-                    <dt [hidden]="!artistManager.phone">Phone:</dt>
-                    <dd>{{artistManager.phone}}
-                      <dd>
-                        <dt [hidden]="!artistManager.email">Email:</dt>
-                        <dd>{{artistManager.email}}
-                          <dd>
+                <dt [hidden]="!artistManager.phone">Phone:</dt>
+                <dd>{{artistManager.phone}}<dd>
+                <dt [hidden]="!artistManager.email">Email:</dt>
+                <dd>{{artistManager.email}}<dd>
               </dl>
               <h5 [hidden]="!artistAgent.name && !artistAgent.phone && !artistAgent.email">Booking agent info:</h5>
               <dl class="term-list">
@@ -78,7 +74,7 @@
             </div>
             <div class="table-cell story">
               <div>
-                <h4 class="bio-heading">Story</h4>
+                <h4 class="bio-heading" [hidden]="!artist.bio">Story</h4>
                 <p>
                   {{artist.bio}}
                 </p>
@@ -108,7 +104,7 @@
         <div class="videos-block">
           <h4></h4>
           <ul>
-            <li class="content_box" *ngFor="let video of artist.videos">
+            <!--<li class="content_box" *ngFor="let video of artist.videos">
               <div class="vid_thumb">
                 <a href="{{video.title}}" (click)="submitVideoOnMainPlayer($event, video.id)">
                   <img [src]="video.preview" alt="video preview">
@@ -121,13 +117,13 @@
                   <a href="javascript:;" class="vid_donations" (click)="gotoDonation(video)">&#36;{{video.donations}}</a>
                 </div>
               </div>
-            </li>
+            </li>-->
           </ul>
         </div>
       </div>
     </div>
 
-    <sd-comments></sd-comments>
+    <!--<sd-comments></sd-comments>-->
 
   </div>
 </div>

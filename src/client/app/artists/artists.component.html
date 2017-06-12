@@ -39,11 +39,12 @@
           </div>
         </div>
       </div>
+
       <div class="row list-row">
         <div class="col-md-12 scrollable-y">
-          <div class="the-list">
+          <!--<div class="the-list">-->
 
-            <div class="list-item" *ngFor="let artist of artists | async">
+            <!--<div class="list-item" *ngFor="let artist of artists | async">
               <a href="/artists/{{artist.username}}" (click)="onSelect($event, artist)">
                 <div class="genre">
                   <p>Genre: <span> {{artist.genre}}</span></p>
@@ -65,8 +66,12 @@
                   <span>{{artist.stars}}</span>
                 </div>
               </a>
-            </div>
-          </div>
+            </div>-->
+
+            <sd-list [Items]="artists | async"></sd-list>
+
+
+          <!--</div>-->
         </div>
       </div>
     </div>

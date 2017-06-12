@@ -1,0 +1,26 @@
+<virtual-scroll id="virtual-charities" [items]="filteredList" (update)="scrollItems = $event"  [childHeight]="itemHeight">
+  <div class="the-list">
+    <div *ngFor="let artist of scrollItems" class="list-item">
+      <a href="/artists/{{artist.username}}" (click)="onSelect($event, artist)">
+        <div class="genre">
+          <p>Genre: <span> {{artist.genre}}</span></p>
+        </div>
+        <div class="thumb-wrap">
+          <div class="thumb" [style.background-image]="artist.avatar ? 'url('+artist.avatar+')' : 'url(../../../assets/thumb-place.jpg)'">
+          </div>
+        </div>
+        <div class="name-city">
+          <h3>{{artist.firstname}} {{artist.lastname}}</h3>
+          <p class="city">{{artist.city}}, {{artist.state}}</p>
+        </div>
+        <div class="short-bio">
+          <p>{{artist.bio | slice : 0 : 100}}</p>
+        </div>
+        <div class="stars">
+          <span class="rating">Rating</span>
+          <span>{{artist.stars}}</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</virtual-scroll>
