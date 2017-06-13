@@ -17,7 +17,7 @@
                 <dd class="username">{{artist.username}}</dd>
                 <dt>Band/Group/Artist name</dt>
                 <dd class="username">{{artist.band}}
-                <dt>Genre</dt>
+                <dt [hidden]="!artist.genre">Genre</dt>
                 <dd class="username">{{artist.genre}}<dd>
               </dl>
             </div>
@@ -123,7 +123,7 @@
       </div>
     </div>
 
-    <!--<sd-comments></sd-comments>-->
+    <sd-comments></sd-comments>
 
   </div>
 </div>

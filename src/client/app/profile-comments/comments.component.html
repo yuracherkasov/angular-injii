@@ -3,16 +3,13 @@
     <form id="artist-review" #review="ngForm" name="review-form" (ngSubmit)="review.valid && submit()" novalidate>
       <div class="form-group">
         <label for="review">Review</label>
-        <textarea class="form-control" id="review" required minlength="6" name="message" [(ngModel)]="newComment"></textarea>
+        <textarea class="form-control" id="review" required minlength="2" name="message" [(ngModel)]="newComment"></textarea>
       </div>
       <div class="alert alert-danger" *ngIf="review.submitted && !constantsService.User">
         You need login
       </div>
-      <div class="alert alert-info" *ngIf="responseMessage">
-        {{responseMessage}}
-      </div>
       <div class="submit-btn">
-        <button type="submit" class="button-injii">Submit</button>
+        <button type="submit" class="button-injii" [disabled]="!review.valid">Submit</button>
         <div class="load" *ngIf="loading === 999"></div>
       </div>
     </form>

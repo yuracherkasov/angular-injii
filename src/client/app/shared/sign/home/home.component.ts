@@ -125,8 +125,10 @@ export class HomeComponent implements OnInit {
           }
           this.alertService.info(response.message);
         } else if(response.result === "FAIL") {
-          this.updateLoadError = response.message;
-        }   
+          this.alertService.danger(response.message);
+        } else if (response.error && typeof response.error === 'string') {
+          this.alertService.danger(response.error);
+        }     
         console.log("updating user: ", response);
         this.updateLoad = false;
       }, (reject: any) => {

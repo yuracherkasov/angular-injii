@@ -10,8 +10,8 @@ export class CommentsService {
               private apiService: ApiService) { }
 
   getAll(username: string, term: string): Promise<any> {
-    console.log("Comments request: " + '/api/get_comments/'+ username + term);
-    return this.apiService.get('/api/get_comments/'+ username + term)
+    console.log("Comments request: " + '/api/comments/'+ username + term);
+    return this.apiService.get('/api/comments/'+ username + term)
       .toPromise()
       .then(response => response.json())
       .catch((e) => this.requestOptionsService.handleError(e, "Get Comments error"));
@@ -25,14 +25,14 @@ export class CommentsService {
   }
 
   del(id: string): Promise<any> {
-    return this.apiService.del('/api/delete_comment/' + id)
+    return this.apiService.del('/api/comments/' + id)
       .toPromise()
       .then(response => response.json())
       .catch((e) => this.requestOptionsService.handleError(e, "Delete Comments error"));
   }
 
-  add(username: string, text: any): Promise<any> {
-    return this.apiService.post('/api/profile_comment',  {'user_id':username, 'message': text})
+  add(username: string, text: string): Promise<any> {
+    return this.apiService.post('/api/comments/' + username,  {'text': text})
       .toPromise()
       .then(response => response.json())
       .catch((e) => this.requestOptionsService.handleError(e, "Add Comments error"));

@@ -79,14 +79,18 @@ export class ProfileComponent implements OnInit {
     if (this.constantsService.User) {
       this.artistRatingService.submitVote(n, this.artist.id)
         .then(response => {
-
-          console.log("submitVote: ", response);
-          // if (response.artist.rating) {
-          //   this.artist.rating = response.artist.rating;
-          // }
-          // if (response.message) {
-          //   this.alertService.info(response.message)
-          // }
+          console.log("submitVote: ", response);        
+          if (response.result === 'OK') {
+            this.alertService.info(response.message);
+            if(response.artist.rating && typeof response.artist.rating === 'number') {
+              this.artist.rating = Math.round(response.artist.rating);
+            }
+          } else if (response.result === 'FAIL'){
+            this.alertService.danger(response.message);
+          }
+          else if (response.error && typeof response.error === 'string'){
+            this.alertService.danger(response.error);
+          }
         },
         (reject => { console.log(reject) }));
     } else {

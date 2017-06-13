@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UiService } from "../services/ui-service.service";
 import { PopupService } from "../services/ui-popup.service";
 import { ConstantsService } from "../../services/constants.service"
@@ -12,36 +12,30 @@ declare var localStorage: any;
   styleUrls: ['topbar.component.css']
 })
 
-export class TopbarComponent implements OnInit {
+export class TopbarComponent {
 
-  private AddContentShow: boolean = false;
+  isTopMenuOpen: boolean = false;
+  private AddContentShow: boolean;
   private localStorageUser: any;
 
   constructor
     (
+    public constantsService: ConstantsService,
     private uiService: UiService,
-    private popupService: PopupService,
-    private constantsService: ConstantsService
+    private popupService: PopupService
     ) {
 
     this.constantsService.userObservable
       .subscribe((data: any) => {
         if (data && (data.role === 'artist' || data.role === 'admin')) {
-          this.AddContentShow = true
+          setTimeout(()=>{
+            this.AddContentShow = true;
+          },0)     
         } else {
           this.AddContentShow = false;
         }
       });
   }
-
-  ngOnInit(): void {
-    this.localStorageUser = localStorage.getItem('currentUser');
-    if (this.localStorageUser && (this.localStorageUser.role === 'artist' || this.localStorageUser.role === 'admin')) {
-      this.AddContentShow = true;
-    }
-  }
-
-  isTopMenuOpen: boolean = false;
 
   toggleTopMenu($event: Event) {
     $event.preventDefault();

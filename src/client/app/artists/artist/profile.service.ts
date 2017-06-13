@@ -15,7 +15,7 @@ export class ProfileService {
     return this.apiService.get('/api/artist/' + username)
       .toPromise()
       .then(response => response.json())
-      .catch(this.requestOptionsService.handleError);
+      .catch((e) => this.requestOptionsService.handleError(e, "Artist full profile error"));
   }
 
 }

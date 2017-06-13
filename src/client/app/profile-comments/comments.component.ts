@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 
 import { CommentsService } from './comments.service';
 import { ConstantsService } from './../services/constants.service';
+import { AlertService } from './../shared/alert/alert.service';
 
 @Component({
   moduleId: module.id,
@@ -17,17 +18,18 @@ export class ProfileCommentsComponent implements OnInit {
   loading: any = false;
   newComment: string = '';
   showMoreButton: boolean;
-  responseMessage: string;
   private comments: any;
   private username: string;
   private limit: number = 10;
   private offset: number;
+  private term: string = ''
 
   constructor
   (
     public constantsService: ConstantsService,
     private route: ActivatedRoute,
     private router: Router,
+    private alertService: AlertService,
     private commentsService: CommentsService) {
   }
 
@@ -37,34 +39,42 @@ export class ProfileCommentsComponent implements OnInit {
       .switchMap((params: Params) => {
         this.comments = [];
         this.offset = 0;
-        this.responseMessage = '';
         this.showMoreButton = false;
-        let term = '?offset=' + this.offset + '&limit=' + this.limit;
+        this.term = '?offset=' + this.offset + '&limit=' + this.limit;
         this.username = params['username'];
-        return this.commentsService.getAll(this.username, term);
+        return this.commentsService.getAll(this.username, this.term);
       })
       .subscribe((response: any) => {
         console.log("Get Comments response: ", response);
-        if (response.comments) {
+        if(response.result === 'OK'){
           this.comments = response.comments;
-        }
-        if (response.total && (response.total > this.offset + this.limit)) {
-          this.showMoreButton = true;
-        }
+          if (response.total && (response.total > this.offset + this.limit)) {
+            this.showMoreButton = true;
+          }
+        }    
       });
   }
 
   getMore() {
     this.loading = 9999;
     this.offset += this.limit;
-    let term = '?offset=' + this.offset + '&limit=' + this.limit;
-    this.commentsService.getAll(this.username, term)
+    this.term = '?offset=' + this.offset + '&limit=' + this.limit;
+    this.getComments();
+  }
+
+  getComments(){
+    this.commentsService.getAll(this.username, this.term)
       .then((response: any) => {
-        this.comments.push(...response.comments);
-        this.loading = false;
-        if (response.total && (response.total <= this.offset + this.limit)) {
-          this.showMoreButton = false;
-        }
+        if(response.result === 'OK'){
+           this.comments.push(...response.comments);
+          this.loading = false;    
+          if (response.total && (response.total <= this.offset + this.limit)) {
+            this.showMoreButton = false;
+          }
+        };   
+        if (response.error && typeof response.error === 'string'){
+            this.alertService.danger(response.error);
+        }       
       }, (reject) => {
         console.log(reject);
         this.loading = false;
@@ -106,11 +116,13 @@ export class ProfileCommentsComponent implements OnInit {
       this.loading = 999;
       this.commentsService.add(this.username, this.newComment)
         .then(response => {
+          console.log("response.comment: ", response)
           if (response.result === 'OK' && response.message) {
-            this.responseMessage = response.message;
             this.newComment = '';
-            this.loading = false;
-          }
+          } else if (response.error && typeof response.error === 'string'){
+            this.alertService.danger(response.error);
+          }; 
+          this.loading = false;     
         }, (reject) => {
           console.log(reject);
           this.loading = false;

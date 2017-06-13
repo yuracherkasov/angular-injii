@@ -6,6 +6,9 @@
   font-weight: normal;
   padding: 0 12px;
 }
+#artist-review button:disabled{
+  opacity: .4;
+}
 #artist-review label{
   display: block;
   color: #e2e2e2;
