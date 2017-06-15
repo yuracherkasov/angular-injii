@@ -182,4 +182,8 @@ textarea.form-control{
 .heading > label[for="avatar"]:hover{
   color: #e9008c;
 }
+.user-name a,
+.name-surname a{
+  color: inherit;
+}
 

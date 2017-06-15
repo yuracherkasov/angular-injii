@@ -83,13 +83,14 @@ export class ProfileCommentsComponent implements OnInit {
 
   approve(comment: any, n: number): void {
     this.loading = n;
-    let copyComment = Object.assign({}, comment);
-    copyComment.confirmed = true;
-    this.commentsService.update(copyComment)
+    //let copyComment = Object.assign({}, comment);
+    //copyComment.confirmed = 'inactive';
+    this.commentsService.update(comment)
       .then(response => {
+        console.log(response);
         this.loading = false;
         if (response.result && response.result === 'OK') {
-          comment.confirmed = true;
+          comment.confirmed = 'active';
         }
       }, (reject) => {
         console.log(reject);
@@ -101,6 +102,7 @@ export class ProfileCommentsComponent implements OnInit {
     this.loading = n;
     this.commentsService.del(comment.id)
       .then(response => {
+        console.log(response);
         this.loading = false;
         if (response.result === 'OK') {
           this.comments.splice(n, 1);
@@ -119,6 +121,7 @@ export class ProfileCommentsComponent implements OnInit {
           console.log("response.comment: ", response)
           if (response.result === 'OK' && response.message) {
             this.newComment = '';
+            this.alertService.success(response.message);
           } else if (response.error && typeof response.error === 'string'){
             this.alertService.danger(response.error);
           }; 

@@ -14,6 +14,10 @@ export class AlertService {
     this.subject.next({ type: 'danger', text: message });
   }
 
+  success(message: string){
+    this.subject.next({ type: 'success', text: message });
+  }
+
   timeOutClear(time: number){
     setTimeout(() => this.subject.next(), time * 1000);
   }

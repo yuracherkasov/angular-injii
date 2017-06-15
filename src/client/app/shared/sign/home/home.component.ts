@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Response } from "@angular/http";
 import { FileUploader } from 'ng2-file-upload';
+import { Router } from '@angular/router';
 
 import { SignComponent } from '../sign.component'
 import { ConstantsService } from '../../../services/constants.service';
@@ -44,6 +45,7 @@ export class HomeComponent implements OnInit {
     private userService: UserService,
     private constantsService: ConstantsService,
     private isLoggedInService: IsLoggedInService,
+    private router: Router,
     private alertService: AlertService) {
 
   }
@@ -135,5 +137,14 @@ export class HomeComponent implements OnInit {
         this.updateLoadError = 'Server error';
         this.updateLoad = false;
       })
+  }
+
+  gotoProfile(event: Event): void {
+    event.preventDefault();
+    if (this.User.role === 'artist') {
+      this.router.navigate(['/artists', this.User.username]);
+    } else if (this.User.role === 'charity') {
+      this.router.navigate(['/charity', this.User.username]);
+    }
   }
 }

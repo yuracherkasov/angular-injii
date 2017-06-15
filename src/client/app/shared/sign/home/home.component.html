@@ -28,10 +28,10 @@
   </div>
 
   <div class="user-name">
-    <h4>{{User.username}}</h4>
+    <h4><a href="/{{User.role}}/{{User.username}}" (click)="gotoProfile($event)">{{User.username}}</a></h4>
   </div>
   <div class="name-surname">
-    <h6>{{User.firstname }} {{User.lastname}}</h6>
+    <h6><a href="/{{User.role}}/{{User.username}}" (click)="gotoProfile($event)">{{User.firstname }} {{User.lastname}}</a></h6>
   </div>
   <ul class="icons-list profile">
     <li *ngFor="let social of User.socials" [class.active]="social.link">
@@ -53,6 +53,8 @@
         <div class="form-group text-left" *ngIf="(User.role === 'artist') || (User.role === 'charity')">
           <label for="bio" class="heading">Bio:</label>
           <textarea class="form-control" maxlength="500" id="bio" name="bio" [(ngModel)]="User.bio"></textarea>
+          <!--<label for="genre" class="heading">Genre:</label>
+          <input class="form-control" id="genre" name="genre" [(ngModel)]="User.genre" />-->
         </div>
 
         <div class="text-left heading" [class.non-active]="!!User.auth_via">

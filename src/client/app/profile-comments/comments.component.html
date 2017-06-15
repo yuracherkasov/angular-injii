@@ -15,7 +15,7 @@
     </form>
     <ul id="comments">
       <li *ngFor="let comment of comments; let i = index">
-        <div [ngClass]="{'border': !comment.confirmed,
+        <div [ngClass]="{'border': comment.confirmed === 'inactive',
                    'from-artist': comment.from.role === 'artist',
                    'from-charity': comment.from.role === 'charity',
                    'from-user': comment.from.role === 'user' && !!comment.from.donating}">
@@ -30,8 +30,8 @@
             </div>
           </div>
           <p>{{comment.text}}</p>
-          <div *ngIf="!comment.confirmed" class="confirmed">
-            <button class="delete" (click)="delete(comment, i)">Delete</button>
+          <div *ngIf="comment.confirmed === 'inactive'" class="confirmed">
+            <button class="delete" (click)="del(comment, i)">Delete</button>
             <button class="approve" (click)="approve(comment, i)">Approve</button>
             <div class="load-transparent" *ngIf="loading === i"></div>
           </div>

@@ -17,7 +17,7 @@ export class ArtistRatingService {
   submitVote(n: number, id: string): Promise<any> {
     return this.apiService.put('/api/artist/' + id + '/vote',  {"stars" : n})
       .toPromise()
-      .then(response => response.json())
+      .then(response => response.json(), reject => reject.json())
       .catch(this.requestOptionsService.handleError);
   }
 }

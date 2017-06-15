@@ -18,7 +18,7 @@ export class CommentsService {
   }
 
   update(comment: any): Promise<any> {
-    return this.apiService.put('/api/update_comment/' + comment.id, comment)
+    return this.apiService.put('/api/comments/' + comment.id,  {"confirmed":"active"})
       .toPromise()
       .then(response => response.json())
       .catch((e) => this.requestOptionsService.handleError(e, "Update Comments error"));

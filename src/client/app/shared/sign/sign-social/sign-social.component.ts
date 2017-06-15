@@ -63,12 +63,14 @@ export class SignSocialComponent {
 
   facebookCall(): void {
     FB.getLoginStatus((response: any) => {
+       console.log(response);
       if (response.status === 'connected') {
-        this.facebookSignin(response.authResponse.accessTtoken)
+        this.facebookSignin(response.authResponse.accessToken);
       } else {
         FB.login((response: any) => {
+           console.log(response)
           if (response.status === 'connected') {
-            this.facebookSignin(response.authResponse.accessTtoken)
+            this.facebookSignin(response.authResponse.accessToken)
           }
         },
           (error: any) => console.error("error ", error)
@@ -80,6 +82,7 @@ export class SignSocialComponent {
   facebookSignin(accessToken: string) {
     FB.api('/me?fields=id,first_name,last_name,picture{url},email',
       (result: any) => {
+        console.log(result);
         if (result && !result.error) {
           this.User = {
             role: "user",

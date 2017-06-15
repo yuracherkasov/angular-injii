@@ -86,13 +86,17 @@ export class ProfileComponent implements OnInit {
               this.artist.rating = Math.round(response.artist.rating);
             }
           } else if (response.result === 'FAIL'){
-            this.alertService.danger(response.message);
-          }
-          else if (response.error && typeof response.error === 'string'){
+            this.alertService.danger(response.message);      
+          } else if (response.error && typeof response.error === 'string'){
             this.alertService.danger(response.error);
           }
         },
-        (reject => { console.log(reject) }));
+        reject => { 
+          if (reject.message){
+            this.alertService.danger(reject.message);
+          }
+          console.log(reject); 
+        });
     } else {
       this.alertService.danger('You need login');
     }

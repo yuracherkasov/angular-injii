@@ -8,7 +8,7 @@
           <div class="one_article" *ngFor="let article of articles">
             <div class="featured_thumb">
               <a href="/{{article.url}}" (click)="onloadArticle($event, article.url)">
-                <img src={{article.thumbnail}} alt="thumbnail" />
+                <img [hidden]="!article.thumbnail" src={{article.thumbnail}} alt="" />
               </a>
             </div>
             <a href="/{{article.url}}" (click)="onloadArticle($event, article.url)">

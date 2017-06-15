@@ -11,7 +11,7 @@ export class UserService {
 
   signup(user: any): Promise<Object> {
     // let jsonUser = JSON.stringify({user});
-    // console.log("User register request url: /api/auth/signup,  User register request body: " + jsonUser)
+    console.log("User register request url: /api/auth/signup,  User register request body: ", user)
     return this.apiService.post('/api/auth/signup',  JSON.stringify({user}))
       .toPromise()
       .then(response => response.json(), regect => regect.json())
