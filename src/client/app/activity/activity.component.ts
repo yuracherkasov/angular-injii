@@ -30,17 +30,17 @@ export class ActivityComponent implements OnInit {
   @ViewChild('container') container: ElementRef;
   @ViewChild('inner') inner: ElementRef;
 
-  private term: string = '';
   public order: string = '';
+  public hidepopup: boolean = false;
+  private term: string = '';
   public loading: boolean = false;
   private offset: number = 0;
   private limit: number = 12;
   private total: number;
   private activititems: IVideo[] = [];
-  private hidepopup: boolean = false;
   private heightContainer: number;
   private heightInner: number;
-  private uploadFlag: boolean = false; 
+  private uploadFlag: boolean = false;
   private videoObj: any = {};
 
   constructor
@@ -57,7 +57,7 @@ export class ActivityComponent implements OnInit {
       } else {
         this.hidePopUp();
       }
-    })
+    });
   };
 
   showPopUp() {

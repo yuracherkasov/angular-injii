@@ -20,13 +20,14 @@ import { ArtistRatingService } from './../../services/artist-rating.service';
 })
 export class ProfileComponent implements OnInit {
 
+  public hidepopup: boolean = false;
   artist: any = {};
   artistManager: any = {};
   artistAgent: any = {};
-  hidepopup: boolean = false;
 
   constructor
   (
+    public popupService: PopupService,
     private route: ActivatedRoute,
     private profileService: ProfileService,
     private artistRatingService: ArtistRatingService,
@@ -34,7 +35,6 @@ export class ProfileComponent implements OnInit {
     private constantsService: ConstantsService,
     private popupControlService: PopupControlService,
     private alertService: AlertService,
-    private popupService: PopupService,
     private uiDonationService: UiDonationService
     ) {
 
@@ -79,7 +79,7 @@ export class ProfileComponent implements OnInit {
     if (this.constantsService.User) {
       this.artistRatingService.submitVote(n, this.artist.id)
         .then(response => {
-          console.log("submitVote: ", response);        
+          console.log('submitVote: ', response);
           if (response.result === 'OK') {
             this.alertService.info(response.message);
             if(response.artist.rating && typeof response.artist.rating === 'number') {

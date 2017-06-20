@@ -9,13 +9,12 @@ export class CarouselService {
   buttonQuantity: any = [];
   cssTransition: number = 0.5;
 
-  constructor() { }
+  constructor() {}
 
-  getPagination(length: number, carouselItemWidth: number, carouselWidth: number){
+  getPagination(length: number, carouselItemWidth: number, carouselWidth: number) {
     this.buttonQuantity = new Array(Math.ceil(length * carouselItemWidth / carouselWidth));
   }
-          
-
+  
   gotoItem(i: number, carouselWidth: number, length: number, carouselItemWidth: number) {
 
     let quantityItemsInWindow = carouselWidth / carouselItemWidth;
@@ -41,7 +40,7 @@ export class CarouselService {
     }
 
     if (quantityItemsInWindow <= (length - quantityOffsetItems)) {
-      this.left = -i * carouselItemWidth * quantityItemsInWindow
+      this.left = -i * carouselItemWidth * quantityItemsInWindow;
     } else {
       switch (length - quantityOffsetItems) {
         case 1:

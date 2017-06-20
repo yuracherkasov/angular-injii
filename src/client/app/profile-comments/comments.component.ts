@@ -91,9 +91,11 @@ export class ProfileCommentsComponent implements OnInit {
         this.loading = false;
         if (response.result && response.result === 'OK') {
           comment.confirmed = 'active';
+        } else if (response.result && response.result === 'FAIL') {
+          this.alertService.danger(response.message);
         }
       }, (reject) => {
-        console.log(reject);
+        console.warn(reject);
         this.loading = false;
       });
   }
@@ -106,9 +108,11 @@ export class ProfileCommentsComponent implements OnInit {
         this.loading = false;
         if (response.result === 'OK') {
           this.comments.splice(n, 1);
+        } else if (response.result === 'FAIL') {
+          this.alertService.danger(response.message);
         }
       }, (reject) => {
-        console.log(reject);
+        console.warn(reject);
         this.loading = false;
       });
   }

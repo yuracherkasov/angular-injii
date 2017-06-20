@@ -9,8 +9,20 @@
       <img src="assets/svg/icons/facebook-logo-button.svg" alt="Facebook" />
     </li>
     <li>
-      <a href="javascript:;" (click)="twitterCall()"></a>
+      <a href="javascript:;" (click)="twitterService.getPinForTwitter(pop)" 
+        [popover]="popTemplate"
+        popoverTitle="Your PIN-code"
+        #pop="bs-popover"
+        triggers=""
+        placement="bottom"></a>
       <img src="assets/svg/icons/twitter-logo-button.svg" alt="Twitter" />
     </li>
   </ul>
+  <template #popTemplate>
+    <form (ngSubmit)="sendPinForTwitter(pin.value, pop)" novalidate>
+      <input type="text" class="pin-field" #pin />
+      <button type="submit" class="button-injii">send</button>
+    </form>   
+  <span class="pin-close" (click)="pop.hide()"></span>
+  </template>
 </div>

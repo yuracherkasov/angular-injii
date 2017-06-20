@@ -26,14 +26,14 @@ export class ASearchService {
   }
 
   search(term: string): Observable<Artist[]> {
-    console.log("Artists request: " + '/api/artists' + term);
+    console.log('Artists request: ' + '/api/artists' + term);
     return this.apiService.get('/api/artists' + term)
       .map(r => r.json().artists as Artist[])
       .catch(this.handleError);
   }
 
   handleError(error: any): Observable<Artist[]> {
-    console.warn("Artists reject: ", error);
+    console.warn('Artists reject: ', error);
     return Observable.of<Artist[]>([]);
   }
 

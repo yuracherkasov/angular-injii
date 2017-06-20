@@ -51,14 +51,14 @@
   </script>
 
   <!-- shims:js -->
-  
-  <script src="/jwplayer/jwplayer.js"></script>
-  <script>
-    jwplayer.key = "HBID7mOt6+FwhqIWVt9cedp+pxl/SM45Q0mWmzzN7w7FDO5X";
-  </script>
   <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js" async></script>
   <script src="https://apis.google.com/js/platform.js" async></script>
   <script type="text/javascript" src="https://www.wepay.com/min/js/iframe.wepay.js" async></script>
+  <script src="/libs/codebird.js" async></script>
+  <script src="/libs/jwplayer.js"></script>
+  <script>
+    jwplayer.key = "HBID7mOt6+FwhqIWVt9cedp+pxl/SM45Q0mWmzzN7w7FDO5X";
+  </script>
   <!-- endinject -->
 
   <% if (BUILD_TYPE === 'dev') { %>
@@ -70,10 +70,11 @@
 
       <!-- inject:js -->
       <!-- remove when production -->
-      <script src="/src/client/jwplayer/jwplayer.js"></script>
+      <script src="/src/client/libs/jwplayer.js"></script>
       <script>
         jwplayer.key = "HBID7mOt6+FwhqIWVt9cedp+pxl/SM45Q0mWmzzN7w7FDO5X";
       </script>
+      <script src="/src/client/libs/codebird.js" async></script>
       <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js" async></script>
       <script src="https://apis.google.com/js/platform.js" async></script>
       <script type="text/javascript" src="https://www.wepay.com/min/js/iframe.wepay.js" async></script>

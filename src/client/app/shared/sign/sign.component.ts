@@ -1,7 +1,7 @@
-import { Component, OnInit, NgZone, trigger, transition, style, animate, state } from "@angular/core";
-import { UiService } from "../services/ui-service.service";
-import { AuthService } from "./services/auth.service";
-import { UserService } from "./services/user.service";
+import { Component, OnInit, NgZone, trigger, transition, style, animate, state } from '@angular/core';
+import { UiService } from '../services/ui-service.service';
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 import { UserModel } from './models/newuser.model';
 import { ConstantsService } from './../../services/constants.service';
 import { IsLoggedInService } from './services/islogged.service';

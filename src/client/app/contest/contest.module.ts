@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ContestComponent, UpcomingContestComponent, CurrentContestComponent, UpcomingItemComponent } from './index';
 import { ContestRoutingModule } from './contest-routing.module';
 
-import { ContestService } from "./contest.service";
+import { ContestService } from './contest.service';
 
 @NgModule({
     imports: [CommonModule, ContestRoutingModule],

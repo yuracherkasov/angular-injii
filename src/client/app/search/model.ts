@@ -1,6 +1,6 @@
 export interface ISitem {
   id?: string;
-  role?: string,
+  role?: string;
   bio?: string;
   genre?: string;
   username?: string;

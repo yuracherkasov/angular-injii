@@ -16,6 +16,7 @@ import { IArticle, IApprise } from './apprise.model';
 export class AppriseComponent implements OnInit {
 
   @ViewChild('myFrame') myFrame: ElementRef;
+  public showIframe: boolean = false;
   public hidepopup: boolean = false;
   public loading: boolean = false;
   public messageLoading: boolean = false;
@@ -29,7 +30,6 @@ export class AppriseComponent implements OnInit {
   private term: string = '';
   private articles: IArticle[] = [];
   private makeQuery: boolean = false;
-  private showIframe: boolean = false;
 
   constructor
   (
@@ -114,7 +114,7 @@ export class AppriseComponent implements OnInit {
     console.log(this.articleMessage);
     this.appriseService.sendArticle(this.articleMessage)
       .then(response => {
-        if(response.message){
+        if (response.message) {
           this.resolveMessage = response.message;
         }
         this.messageLoading = false;

@@ -9,7 +9,7 @@ import
   UpcomingContentComponent,
   LatestContentComponent,
   FeaturedContentComponent,
-  ContentService 
+  ContentService
 } from './index';
 
 
@@ -23,7 +23,7 @@ import
       LatestContentComponent,
       FeaturedContentComponent
     ],
-    exports: 
+    exports:
     [
       ContentComponent,
       SearchComponent

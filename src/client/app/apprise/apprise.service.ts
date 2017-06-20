@@ -3,8 +3,7 @@ import { ApiService } from '../services/api.service';
 import { Response } from '@angular/http';
 
 import { IApprise } from './apprise.model';
-import { RequestOptionsService } from '../services/request-options.service'
-
+import { RequestOptionsService } from '../services/request-options.service';
 
 @Injectable()
 
@@ -14,7 +13,7 @@ export class AppriseService {
   }
 
   get(term: string): Promise<IApprise> {
-    console.log("Apprise request: " + '/api/apprise' + term);
+    console.log('Apprise request: ' + '/api/apprise' + term);
     return this.apiService.get('/api/apprise' + term)
     .toPromise()
     .then((response: Response) => { return response.json() as IApprise; })

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileCommentsModule } from './../profile-comments/profile-comments.module';
-import { ArtistsComponent} from './artists.component';
+import { ArtistsComponent } from './artists.component';
 import { ProfileComponent } from './artist/profile.component';
 import { ArtistRoutingModule } from './artist-routing.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';

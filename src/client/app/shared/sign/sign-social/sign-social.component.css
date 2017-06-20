@@ -20,3 +20,28 @@
     width: 100%;
     height: 100%;
 }
+
+.pin-field{
+  width: 130px;
+  color: #000;
+  font-size: 20px;
+  border-radius: 5px;
+  outline: none;
+  padding: 0 5px;
+  margin-bottom: 8px;
+  display: block;
+}
+.button-injii{
+  float: right;
+}
+.pin-close{
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  background: url(../assets/svg/icons/cancel_gray.svg) no-repeat center center;
+  background-size: 100%;
+}

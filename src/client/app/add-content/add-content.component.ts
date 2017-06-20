@@ -18,6 +18,11 @@ import { VideoPreviewComponent } from './preview/video-preview.component';
 })
 
 export class AddContentComponent implements OnInit {
+
+  public uploader: FileUploader = new FileUploader({
+    url: '/api/add_content',
+    authToken: this.constantsService.User.token
+  });
   private hidepopup: boolean = false;
   private contentTitle: string;
   private metaTags: string;
@@ -31,19 +36,12 @@ export class AddContentComponent implements OnInit {
 
   @ViewChild(VideoPreviewComponent)
   private previewComponent: VideoPreviewComponent;
-
   /**
    * Maximum duration of video in seconds
    */
   private maxVideoDuration: number;
-
   private isSelectedTimeBooked: boolean = false;
   private isDurationValid: boolean = true;
-
-  public uploader: FileUploader = new FileUploader({
-    url: '/api/add_content',
-    authToken: this.constantsService.User.token
-  });
 
 
   name = 'Add Content';
@@ -85,14 +83,6 @@ export class AddContentComponent implements OnInit {
     })
   }
 
-  private showPopUp() {
-    this.hidepopup = false;
-  }
-
-  private hidePopUp() {
-    this.hidepopup = true;
-  }
-
   ngOnInit() {
     this.uploader.onBuildItemForm = (fileItem: any, form: FormData) => {
       form.append('content-title', this.contentTitle || '');
@@ -107,7 +97,7 @@ export class AddContentComponent implements OnInit {
 
 
   defineDuration(event: number): void {
-    console.log("duration video = " + event)
+    console.log('duration video = ' + event)
     this.isDurationValid = event < this.maxVideoDuration;
   }
 
@@ -152,6 +142,14 @@ export class AddContentComponent implements OnInit {
     };
   }
 
+   private showPopUp() {
+    this.hidepopup = false;
+  }
+
+  private hidePopUp() {
+    this.hidepopup = true;
+  }
+
   onSubmit(e: Event, videos: Video[]): void {
     e.preventDefault();
 
@@ -186,12 +184,12 @@ export class AddContentComponent implements OnInit {
     this.previewComponent.cssDisplay = false;
     this.previewComponent.UrlsArray = [];
 
-    this.contentTitle = "";
-    this.metaTags = "";
-    this.charity = "";
-    this.twitterHandle = "";
-    this.facebookHandle = "";
-    this.artistDescription = "";
+    this.contentTitle = '';
+    this.metaTags = '';
+    this.charity = '';
+    this.twitterHandle = '';
+    this.facebookHandle = '';
+    this.artistDescription = '';
 
   }
 

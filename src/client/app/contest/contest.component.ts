@@ -1,6 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import { PopupService } from './../shared/services/ui-popup.service';
-import { CarouselService } from "./carousel.service";
+import { CarouselService } from './carousel.service';
 
 @Component({
   moduleId: module.id,
@@ -12,33 +12,33 @@ import { CarouselService } from "./carousel.service";
 
 export class ContestComponent {
 
-  private hidepopup: boolean = false;
-  private toggleContests: boolean = true;
+  hidepopup: boolean = false;
+  toggleContests: boolean = true;
 
   constructor
     (
-    private popupService: PopupService,
+    public popupService: PopupService,
     private zone: NgZone
     ) {
 
     popupService.contentObservable.subscribe(data => {
       if (data) {
-        this.showPopUp()
+        this.showPopUp();
       } else {
-        this.hidePopUp()
+        this.hidePopUp();
       }
-    })
+    });
   }
 
   private showPopUp() {
     this.zone.run(() => {
       this.hidepopup = false;
-    })
+    });
   }
 
   private hidePopUp() {
     this.zone.run(() => {
       this.hidepopup = true;
-    })
+    });
   }
 }

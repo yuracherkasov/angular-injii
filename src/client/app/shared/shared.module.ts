@@ -22,6 +22,7 @@ import { UserService } from './sign/services/user.service';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { CeiboShare } from 'ng2-social-share';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -34,7 +35,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    PopoverModule.forRoot()
   ],
   declarations: 
   [

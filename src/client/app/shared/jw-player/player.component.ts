@@ -108,12 +108,14 @@ export class PlayerComponent implements AfterViewInit {
   };
 
   callSharing() {
-    this.sharingPlugin.open();
-    jwplayer().play(true);
-    this.controlStyle = "none";
-    this.sharingPlugin.on('close', () => {
-      this.controlStyle = "block";
-    });
+    if(this.sharingPlugin != undefined){
+      this.sharingPlugin.open();
+      jwplayer().play(true);
+      this.controlStyle = "none";
+      this.sharingPlugin.on('close', () => {
+        this.controlStyle = "block";
+      });
+    }
   };
 
   setValue(e: any) {

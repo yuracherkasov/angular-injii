@@ -33,6 +33,6 @@ export class ContentComponent {
   hidePopUp() {
     this.zone.run(() => {
       this.hidepopup = true;
-    })
+    });
   }
 }

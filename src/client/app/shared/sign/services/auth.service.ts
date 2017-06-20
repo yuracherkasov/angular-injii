@@ -1,5 +1,5 @@
-import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
 import { ConstantsService } from '../../../services/constants.service';
 import { ApiService } from '../../../services/api.service';
 
@@ -9,7 +9,7 @@ export class AuthService {
 
   login(username: string, password: string, remember: boolean): Promise<Object> {
     let param = JSON.stringify({username: username, password: password})
-    console.log("param: ", param)
+    console.log('param: ', param)
     return this.apiService.post('/api/auth/signin', param)
       .toPromise()
       .then((response) => {
@@ -18,7 +18,21 @@ export class AuthService {
           localStorage.setItem('currentUser', JSON.stringify(result.user));
         }
         this.constantsService.setUser(result.user);
-        console.log("loginservice ", result);
+        console.log('loginservice ', result);
+        return result;
+      })
+      .catch(this.handleError);
+  }
+
+  loginWithSocial(user: any){
+    console.log('loginWithSocial user: ', user);
+    return this.apiService.post('/api/auth/signinsocial', JSON.stringify(user))
+      .toPromise()
+      .then((response) => {
+        let result = response.json();
+        localStorage.setItem('currentUser', JSON.stringify(result.user));
+        this.constantsService.setUser(result.user);
+        console.log('loginservice ', result);
         return result;
       })
       .catch(this.handleError);

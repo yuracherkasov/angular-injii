@@ -22,14 +22,14 @@ export class CSearchService {
   constructor(private apiService: ApiService) {}
 
   search(term: string): Observable<Charity[]> {
-    console.log("Charities request: " + '/api/charities' + term)
+    console.log('Charities request: ' + '/api/charities' + term);
     return this.apiService.get('/api/charities' + term)
       .map(r => r.json().charities as Charity[])
       .catch(this.handleError);
   }
 
    handleError(error: any): Observable<Charity[]> {
-    console.warn("Charities reject: ", error);
+    console.warn('Charities reject: ', error);
     return Observable.of<Charity[]>([]);
   }
 

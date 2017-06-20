@@ -18,11 +18,10 @@ import { Charity } from './charity.model';
 
 export class CharitiesComponent implements OnInit, AfterViewInit {
 
+  term: string = '';
   hidepopup: boolean = false;
   charities: Observable<Charity[]>;
   private searchTerm = new Subject<string>();
-
-  term: string = '';
 
   constructor
     (
@@ -81,7 +80,7 @@ export class CharitiesComponent implements OnInit, AfterViewInit {
       .distinctUntilChanged()
       .switchMap(term => term
         ? this.searchService.search(this.term)
-        : Observable.of<Charity[]>([]))
+        : Observable.of<Charity[]>([]));
   }
 
 }

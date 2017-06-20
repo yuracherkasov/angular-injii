@@ -20,14 +20,14 @@ export class CommentsService {
   update(comment: any): Promise<any> {
     return this.apiService.put('/api/comments/' + comment.id,  {"confirmed":"active"})
       .toPromise()
-      .then(response => response.json())
+      .then(response => response.json(), reject => reject.json())
       .catch((e) => this.requestOptionsService.handleError(e, "Update Comments error"));
   }
 
   del(id: string): Promise<any> {
     return this.apiService.del('/api/comments/' + id)
       .toPromise()
-      .then(response => response.json())
+      .then(response => response.json(), reject => reject.json())
       .catch((e) => this.requestOptionsService.handleError(e, "Delete Comments error"));
   }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RequestOptionsService } from "./../services/request-options.service";
+import { RequestOptionsService } from './../services/request-options.service';
 import { PlayerService } from "./../shared/jw-player/player.service";
 import { PopupService } from './../shared/services/ui-popup.service';
 import { ApiService } from '../services/api.service';
