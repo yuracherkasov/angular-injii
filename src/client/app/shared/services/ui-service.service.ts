@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PopupService } from './ui-popup.service'
+import { PopupService } from './ui-popup.service';
 
 @Injectable()
 export class UiService {
@@ -22,21 +22,21 @@ export class UiService {
     popupService.contentObservable.subscribe(() => {
      this.isMainMenuOpen = false;
      this.isSignMenuOpen = false;
-    })
+    });
   }
 
   toggleMainMenu() {
     this.isMainMenuOpen = !this.isMainMenuOpen;
     if (this.isSignMenuOpen) {
       this.isSignMenuOpen = !this.isSignMenuOpen
-    }  
+    };
   }
 
   toggleSignMenu($event: Event) {
     $event.preventDefault();
     this.isSignMenuOpen = !this.isSignMenuOpen;
     if (this.isMainMenuOpen) {
-      this.isMainMenuOpen = !this.isMainMenuOpen
+      this.isMainMenuOpen = !this.isMainMenuOpen;
     }
   }
 
@@ -51,17 +51,17 @@ export class UiService {
 
   selectSignUpForm(event: any, str: string): void {
     event.preventDefault();
-    if (str === "user") {
+    if (str === 'user') {
       this.userForm = true;
     } else {
       this.userForm = false;
     };
-    if (str === "artist") {
+    if (str === 'artist') {
       this.artistForm = true;
     } else {
       this.artistForm = false;
     };
-    if (str === "charity") {
+    if (str === 'charity') {
       this.charityForm = true;
     } else {
       this.charityForm = false;

@@ -5839,7 +5839,16 @@ ul,
 li {
   margin: 0;
   padding: 0; }
-
+*{
+  scrollbar-base-color: #000;
+  scrollbar-face-color: #000;
+  scrollbar-3dlight-color: #e6008b;
+  scrollbar-highlight-color: #e6008b;
+  scrollbar-track-color: #000;
+  scrollbar-arrow-color: #e6008b;
+  scrollbar-shadow-color: #e6008b;
+  scrollbar-darkshadow-color: green;
+}
 ::-webkit-scrollbar {
   width: 8px; }
 
@@ -5849,7 +5858,6 @@ li {
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 1px #e6008b; }
-
 @media (min-width: 992px) {
   .scrollable-y {
     overflow-y: auto; } }

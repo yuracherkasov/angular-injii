@@ -34,22 +34,23 @@ export class SignComponent implements OnInit {
 
   private isLoggedIn: boolean = true;
 
-  constructor(private uiService: UiService,
+  constructor(
+    public isLoggedInService: IsLoggedInService,
+    public uiService: UiService,
     private authenticationService: AuthService,
     private constantsService: ConstantsService,
-    private zone: NgZone,
-    private isLoggedInService: IsLoggedInService) {
+    private zone: NgZone) {
     isLoggedInService.loginStatusAnnounced.subscribe(
       value => {
         this.changestatus(value);
       }
-    )
+    );
   }
 
   changestatus(e: boolean) {
     this.zone.run(() => {
         this.isLoggedIn = e;
-    })
+    });
     if (e === false) {
       this.authenticationService.logout();
     }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { UiService } from "../services/ui-service.service";
-import { PopupService } from "../services/ui-popup.service";
-import { ConstantsService } from "../../services/constants.service"
+import { UiService } from '../services/ui-service.service';
+import { PopupService } from '../services/ui-popup.service';
+import { ConstantsService } from '../../services/constants.service';
 
 declare var localStorage: any;
 
@@ -15,22 +15,22 @@ declare var localStorage: any;
 export class TopbarComponent {
 
   isTopMenuOpen: boolean = false;
-  private AddContentShow: boolean;
+  AddContentShow: boolean;
   private localStorageUser: any;
 
   constructor
     (
     public constantsService: ConstantsService,
-    private uiService: UiService,
-    private popupService: PopupService
+    public uiService: UiService,
+    public popupService: PopupService
     ) {
 
     this.constantsService.userObservable
       .subscribe((data: any) => {
         if (data && (data.role === 'artist' || data.role === 'admin')) {
-          setTimeout(()=>{
+          setTimeout(() => {
             this.AddContentShow = true;
-          },0)     
+          },0);
         } else {
           this.AddContentShow = false;
         }

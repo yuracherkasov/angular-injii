@@ -11,7 +11,7 @@ import {
   state
 } from '@angular/core';
 
-import { MenuIframeService } from "./menu-iframe.service";
+import { MenuIframeService } from './menu-iframe.service';
 
 @Component({
   moduleId: module.id,

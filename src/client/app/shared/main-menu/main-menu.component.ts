@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { UiService } from "../services/ui-service.service";
-import { PopupService } from "../services/ui-popup.service";
-import { MenuIframeService } from "./menu-iframe.service";
+import { UiService } from '../services/ui-service.service';
+import { PopupService } from '../services/ui-popup.service';
+import { MenuIframeService } from './menu-iframe.service';
 
 @Component({
   moduleId: module.id,
@@ -12,24 +12,24 @@ import { MenuIframeService } from "./menu-iframe.service";
 
 export class MainMenuComponent {
 
+  src: string = '';
   private showIframeCompnt: boolean = false;
-  private src: string = ""
 
   constructor
     (
-    private uiService: UiService,
-    private popupService: PopupService,
-    private menuService: MenuIframeService
+      public menuService: MenuIframeService,
+      public uiService: UiService,
+      private popupService: PopupService
     ) {
 
     menuService.srcObservable.subscribe(src => {
       this.src = src;
-    })
+    });
 
 
     popupService.contentObservable.subscribe(() => {
-      this.closeFrame()
-    })
+      this.closeFrame();
+    });
   }
 
   closeFrame(): void {

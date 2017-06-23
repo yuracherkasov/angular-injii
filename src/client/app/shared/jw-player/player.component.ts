@@ -29,14 +29,14 @@ export class PlayerComponent implements AfterViewInit {
     this.playerService.videoDetailObservable
       .subscribe((data: any) => {
         if (data && data.result === 'OK')
-          this.changeVideo(data.video.playlist)
-      })
+          this.changeVideo(data.video.playlist);
+      });
   }
 
   ngAfterViewInit() {
     //this.playerService.getVideo('current').then((resolve: any) => {
     this.playerService.getVideo('4').then((resolve: any) => {
-        console.log("Video Object ", resolve)
+        console.log('Video Object ', resolve);
       if (resolve.result === 'OK') {
         let playlist = resolve.video.playlist;
         let player = this.playerEl.nativeElement.id;
@@ -50,8 +50,8 @@ export class PlayerComponent implements AfterViewInit {
           'height': '100%',
           'preload': 'auto',
           'sharing': {
-            'sites': ["facebook", "twitter", "googleplus", "interest", "email", "tumblr", "reddit", "linkedin"],
-            "heading": "Share injii"
+            'sites': ['facebook', 'twitter', 'googleplus', 'interest', 'email', 'tumblr', 'reddit', 'linkedin'],
+            'heading': 'Share injii'
             //'link': "https://MEDIAID"
           }
         });
@@ -59,7 +59,7 @@ export class PlayerComponent implements AfterViewInit {
         jwplayer().on('ready', (event: Event) => {
            this.zone.run(() => {
             this.showPlayingButton = 'playing';
-          })
+          });
           this.sharingPlugin = jwplayer().getPlugin('sharing');
           jwplayer(player).play(true);
         });
@@ -73,23 +73,23 @@ export class PlayerComponent implements AfterViewInit {
         });
 
         jwplayer().on('playlistComplete', () => {
-          this.popupService.showContentPopup()
+          this.popupService.showContentPopup();
           this.playerService.getVideo("current").then((resolve: any) => {
             if (resolve.result === 'OK') {
               let newPlaylist = resolve.video.playlist;
               jwplayer().load(newPlaylist);
-              jwplayer(player).play(true)
+              jwplayer(player).play(true);
             }
           });
-        })
+        });
 
       }
     });
   }
 
-  makeLoading(){
+  makeLoading() {
     let state = jwplayer().getState();
-    if(state === 'playing'){
+    if(state === 'playing') {
       this.zone.run(() => {
         this.showPlayingButton = '';
       });
@@ -97,23 +97,23 @@ export class PlayerComponent implements AfterViewInit {
       this.zone.run(() => {
         this.showPlayingButton = 'loading';
       });
-    };   
+    };
   };
 
   changeVideo(playlist: string): void {
-    if (jwplayer().load && typeof jwplayer().load === "function") {
+    if (jwplayer().load && typeof jwplayer().load === 'function') {
       jwplayer().load(playlist);
       jwplayer().play(true);
     };
   };
 
   callSharing() {
-    if(this.sharingPlugin != undefined){
+    if(this.sharingPlugin !== undefined) {
       this.sharingPlugin.open();
       jwplayer().play(true);
-      this.controlStyle = "none";
+      this.controlStyle = 'none';
       this.sharingPlugin.on('close', () => {
-        this.controlStyle = "block";
+        this.controlStyle = 'block';
       });
     }
   };

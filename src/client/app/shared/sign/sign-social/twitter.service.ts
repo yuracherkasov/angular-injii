@@ -49,7 +49,7 @@ export class TwitterService {
         if (reply && reply.httpstatus == 200 && reply.oauth_token) {
           self.Cb.setToken(reply.oauth_token, reply.oauth_token_secret);
           self.Cb.__call(
-            "account_verifyCredentials",
+            'account_verifyCredentials',
             {},
             (data: any) => {
               self.authWindow.close();

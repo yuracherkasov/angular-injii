@@ -396,7 +396,6 @@ export class SeedConfig {
       '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
       'ng2-file-upload': 'node_modules/ng2-file-upload/ng2-file-upload',
       'ng2-social-share': 'node_modules/ng2-social-share/ng2-social-share',
-    
       'mydatepicker': 'node_modules/mydatepicker/dist/my-date-picker.module',
       'underscore': 'node_modules/underscore/underscore.js',
       'angular2-virtual-scroll': 'node_modules/angular2-virtual-scroll/dist/virtual-scroll.js',
@@ -457,7 +456,7 @@ export class SeedConfig {
       },
       '@angular/forms': {
         main: 'index.js',
-        defaultExtension: 'js' 
+        defaultExtension: 'js'
       },
       '@angular/http': {
         main: 'index.js',
@@ -499,7 +498,6 @@ export class SeedConfig {
         main: 'dist/virtual-scroll.js',
         defaultExtension: 'js'
       }
-      
     }
   };
 

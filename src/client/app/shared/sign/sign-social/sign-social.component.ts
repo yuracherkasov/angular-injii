@@ -37,12 +37,12 @@ export class SignSocialComponent {
   private User: IUser;
 
   constructor(
+    public uiService: UiService,
     public twitterService: TwitterService,
     private authService: AuthService,
-    private uiService: UiService,
     private constantsService: ConstantsService,
     private isLoggedInService: IsLoggedInService) {
-    this.initSocial()
+    this.initSocial();
   }
 
   initSocial(): void {
@@ -59,7 +59,7 @@ export class SignSocialComponent {
         version: 'v2.8'
       };
       FB.init(fbParams);
-    } else setTimeout(() => this.initSocial(), 1000)
+    } else setTimeout(() => this.initSocial(), 1000);
   }
 
   facebookCall(): void {
@@ -69,15 +69,15 @@ export class SignSocialComponent {
         this.facebookSignin(response.authResponse.accessToken);
       } else {
         FB.login((response: any) => {
-          console.log(response)
+          console.log(response);
           if (response.status === 'connected') {
-            this.facebookSignin(response.authResponse.accessToken)
+            this.facebookSignin(response.authResponse.accessToken);
           }
         },
-          (error: any) => console.error("error ", error)
+          (error: any) => console.error('error ', error)
         );
       }
-    })
+    });
   }
 
   facebookSignin(accessToken: string) {
@@ -97,7 +97,7 @@ export class SignSocialComponent {
             lastname: result.last_name,
             username: null,
             link: result.link
-          }
+          };
           this.sign();
         } else {
           console.log(result.error);
@@ -107,12 +107,12 @@ export class SignSocialComponent {
 
   googleCall() {
     if (this.googleAuth.isSignedIn.get()) {
-      this.googleSignin(this.googleAuth.currentUser.get())
+      this.googleSignin(this.googleAuth.currentUser.get());
     } else {
       this.googleAuth.signIn()
         .then((response: any) => {
-          this.googleSignin(response)
-        })
+          this.googleSignin(response);
+        });
     }
   }
 
@@ -143,7 +143,7 @@ export class SignSocialComponent {
           this.isLoggedInService.isLogin(true);
         }
       }, (reject) => {
-        console.log(reject)
+        console.log(reject);
       });
   }
 
@@ -170,7 +170,7 @@ export class SignSocialComponent {
           this.sign();
         }, reject => {
           console.warn(reject);
-        })
+        });
     }
   }
 }

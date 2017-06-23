@@ -13,10 +13,10 @@ import { PopupControlService } from './../../services/popup-control.service';
 
 export class SharingVideoComponent {
 
-  constructor(private popupControlService: PopupControlService) { }
+  constructor(public popupControlService: PopupControlService) { }
 
   closePopUp() {
-    this.popupControlService.sharingHide()
+    this.popupControlService.sharingHide();
   }
 
 }

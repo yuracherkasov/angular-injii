@@ -10,10 +10,10 @@ import { PopupControlService } from './../../services/popup-control.service';
 
 export class SponsorComponent {
 
-  constructor(private popupControlService: PopupControlService) { }
+  constructor(public popupControlService: PopupControlService) { }
 
-  closePopUp(){
-    this.popupControlService.sponsorHide()
+  closePopUp() {
+    this.popupControlService.sponsorHide();
   }
 
 }

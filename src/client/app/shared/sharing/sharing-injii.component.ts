@@ -26,19 +26,18 @@ declare const gapi: any;
 
 export class SharingInjiiComponent implements OnInit {
 
-  @ViewChild("grender") grender: ElementRef;
-  private textInjii: string;
-  private urlInjii: string;
+  @ViewChild('grender') grender: ElementRef;
+  public goptions: any;
+  public textInjii: string;
+  public urlInjii: string;
   private imageInjii: string;
   private headerInjii: string;
-
-  goptions: any;
 
   constructor(private constantsService: ConstantsService) {
 
     this.urlInjii = this.constantsService.homeUrl;
-    this.imageInjii = this.constantsService.homeUrl + "/assets/symbol_with_logo/symbol_logo_original.jpg";
-    this.headerInjii = "Join the injii";
+    this.imageInjii = this.constantsService.homeUrl + '/assets/symbol_with_logo/symbol_logo_original.jpg';
+    this.headerInjii = 'Join the injii';
 
     constantsService.userObservable.subscribe(() => {
         this.setSharingText();
@@ -58,10 +57,10 @@ export class SharingInjiiComponent implements OnInit {
     gapi.interactivepost.render(this.grender.nativeElement, this.goptions);
   }
 
-  setSharingText(): void{
-    if (this.constantsService.User){
+  setSharingText(): void {
+    if (this.constantsService.User) {
       this.textInjii = 'Refferal code: ' + this.constantsService.User.id;
-    } else{
+    } else {
       this.textInjii = '';
     }
   }

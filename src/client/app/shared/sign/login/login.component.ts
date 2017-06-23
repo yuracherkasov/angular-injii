@@ -1,9 +1,9 @@
 import { Component, trigger, transition, style, animate, state } from '@angular/core';
-import { Response } from "@angular/http";
+import { Response } from '@angular/http';
 
 import { AuthService } from '../services/auth.service';
-import { UiService } from "../../services/ui-service.service";
-import { AlertService } from "../../alert/alert.service";
+import { UiService } from '../../services/ui-service.service';
+import { AlertService } from '../../alert/alert.service';
 import { IsLoggedInService } from './../services/islogged.service';
 
 @Component({
@@ -50,10 +50,10 @@ export class LoginComponent {
     this.authenticationService.login(this.model.username, this.model.password, this.model.remember)
       .then((response: any) => {
         if (response && response.result === 'OK') {
-          this.isLoggedInService.isLogin(true)
+          this.isLoggedInService.isLogin(true);
         }
         this.loading = false;
-        this.alertService.clear()
+        this.alertService.clear();
       }, reject => {
         let rejectJson = reject.json();
         if (rejectJson.result === 'FAIL') {
@@ -61,7 +61,7 @@ export class LoginComponent {
         }
         this.loading = false;
         this.incorrectMessage = true;
-      })
+      });
   }
 
   forgotSubmit() {
@@ -69,7 +69,7 @@ export class LoginComponent {
     this.authenticationService.requestPasswordRestore(this.forgotformEmail)
       .then((response: any) => {
         this.fLoading = false;
-        console.log("restore pass: ", response)
+        console.log('restore pass: ', response);
         if (response.result === 'OK') {
           this.alertService.info(response.message);
           this.uiService.forgotPassword = false;
@@ -77,9 +77,9 @@ export class LoginComponent {
           this.forgotErrorMessage = response.message;
       }, reject => {
         this.fLoading = false;
-        this.forgotErrorMessage = "Server error";
-        console.log(reject)
-      })
+        this.forgotErrorMessage = 'Server error';
+        console.log(reject);
+      });
   }
 
 }

@@ -1,10 +1,10 @@
-import { Component, OnInit, trigger, transition, style, animate, state } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Component, OnInit, trigger, transition, style, animate, state } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { UserService } from "../services/user.service";
-import { AuthService } from "../services/auth.service";
-import { UiService } from "../../services/ui-service.service";
-import { AlertService } from "../../alert/alert.service";
+import { UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
+import { UiService } from '../../services/ui-service.service';
+import { AlertService } from '../../alert/alert.service';
 import { IsLoggedInService } from './../services/islogged.service';
 import { MenuIframeService } from './../../main-menu/menu-iframe.service';
 
@@ -36,17 +36,18 @@ export class RegisterComponent implements OnInit {
   loading = false;
 
   public auth2: any;
-  googleLoginButtonId: string = "google-login-button";
+  googleLoginButtonId: string = 'google-login-button';
   userAuthToken: any = '';
   userDisplayName: string = "empty";
 
   constructor(
+    public menuService: MenuIframeService,
+    public uiService: UiService,
     private _formBuilder: FormBuilder,
-    private uiService: UiService,
     private userService: UserService,
     private authenticationService: AuthService,
     private isLoggedInService: IsLoggedInService,
-    private menuService: MenuIframeService,
+
     private alertService: AlertService) {
   }
 
@@ -119,7 +120,7 @@ export class RegisterComponent implements OnInit {
             mismatchedPasswords: true
           };
         }
-      }
+      };
     };
 
     this.userform.valueChanges
@@ -234,8 +235,8 @@ export class RegisterComponent implements OnInit {
     delete valueform.repeatpsw;
     this.userService.signup(valueform)
       .then((response: any) => {
-        console.log("response sign-up: ", response);
-        if (response.result === "OK") {
+        console.log('response sign-up: ', response);
+        if (response.result === 'OK') {
           this.alertService.info(response.message);
           this.authenticationService.login(response.user.username, password, false)
             .then((response: any) => {
@@ -245,16 +246,13 @@ export class RegisterComponent implements OnInit {
                 this.isLoggedInService.isLogin(true);
               }
             })
-        } else if (response.result === "FAIL"){
+        } else if (response.result === 'FAIL') {
           this.alertService.danger(response.message);
           this.loading = false;
         }
       }, (reject) => {
-        console.log("reject: ", reject); this.loading = false;
-      }
-
-      )
+        console.log('reject: ', reject); this.loading = false;
+      });
   }
-
 
 }
