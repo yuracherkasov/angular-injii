@@ -22,7 +22,7 @@ export class ProfileCommentsComponent implements OnInit {
   private username: string;
   private limit: number = 10;
   private offset: number;
-  private term: string = ''
+  private term: string = '';
 
   constructor
   (
@@ -45,13 +45,13 @@ export class ProfileCommentsComponent implements OnInit {
         return this.commentsService.getAll(this.username, this.term);
       })
       .subscribe((response: any) => {
-        console.log("Get Comments response: ", response);
-        if(response.result === 'OK'){
+        console.log('Get Comments response: ', response);
+        if(response.result === 'OK') {
           this.comments = response.comments;
           if (response.total && (response.total > this.offset + this.limit)) {
             this.showMoreButton = true;
           }
-        }    
+        }
       });
   }
 
@@ -62,19 +62,19 @@ export class ProfileCommentsComponent implements OnInit {
     this.getComments();
   }
 
-  getComments(){
+  getComments() {
     this.commentsService.getAll(this.username, this.term)
       .then((response: any) => {
-        if(response.result === 'OK'){
+        if(response.result === 'OK') {
            this.comments.push(...response.comments);
-          this.loading = false;    
+          this.loading = false;
           if (response.total && (response.total <= this.offset + this.limit)) {
             this.showMoreButton = false;
           }
-        };   
-        if (response.error && typeof response.error === 'string'){
+        };
+        if (response.error && typeof response.error === 'string') {
             this.alertService.danger(response.error);
-        }       
+        }
       }, (reject) => {
         console.log(reject);
         this.loading = false;
@@ -122,14 +122,14 @@ export class ProfileCommentsComponent implements OnInit {
       this.loading = 999;
       this.commentsService.add(this.username, this.newComment)
         .then(response => {
-          console.log("response.comment: ", response)
+          console.log('response.comment: ', response);
           if (response.result === 'OK' && response.message) {
             this.newComment = '';
             this.alertService.success(response.message);
-          } else if (response.error && typeof response.error === 'string'){
+          } else if (response.error && typeof response.error === 'string') {
             this.alertService.danger(response.error);
-          }; 
-          this.loading = false;     
+          };
+          this.loading = false;
         }, (reject) => {
           console.log(reject);
           this.loading = false;

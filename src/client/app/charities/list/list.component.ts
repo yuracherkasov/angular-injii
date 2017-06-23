@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ScreenService } from './../../services/screen.service';
@@ -12,11 +12,12 @@ import { Charity } from './../charity.model';
   templateUrl: 'list.component.html',
   styleUrls: ['list.component.css']
 })
-export class ListComponent {
+export class ListComponent implements OnChanges {
 
   @Input() Items: Charity[];
   filteredList: Charity[];
   itemHeight: number;
+  scrollItems: any;
 
   constructor
     (
@@ -29,8 +30,8 @@ export class ListComponent {
     this.setItemHeight(this.screenService.screen);
 
     this.screenService.screenObservable.subscribe((val) => {
-      this.setItemHeight(val)
-    })
+      this.setItemHeight(val);
+    });
   }
 
   setItemHeight(val: number): void {

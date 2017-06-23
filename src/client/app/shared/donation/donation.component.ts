@@ -32,23 +32,23 @@ declare var WePay: any;
 
 export class DonationComponent {
 
-  @ViewChild('wepayCheckout') wepay_checkout: ElementRef
+  @ViewChild('wepayCheckout') wepay_checkout: ElementRef;
 
-  private loading: boolean = false;
+  public loading: boolean = false;
+  public fullPopup: boolean = false;
+  private charityId: string = '';
+  private videoId: string = '';
 
-  private fullPopup: boolean = false;
-  private charityId: string = "";
-  private videoId: string = "";
-
-  constructor(private constantsService: ConstantsService,
-    private uiDonationService: UiDonationService,
+  constructor(
+    public uiDonationService: UiDonationService,
+    private constantsService: ConstantsService,
     private donationService: DonationService,
     private alertService: AlertService) {
 
     this.uiDonationService.DonationDetailObservable
       .subscribe(() => {
         this.updateDonate();
-      })
+      });
 
   }
 
@@ -69,15 +69,15 @@ export class DonationComponent {
         charity_username: this.uiDonationService.charityObj.username,
         video_id: this.uiDonationService.videoObj.id,
         username: this.constantsService.User ? this.constantsService.User.username : null
-      }
+      };
 
       this.donationService.checkout(data)
         .then(response => {
-          if (response.result === "OK" && !!response.checkout_uri) {
-            WePay.iframe_checkout("wepay_checkout", "https://stage.wepay.com/api/checkout/" + response.checkout_uri);
+          if (response.result === 'OK' && !!response.checkout_uri) {
+            WePay.iframe_checkout('wepay_checkout', 'https://stage.wepay.com/api/checkout/' + response.checkout_uri);
             this.loading = false;
           }
-        })
+        });
     }
   }
 

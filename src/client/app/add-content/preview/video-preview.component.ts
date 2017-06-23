@@ -16,20 +16,20 @@ declare var jwplayer: any;
 })
 
 export class VideoPreviewComponent {
-
-  private file: any;
+  
   @ViewChild('preview') preview: ElementRef;
   @Output() durationSetup: EventEmitter<number> = new EventEmitter<number>();
-  private durationTime: number = null;
   UrlsArray: Array<string> = [];
   cssDisplay: boolean = false;
+  private file: any;
+  private durationTime: number = null;
 
   constructor() { }
 
   onVideoChange(e: any) {
     this.cssDisplay = true;
     this.file = e.target.files[0];
-    let fileReader: FileReader = new FileReader()
+    let fileReader: FileReader = new FileReader();
 
     fileReader.onload = (e: any): void => {
 
@@ -37,7 +37,7 @@ export class VideoPreviewComponent {
       let blob = new Blob([e.target.result], { type: mime });
       let url = URL.createObjectURL(blob);
 
-      this.UrlsArray.push(url)
+      this.UrlsArray.push(url);
 
       let video = this.preview.nativeElement.id;
 
@@ -54,21 +54,19 @@ export class VideoPreviewComponent {
 
       jwplayer(video).play(true);
 
-      jwplayer(video).on("play", () => {
+      jwplayer(video).on('play', () => {
         let duration = jwplayer(video).getDuration();
         if (this.durationTime !== duration) {
           this.durationSetup.emit(duration);
           jwplayer(video).pause();
           this.durationTime = duration;
         }
-
-      })
+      });
 
     };
 
     fileReader.readAsArrayBuffer(this.file);
 
   }
-
 
 }

@@ -24,8 +24,8 @@ export class RequestOptionsService {
 
 
   handleError(error: any, descr?: string): Promise<any> {
-    descr ?  console.warn(descr + ': ', error) : console.warn("Handler Error: ", error);
-    console.warn("Handler Error: ", error);
+    descr ?  console.warn(descr + ': ', error) : console.warn('Handler Error: ', error);
+    console.warn('Handler Error: ', error);
     return Promise.reject(error.message || error);
   }
 

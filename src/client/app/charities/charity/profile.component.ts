@@ -15,8 +15,8 @@ import { AlertService } from './../../shared/alert/alert.service';
 })
 export class ProfileComponent implements OnInit {
 
-  private charity: any = {};
-  private hidepopup: boolean = false;
+  charity: any = {};
+  hidepopup: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,11 +30,11 @@ export class ProfileComponent implements OnInit {
 
     popupService.contentObservable.subscribe(data => {
       if (data) {
-        this.showPopUp()
+        this.showPopUp();
       } else {
-        this.hidePopUp()
+        this.hidePopUp();
       }
-    })
+    });
   }
 
   showPopUp() {
@@ -48,12 +48,12 @@ export class ProfileComponent implements OnInit {
     this.route.params
       .switchMap((params: Params) => this.profileService.getProfile(params['username']))
       .subscribe((response: any) => {
-        if(response.result === 'OK'){
+        if(response.result === 'OK') {
           this.charity = response.charity;
-        } else if (response.result === 'FAIL'){
+        } else if (response.result === 'FAIL') {
           this.alertService.danger(response.message);
-        }         
-        console.log("this.charity: ", this.charity);
+        }
+        console.log('this.charity: ', this.charity);
       });
   }
 
@@ -67,7 +67,7 @@ export class ProfileComponent implements OnInit {
   }
 
   gotoDonation(video: any): void {
-    this.popupControlService.toggleDonation(video.charity.id, video.id, video.title)
+    this.popupControlService.toggleDonation(video.charity.id, video.id, video.title);
   }
 
 }

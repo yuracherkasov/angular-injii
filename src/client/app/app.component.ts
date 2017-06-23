@@ -16,8 +16,8 @@ import { UiDonationService } from './shared/donation/ui-donation.service';
 export class AppComponent {
   constructor
   (
-    private popupControlService: PopupControlService,
-    private uiDonationService: UiDonationService
+    public uiDonationService: UiDonationService,
+    private popupControlService: PopupControlService
   ) {
     console.log('Environment config', Config);
   }

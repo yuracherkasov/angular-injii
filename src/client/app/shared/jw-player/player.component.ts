@@ -74,7 +74,7 @@ export class PlayerComponent implements AfterViewInit {
 
         jwplayer().on('playlistComplete', () => {
           this.popupService.showContentPopup();
-          this.playerService.getVideo("current").then((resolve: any) => {
+          this.playerService.getVideo('current').then((resolve: any) => {
             if (resolve.result === 'OK') {
               let newPlaylist = resolve.video.playlist;
               jwplayer().load(newPlaylist);

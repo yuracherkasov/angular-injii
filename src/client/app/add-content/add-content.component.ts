@@ -19,31 +19,6 @@ import { VideoPreviewComponent } from './preview/video-preview.component';
 
 export class AddContentComponent implements OnInit {
 
-  public uploader: FileUploader = new FileUploader({
-    url: '/api/add_content',
-    authToken: this.constantsService.User.token
-  });
-  private hidepopup: boolean = false;
-  private contentTitle: string;
-  private metaTags: string;
-  private charity: string;
-  private twitterHandle: string;
-  private facebookHandle: string;
-  private artistDescription: string;
-  private selectedHours: string;
-  private selectedMinutes: string;
-  private period: string;
-
-  @ViewChild(VideoPreviewComponent)
-  private previewComponent: VideoPreviewComponent;
-  /**
-   * Maximum duration of video in seconds
-   */
-  private maxVideoDuration: number;
-  private isSelectedTimeBooked: boolean = false;
-  private isDurationValid: boolean = true;
-
-
   name = 'Add Content';
   charities: { title: string, id: number };
   hours = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
@@ -63,12 +38,36 @@ export class AddContentComponent implements OnInit {
     day: this.currentDay.getDate()
   };
 
+  uploader: FileUploader = new FileUploader({
+    url: '/api/add_content',
+    authToken: this.constantsService.User.token
+  });
+  hidepopup: boolean = false;
+  contentTitle: string;
+  metaTags: string;
+  charity: string;
+  twitterHandle: string;
+  facebookHandle: string;
+  artistDescription: string;
+  selectedHours: string;
+  selectedMinutes: string;
+  period: string;
+
+  @ViewChild(VideoPreviewComponent)
+  previewComponent: VideoPreviewComponent;
+  /**
+   * Maximum duration of video in seconds
+   */
+  maxVideoDuration: number;
+  isSelectedTimeBooked: boolean = false;
+  isDurationValid: boolean = true;
+
   constructor
     (
-    private artistProfileService: ArtistProfileService,
-    private dateHelperService: DateHelperService,
-    private constantsService: ConstantsService,
-    private popupService: PopupService
+      public popupService: PopupService,
+      private artistProfileService: ArtistProfileService,
+      private dateHelperService: DateHelperService,
+      private constantsService: ConstantsService
     ) {
 
     this.getUserVideos();
@@ -76,11 +75,11 @@ export class AddContentComponent implements OnInit {
     this.getMaxVideoDuration();
     popupService.contentObservable.subscribe(data => {
       if (data) {
-        this.showPopUp()
+        this.showPopUp();
       } else {
-        this.hidePopUp()
-      }
-    })
+        this.hidePopUp();
+      };
+    });
   }
 
   ngOnInit() {
@@ -97,7 +96,7 @@ export class AddContentComponent implements OnInit {
 
 
   defineDuration(event: number): void {
-    console.log('duration video = ' + event)
+    console.log('duration video = ' + event);
     this.isDurationValid = event < this.maxVideoDuration;
   }
 
@@ -221,12 +220,12 @@ export class AddContentComponent implements OnInit {
    * @returns {string}
    */
   private convertPeriodHours(period: string, hours: string): string {
-    if (period == 'am') {
-      hours = (hours == '12') ? '00' : hours;
+    if (period === 'am') {
+      hours = (hours === '12') ? '00' : hours;
     }
 
-    if (period == 'pm') {
-      hours = (hours != '12') ? (+hours + 12).toString() : hours;
+    if (period === 'pm') {
+      hours = (hours !== '12') ? (+hours + 12).toString() : hours;
     }
 
     return hours;

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Video } from '../models/video';
 import { ApiService } from '../../services/api.service';
-import { RequestOptionsService } from '../../services/request-options.service'
+import { RequestOptionsService } from '../../services/request-options.service';
 
 //import 'rxjs/add/operator/toPromise';
 

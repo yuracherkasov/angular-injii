@@ -28,7 +28,7 @@ export class UiService {
   toggleMainMenu() {
     this.isMainMenuOpen = !this.isMainMenuOpen;
     if (this.isSignMenuOpen) {
-      this.isSignMenuOpen = !this.isSignMenuOpen
+      this.isSignMenuOpen = !this.isSignMenuOpen;
     };
   }
 

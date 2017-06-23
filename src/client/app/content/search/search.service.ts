@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 import * as _ from 'underscore';
@@ -27,12 +27,11 @@ export class SearchService {
     return this.http
       .get(`/api/videos${term}`)
       .map((r: Response) => {
-        let data = r.json()
-        let totalItems = data.totalItems
-        let offset = data.offset 
-
+        let data = r.json();
+        let totalItems = data.totalItems;
+        let offset = data.offset;
         this.getPager(totalItems, offset);
-        return r.json().videos as Video[]
+        return r.json().videos as Video[];
       });
   }
 
@@ -40,7 +39,7 @@ export class SearchService {
   getPager(totalItems: number, offset: number) {
     let itemsSize: number = 7;
 
-    let currentPage = Math.ceil((offset + 1) / 10)
+    let currentPage = Math.ceil((offset + 1) / 10);
     let totalPages = Math.ceil(totalItems / 10);
 
     let itemsSizeHalfMin = Math.floor(itemsSize / 2);
@@ -73,7 +72,7 @@ export class SearchService {
         pages: pages,
         currentPage: currentPage,
         totalPages: totalPages
-      }
+      };
       this.paginationViewChange(argumentObj);
     }
   }

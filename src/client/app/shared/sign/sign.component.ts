@@ -32,7 +32,7 @@ import { IsLoggedInService } from './services/islogged.service';
 
 export class SignComponent implements OnInit {
 
-  private isLoggedIn: boolean = true;
+  isLoggedIn: boolean = true;
 
   constructor(
     public isLoggedInService: IsLoggedInService,

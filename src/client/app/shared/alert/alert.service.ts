@@ -6,23 +6,23 @@ import { Observable } from 'rxjs/Observable';
 export class AlertService {
   private subject = new Subject<any>();
 
-  info(message: string){
+  info(message: string) {
     this.subject.next({ type: 'info', text: message });
   }
 
-  danger(message: string){
+  danger(message: string) {
     this.subject.next({ type: 'danger', text: message });
   }
 
-  success(message: string){
+  success(message: string) {
     this.subject.next({ type: 'success', text: message });
   }
 
-  timeOutClear(time: number){
+  timeOutClear(time: number) {
     setTimeout(() => this.subject.next(), time * 1000);
   }
 
-  clear(){
+  clear() {
     this.subject.next();
   }
 

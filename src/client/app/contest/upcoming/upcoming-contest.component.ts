@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ContestService } from "./../contest.service";
+import { ContestService } from './../contest.service';
 
 @Component({
   moduleId: module.id,
@@ -17,11 +17,11 @@ export class UpcomingContestComponent implements OnInit {
   constructor(private contestService: ContestService) { }
 
   ngOnInit() {
-    this.contestService.getContest("upcoming")
+    this.contestService.getContest('upcoming')
       .then(response => {
-        if (response.result === "OK" && Array.isArray(response.contests)) {
+        if (response.result === 'OK' && Array.isArray(response.contests)) {
           this.contests = response.contests;
         }
-      })
+      });
   }
 }

@@ -80,7 +80,7 @@ export class SharingInjiiComponent implements OnInit {
       caption: this.textInjii,
       //description: this.textInjii,
       link: this.urlInjii
-    }, function (response: any) { console.log(response) });
+    }, function (response: any) { console.log(response); });
   }
 
 }

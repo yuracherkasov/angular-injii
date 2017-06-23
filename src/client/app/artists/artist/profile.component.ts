@@ -59,14 +59,14 @@ export class ProfileComponent implements OnInit {
     this.route.params
       .switchMap((params: Params) => this.profileService.getProfile(params['username']))
       .subscribe((response: any) => {
-        console.log("Artist response: ", response);
-        if(response.result === 'OK'){
+        console.log('Artist response: ', response);
+        if(response.result === 'OK') {
           this.artist = response.artist;
           this.artistManager = response.artist.manager;
           this.artistAgent = response.artist.booking_agent;
-        } else if (response.result === 'FAIL'){
+        } else if (response.result === 'FAIL') {
           this.alertService.danger(response.message);
-        }       
+        }
       });
   }
 
@@ -85,17 +85,17 @@ export class ProfileComponent implements OnInit {
             if(response.artist.rating && typeof response.artist.rating === 'number') {
               this.artist.rating = Math.round(response.artist.rating);
             }
-          } else if (response.result === 'FAIL'){
-            this.alertService.danger(response.message);      
-          } else if (response.error && typeof response.error === 'string'){
+          } else if (response.result === 'FAIL') {
+            this.alertService.danger(response.message);
+          } else if (response.error && typeof response.error === 'string') {
             this.alertService.danger(response.error);
           }
         },
-        reject => { 
-          if (reject.message){
+        reject => {
+          if (reject.message) {
             this.alertService.danger(reject.message);
           }
-          console.log(reject); 
+          console.log(reject);
         });
     } else {
       this.alertService.danger('You need login');

@@ -4,8 +4,8 @@ import { Headers, Http } from '@angular/http';
 import { ScreenService } from './../../services/screen.service';
 import { PlayerService } from './../../shared/jw-player/player.service';
 import { PopupService } from './../../shared/services/ui-popup.service';
-import { RequestOptionsService } from "./../../services/request-options.service";
-import { Subject } from "rxjs/Subject"
+import { RequestOptionsService } from './../../services/request-options.service';
+import { Subject } from 'rxjs/Subject';
 import { ApiService } from '../../services/api.service';
 
 import 'rxjs/add/operator/toPromise';
@@ -30,8 +30,8 @@ export class ContentService {
     this.setLimit(this.screenService.screen);
 
     this.screenService.screenObservable.subscribe((val) => {
-      this.setLimit(val)
-    })
+      this.setLimit(val);
+    });
   }
 
   setLimit(val: number) {
@@ -50,14 +50,14 @@ export class ContentService {
         lim = 3;
         break;
     }
-    if (lim != this.limit) {
+    if (lim !== this.limit) {
       this.limit = lim;
-      this.subjLimitSource.next()
+      this.subjLimitSource.next();
     }
   }
 
   getContent(term: string): Promise<any> {
-    console.log(`/api/videos${term}`)
+    console.log(`/api/videos${term}`);
     return this.apiService.get('/api/videos' + term)
       .toPromise()
       .then(response => response.json().videos)

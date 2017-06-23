@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RequestOptionsService } from "../../services/request-options.service";
+import { RequestOptionsService } from '../../services/request-options.service';
 import { ApiService } from '../../services/api.service';
 
 
@@ -11,11 +11,11 @@ export class ProfileService {
     private apiService: ApiService) { }
 
   getProfile(username: string): Promise<any> {
-    console.log( '/api/artist/' + username )
+    console.log( '/api/artist/' + username );
     return this.apiService.get('/api/artist/' + username)
       .toPromise()
       .then(response => response.json())
-      .catch((e) => this.requestOptionsService.handleError(e, "Artist full profile error"));
+      .catch((e) => this.requestOptionsService.handleError(e, 'Artist full profile error'));
   }
 
 }

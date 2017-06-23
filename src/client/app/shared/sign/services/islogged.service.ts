@@ -4,7 +4,6 @@ import { Subject }    from 'rxjs/Subject';
 @Injectable()
 
 export class IsLoggedInService {
-  
   private isLoggedInSource = new Subject<boolean>();
   loginStatusAnnounced = this.isLoggedInSource.asObservable();
   

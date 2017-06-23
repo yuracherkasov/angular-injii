@@ -30,7 +30,7 @@ export class FeaturedContentComponent implements OnInit {
 
     this.contentService.limitObservable.subscribe(() => {
       this.getfeaturedContent();
-    })
+    });
 
   }
 
@@ -41,9 +41,8 @@ export class FeaturedContentComponent implements OnInit {
   nextContent() {
     if (this.Content.length <= this.offsetContent + this.contentService.limit) {
       this.getfeaturedContent();
-    }
-    else {
-      this.rangeContent = _.range(this.offsetContent, this.offsetContent + this.contentService.limit)
+    } else {
+      this.rangeContent = _.range(this.offsetContent, this.offsetContent + this.contentService.limit);
       this.offsetContent += this.contentService.limit;
     }
   }
@@ -63,13 +62,13 @@ export class FeaturedContentComponent implements OnInit {
     this.contentService.getContent(query)
       .then(videos => {
         if (videos && Array.isArray(videos)) {
-          this.Content.push(...videos)
+          this.Content.push(...videos);
           this.zone.run(() => {
-            this.rangeContent = _.range(this.offsetContent, this.offsetContent + this.contentService.limit)
+            this.rangeContent = _.range(this.offsetContent, this.offsetContent + this.contentService.limit);
             this.load = false;
-          })         
-          this.offsetContent += this.contentService.limit;         
+          });
+          this.offsetContent += this.contentService.limit;
         }
-      })
+      });
   }
 }

@@ -399,8 +399,8 @@ export class SeedConfig {
       'mydatepicker': 'node_modules/mydatepicker/dist/my-date-picker.module',
       'underscore': 'node_modules/underscore/underscore.js',
       'angular2-virtual-scroll': 'node_modules/angular2-virtual-scroll/dist/virtual-scroll.js',
-      
 
+      
       'app/*': '/app/*',
       // For test config
       'dist/dev/*': '/base/dist/dev/*',

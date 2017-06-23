@@ -32,8 +32,8 @@ export class ActivityComponent implements OnInit {
 
   public order: string = '';
   public hidepopup: boolean = false;
-  private term: string = '';
   public loading: boolean = false;
+  private term: string = '';
   private offset: number = 0;
   private limit: number = 12;
   private total: number;

@@ -17,15 +17,15 @@ import { ASearchService } from './search.service';
 export class ArtistsComponent implements OnInit, AfterViewInit {
 
   artists: Observable<Artist[]>;
+  hidepopup: boolean = false;
   private searchTerm = new Subject<string>();
 
   private term: string = '';
-  private hidepopup: boolean = false;
 
   constructor
     (
     public searchService: ASearchService,
-    private popupService: PopupService
+    public popupService: PopupService
     ) {
 
     searchService.searchEmitter.subscribe(order => {
@@ -79,7 +79,7 @@ export class ArtistsComponent implements OnInit, AfterViewInit {
       .distinctUntilChanged()
       .switchMap(term => term
         ? this.searchService.search(this.term)
-        : Observable.of<Artist[]>([]))
+        : Observable.of<Artist[]>([]));
   }
 
 }

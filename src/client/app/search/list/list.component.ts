@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ScreenService } from './../../services/screen.service';
@@ -12,11 +12,12 @@ import { ISitem } from './../model';
   templateUrl: 'list.component.html',
   styleUrls: ['list.component.css']
 })
-export class ListComponent {
+export class ListComponent implements OnChanges {
 
   @Input() Items: ISitem[];
   filteredList: ISitem[];
   itemHeight: number;
+  scrollItems: any;
 
   constructor
     (
@@ -29,8 +30,8 @@ export class ListComponent {
     this.setItemHeight(this.screenService.screen);
 
     this.screenService.screenObservable.subscribe((val) => {
-      this.setItemHeight(val)
-    })
+      this.setItemHeight(val);
+    });
   }
 
   setItemHeight(val: number): void {
@@ -43,9 +44,9 @@ export class ListComponent {
 
   onSelect(event: Event, item: ISitem) {
     event.preventDefault();
-    if (item.role === "artist") {
+    if (item.role === 'artist') {
       this.router.navigate(['/artists', item.username]);
-    } else if (item.role === "charity") {
+    } else if (item.role === 'charity') {
       this.router.navigate(['/charity', item.username]);
     } else if (!item.role) {
       this.playerService.changeVideo(item.id);

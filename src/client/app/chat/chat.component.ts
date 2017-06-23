@@ -21,7 +21,7 @@ export class ChatComponent implements OnInit {
   public activeChat: string = 'commentary';
   public messageIsValid: boolean = true;
   public message: string;
-  private messages: Array<IMessage> = [];
+  public messages: Array<IMessage> = [];
   private chatScrollTop: number;
   private chatUpdateInterval: number = 1000;
   private interval: any;
@@ -38,7 +38,7 @@ export class ChatComponent implements OnInit {
       } else {
         this.hidePopUp();
       }
-    })
+    });
   }
 
   ngOnInit(): void {

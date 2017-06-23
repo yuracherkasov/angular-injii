@@ -34,11 +34,7 @@ export class RegisterComponent implements OnInit {
   charityform: FormGroup;
   pswModel: string;
   loading = false;
-
-  public auth2: any;
-  googleLoginButtonId: string = 'google-login-button';
-  userAuthToken: any = '';
-  userDisplayName: string = "empty";
+  uniqueValue: any;
 
   constructor(
     public menuService: MenuIframeService,
@@ -47,7 +43,6 @@ export class RegisterComponent implements OnInit {
     private userService: UserService,
     private authenticationService: AuthService,
     private isLoggedInService: IsLoggedInService,
-
     private alertService: AlertService) {
   }
 
@@ -55,7 +50,7 @@ export class RegisterComponent implements OnInit {
     this.userform = this._formBuilder.group({
       'role': ['user'],
       'auth_via': ['native'],
-      "charityname": [null],
+      'charityname': [null],
       'band': [null],
       'username': [null, [Validators.required, Validators.minLength(5), Validators.pattern('[A-Za-z0-9]*')]],
       'firstname': [null, [Validators.required, Validators.pattern('[A-Za-z]*')]],
@@ -73,7 +68,7 @@ export class RegisterComponent implements OnInit {
     }, { validator: matchingPasswords('password', 'repeatpsw') });
     this.artistform = this._formBuilder.group({
       'role': ['artist'],
-      "charityname": [null],
+      'charityname': [null],
       'auth_via': ['native'],
       'band': [null, [Validators.required]],
       'username': [null, [Validators.required, Validators.minLength(5), Validators.pattern('[A-Za-z0-9]*')]],
@@ -148,9 +143,7 @@ export class RegisterComponent implements OnInit {
         }
       }
     }
-  };
-
-  uniqueValue: any;
+  }
 
   formErrors: any = {
     'charityname': '',
@@ -245,7 +238,7 @@ export class RegisterComponent implements OnInit {
                 this.alertService.clear();
                 this.isLoggedInService.isLogin(true);
               }
-            })
+            });
         } else if (response.result === 'FAIL') {
           this.alertService.danger(response.message);
           this.loading = false;

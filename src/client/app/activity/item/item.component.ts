@@ -35,15 +35,15 @@ export class ActivityItemComponent implements OnInit {
     this.playerService.changeVideo(id);
   }
 
-  gotoDonate(item: any): void{
+  gotoDonate(item: any): void {
     this.makeDonate.emit(item);
   }
 
-  gotoSponsor(sponsor: ISponsor): void{
+  gotoSponsor(sponsor: ISponsor): void {
     this.showSponsor.emit(sponsor);
   }
 
-  gotoSharing(video: IVideo): void{
+  gotoSharing(video: IVideo): void {
     this.showSharing.emit(video);
   }
 

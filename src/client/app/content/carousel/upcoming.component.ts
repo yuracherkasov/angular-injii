@@ -31,7 +31,7 @@ export class UpcomingContentComponent implements OnInit {
 
     this.contentService.limitObservable.subscribe(() => {
       this.getUpcomingContent();
-    })
+    });
   }
 
   ngOnInit() {
@@ -62,14 +62,13 @@ export class UpcomingContentComponent implements OnInit {
     this.contentService.getContent(query)
       .then(videos => {
         if (videos && Array.isArray(videos)) {
-          this.Content.push(...videos)
+          this.Content.push(...videos);
           this.zone.run(() => {
             this.rangeContent = _.range(this.offsetContent, this.offsetContent + this.contentService.limit);
             this.load = false;
-          })
+          });
           this.offsetContent += this.contentService.limit;
         }
-      })
+      });
   }
-  
 }

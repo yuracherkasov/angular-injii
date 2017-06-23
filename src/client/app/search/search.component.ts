@@ -43,8 +43,8 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchAsObservable();
-    if (this.searchService.filter !== ''){
-      setTimeout(() => {this.searchTerm.next(this.searchService.filter)}, 0)
+    if (this.searchService.filter !== '') {
+      setTimeout(() => {this.searchTerm.next(this.searchService.filter);}, 0);
     };
   }
 
