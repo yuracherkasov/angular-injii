@@ -1,0 +1,23 @@
+<div class="guard-wrapper">
+  <h2>Signin</h2>
+    <div>
+      <input type="email" #loginEmail placeholder="Enter your email">
+      <input type="password" #loginPassword placeholder="Enter your password">
+      <button class="btn-injii" (click)="login(loginEmail.value, loginPassword.value)">Login</button>
+    </div>
+
+  <h2>Register</h2>
+    <div>
+      <input type="text" #Firstname placeholder="Enter your firstname">
+      <input type="text" #Lastname placeholder="Enter your lastname">
+      <input type="text" #phone placeholder="Enter your phone">
+      <input type="email" #signEmail placeholder="Enter your email">
+      <input type="password" #signPassword placeholder="Enter your password">
+      <input type="text" #company placeholder="Enter your company">
+      <input type="text" #title placeholder="Enter your title">
+      <button class="btn-injii" 
+      (click)="signup(Firstname.value, Lastname.value, phone.value, signEmail.value, signPassword.value, company.value, title.value)">
+        Send
+      </button>
+    </div>
+</div>

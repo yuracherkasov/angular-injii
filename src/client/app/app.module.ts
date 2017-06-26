@@ -4,9 +4,9 @@ import { APP_BASE_HREF } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
-
 import { ContentModule } from './content/content.module';
 import { ContestModule } from './contest/contest.module';
 import { ActivityModule } from './activity/activity.module';
@@ -14,8 +14,9 @@ import { AppriseModule } from './apprise/apprise.module';
 import { ChatModule } from './chat/chat.module';
 import { ArtistsModule } from './artists/artists.module';
 import { CharitiesModule } from './charities/charities.module';
-import { SearchModule } from './search/search.module';
 import { AddContentModule } from './add-content/add-content.module';
+import { GuardModule } from './guard/guard.module';
+import { SearchModule } from './search/search.module';
 
 import { UiService } from './shared/services/ui-service.service';
 import { PopupService } from './shared/services/ui-popup.service';
@@ -30,6 +31,8 @@ import { ASearchService } from './artists/search.service';
 import { CSearchService } from './charities/search.service';
 import { SearchService } from './search/search.service';
 import { ApiService } from './services/api.service';
+import { GuardService } from './guard/guard.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 //used to create fake backend, remove when production
@@ -43,7 +46,7 @@ import { ApiService } from './services/api.service';
   [
     BrowserModule,
     HttpModule,
-    AppRoutingModule,
+    AppRoutingModule,  
     HomeModule,
     ContentModule,
     ContestModule,
@@ -53,6 +56,7 @@ import { ApiService } from './services/api.service';
     ArtistsModule,
     CharitiesModule,
     AddContentModule,
+    GuardModule,
     SearchModule,
     SharedModule.forRoot()
   ],
@@ -75,7 +79,9 @@ import { ApiService } from './services/api.service';
     ASearchService,
     CSearchService,
     SearchService,
-    ApiService
+    ApiService,
+    GuardService,
+    AuthGuardService
    //providers used to create fake backend, remove when production
     //fakeBackendProvider,
     //MockBackend,

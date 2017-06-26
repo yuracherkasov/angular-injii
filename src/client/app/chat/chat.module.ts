@@ -6,7 +6,7 @@ import { ChatRoutingModule } from './chat-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ChatRoutingModule, BrowserModule],
+  imports: [CommonModule, FormsModule, BrowserModule, ChatRoutingModule],
   declarations: [ChatComponent],
   exports: [ChatComponent],
 })

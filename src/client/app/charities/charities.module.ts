@@ -8,7 +8,7 @@ import { VirtualScrollModule } from 'angular2-virtual-scroll';
 import { ListComponent } from './list/list.component';
 
 @NgModule({
-    imports: [CommonModule, ProfileCommentsModule, CharitiesRoutingModule, VirtualScrollModule],
+    imports: [CommonModule, ProfileCommentsModule, VirtualScrollModule, CharitiesRoutingModule],
     declarations: [CharitiesComponent, ProfileComponent, ListComponent],
     exports: [CharitiesComponent, ProfileComponent],
     providers: []

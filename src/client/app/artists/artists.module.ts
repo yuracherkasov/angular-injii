@@ -11,7 +11,7 @@ import { ListComponent } from './list/list.component';
 
 
 @NgModule({
-  imports: [CommonModule, ProfileCommentsModule, ArtistRoutingModule, TooltipModule.forRoot(), VirtualScrollModule],
+  imports: [CommonModule, ProfileCommentsModule, TooltipModule.forRoot(), VirtualScrollModule, ArtistRoutingModule],
   declarations: [ArtistsComponent, ProfileComponent, ListComponent],
   exports: [ArtistsComponent, ProfileComponent],
   providers: []

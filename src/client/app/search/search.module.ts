@@ -7,7 +7,7 @@ import { ListComponent } from './list/list.component';
 
 
 @NgModule({
-  imports: [SearchRoutingModule, BrowserModule, VirtualScrollModule],
+  imports: [BrowserModule, VirtualScrollModule, SearchRoutingModule],
   declarations: [SearchComponent, ListComponent],
   exports: [SearchComponent],
   providers: []
