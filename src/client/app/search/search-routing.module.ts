@@ -21,10 +21,3 @@ import { AuthGuardService } from '../services/auth-guard.service';
 })
 export class SearchRoutingModule { }
 
-// export const SearchRoutes: Routes = [
-//   {
-//     path: 'search',
-//     canActivate: [AuthGuardService],
-//     component: SearchComponent
-//   }
-// ]

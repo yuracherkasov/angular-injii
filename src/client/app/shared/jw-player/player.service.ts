@@ -23,7 +23,8 @@ export class PlayerService {
   }
 
   getVideo(str: string): Promise<Object> {
-    return this.apiService.get('/api/video/'+str)
+    //return this.apiService.get('/api/video/'+str)
+    return this.http.get('app/FAKE_DATA/video.json')
       .toPromise()
       .then(response => {
         let videoData = response.json();

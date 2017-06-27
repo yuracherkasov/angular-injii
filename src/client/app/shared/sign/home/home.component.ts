@@ -24,7 +24,7 @@ declare var localStorage: any;
 })
 
 
-export class HomeComponent implements OnInit {
+export class HomeUserComponent implements OnInit {
 
   uploader: FileUploader;
   newPassForm: any = {};

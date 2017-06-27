@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-//import { Http } from '@angular/http';
 import { RequestOptionsService } from './../services/request-options.service';
 import { ApiService } from '../services/api.service';
 

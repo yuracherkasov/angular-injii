@@ -7,7 +7,7 @@ declare const sessionStorage: any;
 
 @Injectable()
 
-export class GuardService{
+export class GuardService {
 
   str: string = 'User isLogin';
   storageKey:string = 'InjiiUserStatus';
@@ -24,7 +24,7 @@ export class GuardService{
       this.storageValue = storageValue;
       return true;
     };
-    return false; 
+    return false;
   }
 
   login(email: string, password: string): Promise<any>  {
@@ -34,11 +34,11 @@ export class GuardService{
     .catch((e) => this.requestOptionsService.handleError(e, 'Guard login catch'));
   }
 
-   signup(user: any): Promise<any>  {
+   getAccess(user: any): Promise<any>  {
     return this.apiService.post('/api/sendemail', user)
     .toPromise()
-    .then(response => {console.log(response.json()); return response.json()}, regect => regect.json())
-    .catch((e) => this.requestOptionsService.handleError(e, 'Guard register catch'));
+    .then(response => {console.log(response.json()); return response.json();}, regect => regect.json())
+    .catch((e) => this.requestOptionsService.handleError(e, 'Guard service'));
   }
 }
 

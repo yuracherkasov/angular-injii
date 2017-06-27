@@ -22,17 +22,3 @@ import { AuthGuardService } from '../services/auth-guard.service';
   exports: [RouterModule]
 })
 export class ArtistRoutingModule { }
-
-// export const ArtistsRoutes: Routes = [
-//   {
-//     path: 'artists',
-//     canActivate: [AuthGuardService],
-//     component: ArtistsComponent   
-//   },
-//   {
-//     path: 'artists/:username',
-//     canActivate: [AuthGuardService],
-//     component: ProfileComponent
-//   }
-// ]
-

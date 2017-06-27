@@ -15,12 +15,3 @@ import { AuthGuardService } from '../services/auth-guard.service';
   exports: [RouterModule]
 })
 export class ActivityRoutingModule { }
-
-
-// export const ActivityRoutes: Routes = [
-//   {
-//      path: 'activity',
-//      canActivate: [AuthGuardService],
-//      component: ActivityComponent
-//   }
-// ]

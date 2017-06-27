@@ -1,4 +1,4 @@
-.guard-wrapper{
+#guard{
   position: fixed;
   width: 100%;
   height: 100%;
@@ -13,8 +13,95 @@
   background: radial-gradient(ellipse at center, rgba(233,0,140,1) 0%, rgba(127,0,120,0.28) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e9008c ', endColorstr='#7f0078 ', GradientType=1 );
   z-index: 99999;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-h2{
-  margin: 20px 0;
-  color: #fff;
+.guard-content{
+  width: 500px;
+  max-width: 90%;
+  text-align: center;
+}
+.guard-btns a{
+  font-size: 20px;
+  margin: 0 5%;
+  font-weight: bold;
+  vertical-align: middle;
+  display: inline-block;
+  color: #e2e2e2;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+.guard-btns a:first-child:after{
+  content: "↓";
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  margin-left: 3px;
+}
+.guard-btns a:hover,
+.guard-btns a.active{
+  border-bottom: 2px solid #e2e2e2;
+}
+.guard-forms{
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.guard-forms .show-demo-form{
+  width: 240px;
+}
+.guard-forms form{
+  opacity: 0;
+  animation: fadein-forms .2s linear forwards;
+}
+@keyframes fadein-forms{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+.access-form fieldset{
+  width: 48%;
+}
+.access-form label{
+  width: 100%;
+  text-align: left;
+  color: #e2e2e2;
+  margin-bottom: 0;
+}
+.access-form input{
+  margin-top: 5px;
+}
+.form-button{
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(to right, #e9008c 0%, #7f0078 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFE9008C', endColorstr='#FF7F0078', GradientType=1);
+  color: #e2e2e2;
+}
+.access-form .form-button{
+  margin-top: 32px;
+}
+.form-control.active{
+  border-color: #e9008c;
+}
+@media (max-width: 500px){
+  .guard-btns{
+    display: flex;
+    justify-content: space-between;
+  }
+  .guard-btns a{
+    margin: 10px 0;
+  }
+}
+@media (max-width: 380px){
+  .guard-btns a{
+    font-size: 18px;
+  }
 }

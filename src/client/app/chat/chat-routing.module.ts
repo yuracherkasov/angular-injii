@@ -17,11 +17,4 @@ import { AuthGuardService } from '../services/auth-guard.service';
 })
 export class ChatRoutingModule { }
 
-// export const ChatRoutes: Routes = [
-//   {
-//     path: 'chat',
-//     canActivate: [AuthGuardService],
-//     component: ChatComponent
-//   }
-// ]
 

@@ -17,11 +17,3 @@ import { AuthGuardService } from '../services/auth-guard.service';
 })
 export class AppriseRoutingModule { }
 
-// export const AppriseRoutes: Routes = [
-//   {
-//     path: 'apprise',
-//     canActivate: [AuthGuardService],
-//     component: AppriseComponent
-//   }
-// ]
-

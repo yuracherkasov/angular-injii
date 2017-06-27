@@ -1,0 +1,210 @@
+{
+  "result": "OK",
+  "video": {
+    "id": "v1",
+    "playlist": [
+      {
+        "file": "https://s3.amazonaws.com/chronoadvertisement/2016/579b8ff0249ca_1469812720.mp4",
+        "mediaid": "s3.amazonaws.com/chronoadvertisement/2016/579b8ff0249ca_1469812720.mp4"
+      },
+      {
+        "file": "https://s3.amazonaws.com/chronoadvertisement/2016/57a3affc27efd_1470345212.mp4",
+        "mediaid": "s3.amazonaws.com/chronoadvertisement/2016/57a3affc27efd_1470345212.mp4"
+      },
+      {
+        "file": "https://s3.amazonaws.com/chronoadvertisement/2016/57a09f91b7c72_1470144401.mp4",
+        "mediaid": "s3.amazonaws.com/chronoadvertisement/2016/57a09f91b7c72_1470144401.mp4"
+      },
+      {
+        "file": "https://s3.amazonaws.com/chronoadvertisement/2016/57b3b1df53467_1471394271.mp4",
+        "mediaid": "s3.amazonaws.com/chronoadvertisement/2016/57b3b1df53467_1471394271.mp4"
+      },
+      {
+        "file": "https://s3.amazonaws.com/chronoadvertisement/2016/579b9a6b5f303_1469815403.mp4",
+        "mediaid": "s3.amazonaws.com/chronoadvertisement/2016/579b9a6b5f303_1469815403.mp4"
+      },
+      {
+        "file": "https://s3.amazonaws.com/chronoadvertisement/2016/579b9bc2a1f98_1469815746.mp4",
+        "mediaid": "s3.amazonaws.com/chronoadvertisement/2016/579b9bc2a1f98_1469815746.mp4"
+      }
+    ],
+    "date": "Nov 16 2016 4:37:24 pm",
+    "genre": "Hip Hop",
+    "title": "Norsup",
+    "viewers": 536,
+    "preview": "assets/vid_thumb.jpg",
+    "donations": 469,
+    "injii_donations": 973,
+    "top_supporters": [
+      {
+        "id": "u2",
+        "avatar": null,
+        "firstname": null,
+        "lastname": null,
+        "stars": 256,
+        "donated": 400
+      },
+      {
+        "id": "u2",
+        "avatar": "https://ipsumimage.appspot.com/100",
+        "firstname": "Joe",
+        "lastname": "Smith",
+        "stars": 356,
+        "donated": 390
+      },
+      {
+        "id": "u2",
+        "avatar": "https://ipsumimage.appspot.com/100",
+        "firstname": "Grag",
+        "lastname": "Oregful",
+        "stars": 356,
+        "donated": 280
+      }
+    ]
+  },
+  "charity": {
+    "id": "c1",
+    "username": "smithrock",
+    "charityname": "MrCharity",
+    "firstname": "Alex",
+    "lastname": "Smith",
+    "state": "Michigan",
+    "city": "Aklahoma",
+    "country": "USA",
+    "avatar": "https://ipsumimage.appspot.com/100",
+    "bio": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, veritatis!",
+    "donations": 455,
+    "email": "gotechtown@gmail.com",
+    "social": [
+      {
+        "type": "facebook",
+        "link": "https://www.facebook.com/profile",
+        "pattern": "https://www.facebook.com/",
+        "image": "../../assets/svg/icons/facebook-logo-button.svg"
+      },
+      {
+        "type": "twitter",
+        "link": "https://twitter.com/profile",
+        "pattern": "https://twitter.com/",
+        "image": "../../assets/svg/icons/twitter-logo-button.svg"
+      },
+      {
+        "type": "instagram",
+        "link": "https://www.instagram.com/45",
+        "pattern": "https://www.instagram.com/",
+        "image": "../../assets/svg/icons/instagram-logo.svg"
+      },
+      {
+        "type": "google",
+        "link": null,
+        "pattern": "https://plus.google.com/",
+        "image": "../../assets/svg/icons/google-plus.svg"
+      }
+    ],
+    "top_supporters": [
+      {
+        "id": "u2",
+        "avatar": "https://ipsumimage.appspot.com/100",
+        "firstname": "Apls",
+        "lastname": "Uitjer",
+        "stars": 356,
+        "donated": 560
+      },
+      {
+        "id": "u2",
+        "avatar": "https://ipsumimage.appspot.com/100",
+        "firstname": "Goran",
+        "lastname": "Swift",
+        "stars": 356,
+        "donated": 458
+      },
+      {
+        "id": "u2",
+        "avatar": null,
+        "firstname": null,
+        "lastname": null,
+        "stars": 256,
+        "donated": 400
+      }
+    ]
+  },
+  "artist": {
+    "id": "a1",
+    "username": "smithrock",
+    "rating": 6,
+    "band": "A. Smith Group",
+    "firstname": "Alex",
+    "lastname": "Smith",
+    "state": "Michigan",
+    "city": "Aklahoma",
+    "birth": "1900-00-00",
+    "phone": "+10055550000",
+    "country": "USA",
+    "avatar": "https://ipsumimage.appspot.com/100",
+    "bio": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, veritatis!",
+    "genre": "pop",
+    "stars": 654,
+    "stats": {
+      "donations": 455,
+      "injii_donations": 973
+    },
+    "portfolio": [
+      {
+        "type": "bandcamp",
+        "link": "//bandcamp.com/qwerty",
+        "pattern": "https://bandcamp.com/",
+        "image": "../../assets/svg/icons/bandcamp-logo.svg"
+      },
+      {
+        "type": "soundcloud",
+        "link": "https://soundcloud.com/346",
+        "pattern": "https://soundcloud.com/",
+        "image": "../../assets/svg/icons/soundcloud-logo.svg"
+      },
+      {
+        "type": "reverbnation",
+        "link": "https://www.reverbnation.com/ghj",
+        "pattern": "https://www.reverbnation.com/",
+        "image": "../../assets/svg/icons/reverbnation-logo.svg"
+      },
+      {
+        "type": "youtube",
+        "link": "https://www.youtube.com/jrty/g",
+        "pattern": "https://www.youtube.com/",
+        "image": "../../assets/svg/icons/youtube-logo.svg"
+      },
+      {
+        "type": "itunes",
+        "link": "https://itunes.apple.com/",
+        "pattern": "https://itunes.apple.com/",
+        "image": "../../assets/svg/icons/itunes-logo.svg"
+      }
+    ],
+    "social": [
+      {
+        "type": "facebook",
+        "link": "https://www.facebook.com/profile",
+        "pattern": "https://www.facebook.com/",
+        "image": "../../assets/svg/icons/facebook-logo-button.svg"
+      },
+      {
+        "type": "twitter",
+        "link": "https://twitter.com/profile",
+        "pattern": "https://twitter.com/",
+        "image": "../../assets/svg/icons/twitter-logo-button.svg"
+      },
+      {
+        "type": "instagram",
+        "link": "https://www.instagram.com/45",
+        "pattern": "https://www.instagram.com/",
+        "image": "../../assets/svg/icons/instagram-logo.svg"
+      },
+      {
+        "type": "google",
+        "link": null,
+        "pattern": "https://plus.google.com/",
+        "image": "../../assets/svg/icons/google-plus.svg"
+      }
+    ]
+  }
+}

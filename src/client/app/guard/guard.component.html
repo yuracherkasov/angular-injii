@@ -1,10 +1,91 @@
-<div class="guard-wrapper">
-  <h2>Signin</h2>
-    <div>
-      <input type="email" #loginEmail placeholder="Enter your email">
-      <input type="password" #loginPassword placeholder="Enter your password">
-      <button class="btn-injii" (click)="login(loginEmail.value, loginPassword.value)">Login</button>
+<div id="guard">
+  <div class="guard-content">
+    <div class="guard-btns">
+      <a href="javascript:;" (click)="showForm('demo')" [class.active]="activeform === 'demo'">Demo injii</a>
+      <a href="javascript:;" (click)="showForm('access')" [class.active]="activeform === 'access'">Request access</a>
     </div>
+    <div class="guard-forms">
+
+      <form *ngIf="activeform === 'demo'" class="show-demo-form" #showDemoForm="ngForm" (ngSubmit)="showDemoForm.form.valid && login()"
+        novalidate>
+        <div class="form-group">
+          <input #userEmail="ngModel" required type="email" class="form-control" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            [class.active]="showDemoForm.submitted && !userEmail.valid" placeholder="email" name="email" [(ngModel)]="model.email"
+          />
+        </div>
+        <div class="form-group">
+          <input #userPass="ngModel" type="password" required class="form-control" [class.active]="showDemoForm.submitted && !userPass.valid"
+            placeholder="password" name="password" [(ngModel)]="model.password" />
+        </div>
+        <div class="form-group buttons-group">
+          <button type="submit" class="form-button">Send
+            <div class="load" *ngIf="loading"></div>
+          </button>
+        </div>
+      </form>
+
+
+      <form *ngIf="activeform === 'access'" class="access-form" #accessForm="ngForm" (ngSubmit)="accessForm.form.valid && getAccess()"
+        novalidate>
+        <fieldset class="pull-left">
+          <div class="form-group">
+            <label>firstname*
+              <input #accessFirstname="ngModel" required type="text" class="form-control" [class.active]="accessForm.submitted && !accessFirstname.valid"
+             name="a-firstname" [(ngModel)]="accessModel.firstname" />
+            </label>
+          </div>
+          <div class="form-group">
+            <label>email*
+              <input #accessEmail="ngModel" required type="email" class="form-control" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              [class.active]="accessForm.submitted && !accessEmail.valid" name="a-email" [(ngModel)]="accessModel.email"
+            />
+            </label>
+          </div>
+          <div class="form-group">
+            <label>phone 
+              <input #accessPhone="ngModel" type="text" class="form-control" [class.active]="accessForm.submitted && !accessPhone.valid"
+             name="a-phone" [(ngModel)]="accessModel.phone" />
+            </label>
+          </div>
+          <div class="form-group">
+            <label>company
+              <input #accessCompany="ngModel" type="text" class="form-control" [class.active]="accessForm.submitted && !accessCompany.valid"
+                 name="a-company" [(ngModel)]="accessModel.company" />
+            </label>
+          </div>
+        </fieldset>
+        <fieldset class="pull-right">
+          <div class="form-group">
+            <label>lastname*
+            <input #accessLastname="ngModel" required type="text" class="form-control" [class.active]="accessForm.submitted && !accessLastname.valid"
+               name="a-lastname" [(ngModel)]="accessModel.lastname" />
+              </label>
+          </div>
+          <div class="form-group">
+            <label>password*
+            <input #accessPass="ngModel" type="password" required class="form-control" [class.active]="accessForm.submitted && !accessPass.valid"
+               name="a-password" [(ngModel)]="accessModel.password" />
+            </label>
+          </div>
+          <div class="form-group">
+            <label>title
+            <input #accessTitle="ngModel" type="text" class="form-control" [class.active]="accessForm.submitted && !accessTitle.valid"
+              name="a-title" [(ngModel)]="accessModel.title" />
+            </label>
+          </div>
+          <div class="form-group buttons-group">
+            <button type="submit" class="form-button">Send
+              <div class="load" *ngIf="loading"></div>
+            </button>
+          </div>
+        </fieldset>
+      </form>
+
+
+
+    </div>
+  </div>
+  <!--
 
   <h2>Register</h2>
     <div>
@@ -16,8 +97,8 @@
       <input type="text" #company placeholder="Enter your company">
       <input type="text" #title placeholder="Enter your title">
       <button class="btn-injii" 
-      (click)="signup(Firstname.value, Lastname.value, phone.value, signEmail.value, signPassword.value, company.value, title.value)">
+      (click)="getAccess(Firstname.value, Lastname.value, phone.value, signEmail.value, signPassword.value, company.value, title.value)">
         Send
       </button>
-    </div>
+    </div>-->
 </div>

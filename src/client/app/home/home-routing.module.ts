@@ -16,11 +16,3 @@ import { AuthGuardService } from '../services/auth-guard.service';
   exports: [RouterModule]
 })
 export class HomeRoutingModule { }
-
-// export const HomeRoutes: Routes = [
-//   {
-//     path: '',
-//     canActivate: [AuthGuardService],
-//     component: HomeComponent
-//   }
-// ]

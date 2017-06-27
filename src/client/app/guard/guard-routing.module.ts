@@ -12,9 +12,3 @@ import { GuardComponent } from './guard.component';
 })
 export class GuardRoutingModule { }
 
-// export const GuardRoutes: Routes = [
-//   {
-//     path: 'guard',
-//     component: GuardComponent   
-//   }
-// ]

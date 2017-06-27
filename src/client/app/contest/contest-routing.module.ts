@@ -17,12 +17,3 @@ import { AuthGuardService } from '../services/auth-guard.service';
 })
 export class ContestRoutingModule { }
 
-
-// export const ContestRoutes: Routes = [
-//   {
-//     path: 'contest',
-//     canActivate: [AuthGuardService],
-//     component: ContestComponent
-//   }
-// ]
-

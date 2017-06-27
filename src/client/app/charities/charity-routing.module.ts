@@ -23,15 +23,3 @@ import { AuthGuardService } from '../services/auth-guard.service';
 })
 export class CharitiesRoutingModule { }
 
-// export const CharitiesRoutes: Routes = [
-//   {
-//     path: 'charities',
-//     canActivate: [AuthGuardService],
-//     component: CharitiesComponent
-//   },
-//   {
-//     path: 'charity/:username',
-//     canActivate: [AuthGuardService],
-//     component: ProfileComponent
-//   }
-// ]

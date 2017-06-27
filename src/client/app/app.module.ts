@@ -36,8 +36,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 
 
 //used to create fake backend, remove when production
- //import { fakeBackendProvider } from './_helpers/fake-backend';
-//import { MockBackend, MockConnection } from '@angular/http/testing';
+//  import { fakeBackendProvider } from './_helpers/fake-backend';
+// import { MockBackend, MockConnection } from '@angular/http/testing';
 //import { MockBackend } from '@angular/http/testing/mock_backend';
  //import { BaseRequestOptions } from '@angular/http';
 
@@ -81,11 +81,11 @@ import { AuthGuardService } from './services/auth-guard.service';
     SearchService,
     ApiService,
     GuardService,
-    AuthGuardService
+    AuthGuardService,
    //providers used to create fake backend, remove when production
-    //fakeBackendProvider,
-    //MockBackend,
-   // BaseRequestOptions
+  //   fakeBackendProvider,
+  //   MockBackend,
+  //  BaseRequestOptions
   ],
   bootstrap: [AppComponent]
 

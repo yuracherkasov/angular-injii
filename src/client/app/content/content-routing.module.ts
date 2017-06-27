@@ -17,11 +17,4 @@ import { AuthGuardService } from '../services/auth-guard.service';
 })
 export class ContentRoutingModule { }
 
-// export const ContentRoutes: Routes = [
-//   {
-//     path: 'content',
-//     canActivate: [AuthGuardService],
-//     component: ContentComponent
-//   }
-// ]
 

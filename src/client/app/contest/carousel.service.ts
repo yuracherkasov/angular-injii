@@ -9,8 +9,6 @@ export class CarouselService {
   buttonQuantity: any = [];
   cssTransition: number = 0.5;
 
-  constructor() {}
-
   getPagination(length: number, carouselItemWidth: number, carouselWidth: number) {
     this.buttonQuantity = new Array(Math.ceil(length * carouselItemWidth / carouselWidth));
   }

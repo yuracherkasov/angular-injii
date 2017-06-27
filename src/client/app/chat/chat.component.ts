@@ -85,6 +85,29 @@ export class ChatComponent implements OnInit {
     return true;
   }
 
+  sendMessage(event: any): void {
+    event.stopPropagation();
+
+    if (!this.messageIsValid) return;
+
+    let msg: IMessage = {
+      id: null,
+      user: this.constantsService.User.username || this.constantsService.User.firstname + ' ' + this.constantsService.User.lastname,
+      message: this.message,
+      role: this.constantsService.User.role,
+      image: this.constantsService.User.avatar
+    };
+
+    this.chatService.post(this.activeChat, msg)
+      .then((response: any) => {
+        this.receiveMessagess(response.data);
+      },
+      (reject) => {
+        console.log('reject: ', reject);
+      });
+    this.message = '';
+  }
+
   private getInputContainer(): any {
     return this.messageField.nativeElement;
   }
@@ -122,29 +145,6 @@ export class ChatComponent implements OnInit {
     if (message.length && Array.isArray(message)) {
       this.messages.push(...message);
     }
-  }
-
-  private sendMessage(event: any): void {
-    event.stopPropagation();
-
-    if (!this.messageIsValid) return;
-
-    let msg: IMessage = {
-      id: null,
-      user: this.constantsService.User.username || this.constantsService.User.firstname + ' ' + this.constantsService.User.lastname,
-      message: this.message,
-      role: this.constantsService.User.role,
-      image: this.constantsService.User.avatar
-    };
-
-    this.chatService.post(this.activeChat, msg)
-      .then((response: any) => {
-        this.receiveMessagess(response.data);
-      },
-      (reject) => {
-        console.log('reject: ', reject);
-      });
-    this.message = '';
   }
 
 }

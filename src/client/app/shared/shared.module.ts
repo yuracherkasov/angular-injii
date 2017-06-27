@@ -16,7 +16,7 @@ import { MenuIframeService } from './main-menu/menu-iframe.service';
 import { SharingVideoComponent } from './sharing/sharing-video.component';
 import { SharingInjiiComponent } from './sharing/sharing-injii.component';
 import { SponsorComponent } from './sponsor/sponsor.component';
-import { HomeComponent, LoginComponent,  RegisterComponent, SignComponent, SignSocialComponent } from './sign/index';
+import { HomeUserComponent, LoginComponent,  RegisterComponent, SignComponent, SignSocialComponent } from './sign/index';
 import { AuthService } from './sign/services/auth.service';
 import { UserService } from './sign/services/user.service';
 import { FileSelectDirective } from 'ng2-file-upload';
@@ -47,7 +47,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     BotNavigationComponent,
     SignComponent,
     RegisterComponent,
-    HomeComponent,
+    HomeUserComponent,
     LoginComponent,
     SignSocialComponent,
     AlertComponent,
@@ -70,7 +70,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     SignComponent,
     RegisterComponent,
     SignSocialComponent,
-    HomeComponent,
+    HomeUserComponent,
     LoginComponent,
     AlertComponent,
     DonationComponent,

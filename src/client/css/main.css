@@ -251,7 +251,7 @@ th {
   .table-bordered th,
   .table-bordered td {
     border: 1px solid #ddd !important; } }
-@font-face {
+/*@font-face {
   font-family: 'Glyphicons Halflings';
   src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot");
   src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff2") format("woff2"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
@@ -1051,7 +1051,7 @@ th {
   content: "\e259"; }
 
 .glyphicon-menu-up:before {
-  content: "\e260"; }
+  content: "\e260"; }*/
 
 * {
   -webkit-box-sizing: border-box;
@@ -8366,6 +8366,7 @@ body {
   background: rgba(8, 10, 12, .6) url(../../assets/spinner.gif) no-repeat center;
   background-size: auto 75%;
   z-index: 1;
+  cursor: default;
 }
 .load-transparent{
   background: url(../../assets/spinner.gif) no-repeat center;
