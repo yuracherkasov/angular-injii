@@ -36,8 +36,8 @@ In order to start the seed use:
 
 
 ```bash
-$ git clone --depth 1 https://github.com/mgechev/angular-seed.git
-$ cd angular-seed
+$ git clone https://webdev99@bitbucket.org/injii/ginger.git
+$ cd ginger
 
 # install the project's dependencies
 $ npm install
