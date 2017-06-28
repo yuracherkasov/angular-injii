@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 import { RequestOptionsService } from './../services/request-options.service';
 import { PlayerService } from './../shared/jw-player/player.service';
 import { PopupService } from './../shared/services/ui-popup.service';
@@ -11,6 +12,7 @@ export class ContestService {
 
   constructor
     (
+    private http: Http,
     private requestOptionsService: RequestOptionsService,
     private playerService: PlayerService,
     private popupService: PopupService,
@@ -19,7 +21,9 @@ export class ContestService {
 
 
   getContest(name: string): Promise<any> {
-    return this.apiService.get('/api/contest/' + name)
+    let file = name === 'current' ? 'app/FAKE_DATA/contestC.json' : 'app/FAKE_DATA/contestU.json';
+    return this.http.get(file)
+    //return this.apiService.get('/api/contest/' + name)
       .toPromise()
       .then(response => response.json())
       .catch(this.requestOptionsService.handleError);

@@ -1,0 +1,191 @@
+{
+  "result": "OK",
+  "title": "Phenomenal performances with sexy choreography and powerhouse vocals…",
+  "description": "Blew us away… trust us when we say it will be one of the best night’s out you’ll ever have…. so much better than the real thing.",
+  "end": "03/07/2017 12pm",
+  "prise": 200,
+  "artists": [
+    {
+      "id": "5899c4a9442da8154911aa24",
+      "firstname": "Mabel",
+      "lastname": "Pacheco",
+      "username": "urris",
+      "avatar": "assets/avatar.png",
+      "votes": 80,
+      "status": null,
+      "video": {
+        "id": "5899",
+        "title": "Aida culpa",
+        "thumbnail": "assets/vid_thumb.jpg"
+      }
+    },
+    {
+      "id": "5899c4a9d705bb8196d8489d",
+      "firstname": "Jenkins",
+      "lastname": "Avila",
+      "username": "ummers",
+      "avatar": "assets/avatar.png",
+      "votes": 59,
+      "status": null,
+      "video": {
+        "id": "58611",
+        "title": "Sargent deserunt",
+        "thumbnail": "assets/vid_thumb.jpg"
+      }
+    },
+    {
+      "id": "5899c4a9cc4efae570cd172f",
+      "firstname": "Pat",
+      "lastname": "Vargas",
+      "username": "olden",
+      "avatar": "assets/avatar.png",
+      "votes": 73,
+      "status": null,
+      "video": {
+        "id": "5899873",
+        "title": "Collins cupidatat",
+        "thumbnail": "assets/vid_thumb.jpg"
+      }
+    },
+    {
+      "id": "5899c4a92b8efa6b9773ab5e",
+      "firstname": "Mclaughlin",
+      "lastname": "Howell",
+      "username": "lover",
+      "avatar": "assets/avatar.png",
+      "votes": 79,
+      "status": "favorite",
+      "video": {
+        "id": "589640",
+        "title": "Nielsen qui",
+        "thumbnail": "assets/vid_thumb.jpg"
+      }
+    },
+    {
+      "id": "5899c4a99c1b5978fba4d0c1",
+      "firstname": "Angela",
+      "lastname": "Odonnell",
+      "username": "ichegrty",
+      "avatar": "assets/avatar.png",
+      "votes": 71,
+      "status": null,
+      "video": {
+        "id": "588496",
+        "title": "Wendi non",
+        "thumbnail": "assets/vid_thumb.jpg"
+      }
+    },
+    {
+      "id": "5899c4a9355b133486adc7bd",
+      "firstname": "Mae",
+      "lastname": "Dennis",
+      "username": "fartin",
+      "avatar": "assets/avatar.png",
+      "votes": 22,
+      "status": null,
+      "video": {
+        "id": "58989563",
+        "title": "Willa aute",
+        "thumbnail": "assets/vid_thumb.jpg"
+      }
+    },
+    {
+      "id": "5899c4a98b769ee2416ca85d",
+      "firstname": "Althea",
+      "lastname": "Hatfield",
+      "username": "bowman",
+      "avatar": "assets/avatar.png",
+      "votes": 90,
+      "status": "leader",
+      "video": {
+        "id": "5317",
+        "title": "Terra elit",
+        "thumbnail": "assets/vid_thumb.jpg"
+      }
+    },
+    {
+      "id": "5899c4a914193b44fd36b0d5",
+      "firstname": "Vaughan",
+      "lastname": "Slater",
+      "username": "porter",
+      "avatar": "assets/avatar.png",
+      "votes": 64,
+      "status": null,
+      "video": {
+        "id": "58996789",
+        "title": "Robert ullamco",
+        "thumbnail": "assets/vid_thumb.jpg"
+      }
+    },
+    {
+      "id": "5899c4a9de51939998cb181f",
+      "firstname": "Travis",
+      "lastname": "Fuller",
+      "username": "Pruitt",
+      "avatar": "assets/avatar.png",
+      "votes": 4,
+      "status": null,
+      "video": {
+        "id": "589967872",
+        "title": "Nicholson et",
+        "thumbnail": "assets/vid_thumb.jpg"
+      }
+    },
+    {
+      "id": "5899c4a91c0e2e1ce20ff16b",
+      "firstname": "Arlene",
+      "lastname": "Park",
+      "username": "Gilliam",
+      "avatar": "assets/avatar.png",
+      "votes": 7,
+      "status": null,
+      "video": {
+        "id": "589946783",
+        "title": "Pam irure",
+        "thumbnail": "assets/vid_thumb.jpg"
+      }
+    },
+    {
+      "id": "5899c4a99a1d198a7fd60fbc",
+      "firstname": "Nona",
+      "lastname": "Jacobson",
+      "username": "Cochran",
+      "avatar": "assets/avatar.png",
+      "votes": 60,
+      "status": null,
+      "video": {
+        "id": "58976488",
+        "title": "Marisa labore",
+        "thumbnail": "assets/vid_thumb.jpg"
+      }
+    },
+    {
+      "id": "5899c4a9f85a5b4e066861f9",
+      "firstname": "Hobbs",
+      "lastname": "Mckee",
+      "username": "May",
+      "avatar": "assets/avatar.png",
+      "votes": 46,
+      "status": null,
+      "video": {
+        "id": "5899345",
+        "title": "Dickson eu",
+        "thumbnail": "assets/vid_thumb.jpg"
+      }
+    },
+    {
+      "id": "5899c4a95e6049a5d0e6d48d",
+      "firstname": "Wanda",
+      "lastname": "Mccall",
+      "username": "wetell",
+      "avatar": "assets/avatar.png",
+      "votes": 41,
+      "status": null,
+      "video": {
+        "id": "5894564",
+        "title": "Allyson consequat",
+        "thumbnail": "assets/vid_thumb.jpg"
+      }
+    }
+  ]
+}

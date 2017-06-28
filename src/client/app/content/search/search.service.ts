@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
-import * as _ from 'underscore';
+import { range } from 'underscore';
 
 import { Video } from './search.model';
 
@@ -22,10 +22,9 @@ export class SearchService {
   }
 
   search(term: string): Observable<Video[]> {
-
     console.log('/api/videos' + term)
-    return this.http
-      .get(`/api/videos${term}`)
+    //return this.http.get(`/api/videos${term}`)
+    return this.http.get('app/FAKE_DATA/content.json')
       .map((r: Response) => {
         let data = r.json();
         let totalItems = data.totalItems;
@@ -66,7 +65,7 @@ export class SearchService {
         }
       }
 
-      let pages = _.range(startPage, endPage);
+      let pages = range(startPage, endPage);
 
       let argumentObj = {
         pages: pages,

@@ -33,7 +33,7 @@
   border-bottom: 2px solid transparent;
   white-space: nowrap;
 }
-.guard-btns a:first-child:after{
+.guard-btns a:after{
   content: "↓";
   display: inline-block;
   position: relative;

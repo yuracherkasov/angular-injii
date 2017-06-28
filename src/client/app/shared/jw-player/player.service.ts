@@ -24,7 +24,13 @@ export class PlayerService {
 
   getVideo(str: string): Promise<Object> {
     //return this.apiService.get('/api/video/'+str)
-    return this.http.get('app/FAKE_DATA/video.json')
+    let file: any;
+    if(str === 'current') {
+       file = 'app/FAKE_DATA/video.json';
+    } else {
+      file = 'app/FAKE_DATA/videoID.json';
+    }
+    return this.http.get(file)
       .toPromise()
       .then(response => {
         let videoData = response.json();

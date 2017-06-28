@@ -15,7 +15,7 @@ declare var localStorage: any;
 export class TopbarComponent {
 
   isTopMenuOpen: boolean = false;
-  AddContentShow: boolean;
+  AddContentShow: boolean = false;
   private localStorageUser: any;
 
   constructor
@@ -30,7 +30,8 @@ export class TopbarComponent {
         if (data && (data.role === 'artist' || data.role === 'admin')) {
           setTimeout(() => {
             this.AddContentShow = true;
-          },0);
+          },100);
+
         } else {
           this.AddContentShow = false;
         }

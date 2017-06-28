@@ -58,7 +58,8 @@ export class ContentService {
 
   getContent(term: string): Promise<any> {
     console.log(`/api/videos${term}`);
-    return this.apiService.get('/api/videos' + term)
+    //return this.apiService.get('/api/videos' + term)
+    return this.http.get('app/FAKE_DATA/content.json')
       .toPromise()
       .then(response => response.json().videos)
       .catch(this.requestOptionsService.handleError);

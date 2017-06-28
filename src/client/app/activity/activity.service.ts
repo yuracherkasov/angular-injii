@@ -13,7 +13,8 @@ export class ActivityService {
   }
 
   get(term: string): Promise<IVideo[]> {
-    return this.apiService.get(`/api/videos${term}`)
+    //return this.apiService.get(`/api/videos${term}`)
+    return this.http.get('app/FAKE_DATA/content.json')
       .toPromise()
       .then((response: Response) => { return response.json() as IVideo[]; })
       .catch(this.handleError);

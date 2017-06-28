@@ -81,7 +81,7 @@ import { AuthGuardService } from './services/auth-guard.service';
     SearchService,
     ApiService,
     GuardService,
-    AuthGuardService,
+    AuthGuardService
    //providers used to create fake backend, remove when production
   //   fakeBackendProvider,
   //   MockBackend,
