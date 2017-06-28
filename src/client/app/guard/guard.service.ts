@@ -12,7 +12,7 @@ export class GuardService {
   str: string = 'User isLogin';
   storageKey:string = 'InjiiUserStatus';
   storageValue: string;
-  
+
   constructor (
     private apiService: ApiService,
     private requestOptionsService: RequestOptionsService

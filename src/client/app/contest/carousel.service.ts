@@ -12,7 +12,7 @@ export class CarouselService {
   getPagination(length: number, carouselItemWidth: number, carouselWidth: number) {
     this.buttonQuantity = new Array(Math.ceil(length * carouselItemWidth / carouselWidth));
   }
-  
+
   gotoItem(i: number, carouselWidth: number, length: number, carouselItemWidth: number) {
 
     let quantityItemsInWindow = carouselWidth / carouselItemWidth;

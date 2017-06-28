@@ -52,7 +52,7 @@ export class ChatComponent implements OnInit {
   hidePopUp() {
     this.hidepopup = true;
   }
-  
+
   handleLoad(event: any) {
     let element = this.messageField.nativeElement;
     if (element.scrollTop > (element.scrollHeight - element.clientHeight - 100)) {

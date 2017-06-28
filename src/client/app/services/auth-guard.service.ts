@@ -12,7 +12,7 @@ export class AuthGuardService implements CanActivate {
 
   storageValue: string;
   isLoggedin: boolean;
-  
+
   constructor ( private router: Router, private guardService: GuardService ) { }
 
   canActivate(): boolean {
