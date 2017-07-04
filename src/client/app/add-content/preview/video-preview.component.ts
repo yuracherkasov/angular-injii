@@ -16,7 +16,7 @@ declare var jwplayer: any;
 })
 
 export class VideoPreviewComponent {
-  
+
   @ViewChild('preview') preview: ElementRef;
   @Output() durationSetup: EventEmitter<number> = new EventEmitter<number>();
   UrlsArray: Array<string> = [];
@@ -24,7 +24,6 @@ export class VideoPreviewComponent {
   private file: any;
   private durationTime: number = null;
 
-  constructor() { }
 
   onVideoChange(e: any) {
     this.cssDisplay = true;

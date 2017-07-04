@@ -1,9 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
 import { ScheduleBarService } from './schedule-bar.service';
-import { DateHelperService } from '../../services/date-helper.service';
-
-import { Video } from '../models/video';
+import { DateHelperService } from '../date-helper.service';
 
 @Component({
   moduleId: module.id,
@@ -15,106 +13,39 @@ import { Video } from '../models/video';
 export class ScheduleBarComponent implements OnChanges {
   @Input() selectedDate: any;
 
-  videos: Video[];
-  fullDayMinutes: number = 24 * 60;
+  videos: Array<any> = [];
+  private fullDayMinutes: number = 24 * 60;
 
   constructor(
     private scheduleBarService: ScheduleBarService,
     private dateHelperService: DateHelperService) { }
 
   ngOnChanges(): void {
-    this.fillDate();
-  }
-
-  getWidth(item: any): number {
-    let
-      videoEndTime = new Date(item.endTime),
-      videoStartTime = new Date(item.startTime),
-
-      endTime: any =  this.isDayMatch(videoEndTime) ? videoEndTime : this.endOfSelectedDate(),
-      startTime: any = this.isDayMatch(videoStartTime) ? videoStartTime : this.floorDate(videoStartTime),
-
-      videoDuration: any = (endTime - startTime) / 60000;
-
-    return this.calculateProportion(videoDuration);
-  }
-
-  getPosition(item: any): number {
-    let
-      videoStartTime = new Date(item.startTime),
-      startTime: any = this.isDayMatch(videoStartTime) ? videoStartTime : this.floorDate(videoStartTime),
-      startDayTime: any = this.ceilDate(startTime),
-      minutesFromMidnight: number = (startTime - startDayTime) / 60000;
-
-    return this.calculateProportion(minutesFromMidnight);
-  }
-
-  getVideosByDate(date: string): void {
-    this.videos = null;
-    this.scheduleBarService.getVideosByDate(date)
-      .then(videos => this.videos = videos);
-  }
-
-  private fillDate() {
-    let
-      month = this.dateHelperService.formatDateItem(this.selectedDate.month),
-      day = this.dateHelperService.formatDateItem(this.selectedDate.day),
-      selectedDateString = `${this.selectedDate.year}-${month}-${day}`;
-
-    //Console
+    this.videos = [];
+    let selectedDateString =
+      `${this.selectedDate.year}-${this.dateHelperService.formatDateItem(this.selectedDate.month)}-${this.dateHelperService.formatDateItem(this.selectedDate.day)}`;
     console.log(selectedDateString);
     this.getVideosByDate(selectedDateString);
   }
 
-  private calculateProportion(value: number): number {
-    return value * 100 / this.fullDayMinutes;
+  getVideosByDate(date: string): void {
+    this.scheduleBarService.getVideosByDate(date)
+      .then(videos => {
+        this.videos = videos;
+        for (let video of this.videos) {
+          video.widthOnShedule = this.getWidth(video);
+          video.positionOnShedule = this.getPosition(video);
+        };
+      });
   }
 
-  private isDayMatch(date: Date): boolean {
-    return date.getDate() == this.selectedDate.day;
+  private getWidth(item: any): number {
+    return (new Date(item.endTime).valueOf() - new Date(item.startTime).valueOf()) / 60000 / this.fullDayMinutes * 100;
   }
 
-  /**
-   * Recreate date to start of the next day
-   *
-   * @param date
-   * @returns {Date}
-   */
-  private floorDate(date: Date): Date {
-    return new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate() + 1,
-      0, 0, 0
-    );
+  private getPosition(item: any): number {
+    let date = new Date(item.startTime);
+    return (date.valueOf() - date.setHours(0, 0, 0)) / 60000 / this.fullDayMinutes * 100;
   }
 
-  /**
-   * Reset date to start of the day
-   *
-   * @param date
-   * @returns {Date}
-   */
-  private ceilDate(date: Date): Date {
-    return new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate(),
-      0, 0, 0
-    );
-  }
-
-  /**
-   * Create date, which contains end of the selected date
-   *
-   * @returns {Date}
-   */
-  private endOfSelectedDate(): Date {
-    return new Date(
-      this.selectedDate.year,
-      this.selectedDate.month - 1,
-      this.selectedDate.day,
-      23, 59, 59
-    );
-  }
 }

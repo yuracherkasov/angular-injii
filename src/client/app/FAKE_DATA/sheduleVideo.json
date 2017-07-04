@@ -1,0 +1,95 @@
+{
+  "total": 6,
+  "videos": [
+    {
+      "artist": {
+        "name": "John Snow",
+        "id": 1
+      },
+      "date": "Nov 16 2016 4:37:24 pm",
+      "genre": "Hip Hop",
+      "title": "For the Stark",
+      "viewers": 885,
+      "preview": "assets/vid_thumb.jpg",
+      "src": "https://d2klya0a52nzxz.cloudfront.net/2016/08/18/hls1080k/01c00381b6727394701e731761f37f6838cbc767aa68d5d46abac4157ac6e791.mp4",
+      "id": 30,
+      "startTime": "2017-06-30 03:00:00",
+      "endTime": "2017-06-30 03:04:39"
+    },
+    {
+      "artist": {
+        "name": "Yennefer",
+        "id": 2
+      },
+      "date": "Nov 16 2016 4:37:24 pm",
+      "genre": "Pop",
+      "title": "For the Geralt",
+      "viewers": 676,
+      "preview": "assets/vid_thumb.jpg",
+      "src": "https://d2klya0a52nzxz.cloudfront.net/2016/08/18/hls1080k/01c00381b6727394701e731761f37f6838cbc767aa68d5d46abac4157ac6e791.mp4",
+      "id": 31,
+      "startTime": "2017-06-30 06:05:00",
+      "endTime": "2017-06-30 06:10:20"
+    },
+    {
+      "artist": {
+        "name": "Tyrion",
+        "id": 3
+      },
+      "date": "Nov 16 2016 4:37:24 pm",
+      "genre": "dance",
+      "title": "Tyrion",
+      "viewers": 655,
+      "preview": "assets/vid_thumb.jpg",
+      "src": "https://d2klya0a52nzxz.cloudfront.net/2016/08/18/hls1080k/01c00381b6727394701e731761f37f6838cbc767aa68d5d46abac4157ac6e791.mp4",
+      "id": 32,
+      "startTime": "2017-06-30 07:05:00",
+      "endTime": "2017-06-30 07:10:00"
+    },
+    {
+      "artist": {
+        "name": "Jaime Lannister",
+        "id": 4
+      },
+      "date": "Nov 16 2016 4:37:24 pm",
+      "genre": "Jazz",
+      "title": "Jaime Lannister",
+      "viewers": 1345,
+      "preview": "assets/vid_thumb.jpg",
+      "src": "https://d2klya0a52nzxz.cloudfront.net/2016/08/18/hls1080k/01c00381b6727394701e731761f37f6838cbc767aa68d5d46abac4157ac6e791.mp4",
+      "id": 33,
+      "startTime": "2017-06-30 08:10:00",
+      "endTime": "2017-06-30 08:20:30"
+    },
+    {
+      "artist": {
+        "name": "Sansa Stark",
+        "id": 6
+      },
+      "date": "Nov 16 2016 4:37:24 pm",
+      "genre": "Opera",
+      "title": "Sansa Stark",
+      "viewers": 812,
+      "preview": "assets/vid_thumb.jpg",
+      "src": "https://d2klya0a52nzxz.cloudfront.net/2016/08/18/hls1080k/01c00381b6727394701e731761f37f6838cbc767aa68d5d46abac4157ac6e791.mp4",
+      "id": 35,
+      "startTime": "2017-06-30 09:00:00",
+      "endTime": "2017-06-30 09:50:00"
+    },
+    {
+      "artist": {
+        "name": "Daenerys Stormborn",
+        "id": 10
+      },
+      "date": "Nov 16 2016 4:37:24 pm",
+      "genre": "Opera",
+      "title": "Daenerys Stormborn",
+      "viewers": 598,
+      "preview": "assets/vid_thumb.jpg",
+      "src": "https://d2klya0a52nzxz.cloudfront.net/2016/08/18/hls1080k/01c00381b6727394701e731761f37f6838cbc767aa68d5d46abac4157ac6e791.mp4",
+      "id": 39,
+      "startTime": "2017-06-30 22:00:00",
+      "endTime": "2017-06-30 22:15:00"
+    }
+  ]
+}

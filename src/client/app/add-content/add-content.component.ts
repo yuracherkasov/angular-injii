@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { ArtistProfileService } from './add-content.service';
-import { DateHelperService } from '../services/date-helper.service';
+import { AddContentService } from './add-content.service';
+import { DateHelperService } from './date-helper.service';
 import { PopupService } from './../shared/services/ui-popup.service';
 
 import { Video } from './models/video';
@@ -64,10 +64,10 @@ export class AddContentComponent implements OnInit {
 
   constructor
     (
-      public popupService: PopupService,
-      private artistProfileService: ArtistProfileService,
-      private dateHelperService: DateHelperService,
-      private constantsService: ConstantsService
+    public popupService: PopupService,
+    private addContentService: AddContentService,
+    private dateHelperService: DateHelperService,
+    private constantsService: ConstantsService
     ) {
 
     this.getUserVideos();
@@ -104,17 +104,19 @@ export class AddContentComponent implements OnInit {
    * Get current artist videos
    */
   getUserVideos(): void {
-    let userId = this.constantsService.User.id;
+      let userId = this.constantsService.User.id;
+      //11111
+      // this.addContentService
+      //   .getVideosByArtist(userId)
+      //   .then(videos => this.videos = videos);
 
-    this.artistProfileService
-      .getVideosByArtist(userId)
-      .then(videos => this.videos = videos);
   }
 
   getMaxVideoDuration(): void {
-    this.artistProfileService
-      .getMaxVideoDuration()
-      .then(res => this.maxVideoDuration = res);
+    //222222
+    //this.addContentService
+      // .getMaxVideoDuration()
+      // .then(res => this.maxVideoDuration = res);
   }
 
   onDateChanged(event: any): void {
@@ -129,8 +131,9 @@ export class AddContentComponent implements OnInit {
    * Get all charities
    */
   private getCharities(): void {
-    this.artistProfileService.getCharities()
-      .then(res => { console.log(res); this.charities = res;});
+    //333
+    // this.addContentService.getCharities()
+    //   .then(res => { console.log(res); this.charities = res; });
   }
 
   private setCurrentDate(date: Date): void {
@@ -141,7 +144,7 @@ export class AddContentComponent implements OnInit {
     };
   }
 
-   private showPopUp() {
+  private showPopUp() {
     this.hidepopup = false;
   }
 
@@ -174,7 +177,7 @@ export class AddContentComponent implements OnInit {
       return isBooked;
     }
 
-     //clear browser memory
+    //clear browser memory
     console.log(this.previewComponent.UrlsArray);
     let urls = this.previewComponent.UrlsArray;
     for (let i = 0; i < urls.length; i++) {

@@ -7,7 +7,7 @@ import { ApiService } from '../services/api.service';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class ArtistProfileService {
+export class AddContentService {
   constructor(private http: Http, private apiService: ApiService) { }
 
   getVideosByArtist(id: number): Promise<Video[]> {

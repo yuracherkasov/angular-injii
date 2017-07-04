@@ -10,8 +10,9 @@ import { ScheduleBarComponent } from './schedule/schedule-bar.component';
 import { VideoPreviewComponent } from './preview/video-preview.component';
 
 import { ScheduleBarService } from './schedule/schedule-bar.service';
-import { ArtistProfileService } from './add-content.service';
-import { DateHelperService } from '../services/date-helper.service';
+import { AddContentService } from './add-content.service';
+import { AddContentGuardService } from './add-content-guard.service';
+import { DateHelperService } from './date-helper.service';
 import { AddContentRoutingModule } from './add-content-routing.module';
 
 
@@ -30,7 +31,8 @@ import { AddContentRoutingModule } from './add-content-routing.module';
     exports: [AddContentComponent],
     providers: [
       ScheduleBarService,
-      ArtistProfileService,
+      AddContentService,
+      AddContentGuardService,
       DateHelperService
     ]
 })

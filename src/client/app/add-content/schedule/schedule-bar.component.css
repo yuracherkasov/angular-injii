@@ -3,6 +3,7 @@
   margin: 15px 0 6px;
   position: relative;
   background-color: #26AD08;
+  overflow: hidden;
 }
 
 .schedule-item {

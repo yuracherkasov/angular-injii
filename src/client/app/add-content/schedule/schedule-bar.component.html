@@ -1,8 +1,8 @@
 <div class="schedule">
   <div class="schedule-item"
        *ngFor="let video of videos"
-       [style.width]="getWidth(video) + '%'"
-       [style.left]="getPosition(video) + '%'">
+       [style.width]="video.widthOnShedule + '%'"
+       [style.left]="video.positionOnShedule + '%'">
   </div>
 </div>
 <div class="timeline">
