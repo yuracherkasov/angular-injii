@@ -9,8 +9,8 @@ declare const sessionStorage: any;
 
 export class GuardService {
 
-  str: string = 'User isLogin';
-  storageKey:string = 'InjiiUserStatus';
+  secretStr: string = 'gained access';
+  storageKey:string = 'User status';
   storageValue: string;
 
   constructor (
@@ -20,7 +20,7 @@ export class GuardService {
 
   checkIsLogin(): boolean {
     let storageValue = this.storageValue ? this.storageValue : sessionStorage.getItem(this.storageKey);
-    if(storageValue === this.str) {
+    if(storageValue === this.secretStr) {
       this.storageValue = storageValue;
       return true;
     };

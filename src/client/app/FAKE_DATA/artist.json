@@ -1,0 +1,120 @@
+{
+  "result": "OK",
+  "artist": {
+    "id": 246,
+    "rating": null,
+    "contest": true,
+    "avatar": "default.png",
+    "bio": null,
+    "role": "artist",
+    "username": "yyyya",
+    "band": "hrfsh",
+    "age": 905,
+    "firstname": "dsfgt",
+    "lastname": "greg",
+    "email": "reg@drfgt.rtyu",
+    "state": "hgj",
+    "city": "ghfj",
+    "birth": "1111-11-11",
+    "phone": "+49890709799",
+    "zip": "5665756",
+    "genre": null,
+    "country": null,
+    "stars": 950,
+    "stats": {
+      "donations": 0,
+      "injii_donation": 973
+    },
+    "portfolio": [
+      {
+        "type": "bandcamp",
+        "link": null,
+        "pattern": "https://www.bandcamp.com/",
+        "image": "http://54.157.10.121/laravel-admin/public/social_iconsbandcamp.png"
+      },
+      {
+        "type": "soundcloud",
+        "link": null,
+        "pattern": "https://www.soundcloud.com/",
+        "image": "http://54.157.10.121/laravel-admin/public/social_iconssoundcloud.png"
+      },
+      {
+        "type": "reverbnation",
+        "link": null,
+        "pattern": "https://www.reverbnation.com/",
+        "image": "http://54.157.10.121/laravel-admin/public/social_iconsreverbnation.png"
+      },
+      {
+        "type": "youtube",
+        "link": null,
+        "pattern": "https://www.youtube.com/",
+        "image": "http://54.157.10.121/laravel-admin/public/social_iconsyoutube.png"
+      },
+      {
+        "type": "itune",
+        "link": null,
+        "pattern": "https://www.itune.com/",
+        "image": "http://54.157.10.121/laravel-admin/public/social_iconsitune.png"
+      },
+      {
+        "type": "soundcorps",
+        "link": null,
+        "pattern": "https://www.itune.com/",
+        "image": "http://54.157.10.121/laravel-admin/public/social_iconssoundcorps.png"
+      }
+    ],
+    "socials": [
+      {
+        "type": "facebook",
+        "link": null,
+        "pattern": "https://www.facebook.com/",
+        "image": "http://54.157.10.121/laravel-admin/public/assets/social_iconsfacebook.png"
+      },
+      {
+        "type": "twitter",
+        "link": null,
+        "pattern": "https://www.twitter.com/",
+        "image": "http://54.157.10.121/laravel-admin/public/assets/social_iconstwitter.png"
+      },
+      {
+        "type": "instagram",
+        "link": null,
+        "pattern": "https://www.instagram.com/",
+        "image": "http://54.157.10.121/laravel-admin/public/assets/social_iconsinstagram.png"
+      },
+      {
+        "type": "google",
+        "link": null,
+        "pattern": "https://www.google.com/",
+        "image": "http://54.157.10.121/laravel-admin/public/assets/social_iconsgoogle.png"
+      }
+    ],
+    "manager": {
+      "name": null,
+      "email": null
+    },
+    "booking_agent": {
+      "name": null,
+      "phone": null,
+      "email": null
+    },
+    "videos": [
+      {
+        "date": null,
+        "title": null,
+        "viewers": null,
+        "preview": null,
+        "src": null,
+        "donations": 0,
+        "id": "65rewr45",
+        "charity": {
+          "id": null,
+          "charityname": "bestname",
+          "firstname": "Sam",
+          "lastname": "Jonson",
+          "username": "bestusername"
+        }
+      }
+    ]
+  }
+}

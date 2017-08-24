@@ -58,6 +58,7 @@
   margin: 1px 3px;
   opacity: .2;
   transition: all .3s linear;
+  overflow: hidden;
 }
 .icons-list li > img{
   display: block;

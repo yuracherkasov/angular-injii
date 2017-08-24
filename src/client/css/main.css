@@ -7578,7 +7578,7 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(8, 10, 12, .6) url(../../assets/spinner.gif) no-repeat center;
-  background-size: auto 75%;
+  background-size: auto 25px;
   z-index: 1;
   cursor: default;
 }
@@ -7631,3 +7631,30 @@ body {
     transform: rotate(360deg);
   }
 }
+
+ 
+@font-face{font-family:'Glyphicons Halflings';
+  src:url(../fonts/glyphicons-halflings-regular.eot);
+  src:url(../fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'),
+  url(../fonts/glyphicons-halflings-regular.woff2) format('woff2'),
+  url(../fonts/glyphicons-halflings-regular.woff) format('woff'),
+  url(../fonts/glyphicons-halflings-regular.ttf) format('truetype')
+}
+.glyphicon-chevron-left,
+.glyphicon-chevron-right{
+  position:absolute;top:50%;z-index:5;display:inline-block;margin-top:-10px;
+}
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-chevron-left:before{content:"\e079"}
+.glyphicon-chevron-right:before{content:"\e080"}
+.glyphicon-chevron-down:before{content:"\e114"}

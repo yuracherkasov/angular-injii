@@ -91,6 +91,7 @@
 }
 .term-list .icon.active{
    display: inline-block;
+   overflow: hidden;
 }
 .term-list .username{
   opacity: 1;

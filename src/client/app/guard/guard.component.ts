@@ -34,7 +34,7 @@ export class GuardComponent {
           console.log(response);
           this.loading = false;
           if (response.result === 'OK') {
-            sessionStorage.setItem(this.guardService.storageKey, this.guardService.str);
+            sessionStorage.setItem(this.guardService.storageKey, this.guardService.secretStr);
             this.router.navigate(['']);
           }
         });

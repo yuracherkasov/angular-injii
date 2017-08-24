@@ -1,0 +1,13 @@
+<div class="select-video-wrapper">
+  <h2>Choose to broadcast:</h2>
+  <p>You have {{videos.length}} uploaded video</p>
+   <ul>
+    <li *ngFor = "let video of videos let i = index" [class.select-date-active] = "cssClassValue === i">
+      <div class="video" (click)="selectVideo(video, i)" >
+        <div class="title">{{i + 1}}. {{video.title}}</div>
+        <div class="date">{{video.date}}</div>
+      </div>   
+      <select-time *ngIf="selectedVideo === i" [video]="video"></select-time>
+    </li>
+  </ul>   
+</div>

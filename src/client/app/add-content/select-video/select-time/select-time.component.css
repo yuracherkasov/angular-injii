@@ -1,0 +1,168 @@
+.select-time-wrapper *{
+  outline: none;
+}
+.select-time-wrapper{
+    padding: 0 10px;
+    height: 0px;
+    overflow: hidden;
+    background: rgba(8, 10, 12, 0.6);
+    transition: height .3s ease-out;
+}
+:host-context(.select-date-active)  .select-time-wrapper{
+    animation: height-animation .3s ease-in; 
+    height: 460px;
+}
+@keyframes height-animation {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 460px;
+    }
+}
+hr{
+    margin: 3px 0 10px;
+    overflow: hidden;
+}
+h4{
+    overflow: hidden;
+    font-size: 17px;
+    font-style: italic;
+    white-space: nowrap;
+    padding-top: 35px;
+    line-height: 20px;
+}
+.submit-date-btn{
+    position: relative;
+    display: inline-block;
+    float: right;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+.button-injii{
+    padding: 10px;
+}
+.st-content{
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+}
+.select-time{
+    padding: 10px 15px 5px;
+    overflow: hidden;
+}
+.select{
+    width: 46%;
+    float: left;
+}
+.select:nth-child(2){
+    float: right;
+}
+.time,
+.timezone{
+    text-align: center;
+    overflow: hidden;
+}
+.select p{
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+.time > div,
+.timezone > div {
+    display: inline-block;
+    width: 50%;
+    /* background: #fff; */
+    background-color: rgba(132, 0, 121, 1);
+    color: #fff;
+    height: 30px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 30px;
+    overflow: hidden;
+    user-select: none;
+}
+.am-pm{
+    display: inline-block;
+    float: right;
+    width: 60px;
+    /* background-color: rgba(132, 0, 121, .2); */
+    background: #fff;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+}
+.am-pm .glyphicon{
+    font-size: 10px;
+}
+:host /deep/ *:focus {
+  outline: none!important;
+}
+:host /deep/ table {
+    width: 100%;
+    border-spacing: 5px;
+    border-collapse: separate;
+}
+:host /deep/ .well-sm{
+    background: none;
+    margin-bottom: 0;
+}
+:host /deep/  .btn-info,
+:host /deep/ .btn-info.active,
+:host /deep/ .btn-info.active:hover{
+    /* background: #7f0078; */
+    background-color: rgba(132, 0, 121, 1);  
+    border: none;
+}
+:host /deep/ .btn-info span,
+:host /deep/ .btn-info.active span{
+    color: #fff;
+}
+:host /deep/ .well-sm{
+    border: none;
+}
+:host /deep/ .text-info {
+    color: #333;
+}
+@media(max-width: 1100px) {
+    h4,
+    h4 span{
+        font-size: 15px;
+    }
+}
+
+@media(max-width: 991px) {
+    .select{
+        float: none;
+        width: 100%!important;
+    }
+    .select-time,
+    .select-time-wrapper{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .st-content{
+        border: none;
+    }
+    h4{
+        white-space: normal;
+        overflow: visible;
+        line-height: 22px;
+        padding-top: 30px;
+        font-size: 14px;
+    }
+    hr{
+      margin-bottom: 0;
+    }
+    .select p{
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+    .calendar{
+      margin-top: 10px;
+    }
+    :host /deep/ .well-sm{
+        padding: 0;
+    }
+    :host /deep/ table {
+        border-collapse: collapse;
+    }
+}

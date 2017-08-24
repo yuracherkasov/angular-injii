@@ -1,0 +1,43 @@
+
+<div class="select-time-wrapper"> 
+  <div class="submit-date-btn">
+    <button class="button button-injii" (click)="submitDate()">Submit</button>
+    <div class="load" *ngIf="loading"></div>
+  </div>
+  <h4>{{dt | date:'fullDate'}} <span>{{hours < 10 ? ' 0' + hours : ' ' + hours}} : 00 {{' ' + meridiem}} {{'(' + timeZoneString + ')'}}</span></h4>
+  <hr />
+  <div class="st-content">
+    
+    <div class="select-time">
+      <div class="select">
+        <p>Timezone:</p>
+        <div class="timezone">
+          <button class="btn btn-default btn-secondary btn-sm pull-right" (click)="setTimezone(1)">
+            <i class="glyphicon glyphicon-chevron-right"></i>
+          </button>
+           <button class="btn btn-default btn-secondary btn-sm pull-left" (click)="setTimezone(0)">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+          </button>
+          <div>{{timeZoneString}}</div>          
+        </div>
+      </div>
+      <div class="select">
+        <p>Hours:</p>
+        <div class="time">
+          <button class="btn btn-default btn-secondary btn-sm pull-right" (click)="setHours(1)">
+            <i class="glyphicon glyphicon-chevron-right"></i>
+          </button>
+           <button class="btn btn-default btn-secondary btn-sm pull-left" (click)="setHours(0)">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+          </button>
+          <div (click)="meridiem === 'AM' ? meridiem = 'PM' : meridiem = 'AM'">
+            {{hours < 10 ? ' 0' + hours : ' ' + hours}} <span class="am-pm">{{meridiem}} <i class="glyphicon glyphicon-chevron-down"></i></span>
+          </div>       
+        </div>
+      </div>
+    </div>
+    <div class="calendar">
+      <datepicker [(ngModel)]="dt" [showWeeks]="false"></datepicker>
+    </div>
+  </div>
+</div>

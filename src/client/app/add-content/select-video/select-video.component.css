@@ -1,0 +1,68 @@
+.select-video-wrapper{
+  
+}
+h2{
+  font-size: 22px;
+}
+p{
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+ul{
+  list-style-type: none;
+}
+li{
+  margin-bottom: 10px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.video{
+  padding: 10px 3%;
+  cursor: pointer;
+  transition: all .1s linear;
+  background-color: rgba(132, 0, 121, .6);  
+  overflow: hidden;
+}
+.video:hover,
+.select-date-active .video{
+  background-color: rgba(132, 0, 121, 1); 
+}
+
+.date{
+  float: right;
+  color: #7b7c7f;
+  font-size: 12px;
+  font-weight: bold;
+  width: 33%;
+  text-align: right; 
+}
+.title{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  float: left;
+  width: 67%;
+}
+@media(max-width: 991px){
+  h2{
+    font-size: 16px;
+  }
+  li{
+    width: 270px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0; 
+    overflow: visible;
+  }
+  .title,
+  .date{
+    float: none;
+    width: 100%;
+    white-space: normal;
+    text-align: left;
+  }
+  .title{
+    margin-bottom: 10px;
+  }
+}

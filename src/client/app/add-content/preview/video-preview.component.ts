@@ -1,4 +1,5 @@
 import { Component, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
+import { SelectVideoService } from '../select-video/select-video.service'
 
 declare var jwplayer: any;
 
@@ -25,6 +26,15 @@ export class VideoPreviewComponent {
   private durationTime: number = null;
 
 
+  constructor(private selectVideoService: SelectVideoService) {
+    this.selectVideoService.changeVideoObservable
+      .subscribe((src: string) => {
+        console.log(src);
+        this.cssDisplay = true;
+        this.runPlayer(src);
+      });
+  }
+
   onVideoChange(e: any) {
     this.cssDisplay = true;
     this.file = e.target.files[0];
@@ -38,34 +48,46 @@ export class VideoPreviewComponent {
 
       this.UrlsArray.push(url);
 
-      let video = this.preview.nativeElement.id;
+      this.runPlayer(url, mime)
+    };
 
+    fileReader.readAsArrayBuffer(this.file);
+
+  }
+
+  runPlayer(url: string, mime?: string): void {
+    let video = this.preview.nativeElement.id;
+    if (mime) {
       jwplayer(video).setup({
         'controls': 'true',
         'repeat': false,
         'width': '100%',
         'height': '100%',
         'type': mime,
-        'file': url
-
+        'file': url,
       });
+    } else {
+      jwplayer(video).setup({
+        'controls': 'true',
+        'repeat': false,
+        'width': '100%',
+        'height': '100%',
+        'file': url,
+      });
+    }
 
+    jwplayer(video).play(true);
 
-      jwplayer(video).play(true);
-
-      jwplayer(video).on('play', () => {
-        let duration = jwplayer(video).getDuration();
-        if (this.durationTime !== duration) {
-          this.durationSetup.emit(duration);
+    jwplayer(video).on('play', () => {
+      let duration = jwplayer(video).getDuration();
+      if (this.durationTime !== duration) {
+        this.durationSetup.emit(duration);
+        setTimeout(() => {
           jwplayer(video).pause();
-          this.durationTime = duration;
-        }
-      });
-
-    };
-
-    fileReader.readAsArrayBuffer(this.file);
-
+        }, 1000);
+        this.durationTime = duration;
+      }
+    });
   }
 
 }
