@@ -1,0 +1,27 @@
+h2{
+  font-size: 22px;
+}
+h2 + p{
+  font-size: 11px;
+  margin-bottom: 15px;
+}
+#upload-video label{
+  color: #fff;
+  font-weight: normal;
+}
+#upload-video textarea,
+#upload-video input{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+  background: #36373B;
+  max-width: 100%;
+}
+.hidden,
+.form-item.ng-valid ~ .alert-message {
+  display: none;
+}

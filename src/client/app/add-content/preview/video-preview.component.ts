@@ -7,10 +7,12 @@ declare var jwplayer: any;
   moduleId: module.id,
   selector: 'video-preview',
   template: `
+  <div class="preview-wrapper">
   <div class="preview-block">
   <h2 [style.display]="cssDisplay ? 'none' : 'block'">Preview space</h2>
   <div [style.display]="cssDisplay ? 'block' : 'none'">
   <div #preview id="preview"></div>
+  </div>
   </div>
   </div>`,
   styleUrls: ['video-preview.component.css']

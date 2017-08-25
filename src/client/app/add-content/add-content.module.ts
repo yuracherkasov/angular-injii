@@ -12,6 +12,7 @@ import { ScheduleBarComponent } from './schedule/schedule-bar.component';
 import { VideoPreviewComponent } from './preview/video-preview.component';
 import { SelectVideoComponent } from './select-video/select-video.component';
 import { SelectTimeComponent } from './select-video/select-time/select-time.component';
+import { UploadVideoComponent } from './upload-video/upload-video.component';
 
 import { ScheduleBarService } from './schedule/schedule-bar.service';
 import { AddContentService } from './add-content.service';
@@ -34,7 +35,8 @@ import { AddContentRoutingModule } from './add-content-routing.module';
       ScheduleBarComponent,
       VideoPreviewComponent,
       SelectVideoComponent,
-      SelectTimeComponent
+      SelectTimeComponent,
+      UploadVideoComponent
     ],
     exports: [AddContentComponent],
     providers: [

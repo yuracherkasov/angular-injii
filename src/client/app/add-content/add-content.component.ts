@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
+import { Video, IVideo } from './models/video';
+
 import { AddContentService } from './add-content.service';
 import { DateHelperService } from './date-helper.service';
 import { PopupService } from './../shared/services/ui-popup.service';
 
-import { Video } from './models/video';
 import { IMyDate } from './models/my-date';
 import { FileUploader } from 'ng2-file-upload';
 import { ConstantsService } from '../services/constants.service';
@@ -18,6 +19,10 @@ import { VideoPreviewComponent } from './preview/video-preview.component';
 })
 
 export class AddContentComponent implements OnInit {
+
+  ArtistProfile: any;
+  ArtistVideos: Array<IVideo>;
+
 
   //name = 'Add Content';
   charities: { title: string, id: number };
@@ -83,6 +88,18 @@ export class AddContentComponent implements OnInit {
   }
 
   ngOnInit() {
+    let username = this.constantsService.User.username;
+
+    this.addContentService.getProfile(username)
+    .then(response => {
+      if(response.result === 'OK'){
+        this.ArtistProfile = response.artist;
+        this.ArtistVideos = response.artist.videos;
+        console.log(this.ArtistProfile);
+      }
+    })
+    
+
     this.uploader.onBuildItemForm = (fileItem: any, form: FormData) => {
       form.append('content-title', this.contentTitle || '');
       form.append('meta-tags', this.metaTags || '');

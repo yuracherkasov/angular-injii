@@ -10,10 +10,12 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row add-content" >
       <div class="col-md-7">
 
-        <select-video></select-video>
+        <select-video *ngIf="ArtistVideos && ArtistVideos.length > 0" [videos]="ArtistVideos"></select-video>
+
+        <upload-video *ngIf="ArtistProfile" [artist]="ArtistProfile"></upload-video>
 
         <form enctype="multipart/form-data" method="post" name="artist-content" (submit)="onSubmit($event, schedule.videos)">
           <div>

@@ -1,6 +1,6 @@
 .preview-space{
   position: absolute;
-  right: 22px;
+  right: 25px;
   top: 0;
   height: 100%;
 }
@@ -11,12 +11,14 @@
   background-color: #ac0081;
   border-color: #000;
 }
-#artist-profile > .container-fluid{
-  overflow-y: scroll;
-  height: 100%;
+.add-content {
+  height: calc(100% - 64px);
+  overflow: hidden;
+  overflow-y: auto;
+  padding-top: 30px;
 }
-#artist-profile .heading{
-  margin-bottom: 30px;
+#artist-profile > .container-fluid{
+  height: 100%;
 }
 #artist-profile form{
   padding-top: 30px;
