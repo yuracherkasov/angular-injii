@@ -1,13 +1,45 @@
 h2{
   font-size: 22px;
 }
-h2 + p{
-  font-size: 11px;
-  margin-bottom: 15px;
+.social-container{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
+.social-container > h5 {
+  margin: 5px 0;
+  font-size: 13px;
+  width: 100%;
+}
+.social-container > div{
+  width: 48%;
+}
+#upload-video h3{
+  font-size: 14px;
+  position: relative;
+  white-space: nowrap;
+  padding: 15px 0 10px;
+  margin: 5px 0 15px;
+}
+#upload-video h3:after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80%;
+  height: 1px;
+  background-image: linear-gradient(to right, #e9008c 0%, #7F0078 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFE9008C', endColorstr='#FF7F0078', GradientType=1);
+}
+.label,
 #upload-video label{
   color: #fff;
   font-weight: normal;
+  margin-bottom: 5px;
+  font-size: 12px;
+  padding: 0;
+  display: inline-block;
 }
 #upload-video textarea,
 #upload-video input{
@@ -17,11 +49,53 @@ h2 + p{
   color: #fff;
   border: none;
   outline: none;
-  margin-bottom: 10px;
   background: #36373B;
   max-width: 100%;
 }
-.hidden,
-.form-item.ng-valid ~ .alert-message {
+.alert-message{
+  /* background-color: #ac0081; */
+  overflow: hidden;
+  height: 30px;
+  transition: all .1s ease-out;
+  line-height: 30px;
+  padding: 0 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-bottom: 10px;
+  background: #252b33; 
+  color: #a94442;
+}
+
+.hidden{
   display: none;
 }
+.alert-message.inactive{
+  height: 0px;
+  text-align: center;
+} 
+.form-item.ng-valid ~ .alert-message {
+  height: 0px;
+}
+.upload-video > div{
+  margin-bottom: 10px;
+}
+.select-charity{
+  background: #36373B;
+  padding: 10px;
+  font-size: 14px;
+  min-height: 39px;
+}
+.select-charity p{
+  color: #999;
+  opacity: 0;
+  animation: show-message .2s linear forwards;
+}
+@keyframes show-message {
+  from{
+    opacity: 0
+  }
+  to {
+    opacity: 1;
+  }
+}
+

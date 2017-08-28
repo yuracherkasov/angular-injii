@@ -21,7 +21,7 @@ export class AddContentService {
       .toPromise()
       .then(response => {
         return new Promise((res, rej) => {
-          setTimeout(() => res(response.json()), 2000);
+          setTimeout(() => res(response.json()), 1000);
         })   
       })
       //.then(response => response.json())

@@ -1,0 +1,9 @@
+
+<div class="select-charity-wrapper">
+  <div class="spinner" *ngIf="loading">
+    <div class="loader"></div>
+  </div> 
+  <ul>
+    <li *ngFor="let charity of charities" (click)="selectCharity(charity)">{{charity.firstname + ' ' + charity.lastname}}</li>
+  </ul>
+</div>

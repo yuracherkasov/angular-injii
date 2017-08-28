@@ -13,6 +13,7 @@ import { VideoPreviewComponent } from './preview/video-preview.component';
 import { SelectVideoComponent } from './select-video/select-video.component';
 import { SelectTimeComponent } from './select-video/select-time/select-time.component';
 import { UploadVideoComponent } from './upload-video/upload-video.component';
+import { SelectCharityComponent } from './upload-video/select-charity/select-charity.component';
 
 import { ScheduleBarService } from './schedule/schedule-bar.service';
 import { AddContentService } from './add-content.service';
@@ -25,7 +26,6 @@ import { AddContentRoutingModule } from './add-content-routing.module';
 @NgModule({
     imports: [
       CommonModule,
-      // MyDatePickerModule,
       AddContentRoutingModule,
       SharedModule,
       DatepickerModule.forRoot()
@@ -36,7 +36,8 @@ import { AddContentRoutingModule } from './add-content-routing.module';
       VideoPreviewComponent,
       SelectVideoComponent,
       SelectTimeComponent,
-      UploadVideoComponent
+      UploadVideoComponent,
+      SelectCharityComponent
     ],
     exports: [AddContentComponent],
     providers: [

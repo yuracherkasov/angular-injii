@@ -1,45 +1,65 @@
 <div class="upload-video-wrapper">
-  <h2>Upload video:</h2>
-  <p>Tell us about yourself and enter your social media links</p>
-   <form id="upload-video" action="" #uploadVideoForm="ngForm">
-    <div> 
-      <div class="bio">
-        <label for="bio">bio</label>
-        <textarea class="" maxlength="500" id="bio" name="bio" [(ngModel)]="uploadData.bio"></textarea>
-      </div>
-    </div>
-    <div>
-      <!-- <div *ngFor="let portfolio of User.portfolio">
-        <div class="form-group text-left">
-          <label attr.for="{{portfolio.type}}">{{portfolio.type}}</label>
-          <input type="text" class="form-control" id="{{portfolio.type}}" pattern="{{portfolio.pattern}}.*" placeholder="{{portfolio.pattern}}..."
-            name="{{portfolio.type}}" [(ngModel)]="portfolio.link" />
-          <div [hidden]="!updateForm.dirty" class="alert alert-danger js-hide">
-            {{invalidUrlMassage}}
+  <h2>Upload video</h2>
+    <form id="upload-video" action="" #uploadVideoForm="ngForm">
+      <fieldset>
+        <h3>Tell us about yourself</h3>
+          <div *ngIf="!bio"> 
+            <div class="bio">
+              <label for="bio">Bio</label>
+              <textarea class="form-item" maxlength="500" id="bio" name="bio" [(ngModel)]="artist.bio"></textarea>
+            </div>
+            <div class="alert-message" [class.inactive]="artist.bio === null || artist.bio.length < 500">
+              Maximum length 500 characters long
+            </div> 
           </div>
-        </div>
-      </div> -->
-      <div *ngFor="let social of artist.socials let i = index">
-        <div *ngIf="!socials[i].link">
-          <label attr.for="{{social.type}}">{{social.type}}</label>
-          <input type="text" class="form-item" id="{{social.type}}" pattern="{{social.pattern}}.*"
-            name="{{social.type}}" [(ngModel)]="social.link" />
-           <div class="alert alert-danger alert-message">
-            invalidUrlMassage 
+            
+          <div class="social-container" *ngIf="includeAtLeastOne(socials)">
+            <h5>Profile in social networks</h5>
+            <div *ngFor="let social of artist.socials let i = index">
+              <div *ngIf="!socials[i].link">
+                <input type="text" class="form-item" id="{{social.type}}" pattern="{{social.pattern}}.*"
+                  placeholder="{{social.type}}" name="{{social.type}}" [(ngModel)]="social.link" />
+                <div class="alert-message">
+                  format {{social.pattern}}
+                </div> 
+              </div>
+            </div>
           </div> 
+
+          <div class="social-container" *ngIf="includeAtLeastOne(portfolio)">
+            <h5>Portfolio</h5>
+            <div *ngFor="let item of artist.portfolio let i = index">
+              <div *ngIf="!portfolio[i].link">
+                <input type="text" class="form-item" id="{{item.type}}" pattern="{{item.pattern}}.*"
+                  placeholder="{{item.type}}" name="{{item.type}}" [(ngModel)]="item.link" />
+                <div class="alert-message">
+                  format {{item.pattern}}
+                </div> 
+              </div>
+            </div> 
+          </div>
+      </fieldset>    
+
+      <fieldset class="upload-video">
+        <h3>Upload your video</h3>
+        <div>
+          <label for="title">Title*</label>
+          <input type="text" name="title" id="title" [(ngModel)]="uploadTitle" required>
         </div>
-      </div> 
 
-       <div>
-        <div class="">
-          <label for="bandcamp">bandcamp</label>
-          <input type="text" id="bandcamp" pattern="https://www.bandcamp.com/.*"
-            name="bandcamp" />
+        <div>
+          <div class="label">Charity*</div>
+          <div class="select-charity" (click)="showCharitiesList()">
+            {{(selectedCharity.firstname && selectedCharity.lastname) ? selectedCharity.firstname + ' ' + selectedCharity.lastname : ''}}
+            <p *ngIf="charitiesList">If you don’t see your charity on this list please contact us and request to add the charity to our injii database</p>
+          </div>
+
+          <select-charity *ngIf="charitiesList" (onSelected)="onSelectedCharity($event)"></select-charity>
+
         </div>
-      </div>
-
-
-
-    </div>
-   </form>
+      </fieldset>
+    
+    
+    
+  </form>
 </div>

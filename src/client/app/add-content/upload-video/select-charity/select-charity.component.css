@@ -1,0 +1,38 @@
+.select-charity-wrapper{
+  background: #36373B;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  animation: ease-height .2s ease-out forwards;
+}
+@keyframes ease-height{
+  from{
+    height: 0px
+  }
+  to{
+    height: 200px
+  }
+}
+ul{
+  list-style: none;
+}
+li{
+  padding: 10px;
+  background: #252b33;
+  transition: all .3s;
+  cursor: pointer;
+  color: #ccc;
+}
+li:hover{
+  background: #1a1f24;
+}
+.spinner{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.loader{
+  left: 50%;
+  top: 65px;
+  margin-left: -22px;
+}
