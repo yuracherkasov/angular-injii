@@ -1,5 +1,4 @@
 .select-charity-wrapper{
-  background: #36373B;
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
@@ -35,4 +34,5 @@ li:hover{
   left: 50%;
   top: 65px;
   margin-left: -22px;
+  position: absolute;
 }

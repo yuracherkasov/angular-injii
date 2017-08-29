@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 // import { MyDatePickerModule } from 'mydatepicker/dist/my-date-picker.module';
 
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -23,12 +24,14 @@ import { SelectVideoService } from './select-video/select-video.service';
 import { AddContentRoutingModule } from './add-content-routing.module';
 
 
+
 @NgModule({
     imports: [
       CommonModule,
       AddContentRoutingModule,
       SharedModule,
-      DatepickerModule.forRoot()
+      DatepickerModule.forRoot(),
+      PopoverModule.forRoot()
     ],
     declarations: [
       AddContentComponent,

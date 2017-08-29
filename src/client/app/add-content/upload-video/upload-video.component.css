@@ -18,7 +18,7 @@ h2{
   font-size: 14px;
   position: relative;
   white-space: nowrap;
-  padding: 15px 0 10px;
+  padding: 0 0 10px;
   margin: 5px 0 15px;
 }
 #upload-video h3:after{
@@ -52,6 +52,7 @@ h2{
   background: #36373B;
   max-width: 100%;
 }
+.alert-message2,
 .alert-message{
   /* background-color: #ac0081; */
   overflow: hidden;
@@ -64,6 +65,12 @@ h2{
   margin-bottom: 10px;
   background: #252b33; 
   color: #a94442;
+}
+.alert-message2{
+  height: 0;
+}
+.alert-message2.active{
+  height: 30px;
 }
 
 .hidden{
@@ -85,10 +92,23 @@ h2{
   font-size: 14px;
   min-height: 39px;
 }
-.select-charity p{
+.select-charity .message{
   color: #999;
   opacity: 0;
   animation: show-message .2s linear forwards;
+}
+a, a:hover, a:focus{
+  text-decoration: underline;
+  font-weight: normal;
+  color: #4285f4;
+}
+.select-charity span{
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background: url(assets/svg/icons/arrow-down-wh.svg) no-repeat center;
+  background-size: contain;
+  float: right;
 }
 @keyframes show-message {
   from{
@@ -98,4 +118,70 @@ h2{
     opacity: 1;
   }
 }
+
+.select-video {
+  background: #36373B;
+  position: relative;
+}
+.select-video > p{
+  position: absolute;
+  padding: 12px;
+  white-space: nowrap;
+}
+.select-video > input{
+  opacity: 0;
+}
+
+:host /deep/ .popover-content{
+  padding: 0;
+  width: 270px;
+  height: 140px;
+}
+.popup-form{
+  padding: 9px 14px;
+  overflow: hidden;
+  width: 100%;
+}
+#upload-video .popup-form textarea {
+  background: #fff;
+  color: #000;
+  font-weight: normal;
+  border: 1px solid #000;
+  margin-bottom: 10px;
+  resize: none;
+  padding: 3px 5px;
+}
+.popup-form .button-injii{
+  padding: 5px;
+  float: right;
+}
+.popup-form span{
+  float: none;
+  color: black;
+  cursor: pointer;
+}
+.notification{
+  color: #000;
+  font-size: 14px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+#upload-video > button[type="submit"]{
+  background: #890086;
+  border: none;
+  outline: none;
+  width: 320px;
+  max-width: 100%;
+  text-transform: uppercase;
+  padding: 10px;
+}
+#upload-video fieldset{
+  margin-bottom: 20px;
+}
+
+
 

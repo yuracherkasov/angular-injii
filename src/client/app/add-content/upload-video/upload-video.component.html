@@ -1,65 +1,108 @@
 <div class="upload-video-wrapper">
   <h2>Upload video</h2>
-    <form id="upload-video" action="" #uploadVideoForm="ngForm">
-      <fieldset>
-        <h3>Tell us about yourself</h3>
-          <div *ngIf="!bio"> 
-            <div class="bio">
-              <label for="bio">Bio</label>
-              <textarea class="form-item" maxlength="500" id="bio" name="bio" [(ngModel)]="artist.bio"></textarea>
+  <form id="upload-video" action="" #uploadVideoForm="ngForm" (submit)="onSubmit($event)" novalidate>
+    <fieldset>
+      <h3>Tell us about yourself</h3>
+      <div *ngIf="!bio">
+        <div class="bio">
+          <label for="bio">Bio</label>
+          <textarea class="form-item" maxlength="500" id="bio" name="bio" [(ngModel)]="artist.bio"></textarea>
+        </div>
+        <div class="alert-message" [class.inactive]="artist.bio === null || artist.bio.length < 500">
+          Maximum length 500 characters long
+        </div>
+      </div>
+
+      <div class="social-container" *ngIf="includeAtLeastOne(socials)">
+        <h5>Profile in social networks</h5>
+        <div *ngFor="let social of artist.socials let i = index">
+          <div *ngIf="!socials[i].link">
+            <input type="text" class="form-item" id="{{social.type}}" pattern="{{social.pattern}}.*" placeholder="{{social.type}}" name="{{social.type}}"
+              [(ngModel)]="social.link" />
+            <div class="alert-message">
+              format {{social.pattern}}
             </div>
-            <div class="alert-message" [class.inactive]="artist.bio === null || artist.bio.length < 500">
-              Maximum length 500 characters long
-            </div> 
           </div>
-            
-          <div class="social-container" *ngIf="includeAtLeastOne(socials)">
-            <h5>Profile in social networks</h5>
-            <div *ngFor="let social of artist.socials let i = index">
-              <div *ngIf="!socials[i].link">
-                <input type="text" class="form-item" id="{{social.type}}" pattern="{{social.pattern}}.*"
-                  placeholder="{{social.type}}" name="{{social.type}}" [(ngModel)]="social.link" />
-                <div class="alert-message">
-                  format {{social.pattern}}
-                </div> 
-              </div>
+        </div>
+      </div>
+
+      <div class="social-container" *ngIf="includeAtLeastOne(portfolio)">
+        <h5>Portfolio</h5>
+        <div *ngFor="let item of artist.portfolio let i = index">
+          <div *ngIf="!portfolio[i].link">
+            <input type="text" class="form-item" id="{{item.type}}" pattern="{{item.pattern}}.*" placeholder="{{item.type}}" name="{{item.type}}"
+              [(ngModel)]="item.link" />
+            <div class="alert-message">
+              format {{item.pattern}}
             </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="upload-video">
+      <h3>Upload your video</h3>
+      <div>
+        <label for="title">Title*</label>
+        <input type="text" name="title" id="title" #title="ngModel" [(ngModel)]="uploadData.title" required />
+        <div class="alert-message2" [class.active]="uploadVideoForm.submitted && !title.valid">
+          this field is required
+        </div>
+      </div>
+
+      <div>
+        <label for="tags">Meta Tags and Keywords*</label>
+        <textarea class="form-item" maxlength="100" id="tags" name="meta" #tags="ngModel" [(ngModel)]="uploadData.tags" required></textarea>
+        <div class="alert-message2" [class.active]="uploadVideoForm.submitted && !tags.valid">
+          this field is required
+        </div>
+      </div>
+
+      <div>
+        <div class="label" (click)="showCharitiesList()">Charity*</div>
+        <div class="select-charity" (click)="showCharitiesList()">
+          <span [class.hidden]="charitiesList"></span>
+          <p [class.hidden]="charitiesList">
+            {{(selectedCharity.firstname && selectedCharity.lastname) ? selectedCharity.firstname + ' ' + selectedCharity.lastname :
+            ''}}
+          </p>
+          <template #popTemplate>
+            <form class="popup-form" (ngSubmit)="sendMessage(mes.value)" (click)="$event.stopPropagation()" *ngIf="!popUpmessage">
+              <textarea #mes required rows="4" cols="50" autofocus></textarea>
+              <button type="submit" class="button-injii">Submit</button>
+              <div class="load" *ngIf="messageLoading"></div>
+            </form>
+            <div class="notification" *ngIf="popUpmessage">{{popUpmessage}}</div>
+          </template>
+
+          <p class="message" *ngIf="charitiesList">If you don’t see your charity on this list please
+            <a href="javascript:;" [popover]="popTemplate" (click)="$event.stopPropagation()"> contact us </a> and request
+            to add the charity to our injii database</p>
+        </div>
+
+        <select-charity *ngIf="charitiesList" (onSelected)="onSelectedCharity($event)"></select-charity>
+
+        <div class="alert-message2" [class.active]="uploadVideoForm.submitted && !selectedCharity.id">
+          this field is required
+        </div>  
+
+        </div>
+
+        <div>
+          <label for="video">Select video*</label>
+          <div class="select-video">
+            <p>{{uploader.queue.length > 0 ? uploader.queue[uploader.queue.length-1].file?.name : ''}}</p>
+            <input type="file" accept="video/*" name="video" id="video" class="" ng2FileSelect [uploader]="uploader"
+            (change)="onSelectVideo($event)" />
           </div> 
-
-          <div class="social-container" *ngIf="includeAtLeastOne(portfolio)">
-            <h5>Portfolio</h5>
-            <div *ngFor="let item of artist.portfolio let i = index">
-              <div *ngIf="!portfolio[i].link">
-                <input type="text" class="form-item" id="{{item.type}}" pattern="{{item.pattern}}.*"
-                  placeholder="{{item.type}}" name="{{item.type}}" [(ngModel)]="item.link" />
-                <div class="alert-message">
-                  format {{item.pattern}}
-                </div> 
-              </div>
-            </div> 
-          </div>
-      </fieldset>    
-
-      <fieldset class="upload-video">
-        <h3>Upload your video</h3>
-        <div>
-          <label for="title">Title*</label>
-          <input type="text" name="title" id="title" [(ngModel)]="uploadTitle" required>
+          <div class="alert-message2" [class.active]="uploadVideoForm.submitted && uploader?.queue?.length === 0">
+            this field is required
+          </div>  
         </div>
 
-        <div>
-          <div class="label">Charity*</div>
-          <div class="select-charity" (click)="showCharitiesList()">
-            {{(selectedCharity.firstname && selectedCharity.lastname) ? selectedCharity.firstname + ' ' + selectedCharity.lastname : ''}}
-            <p *ngIf="charitiesList">If you don’t see your charity on this list please contact us and request to add the charity to our injii database</p>
-          </div>
+    </fieldset>
 
-          <select-charity *ngIf="charitiesList" (onSelected)="onSelectedCharity($event)"></select-charity>
+    <button type="submit">Upload video</button>
 
-        </div>
-      </fieldset>
-    
-    
-    
   </form>
 </div>
