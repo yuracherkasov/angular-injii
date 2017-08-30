@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-// import { MyDatePickerModule } from 'mydatepicker/dist/my-date-picker.module';
-
+import { FormsModule } from '@angular/forms';
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PopoverModule } from 'ngx-bootstrap/popover';
-
-import { SharedModule } from '../shared/shared.module';
+import { FileUploadModule } from 'ng2-file-upload';
+import { AddContentRoutingModule } from './add-content-routing.module';
 
 import { AddContentComponent } from './add-content.component';
 import { ScheduleBarComponent } from './schedule/schedule-bar.component';
@@ -19,23 +17,20 @@ import { SelectCharityComponent } from './upload-video/select-charity/select-cha
 import { ScheduleBarService } from './schedule/schedule-bar.service';
 import { AddContentService } from './add-content.service';
 import { AddContentGuardService } from './add-content-guard.service';
-import { DateHelperService } from './date-helper.service';
-import { SelectVideoService } from './select-video/select-video.service';
-import { AddContentRoutingModule } from './add-content-routing.module';
-
-
+import { VideoDurationService } from './video-duration.service';
+import { SelectVideoService } from './select-video.service';
 
 @NgModule({
     imports: [
       CommonModule,
       AddContentRoutingModule,
-      SharedModule,
+      FileUploadModule,
+      FormsModule,
       DatepickerModule.forRoot(),
       PopoverModule.forRoot()
     ],
     declarations: [
       AddContentComponent,
-      ScheduleBarComponent,
       VideoPreviewComponent,
       SelectVideoComponent,
       SelectTimeComponent,
@@ -47,7 +42,7 @@ import { AddContentRoutingModule } from './add-content-routing.module';
       ScheduleBarService,
       AddContentService,
       AddContentGuardService,
-      DateHelperService,
+      VideoDurationService,
       SelectVideoService
     ]
 })

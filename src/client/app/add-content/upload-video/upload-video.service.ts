@@ -12,7 +12,7 @@ export class UploadVideoService {
     private http: Http) { }
 
   sendMessage(message: string): Promise<any> {
-    // return this.apiService.post("admin-messages" {message})
+    // return this.apiService.post("/admin-messages", {message})
     //   .toPromise()
     //   .then(response => response.json(), reject => reject.json())
     //   .catch((e) => this.requestOptionsService.handleError(e, 'Send messagege for admin'));

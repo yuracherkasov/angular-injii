@@ -34,6 +34,9 @@ import { ApiService } from './services/api.service';
 import { GuardService } from './guard/guard.service';
 import { AuthGuardService } from './services/auth-guard.service';
 
+//import { FileSelectDirective } from 'ng2-file-upload';
+//import { FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
+
 
 //used to create fake backend, remove when production
 //  import { fakeBackendProvider } from './_helpers/fake-backend';
@@ -58,6 +61,8 @@ import { AuthGuardService } from './services/auth-guard.service';
     AddContentModule,
     GuardModule,
     SearchModule,
+    //FileUploadModule,
+    //FileSelectDirective,
     SharedModule.forRoot()
   ],
   declarations: [AppComponent],

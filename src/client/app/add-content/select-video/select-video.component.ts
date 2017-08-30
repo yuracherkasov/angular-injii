@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SelectVideoService } from './select-video.service';
+import { SelectVideoService } from '../select-video.service';
 
 import { IVideo } from '../models/video';
 

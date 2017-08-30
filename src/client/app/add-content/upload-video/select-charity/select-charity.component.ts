@@ -14,7 +14,8 @@ export class SelectCharityComponent implements OnInit {
   @Output() onSelected = new EventEmitter<any>();
   charities: Array<any> = [];
   loading: boolean;
-  charity: string = 'rtest';
+  //charity: string = 'rtest';
+  
 
   constructor(private selectTimeService: SelectCharityService) { }
 

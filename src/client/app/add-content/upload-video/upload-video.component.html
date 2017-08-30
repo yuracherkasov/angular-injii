@@ -84,21 +84,35 @@
 
         <div class="alert-message2" [class.active]="uploadVideoForm.submitted && !selectedCharity.id">
           this field is required
-        </div>  
-
         </div>
 
-        <div>
-          <label for="video">Select video*</label>
-          <div class="select-video">
-            <p>{{uploader.queue.length > 0 ? uploader.queue[uploader.queue.length-1].file?.name : ''}}</p>
-            <input type="file" accept="video/*" name="video" id="video" class="" ng2FileSelect [uploader]="uploader"
-            (change)="onSelectVideo($event)" />
-          </div> 
-          <div class="alert-message2" [class.active]="uploadVideoForm.submitted && uploader?.queue?.length === 0">
-            this field is required
-          </div>  
+      </div>
+
+      <div>
+        <label for="video">Select video*</label>
+        <div class="select-video">
+          <p>{{selectedFileName ? selectedFileName : 'Select video'}}</p>
+          <input type="file" accept="video/*" name="video" id="video" class="" ng2FileSelect [uploader]="uploader" (change)="onSelectVideo($event)"
+          />
         </div>
+        <div class="alert-message2" [class.active]="uploadVideoForm.submitted && !selectedFileName">
+          this field is required
+        </div>
+      </div>
+
+      <div class="alert alert-warning" [hidden]="isDurationValid">
+        Video is over the admin set amount, let artists know that only the first <span>{{ (maxDuration / 60).toFixed(1) }}</span> amount of minutes will place
+      </div>
+
+      <div class="alert alert-danger" [hidden]="!uploadErrorMessage">
+        {{ uploadErrorMessage }}
+      </div>
+
+      <div class="alert alert-success" [hidden]="!uploadSuccessMessage">
+        {{ uploadSuccessMessage }}
+      </div>
+
+      
 
     </fieldset>
 

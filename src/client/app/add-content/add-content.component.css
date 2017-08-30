@@ -4,13 +4,6 @@
   top: 0;
   height: 100%;
 }
-.alert {
-  margin: 20px 0;
-}
-.alert-danger {
-  background-color: #ac0081;
-  border-color: #000;
-}
 .add-content {
   height: calc(100% - 64px);
   overflow: hidden;
@@ -20,138 +13,12 @@
 #artist-profile > .container-fluid{
   height: 100%;
 }
-#artist-profile form{
-  padding-top: 30px;
-}
-#artist-profile input,
-#artist-profile textarea,
-#chooseCharity{
-  display: block;
-  width: 100%;
-  padding: 10px;
-  color: white;
-  border: none;
-  margin-bottom: 10px;
-}
-#artist-profile input:not([type="file"]),
-#artist-profile textarea,
-#artist-profile select {
-  background: #36373B;
-}
-#artist-profile input[type="submit"]{
-  background: #890086;
-}
-#artist-profile select{
-  padding: 10px;
-  color: white;
-  border: none;
-  margin-bottom: 10px;
-}
-#artist-profile label {
-  font-weight: 300;
-}
-#choose-charity{
-  width: 100%;
-}
-#my-date-picker div.mydp{
-  width: 40%;
-}
-#videos table{
-  width: 100%;
-}
-#videos tr{
-  border-bottom: 1px solid;
-}
-#videos tr:first-child{
-  background: #CF0087;
-  color: #fff;
-  border-bottom: none;
-}
-#videos td,
-#videos th{
-  padding: 10px;
-}
-.color-grey{
-  color: #969696;
-}
-.star{
-  color: #CF0087;
-}
-#for-date {
-  display: flex;
-  align-items: center;
-  transition: color .3s ease-in-out;
-}
-#for-date label,
-#for-date select{
-  margin-left: 5px;
-}
-
 #artist-profile * {
   color: #fff;
-}
-
-#artist-profile .submit-btn {
-  display: inline-block;
-  width: 320px;
-  margin-top: 30px;
-  text-transform: uppercase;
-}
-
-#artist-profile .submit-btn[disabled] {
-  background-color: #D64DD3;
-  cursor: not-allowed;
-}
-
-#artist-profile .schedule-desc {
-  margin-top: 40px;
-}
-
-#artist-profile .available-mark,
-#artist-profile .booked-mark {
-  display: inline-block;
-  padding: 0 40px;
-  font-size: 1em;
-  position: relative;
-  line-height: 1;
-}
-
-#artist-profile .available-mark::before,
-#artist-profile .booked-mark::before {
-  content: '';
-  position: absolute;
-  display: block;
-  height: 20px;
-  width: 20px;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#artist-profile .available-mark::before {
-  background-color: #26AD08;
-}
-
-#artist-profile .booked-mark::before {
-  background-color: #881f05;
-}
-
-#artist-profile .table-videos {
-  margin-top: 40px;
-}
-
-#my-date-picker input {
-  color: #fff;
-}
-#select-video{
-  height: auto;
 }
 @media (max-width: 991px) {
   #artist-profile {
     padding-left: 0;
     padding-right: 0;
   }
-  #artist-profile .available-mark {
-    margin-bottom: 20px;
-  }
-}
+} 

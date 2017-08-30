@@ -10,111 +10,19 @@
       </div>
     </div>
 
-    <div class="row add-content" >
+    <div class="row add-content">
       <div class="col-md-7">
 
         <select-video *ngIf="ArtistVideos && ArtistVideos.length > 0" [videos]="ArtistVideos"></select-video>
 
         <upload-video *ngIf="ArtistProfile" [artist]="ArtistProfile"></upload-video>
 
-        <form enctype="multipart/form-data" method="post" name="artist-content" (submit)="onSubmit($event, schedule.videos)">
-          <div>
-            <label for="content-title">Content Title<span class="star">*</span></label>
-            <input type="text" name="content-title" id="content-title" [(ngModel)]="contentTitle" required>
-          </div>
-          <div>
-            <label for="meta-tags-and-keywords">Meta Tags and Keywords<span class="star">*</span></label>
-            <textarea name="meta-tags-and-keywords" id="meta-tags-and-keywords" [(ngModel)]="metaTags" required></textarea>
-          </div>
-          <div>
-            <label for="select-video">Select Video<span class="star">*</span></label>
-            <input type="file" accept="video/*" name="select-video" id="select-video" class="form-control" required ng2FileSelect [uploader]="uploader"
-              (change)="preview.onVideoChange($event)" required>
-              <div class="alert alert-danger" [hidden]="isDurationValid">
-                <strong>Error</strong>: The maximum duration of video - {{ maxVideoDuration }} minutes.
-              </div>
-          </div>
-
-          <div>
-            <label for="choose-charity">Choose Charity<span class="star">*</span></label>
-            <select name="choose-charity" id="choose-charity" [(ngModel)]="charity" required>
-                            <option value="{{charity.id}}"  *ngFor="let charity of charities">{{charity.title}}</option>
-                        </select>
-          </div>
-          <div>
-            <label for="twitter-handle">Twitter Handle<span class="star">*</span></label>
-            <input type="text" name="twitter-handle" id="twitter-handle" [(ngModel)]="twitterHandle" required>
-          </div>
-          <div>
-            <label for="facebook-handle">Facebook Handle<span class="star">*</span></label>
-            <input type="text" name="facebook-handle" id="facebook-handle" [(ngModel)]="facebookHandle" required>
-          </div>
-          <div>
-            <label for="artist-description">Artist Description<span class="star">*</span></label>
-            <textarea name="artist-description" id="artist-description" [(ngModel)]="artistDescription" required></textarea>
-          </div>
-          <div>
-            <span>Schedule Date Time<span class="star">*</span></span>
-            <div id="for-date">
-              <!-- <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)" [selDate]="selectedDate" id="my-date-picker"></my-date-picker> -->
-
-
-
-
-
-              <label for="hours">Hours</label>
-              <select name="hours" id="hours" required [(ngModel)]="selectedHours" (change)="onSelectTimeChange()">
-                                <option value="{{hour}}"  *ngFor="let hour of hours">{{hour}}</option>
-                            </select>
-              <label for="minutes">Minutes</label>
-              <select name="minutes" id="minutes" required [(ngModel)]="selectedMinutes" (change)="onSelectTimeChange()">
-                                <option value="{{minute}}" *ngFor="let minute of minutes">{{minute}}</option>
-                            </select>
-              <select name="amPm" required [(ngModel)]="period" (change)="onSelectTimeChange()">
-                                <option selected value="am">AM</option>
-                                <option value="pm">PM</option>
-                            </select>
-            </div>
-            <div class="alert alert-danger" [hidden]="!isSelectedTimeBooked">
-              <strong>Error</strong>: This time already booked.
-            </div>
-          </div>
-
-          <div id="videos">
-            <p>All video schedules of the day</p>
-            <!--<div class="progress">
-                        <div class="progress-bar progress-bar-success" style="width: 35%">
-                            <span class="sr-only">35% Complete (success)</span>
-                        </div>
-                    </div>-->
-            <div class="schedule-desc">
-              <div class="available-mark">Available</div>
-              <div class="booked-mark">Booked</div>
-            </div>
-            <schedule-bar #schedule [selectedDate]="selectedDate"></schedule-bar>
-            <!--<progress max="240" value="25">
-                        <span id="value">25</span>%
-                    </progress>-->
-            <table class="table-videos">
-              <tr>
-                <th>TITLE</th>
-                <th>START TIME</th>
-                <th>END TIME</th>
-              </tr>
-              <tr *ngFor="let video of videos">
-                <td>{{video.title}}</td>
-                <td>{{video.startTime}}</td>
-                <td>{{video.endTime}}</td>
-              </tr>
-            </table>
-          </div>
-          <input class="submit-btn" type="submit" value="Upload video">
-        </form>
+        <!-- <schedule-bar #schedule [selectedDate]="selectedDate"></schedule-bar> -->
       </div>
       <div class="col-md-5 preview-space">
 
-          <video-preview (durationSetup)="defineDuration($event)" #preview></video-preview>
-          
+        <video-preview #preview></video-preview>
+
       </div>
     </div>
   </div>

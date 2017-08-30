@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-
 import { TopbarComponent } from './topbar/topbar.component';
 import { PlayerComponent } from './jw-player/player.component';
 import { AlertComponent } from './alert/alert.component';
@@ -19,7 +18,8 @@ import { SponsorComponent } from './sponsor/sponsor.component';
 import { HomeUserComponent, LoginComponent,  RegisterComponent, SignComponent, SignSocialComponent } from './sign/index';
 import { AuthService } from './sign/services/auth.service';
 import { UserService } from './sign/services/user.service';
-import { FileSelectDirective } from 'ng2-file-upload';
+
+import { FileUploadModule } from 'ng2-file-upload';
 import { CeiboShare } from 'ng2-social-share';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PopoverModule } from 'ngx-bootstrap/popover';
@@ -35,6 +35,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    FileUploadModule,
     TooltipModule.forRoot(),
     PopoverModule.forRoot()
   ],
@@ -55,8 +56,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     SponsorComponent,
     SharingVideoComponent,
     SharingInjiiComponent,
-    CeiboShare,
-    FileSelectDirective
+    CeiboShare
   ],
   exports:
   [
@@ -76,8 +76,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     DonationComponent,
     SponsorComponent,
     SharingVideoComponent,
-    SharingInjiiComponent,
-    FileSelectDirective
+    SharingInjiiComponent
   ]
 })
 export class SharedModule {

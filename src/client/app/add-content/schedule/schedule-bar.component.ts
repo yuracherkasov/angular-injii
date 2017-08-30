@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
 import { ScheduleBarService } from './schedule-bar.service';
-import { DateHelperService } from '../date-helper.service';
+//import { DateHelperService } from '../date-helper.service';
 
 @Component({
   moduleId: module.id,
@@ -18,14 +18,15 @@ export class ScheduleBarComponent implements OnChanges {
 
   constructor(
     private scheduleBarService: ScheduleBarService,
-    private dateHelperService: DateHelperService) { }
+    //private dateHelperService: DateHelperService
+  ) { }
 
   ngOnChanges(): void {
-    this.videos = [];
-    let selectedDateString =
-      `${this.selectedDate.year}-${this.dateHelperService.formatDateItem(this.selectedDate.month)}-${this.dateHelperService.formatDateItem(this.selectedDate.day)}`;
-    console.log(selectedDateString);
-    this.getVideosByDate(selectedDateString);
+    // this.videos = [];
+    // let selectedDateString =
+    //   `${this.selectedDate.year}-${this.dateHelperService.formatDateItem(this.selectedDate.month)}-${this.dateHelperService.formatDateItem(this.selectedDate.day)}`;
+    // console.log(selectedDateString);
+    // this.getVideosByDate(selectedDateString);
   }
 
   getVideosByDate(date: string): void {

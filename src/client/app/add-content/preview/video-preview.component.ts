@@ -1,5 +1,6 @@
 import { Component, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
-import { SelectVideoService } from '../select-video/select-video.service'
+import { SelectVideoService } from '../select-video.service'
+import { VideoDurationService } from '../video-duration.service'
 
 declare var jwplayer: any;
 
@@ -21,25 +22,30 @@ declare var jwplayer: any;
 export class VideoPreviewComponent {
 
   @ViewChild('preview') preview: ElementRef;
-  @Output() durationSetup: EventEmitter<number> = new EventEmitter<number>();
+  // @Output() durationSetup: EventEmitter<number> = new EventEmitter<number>();
   UrlsArray: Array<string> = [];
   cssDisplay: boolean = false;
   private file: any;
   private durationTime: number = null;
 
 
-  constructor(private selectVideoService: SelectVideoService) {
+  constructor
+    (
+      private selectVideoService: SelectVideoService,
+      private videoDurationService: VideoDurationService
+    ) {
     this.selectVideoService.changeVideoObservable
-      .subscribe((src: string) => {
-        console.log(src);
-        this.cssDisplay = true;
-        this.runPlayer(src);
+      .subscribe((file: string) => {
+        if (typeof file === 'string') {
+          this.runPlayer(file);
+        } else {
+          this.file = file;
+          this.uploadedVideoPlay();
+        }
       });
   }
 
-  onVideoChange(e: any) {
-    this.cssDisplay = true;
-    this.file = e.target.files[0];
+  uploadedVideoPlay() {
     let fileReader: FileReader = new FileReader();
 
     fileReader.onload = (e: any): void => {
@@ -58,6 +64,7 @@ export class VideoPreviewComponent {
   }
 
   runPlayer(url: string, mime?: string): void {
+    this.cssDisplay = true;
     let video = this.preview.nativeElement.id;
     if (mime) {
       jwplayer(video).setup({
@@ -83,7 +90,8 @@ export class VideoPreviewComponent {
     jwplayer(video).on('play', () => {
       let duration = jwplayer(video).getDuration();
       if (this.durationTime !== duration) {
-        this.durationSetup.emit(duration);
+        //this.durationSetup.emit(duration);
+        this.videoDurationService.setMaxDuration(duration);
         setTimeout(() => {
           jwplayer(video).pause();
         }, 1000);
