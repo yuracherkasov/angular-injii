@@ -3,6 +3,7 @@
   overflow-y: auto;
   position: relative;
   animation: ease-height .2s ease-out forwards;
+  background: #252b33;
 }
 @keyframes ease-height{
   from{
@@ -20,7 +21,6 @@ li{
   background: #252b33;
   transition: all .3s;
   cursor: pointer;
-  color: #ccc;
 }
 li:hover{
   background: #1a1f24;

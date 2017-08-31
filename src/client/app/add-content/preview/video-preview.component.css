@@ -1,3 +1,6 @@
+:host /deep/ #preview{
+  background: none;
+}
 .preview-wrapper{
   height: calc(100% - 94px);
   top: 94px;
@@ -27,11 +30,18 @@ h2{
 @media (max-width: 991px){
   .preview-block{
     margin-top: 0;
+    height: auto;
+    min-height: 200px;
   }
   .preview-block > div{
-    height: 200px;
+    height: 160px;
   }
   h2{
     line-height: 150px;
+    font-size: 22px;
+  }
+  .preview-wrapper{
+    height: auto;
+    top: 0;
   }
 }

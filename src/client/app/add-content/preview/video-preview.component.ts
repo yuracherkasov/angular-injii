@@ -1,5 +1,5 @@
-import { Component, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
-import { SelectVideoService } from '../select-video.service'
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { VideoPreviewService } from './video-preview.service'
 import { VideoDurationService } from '../video-duration.service'
 
 declare var jwplayer: any;
@@ -22,24 +22,27 @@ declare var jwplayer: any;
 export class VideoPreviewComponent {
 
   @ViewChild('preview') preview: ElementRef;
-  // @Output() durationSetup: EventEmitter<number> = new EventEmitter<number>();
+  
   UrlsArray: Array<string> = [];
   cssDisplay: boolean = false;
   private file: any;
   private durationTime: number = null;
+  private flag: boolean;
 
 
   constructor
     (
-      private selectVideoService: SelectVideoService,
+      private videoPreviewService: VideoPreviewService,
       private videoDurationService: VideoDurationService
     ) {
-    this.selectVideoService.changeVideoObservable
+    this.videoPreviewService.changeVideoObservable
       .subscribe((file: string) => {
         if (typeof file === 'string') {
           this.runPlayer(file);
+          this.flag = false;
         } else {
           this.file = file;
+          this.flag = true;
           this.uploadedVideoPlay();
         }
       });
@@ -90,8 +93,7 @@ export class VideoPreviewComponent {
     jwplayer(video).on('play', () => {
       let duration = jwplayer(video).getDuration();
       if (this.durationTime !== duration) {
-        //this.durationSetup.emit(duration);
-        this.videoDurationService.setMaxDuration(duration);
+        if ( this.flag ) this.videoDurationService.setMaxDuration(duration);
         setTimeout(() => {
           jwplayer(video).pause();
         }, 1000);

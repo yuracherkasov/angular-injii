@@ -1,8 +1,8 @@
 <div class="upload-video-wrapper">
-  <h2>Upload video</h2>
-  <form id="upload-video" action="" #uploadVideoForm="ngForm" (submit)="onSubmit($event)" novalidate>
+  <h2>Upload your video</h2>
+  <form id="upload-video" action="" #uploadVideoForm="ngForm" (submit)="uploadVideoForm.valid && onSubmit($event)" novalidate>
     <fieldset>
-      <h3>Tell us about yourself</h3>
+      <h3>tell about yourself</h3>
       <div *ngIf="!bio">
         <div class="bio">
           <label for="bio">Bio</label>
@@ -20,7 +20,7 @@
             <input type="text" class="form-item" id="{{social.type}}" pattern="{{social.pattern}}.*" placeholder="{{social.type}}" name="{{social.type}}"
               [(ngModel)]="social.link" />
             <div class="alert-message">
-              format {{social.pattern}}
+              format: {{social.pattern}}
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
             <input type="text" class="form-item" id="{{item.type}}" pattern="{{item.pattern}}.*" placeholder="{{item.type}}" name="{{item.type}}"
               [(ngModel)]="item.link" />
             <div class="alert-message">
-              format {{item.pattern}}
+              format: {{item.pattern}}
             </div>
           </div>
         </div>
@@ -41,10 +41,10 @@
     </fieldset>
 
     <fieldset class="upload-video">
-      <h3>Upload your video</h3>
+      <h3>*required fields</h3>
       <div>
         <label for="title">Title*</label>
-        <input type="text" name="title" id="title" #title="ngModel" [(ngModel)]="uploadData.title" required />
+        <input type="text" autocomplete="off" name="title" id="title" #title="ngModel" [(ngModel)]="uploadData.title" required />
         <div class="alert-message2" [class.active]="uploadVideoForm.submitted && !title.valid">
           this field is required
         </div>
@@ -60,8 +60,8 @@
 
       <div>
         <div class="label" (click)="showCharitiesList()">Charity*</div>
-        <div class="select-charity" (click)="showCharitiesList()">
-          <span [class.hidden]="charitiesList"></span>
+        <div class="select-charity" (click)="showCharitiesList()" [class.active]="charitiesList">
+          <span></span>
           <p [class.hidden]="charitiesList">
             {{(selectedCharity.firstname && selectedCharity.lastname) ? selectedCharity.firstname + ' ' + selectedCharity.lastname :
             ''}}
@@ -89,11 +89,11 @@
       </div>
 
       <div>
-        <label for="video">Select video*</label>
+        <label for="video">Video*</label>
         <div class="select-video">
-          <p>{{selectedFileName ? selectedFileName : 'Select video'}}</p>
           <input type="file" accept="video/*" name="video" id="video" class="" ng2FileSelect [uploader]="uploader" (change)="onSelectVideo($event)"
           />
+          <p [class.active]="selectedFileName">{{selectedFileName ? selectedFileName : 'Select video'}}</p>
         </div>
         <div class="alert-message2" [class.active]="uploadVideoForm.submitted && !selectedFileName">
           this field is required
@@ -111,8 +111,10 @@
       <div class="alert alert-success" [hidden]="!uploadSuccessMessage">
         {{ uploadSuccessMessage }}
       </div>
-
       
+      <div class="meter" [hidden]="!uploadProgress">
+        <span [style.width.px]="uploadProgress"></span>
+      </div>
 
     </fieldset>
 

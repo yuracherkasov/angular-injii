@@ -21,4 +21,10 @@
     padding-left: 0;
     padding-right: 0;
   }
+  .preview-space{
+    position: relative;
+    right: auto;
+    top: auto;
+    height: auto;
+  }
 } 

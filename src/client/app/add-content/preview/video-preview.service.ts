@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/toPromise';
-import { ApiService } from '../services/api.service';
+import { ApiService } from '../../services/api.service';
 
 @Injectable()
-export class SelectVideoService {
+export class VideoPreviewService {
 
   private subjDetailSource = new Subject<any>();
   changeVideoObservable = this.subjDetailSource.asObservable();

@@ -1,4 +1,4 @@
-import { Input, Component, OnInit } from '@angular/core';
+import { Input, Component, EventEmitter, Output } from '@angular/core';
 import { SelectTimeService } from './select-time.service';
 import { IVideo } from '../../models/video';
 
@@ -10,9 +10,10 @@ import { IVideo } from '../../models/video';
   providers: [SelectTimeService]
 })
 
-export class SelectTimeComponent implements OnInit {
+export class SelectTimeComponent {
 
   @Input() video: IVideo;
+  @Output() onSubmitted = new EventEmitter<any>();
   timeZone: number = 0;
   timeZoneString: string = 'UTC+0000';
   hours: number = 12;
@@ -22,9 +23,9 @@ export class SelectTimeComponent implements OnInit {
 
   constructor(public selectTimeService: SelectTimeService) { }
 
-  ngOnInit(): void {
-    // console.log(this.video);
-  }
+  // ngOnInit(): void {
+  //   // console.log(this.video);
+  // }
 
 
   setTimezone(n: number) {
@@ -49,14 +50,14 @@ export class SelectTimeComponent implements OnInit {
   submitDate() {
     this.loading = true;
     let date = this.dt.getFullYear() + '-' + (this.dt.getDate() < 10 ? '0' + this.dt.getDate() : this.dt.getDate()) + '-' + (this.dt.getMonth() < 9 ? '0' + (this.dt.getMonth() + 1) : this.dt.getMonth() + 1);
-    let timezone = this.timeZone < 0 ? this.timeZone : '+' +  this.timeZone;
+    let timezone = this.timeZone < 0 ? this.timeZone : '+' + this.timeZone;
     let time = (this.hours < 10 ? '0' + this.hours : this.hours) + this.meridiem;
     let requestParam = `/avaliabletime?video=${this.video.id}&date=${date}&time=${time}&timezone=${timezone}`;
     this.selectTimeService.getShedule(requestParam)
-     .then(response => {
-       console.log(response);
-       this.loading = false;
-     })
+      .then(response => {
+        this.onSubmitted.emit(response)
+        this.loading = false;
+      })
   }
 
 }

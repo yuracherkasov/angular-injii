@@ -5,32 +5,33 @@ h2{
   font-size: 22px;
 }
 p{
-  font-size: 11px;
+  font-size: 13px;
   margin-bottom: 15px;
 }
 ul{
   list-style-type: none;
 }
 li{
-  margin-bottom: 10px;
-  border-radius: 3px;
+  margin-bottom: 5px;
   overflow: hidden;
 }
 .video{
   padding: 10px 3%;
   cursor: pointer;
   transition: all .1s linear;
-  background-color: rgba(132, 0, 121, .6);  
   overflow: hidden;
+  background: #252b33;
 }
-.video:hover,
+.video:hover{
+    background: #1a1f24;
+}
 .select-date-active .video{
   background-color: rgba(132, 0, 121, 1); 
 }
 
 .date{
   float: right;
-  color: #7b7c7f;
+  color: #999;
   font-size: 12px;
   font-weight: bold;
   width: 33%;

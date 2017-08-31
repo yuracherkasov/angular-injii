@@ -5,7 +5,7 @@
       <div class="col-md-12">
         <div class="heading">
           <h2>Add content</h2>
-          <p><span class="star">*</span>required fields</p>
+          <p>upload video</p>
         </div>
       </div>
     </div>
@@ -13,12 +13,12 @@
     <div class="row add-content">
       <div class="col-md-7">
 
-        <select-video *ngIf="ArtistVideos && ArtistVideos.length > 0" [videos]="ArtistVideos"></select-video>
+         <select-video *ngIf="ArtistVideos && ArtistVideos.length > 0" [videos]="ArtistVideos"></select-video>
 
-        <upload-video *ngIf="ArtistProfile" [artist]="ArtistProfile"></upload-video>
+         <upload-video *ngIf="ArtistProfile" [artist]="ArtistProfile"></upload-video> 
 
-        <!-- <schedule-bar #schedule [selectedDate]="selectedDate"></schedule-bar> -->
       </div>
+        
       <div class="col-md-5 preview-space">
 
         <video-preview #preview></video-preview>

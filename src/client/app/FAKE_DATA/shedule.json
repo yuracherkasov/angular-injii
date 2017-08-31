@@ -1,0 +1,56 @@
+{
+  "result": "OK",
+  "date": "Thursday, August 31, 2017",
+  "time": "09 PM",
+  "shedule":
+  [
+    {
+      "startTime": "09:01:00",
+      "endTime": "09:03:30"
+    },
+    {
+      "startTime": "09:05:40",
+      "endTime": "09:08:10"
+    },
+    {
+      "startTime": "09:08:10",
+      "endTime": "09:10:40"
+    },
+    {
+      "startTime": "09:10:40",
+      "endTime": "09:13:10"
+    },
+    {
+      "startTime": "09:20:00",
+      "endTime": "09:22:30"
+    },
+    {
+      "startTime": "09:22:30",
+      "endTime": "09:25:00"
+    },
+    {
+      "startTime": "09:40:40",
+      "endTime": "09:43:10"
+    },
+    {
+      "startTime": "09:48:10",
+      "endTime": "09:50:40"
+    },
+    {
+      "startTime": "09:50:40",
+      "endTime": "09:53:10"
+    },
+    {
+      "startTime": "09:53:10",
+      "endTime": "09:55:40"
+    },
+    {
+      "startTime": "09:55:40",
+      "endTime": "09:58:10"
+    },
+    {
+      "startTime": "09:58:10",
+      "endTime": "10:00:40"
+    }
+  ]
+}

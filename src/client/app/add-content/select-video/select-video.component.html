@@ -6,8 +6,12 @@
       <div class="video" (click)="selectVideo(video, i)" >
         <div class="title">{{i + 1}}. {{video.title}}</div>
         <div class="date">{{video.date}}</div>
-      </div>   
-      <select-time *ngIf="selectedVideo === i" [video]="video"></select-time>
+      </div> 
+
+      <select-time *ngIf="selectedVideo === i" [video]="video" (onSubmitted)="onGetShedule($event)"></select-time>
+
+      <schedule-bar *ngIf="showBar && selectedVideo === i" [data]="shedule"></schedule-bar> 
+
     </li>
   </ul>   
 </div>

@@ -19,7 +19,6 @@ export class AddContentComponent implements OnInit, OnDestroy {
   ArtistVideos: Array<IVideo>;
   hidepopup: boolean = false;
   @ViewChild(VideoPreviewComponent) previewComponent: VideoPreviewComponent;
-  
 
   constructor
     (
@@ -46,7 +45,7 @@ export class AddContentComponent implements OnInit, OnDestroy {
         this.ArtistVideos = response.artist.videos;
         console.log(this.ArtistProfile);
       }
-    })
+    });
   }
 
   ngOnDestroy() {
@@ -64,4 +63,5 @@ export class AddContentComponent implements OnInit, OnDestroy {
   private hidePopUp() {
     this.hidepopup = true;
   }
+
  }

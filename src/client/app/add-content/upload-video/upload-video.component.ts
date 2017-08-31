@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { UploadVideoService } from './upload-video.service';
+import { ApiService } from '../../services/api.service';
 import { ConstantsService } from '../../services/constants.service';
-import { SelectVideoService } from '../select-video.service';
+import { VideoPreviewService } from '../preview/video-preview.service';
 import { VideoDurationService } from '../video-duration.service';
 
 import { FileUploader, FileItem } from 'ng2-file-upload';
@@ -18,8 +19,8 @@ import { FileUploader, FileItem } from 'ng2-file-upload';
 export class UploadVideoComponent implements OnInit {
 
   uploader: FileUploader = new FileUploader({
-    //url: '/api/add_content',
-    url: 'http://localhost:3000',
+    url: this.apiService.url + '/api/add_content',
+    //url: 'http://localhost:3000',
     authToken: this.constantsService.User.token
   });
 
@@ -37,15 +38,17 @@ export class UploadVideoComponent implements OnInit {
   uploadSuccessMessage: string = '';
   uploadErrorMessage: string = '';
   uploadProgress: number = 0;
-  maxDuration: number = 90;
+  maxDuration: number = 240;
   isDurationValid: boolean = true;
 
   constructor
     (
-    private selectVideoService: SelectVideoService,
+    private videoPreviewService: VideoPreviewService,
     private constantsService: ConstantsService,
     private uploadVideoService: UploadVideoService,
-    private videoDurationService: VideoDurationService
+    private videoDurationService: VideoDurationService,
+    private apiService: ApiService,
+    private zone: NgZone
     ) {
       this.videoDurationService.changeDurationObservable
       .subscribe((amount: number) => {
@@ -56,7 +59,7 @@ export class UploadVideoComponent implements OnInit {
   checkDuration(amount: number): void {
     this.isDurationValid = amount <= this.maxDuration;
     this.videoDuration = amount+'';
-    console.log("Video duration = " + this.videoDuration, "this.isDurationValid: ", this.isDurationValid)
+    //console.log("Video duration = " + this.videoDuration);
   }
 
 
@@ -87,17 +90,18 @@ export class UploadVideoComponent implements OnInit {
     };
 
     this.uploader.onErrorItem = (item, response, status, headers): any => {
-      console.log("Data not sent; item: ", item, "response: ", response, status, headers)
+      // console.log("Data not sent; item: ", item, "response: ", response, status, headers)
       this.uploadProgress = 0;
       this.uploadSuccessMessage = '';
       this.uploadErrorMessage = 'Could not send data';
     }
     this.uploader.onProgressItem = (fileItem: any, progress: any) => {
-      console.log("progress: ", progress);
-      this.uploadProgress = progress;
+      this.zone.run( () => {
+        this.uploadProgress = progress;
+      })
     }
     this.uploader.onSuccessItem = (item: FileItem, response: any, status: number) => {
-      console.log("response: ", response, "status: ", status);
+      // console.log("response: ", response, "status: ", status);
       let res = JSON.parse(response)
       if (res.resul = 'OK') {
         this.uploadErrorMessage = '';
@@ -108,7 +112,9 @@ export class UploadVideoComponent implements OnInit {
   }
 
   onSubmit(e: any) {
-    this.uploader.uploadAll();
+    if(this.selectedCharity.id) {
+      this.uploader.uploadAll();
+    }
   }
 
   includeAtLeastOne(arr: Array<any>): boolean {
@@ -141,7 +147,7 @@ export class UploadVideoComponent implements OnInit {
     if (event.target && event.target.files[0]) {
       let file = event.target.files[0];
       this.selectedFileName = file.name;
-      this.selectVideoService.uploadVideo(file);
+      this.videoPreviewService.uploadVideo(file);
       this.uploadSuccessMessage = '';
       this.uploadErrorMessage = '';
     };

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SelectVideoService } from '../select-video.service';
+import { VideoPreviewService } from '../preview/video-preview.service';
 
 import { IVideo } from '../models/video';
 
@@ -18,8 +18,10 @@ export class SelectVideoComponent {
   bigNum: number = 9999;
   selectedVideo: number = this.bigNum;
   cssClassValue: number = this.bigNum;
+  shedule: any = {};
+  showBar: boolean;
 
-  constructor (private selectVideoService: SelectVideoService) {
+  constructor (private videoPreviewService: VideoPreviewService) {
   }
 
   selectVideo(video: IVideo, n: number): void {
@@ -38,7 +40,15 @@ export class SelectVideoComponent {
         this.cssClassValue = n;
       }, 340);
     }
-    this.selectVideoService.selectVideo(video.src);
+    this.videoPreviewService.selectVideo(video.src);
+  }
+
+  onGetShedule(response: any): void {
+    if(response.result = 'OK'){
+      this.shedule = response;
+      this.showBar = true;
+    }
+    console.log(response);
   }
 
 
