@@ -8,9 +8,9 @@
         <div class="date">{{video.date}}</div>
       </div> 
 
-      <select-time *ngIf="selectedVideo === i" [video]="video" (onSubmitted)="onGetShedule($event)"></select-time>
+      <select-time *ngIf="selectedVideo === i && !showShedule" [video]="video" (onSubmitted)="onGetShedule($event)"></select-time>
 
-      <schedule-bar *ngIf="showBar && selectedVideo === i" [data]="shedule"></schedule-bar> 
+      <schedule-bar *ngIf="selectedVideo === i && showShedule" [response]="shedule"></schedule-bar> 
 
     </li>
   </ul>   

@@ -23,11 +23,6 @@ export class SelectTimeComponent {
 
   constructor(public selectTimeService: SelectTimeService) { }
 
-  // ngOnInit(): void {
-  //   // console.log(this.video);
-  // }
-
-
   setTimezone(n: number) {
     if (n > 0) {
       this.timeZone === 12 ? this.timeZone = 0 : this.timeZone += 1;

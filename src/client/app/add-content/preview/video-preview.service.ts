@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/toPromise';
-import { ApiService } from '../../services/api.service';
 
 @Injectable()
 export class VideoPreviewService {
@@ -11,7 +10,7 @@ export class VideoPreviewService {
 
   private src: string = '';
 
-  constructor(private apiService: ApiService) { }
+  constructor() { }
 
   selectVideo(src: string) {
     if(src != this.src) {

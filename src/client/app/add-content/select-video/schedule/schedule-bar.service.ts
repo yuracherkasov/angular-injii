@@ -1,25 +1,41 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-
-// import { ApiService } from '../../services/api.service';
-// import { RequestOptionsService } from '../../services/request-options.service';
-
-//import 'rxjs/add/operator/toPromise';
+import { ApiService } from '../../../services/api.service';
+import { RequestOptionsService } from '../../../services/request-options.service';
 
 @Injectable()
 export class ScheduleBarService {
-  constructor(
-    // private http: Http,
-    // private apiService: ApiService,
-    // private requestOptionsService: RequestOptionsService
+
+  selectedTime: string;
+  selectedDate: string;
+  selectedTimezone: string;
+
+  constructor
+    (
+      private apiService: ApiService,
+      private requestOptionsService: RequestOptionsService
     ) { }
 
-  // getVideosByDate(date: string): Promise<IVideo[]> {
-  //   //return this.apiService.get('/api/videos?date=' + date)
-  //   console.warn('get request data videos')
-  //    return this.http.get('app/FAKE_DATA/sheduleVideo.json')
-  //     .toPromise()
-  //     .then(response => response.json().videos as IVideo[])
-  //     .catch(this.requestOptionsService.handleError);
-  // }
+  setTime(time: string): void {
+    this.selectedTime = time;
+  }
+  setDate(date: string) {
+    this.selectedDate = date;
+  }
+  setTimezone(timezone: string) {
+    this.selectedTimezone = timezone;
+  }
+  canActivate(): boolean {
+    if( this.selectedDate && this.selectedDate ) return true;
+    return false;
+  }
+
+  submitDate(data: any): Promise<any> {
+    let request = JSON.stringify(data);
+    console.log(data, request);
+    return this.apiService.post('/videoshow', request)
+    .toPromise()
+    .then((response) => response.json())
+    .catch(this.requestOptionsService.handleError)
+  }
+
 }

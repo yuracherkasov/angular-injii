@@ -14,11 +14,15 @@ import { SelectTimeComponent } from './select-video/select-time/select-time.comp
 import { UploadVideoComponent } from './upload-video/upload-video.component';
 import { SelectCharityComponent } from './upload-video/select-charity/select-charity.component';
 
-//import { ScheduleBarService } from './select-video/schedule/schedule-bar.service';
 import { AddContentService } from './add-content.service';
 import { AddContentGuardService } from './add-content-guard.service';
 import { VideoDurationService } from './video-duration.service';
 import { VideoPreviewService } from './preview/video-preview.service';
+import { AgreementComponent } from './agreement/agreement.component';
+import { SelectVideoService } from './select-video/select-video.service';
+import { ScheduleBarService } from './select-video/schedule/schedule-bar.service';
+import { AgreementService } from './agreement/agreement.service';
+
 
 @NgModule({
     imports: [
@@ -36,15 +40,18 @@ import { VideoPreviewService } from './preview/video-preview.service';
       SelectTimeComponent,
       UploadVideoComponent,
       SelectCharityComponent,
-      ScheduleBarComponent
+      ScheduleBarComponent,
+      AgreementComponent
     ],
     exports: [AddContentComponent],
     providers: [
-      //ScheduleBarService,
+      ScheduleBarService,
       AddContentService,
       AddContentGuardService,
       VideoDurationService,
-      VideoPreviewService
+      VideoPreviewService,
+      SelectVideoService,
+      AgreementService
     ]
 })
 

@@ -1,0 +1,16 @@
+<div class="agreement-wrapper" (click)="goBack($event)">
+  <div class="agreement-content" (click)="$event.stopPropagation()">
+    <div class="info">
+      <p>{{this.scheduleBarService.selectedDate + ' ' + this.scheduleBarService.selectedTime + ' ' + this.scheduleBarService.selectedTimezone}}</p>
+    </div>
+    <div class="iframe-content">
+      <iframe src="//example.com" frameborder="0"></iframe>
+    </div>
+    <form #acceptForm="ngForm" novalidate (submit)="acceptForm.valid && Submit()">
+      <button type="submit" class="button-injii" [disabled]="!agree">Submit</button>
+      <input type="checkbox" id="accept" required name="agree" [(ngModel)]="agree">
+      <p>I <label for="accept">accepts</label> the content submission pop agreement</p>
+    </form>
+  </div>
+</div>
+

@@ -1,45 +1,27 @@
-<div class="schedule">
-  <div class="schedule-item"
-       *ngFor="let video of videos"
-       [style.width]="video.widthOnShedule + '%'"
-       [style.left]="video.positionOnShedule + '%'">
+<div class="shedule-bar-wrapper" [class.congratulation]="!showShedule">
+  <div *ngIf="showShedule">
+    <h3>Select the available time</h3>
+    <h4>{{response.date + ' ' + response.time + ' (' + response.timezone + ')'}}</h4>
+    <hr />
+
+    <div class="shedule-container">
+      <table class="shedule-table">  
+        <tr *ngFor="let tr of table">
+          <td *ngFor="let td of tr" [class.active]="td != null">
+            <button class="btn" [disabled]="td === null" (click)="onSelectedTime(td)">
+              {{td != null ? td.startTime : ' '}}
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="spinner" *ngIf="loading">
+    <div class="loader"></div>
+  </div> 
+  <div *ngIf="!showShedule">
+    <h3>{{message}}</h3>
   </div>
 </div>
-<div class="timeline">
-  <span class="timeline-item">
-    <span class="timeline-item-caption">00am</span>
-  </span>
-  <span class="timeline-item">
-    <span class="timeline-item-caption">02am</span>
-  </span>
-  <span class="timeline-item">
-    <span class="timeline-item-caption">04am</span>
-  </span>
-  <span class="timeline-item">
-    <span class="timeline-item-caption">06am</span>
-  </span>
-  <span class="timeline-item">
-    <span class="timeline-item-caption">08am</span>
-  </span>
-  <span class="timeline-item">
-    <span class="timeline-item-caption">10am</span>
-  </span>
-  <span class="timeline-item">
-    <span class="timeline-item-caption">12pm</span>
-  </span>
-  <span class="timeline-item">
-    <span class="timeline-item-caption">02pm</span>
-  </span>
-  <span class="timeline-item">
-    <span class="timeline-item-caption">04pm</span>
-  </span>
-  <span class="timeline-item">
-    <span class="timeline-item-caption">06pm</span>
-  </span>
-  <span class="timeline-item">
-    <span class="timeline-item-caption">08pm</span>
-  </span>
-  <span class="timeline-item">
-    <span class="timeline-item-caption">10pm</span>
-  </span>
-</div>
+
+

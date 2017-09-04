@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AgreementService } from '../../agreement/agreement.service';
+import { SelectVideoService  } from '../select-video.service';
 
-//import { ScheduleBarService } from './schedule-bar.service';
+import { ScheduleBarService } from './schedule-bar.service';
 
 @Component({
   moduleId: module.id,
@@ -11,15 +14,66 @@ import { Component, Input, OnInit } from '@angular/core';
 
 export class ScheduleBarComponent implements OnInit {
 
-  @Input() data: any;
+  @Input() response: any;
+  table: any;
+  showShedule: boolean = true;
+  loading: boolean = false;
+  message: string = '';
 
   constructor(
-    //private scheduleBarService: ScheduleBarService,
-  ) { }
+    private scheduleBarService: ScheduleBarService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private agreementService: AgreementService,
+    private selectVideoService: SelectVideoService
+  ) {
+
+     this.agreementService.acceptedAgreementObservable
+      .subscribe((val) => {
+        if(val) {
+          this.onConfirmAccepts()
+        }
+      }) 
+
+   }
 
   ngOnInit(): void {
-    console.log(this.data);
+    this.table = [[]];
+    let shedule = this.response.shedule;
+    for(let i = 0, n=0; i < 60; i+=1){
+      if(i % 6 === 0 && i != 0) {
+        n++;
+        this.table[n] = [];
+      }
+      this.table[n].push(shedule[i] || null);
+    }
+    console.log(this.response);
+    this.scheduleBarService.setDate(this.response.date);
+    this.scheduleBarService.setTimezone(this.response.timezone);
   }
 
+  onSelectedTime(time: any): void {
+    this.scheduleBarService.setTime(time.startTime);
+    this.router.navigate(['agreement'], { relativeTo: this.route });
+  }
+
+  onConfirmAccepts(){
+    this.showShedule = false;
+    this.loading = true;
+    let data = {
+      id: this.selectVideoService.selectedVideo.id,
+      data: this.response.date,
+      timezone: this.response.timezone,
+      time: this.scheduleBarService.selectedTime
+    }
+    console.log("confirm");
+    this.scheduleBarService.submitDate(data)
+     .then(response => {
+       if(response.result === 'OK'){
+        this.message = response.message;
+       }
+       this.loading = false;
+     })
+  }
 
 }

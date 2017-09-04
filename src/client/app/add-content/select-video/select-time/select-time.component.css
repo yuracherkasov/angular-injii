@@ -160,7 +160,15 @@ h4{
       margin-top: 10px;
     }
     :host /deep/ .well-sm{
-        padding: 0;
+      padding: 0;
+    }
+    :host /deep/ .btn-sm,
+    :host /deep/ .btn-group-sm > .btn{
+      padding: 5px;
+    }
+    .btn-sm,
+    .btn-group-sm > .btn{
+        padding: 5px 10px;
     }
     :host /deep/ table {
         border-collapse: collapse;
