@@ -14,6 +14,7 @@ ul{
 li{
   margin-bottom: 5px;
   overflow: hidden;
+  position: relative;
 }
 .video{
   padding: 10px 3%;
@@ -43,6 +44,43 @@ li{
   text-overflow: ellipsis;
   float: left;
   width: 67%;
+}
+.spinner{
+  width: 100%;
+  height: 460px;
+}
+.loader{
+  position: relative;
+  left: 50%;
+  top: 50%;
+  margin-top: -22px;
+  margin-left: -22px;
+  transform: translate(-50%, -50%);
+}
+.message{
+  height: 0px;
+  transition: all .2s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(8, 10, 12, 0.6);
+  overflow: hidden;
+}
+.message p{
+  font-size: 16px;
+  padding: 20px;
+}
+.select-date-active .message{
+  height: 200px; 
+  animation: height-transition .3s ease-out;
+}
+@keyframes height-transition {
+  from{
+    height: 460px;
+  }
+  to{
+    height: 200px;
+  }
 }
 @media(max-width: 991px){
   h2{

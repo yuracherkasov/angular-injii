@@ -7,6 +7,10 @@ export interface IVideo {
   donations: number;
   id: string;
   charity: Object;
+  broadcast: {
+    upcoming: boolean;
+    broadcast: string;
+  };
 }
 
 

@@ -1,0 +1,79 @@
+.sharing-video-wrapper {
+  margin-bottom: 40px;
+}
+ul{
+  list-style: none;
+}
+li{
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+h2{
+  font-size: 22px;
+}
+.sharing-video-wrapper h3{
+  font-size: 13px;
+  position: relative;
+  white-space: nowrap;
+  padding: 0 0 10px;
+  margin: 5px 0 15px;
+}
+.sharing-video-wrapper h3:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80%;
+  height: 1px;
+  background-image: linear-gradient(to right, #e9008c 0%, #7F0078 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFE9008C', endColorstr='#FF7F0078', GradientType=1);
+}
+
+a{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+}
+a img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.preview {
+  width: 196px;
+  height: auto;
+  display: inline-block;
+  float: left;
+}
+.preview img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.info {
+  overflow: hidden;
+  padding-left: 2%;
+}
+.sharing{
+  float: right;
+}
+.info h6{
+  margin-bottom: 50px;
+  color: #e9008c;
+  font-size: 16px;
+}
+.info p{
+  color: #999;
+  font-size: 16px;
+}
+.info span{
+  color: #fff;
+  font-size: 14px;
+  display: block;
+}
+
+
+
+

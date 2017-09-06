@@ -13,6 +13,8 @@
     <div class="row add-content">
       <div class="col-md-7">
 
+         <sharing-video *ngIf="UpcomingVideos && UpcomingVideos.length > 0" [videos]="UpcomingVideos"></sharing-video>
+
          <select-video *ngIf="ArtistVideos && ArtistVideos.length > 0" [videos]="ArtistVideos"></select-video>
 
          <upload-video *ngIf="ArtistProfile" [artist]="ArtistProfile"></upload-video> 

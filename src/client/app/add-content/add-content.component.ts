@@ -17,6 +17,7 @@ export class AddContentComponent implements OnInit, OnDestroy {
 
   ArtistProfile: any;
   ArtistVideos: Array<IVideo>;
+  UpcomingVideos: Array<IVideo>;
   hidepopup: boolean = false;
   @ViewChild(VideoPreviewComponent) previewComponent: VideoPreviewComponent;
 
@@ -43,9 +44,14 @@ export class AddContentComponent implements OnInit, OnDestroy {
       if(response.result === 'OK'){
         this.ArtistProfile = response.artist;
         this.ArtistVideos = response.artist.videos;
-        console.log(this.ArtistProfile);
+        this.UpcomingVideos = this.ArtistVideos.filter(this.selectUpcomingVideo);
+        console.log(this.ArtistProfile, this.UpcomingVideos);
       }
     });
+  }
+
+  selectUpcomingVideo(video: IVideo): boolean {
+    return video.broadcast.upcoming;
   }
 
   ngOnDestroy() {
@@ -63,5 +69,9 @@ export class AddContentComponent implements OnInit, OnDestroy {
   private hidePopUp() {
     this.hidepopup = true;
   }
+
+
+
+
 
  }

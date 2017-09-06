@@ -1,17 +1,24 @@
 <div class="select-video-wrapper">
   <h2>Choose to broadcast:</h2>
   <p>You have {{videos.length}} uploaded video</p>
-   <ul>
-    <li *ngFor = "let video of videos let i = index" [class.select-date-active] = "cssClassValue === i">
-      <div class="video" (click)="selectVideo(video, i)" >
+  <ul>
+    <li *ngFor="let video of videos let i = index" [class.select-date-active]="cssClassValue === i">
+      <div class="video" (click)="selectVideo(video, i)">
         <div class="title">{{i + 1}}. {{video.title}}</div>
         <div class="date">{{video.date}}</div>
-      </div> 
+      </div>
 
-      <select-time *ngIf="selectedVideo === i && !showShedule" [video]="video" (onSubmitted)="onGetShedule($event)"></select-time>
+      <select-time *ngIf="selectedVideo === i && showDatapicker" [video]="video" (onSubmitted)="getShedule($event)"></select-time>
 
-      <schedule-bar *ngIf="selectedVideo === i && showShedule" [response]="shedule"></schedule-bar> 
+      <schedule-bar *ngIf="selectedVideo === i && showShedule" [response]="shedule"></schedule-bar>
 
+
+      <div class="spinner" *ngIf="selectedVideo === i && loading">
+        <div class="loader"></div>
+      </div>
+      <div *ngIf="selectedVideo === i && message" class="message">
+        <p>{{message}}</p>
+      </div>
     </li>
-  </ul>   
+  </ul>
 </div>

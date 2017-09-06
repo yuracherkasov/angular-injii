@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CeiboShare } from 'ng2-social-share';
 
-import { PopupControlService } from './../../services/popup-control.service';
+import { PopupControlService } from '../../../services/popup-control.service';
 
 
 @Component({

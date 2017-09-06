@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
-import { RequestOptionsService } from '../../../services/request-options.service';
 
 @Injectable()
 export class ScheduleBarService {
@@ -9,11 +7,7 @@ export class ScheduleBarService {
   selectedDate: string;
   selectedTimezone: string;
 
-  constructor
-    (
-      private apiService: ApiService,
-      private requestOptionsService: RequestOptionsService
-    ) { }
+  constructor () { }
 
   setTime(time: string): void {
     this.selectedTime = time;
@@ -27,15 +21,6 @@ export class ScheduleBarService {
   canActivate(): boolean {
     if( this.selectedDate && this.selectedDate ) return true;
     return false;
-  }
-
-  submitDate(data: any): Promise<any> {
-    let request = JSON.stringify(data);
-    console.log(data, request);
-    return this.apiService.post('/videoshow', request)
-    .toPromise()
-    .then((response) => response.json())
-    .catch(this.requestOptionsService.handleError)
   }
 
 }

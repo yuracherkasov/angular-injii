@@ -113,13 +113,17 @@
           "firstname": "Sam",
           "lastname": "Jonson",
           "username": "bestusername"
+        },
+        "broadcast": {
+          "upcoming": false,
+          "date": "August 31 2017 8:37:24 pm"
         }
       },
       {
         "date": "June 29 2017 6:56:54 pm",
         "title": "Second video",
         "viewers": null,
-        "preview": null,
+        "preview": "assets/vid_thumb.jpg",
         "src": "https://d2klya0a52nzxz.cloudfront.net/2016/08/18/hls1080k/01c00381b6727394701e731761f37f6838cbc767aa68d5d46abac4157ac6e791.mp4",
         "donations": 0,
         "id": "56yhrt67",
@@ -129,6 +133,10 @@
           "firstname": "Sam",
           "lastname": "Jonson",
           "username": "bestusername"
+        },
+        "broadcast": {
+          "upcoming": true,
+          "date": "September 15 2017 4:37:24 pm"
         }
       },
       {
@@ -145,6 +153,10 @@
           "firstname": "Sam",
           "lastname": "Jonson",
           "username": "bestusername"
+        },
+        "broadcast": {
+          "upcoming": false,
+          "date": "May 15 2017 4:37:24 pm"
         }
       }
     ]

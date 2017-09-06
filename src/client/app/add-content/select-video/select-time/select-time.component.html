@@ -2,7 +2,6 @@
 <div class="select-time-wrapper"> 
   <div class="submit-date-btn">
     <button class="button button-injii" (click)="submitDate()">Submit</button>
-    <div class="load" *ngIf="loading"></div>
   </div>
   <h4>{{dt | date:'fullDate'}} <span>{{hours < 10 ? ' 0' + hours : ' ' + hours}} : 00 {{' ' + meridiem}} {{'(' + timeZoneString + ')'}}</span></h4>
   <hr />

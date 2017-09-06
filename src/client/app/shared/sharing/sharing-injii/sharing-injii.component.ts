@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CeiboShare } from 'ng2-social-share';
 
-import { ConstantsService } from './../../services/constants.service';
+import { ConstantsService } from '../../../services/constants.service';
 
 declare const FB: any;
 declare const gapi: any;
@@ -17,11 +17,11 @@ declare const gapi: any;
     <ul class="shared-social">
       <li (click)="shareFb()"><img src="assets/svg/icons/facebook-logo-button.svg" alt="facebook"></li>
       <li ceiboShare [twitter]="{url: urlInjii, text: textInjii, hashtags:'injii'}"><img src="assets/svg/icons/twitter-logo-button.svg" alt="twitter"></li>
-      <li #grender><img src="assets/svg/icons/google-plus.svg" alt="instagram"></li>
+      <li #grender><img src="assets/svg/icons/google-plus.svg" alt="google"></li>
     </ul>
   </div>
   `,
-  styleUrls: ['sharing-video.component.css', 'sharing-injii.component.css']
+  styleUrls: ['../sharing-video/sharing-video.component.css', 'sharing-injii.component.css']
 })
 
 export class SharingInjiiComponent implements OnInit {

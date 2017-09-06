@@ -26,4 +26,6 @@ export class AddContentService {
       //.then(response => response.json())
       .catch((e) => this.requestOptionsService.handleError(e, 'Get Artist profile on Add Content page'));
   } 
+
+  
 }

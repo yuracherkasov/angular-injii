@@ -13,6 +13,8 @@ import { SelectVideoComponent } from './select-video/select-video.component';
 import { SelectTimeComponent } from './select-video/select-time/select-time.component';
 import { UploadVideoComponent } from './upload-video/upload-video.component';
 import { SelectCharityComponent } from './upload-video/select-charity/select-charity.component';
+import { SharingVideoComponent } from './sharing-video/sharing-video.component';
+
 
 import { AddContentService } from './add-content.service';
 import { AddContentGuardService } from './add-content-guard.service';
@@ -41,7 +43,8 @@ import { AgreementService } from './agreement/agreement.service';
       UploadVideoComponent,
       SelectCharityComponent,
       ScheduleBarComponent,
-      AgreementComponent
+      AgreementComponent,
+      SharingVideoComponent
     ],
     exports: [AddContentComponent],
     providers: [

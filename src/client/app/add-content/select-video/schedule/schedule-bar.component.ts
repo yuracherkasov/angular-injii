@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AgreementService } from '../../agreement/agreement.service';
-import { SelectVideoService  } from '../select-video.service';
+//import { AgreementService } from '../../agreement/agreement.service';
+//import { SelectVideoService  } from '../select-video.service';
 
 import { ScheduleBarService } from './schedule-bar.service';
 
@@ -16,24 +16,24 @@ export class ScheduleBarComponent implements OnInit {
 
   @Input() response: any;
   table: any;
-  showShedule: boolean = true;
-  loading: boolean = false;
-  message: string = '';
+  //showShedule: boolean = true;
+  // loading: boolean = false;
+  // message: string = '';
 
   constructor(
     private scheduleBarService: ScheduleBarService,
     private router: Router,
     private route: ActivatedRoute,
-    private agreementService: AgreementService,
-    private selectVideoService: SelectVideoService
+    //private agreementService: AgreementService,
+    //private selectVideoService: SelectVideoService
   ) {
 
-     this.agreementService.acceptedAgreementObservable
-      .subscribe((val) => {
-        if(val) {
-          this.onConfirmAccepts()
-        }
-      }) 
+    //  this.agreementService.acceptedAgreementObservable
+    //   .subscribe((val) => {
+    //     if(val) {
+    //       this.onConfirmAccepts()
+    //     }
+    //   }) 
 
    }
 
@@ -57,23 +57,6 @@ export class ScheduleBarComponent implements OnInit {
     this.router.navigate(['agreement'], { relativeTo: this.route });
   }
 
-  onConfirmAccepts(){
-    this.showShedule = false;
-    this.loading = true;
-    let data = {
-      id: this.selectVideoService.selectedVideo.id,
-      data: this.response.date,
-      timezone: this.response.timezone,
-      time: this.scheduleBarService.selectedTime
-    }
-    console.log("confirm");
-    this.scheduleBarService.submitDate(data)
-     .then(response => {
-       if(response.result === 'OK'){
-        this.message = response.message;
-       }
-       this.loading = false;
-     })
-  }
+  
 
 }

@@ -1,5 +1,4 @@
-<div class="shedule-bar-wrapper" [class.congratulation]="!showShedule">
-  <div *ngIf="showShedule">
+<div class="shedule-bar-wrapper">
     <h3>Select the available time</h3>
     <h4>{{response.date + ' ' + response.time + ' (' + response.timezone + ')'}}</h4>
     <hr />
@@ -15,13 +14,6 @@
         </tr>
       </table>
     </div>
-  </div>
-  <div class="spinner" *ngIf="loading">
-    <div class="loader"></div>
-  </div> 
-  <div *ngIf="!showShedule">
-    <h3>{{message}}</h3>
-  </div>
 </div>
 
 

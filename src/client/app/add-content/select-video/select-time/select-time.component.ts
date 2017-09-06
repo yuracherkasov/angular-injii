@@ -1,5 +1,5 @@
 import { Input, Component, EventEmitter, Output } from '@angular/core';
-import { SelectTimeService } from './select-time.service';
+//import { SelectTimeService } from './select-time.service';
 import { IVideo } from '../../models/video';
 
 @Component({
@@ -7,7 +7,7 @@ import { IVideo } from '../../models/video';
   selector: 'select-time',
   templateUrl: 'select-time.component.html',
   styleUrls: ['select-time.component.css'],
-  providers: [SelectTimeService]
+  //providers: [SelectTimeService]
 })
 
 export class SelectTimeComponent {
@@ -19,9 +19,9 @@ export class SelectTimeComponent {
   hours: number = 12;
   meridiem: string = 'AM';
   dt: Date = new Date();
-  loading: boolean;
+  //loading: boolean;
 
-  constructor(public selectTimeService: SelectTimeService) { }
+  constructor() { }
 
   setTimezone(n: number) {
     if (n > 0) {
@@ -43,16 +43,12 @@ export class SelectTimeComponent {
   }
 
   submitDate() {
-    this.loading = true;
+    //this.loading = true;
     let date = this.dt.getFullYear() + '-' + (this.dt.getDate() < 10 ? '0' + this.dt.getDate() : this.dt.getDate()) + '-' + (this.dt.getMonth() < 9 ? '0' + (this.dt.getMonth() + 1) : this.dt.getMonth() + 1);
     let timezone = this.timeZone < 0 ? this.timeZone : '+' + this.timeZone;
     let time = (this.hours < 10 ? '0' + this.hours : this.hours) + this.meridiem;
     let requestParam = `/avaliabletime?video=${this.video.id}&date=${date}&time=${time}&timezone=${timezone}`;
-    this.selectTimeService.getShedule(requestParam)
-      .then(response => {
-        this.onSubmitted.emit(response)
-        this.loading = false;
-      })
+    this.onSubmitted.emit(requestParam);
   }
 
 }
