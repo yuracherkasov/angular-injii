@@ -9,7 +9,7 @@ export interface IVideo {
   charity: Object;
   broadcast: {
     upcoming: boolean;
-    broadcast: string;
+    date: string;
   };
 }
 

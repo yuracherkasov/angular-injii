@@ -12,7 +12,7 @@ export class ConstantsService {
   userObservable = this.subjUserSource.asObservable();
 
   User: any;
-  homeUrl: string = Config.API;
+  homeUrl: string = 'http://opus.injii.com';
   //Wepay API Keys:
   CLIENT_ID: number = 201132;
   //facebook app ID:
@@ -34,7 +34,6 @@ export class ConstantsService {
       this.gClient_id = '813287755154-gfkf2urck7i10mujgenaim0a29q0couf.apps.googleusercontent.com';
       this.TwKey = '0JzS8R6508XwpxEsxwiFfw';
       this.TwSecret = 'yNrYkyioDLEZGJg2QjGji0r5VSMsk6NL7NTSq5NsIY';
-
     }
   }
 

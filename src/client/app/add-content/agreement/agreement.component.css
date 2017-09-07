@@ -10,16 +10,20 @@
   justify-content: center;
   align-items: center;
 }
-
+fieldset{
+  overflow: hidden;
+  white-space: nowrap;
+}
 .agreement-content{
   width: 600px;
   background: #fff;
   padding: 10px;
+  max-width: 94%;
 }
 iframe{
   width: 100%;
   height: 300px;
-  border: 1px solid #000;
+  outline: 1px solid #000;
 }
 form {
   width: 100%;
@@ -27,9 +31,9 @@ form {
   padding: 5px 10px;
 }
 form input{
-  margin: 0;
   display: inline-block;
-  vertical-align: middle;
+  float: left;
+  margin: 3px 7px 0 0;
 }
 button {
   float: right;
@@ -41,7 +45,12 @@ form label{
   margin: 0;
 }
 form p {
-  vertical-align: middle;
   display: inline-block;
   font-size: 14px;
+  white-space: normal;
+}
+@media (max-width: 991px) {
+  .agreement-wrapper{
+    position: fixed;
+  }
 }

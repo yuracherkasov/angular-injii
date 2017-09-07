@@ -1,20 +1,24 @@
 <div class="sharing-video-wrapper">
   <h2>Upcoming broadcast</h2>
   <h3>Share show time in the social media</h3>
-  
+
   <ul>
     <li *ngFor="let video of videos">
       <div class="preview">
         <img [src]="video.preview" alt="">
       </div>
       <div class="info">
-        <div class="sharing">
-          <a href="javascript:;"><img src="assets/svg/icons/facebook-logo-button.svg" alt="facebook"></a>
-          <a href="javascript:;"><img src="assets/svg/icons/twitter-logo-button.svg" alt="twitter"></a>
-          <a href="javascript:;"><img src="assets/svg/icons/google-plus.svg" alt="google"></a>
-        </div>
         <h6>{{video.title}}</h6>
         <p>Broadcast: <span>{{video.broadcast.date}}</span></p>
+        <div class="sharing">
+          <a href="javascript:;"><img src="assets/svg/icons/facebook-logo-button.svg" alt="facebook" (click)="fbShare(video)"></a>
+          <a (click)="createTwitterMessage(video)" href={{TwitterURL}} target="_blank">
+            <img src="assets/svg/icons/twitter-logo-button.svg" alt="twitter">
+          </a>
+          <a href="javascript:;" #sharegoogle (click)="createMessage(video)">
+            <img src="assets/svg/icons/google-plus.svg" alt="google">
+          </a>
+        </div>       
       </div>
     </li>
   </ul>

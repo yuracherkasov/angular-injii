@@ -55,14 +55,18 @@ a img {
 .info {
   overflow: hidden;
   padding-left: 2%;
+  position: relative;
 }
 .sharing{
-  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .info h6{
   margin-bottom: 50px;
   color: #e9008c;
   font-size: 16px;
+  padding-right: 160px;
 }
 .info p{
   color: #999;
@@ -73,7 +77,28 @@ a img {
   font-size: 14px;
   display: block;
 }
-
+@media(max-width: 991px){
+  .preview{
+    float: none;
+    display: block;
+    margin: 0 0 15px;
+  }
+  .sharing {
+    position: static;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .info{
+    padding-left: 0;
+  }
+  .info h6{
+    padding-right: 0;
+    margin-bottom: 2px;
+  }
+  h2 {
+    font-size: 16px;
+  }
+}
 
 
 

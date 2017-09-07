@@ -8,8 +8,10 @@
     </div>
     <form #acceptForm="ngForm" novalidate (submit)="acceptForm.valid && Submit()">
       <button type="submit" class="button-injii" [disabled]="!agree">Submit</button>
-      <input type="checkbox" id="accept" required name="agree" [(ngModel)]="agree">
-      <p>I <label for="accept">accepts</label> the content submission pop agreement</p>
+      <fieldset>
+        <input type="checkbox" id="accept" required name="agree" [(ngModel)]="agree">
+        <p>I <label for="accept">accepts</label> the content submission pop agreement</p>
+      </fieldset>
     </form>
   </div>
 </div>

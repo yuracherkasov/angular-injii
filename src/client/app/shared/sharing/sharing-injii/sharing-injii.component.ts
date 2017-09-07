@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { CeiboShare } from 'ng2-social-share';
 
+import { SharingSocialService } from '../../../services/sharing-social.service';
 import { ConstantsService } from '../../../services/constants.service';
 
 declare const FB: any;
@@ -33,28 +33,24 @@ export class SharingInjiiComponent implements OnInit {
   private imageInjii: string;
   private headerInjii: string;
 
-  constructor(private constantsService: ConstantsService) {
+  constructor
+    (
+    private constantsService: ConstantsService,
+    private sharingSocialService: SharingSocialService
+  ) {
 
     this.urlInjii = this.constantsService.homeUrl;
     this.imageInjii = this.constantsService.homeUrl + '/assets/symbol_with_logo/symbol_logo_original.jpg';
     this.headerInjii = 'Join the injii';
 
     constantsService.userObservable.subscribe(() => {
-        this.setSharingText();
+      this.setSharingText();
     });
   }
 
   ngOnInit(): void {
-    this.setSharingText();
-    this.goptions = {
-      contenturl: this.constantsService.homeUrl,
-      clientid: this.constantsService.gClient_id,
-      cookiepolicy: this.constantsService.homeUrl,
-      prefilltext: this.textInjii,
-      calltoactionlabel: 'SIGN_IN',
-      calltoactionurl: this.constantsService.homeUrl
-    };
-    gapi.interactivepost.render(this.grender.nativeElement, this.goptions);
+    this.setSharingText();  
+    this.sharingSocialService.shareGoogle(this.grender.nativeElement, this.textInjii)
   }
 
   setSharingText(): void {
@@ -66,21 +62,7 @@ export class SharingInjiiComponent implements OnInit {
   }
 
   shareFb(): void {
-    let fbParams: any = {
-        appId: this.constantsService.fbAppId,
-        xfbml: true,
-        version: 'v2.8'
-      };
-      FB.init(fbParams);
-
-    FB.ui({
-      app_id: this.constantsService.fbAppId,
-      method: 'feed',
-      mobile_iframe: true,
-      caption: this.textInjii,
-      //description: this.textInjii,
-      link: this.urlInjii
-    }, function (response: any) { console.log(response); });
+    this.sharingSocialService.shareFb(this.textInjii);
   }
 
 }

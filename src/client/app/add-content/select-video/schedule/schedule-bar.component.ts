@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-//import { AgreementService } from '../../agreement/agreement.service';
-//import { SelectVideoService  } from '../select-video.service';
 
 import { ScheduleBarService } from './schedule-bar.service';
 
@@ -16,26 +14,12 @@ export class ScheduleBarComponent implements OnInit {
 
   @Input() response: any;
   table: any;
-  //showShedule: boolean = true;
-  // loading: boolean = false;
-  // message: string = '';
 
   constructor(
     private scheduleBarService: ScheduleBarService,
     private router: Router,
-    private route: ActivatedRoute,
-    //private agreementService: AgreementService,
-    //private selectVideoService: SelectVideoService
-  ) {
-
-    //  this.agreementService.acceptedAgreementObservable
-    //   .subscribe((val) => {
-    //     if(val) {
-    //       this.onConfirmAccepts()
-    //     }
-    //   }) 
-
-   }
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.table = [[]];
@@ -56,7 +40,5 @@ export class ScheduleBarComponent implements OnInit {
     this.scheduleBarService.setTime(time.startTime);
     this.router.navigate(['agreement'], { relativeTo: this.route });
   }
-
-  
 
 }
